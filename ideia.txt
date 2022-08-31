@@ -1,0 +1,20 @@
+Título: FlashFood
+
+Problema: Geralmente, quando uma pessoa ou um grupo de pessoas abrem um estabelecimento, eles possuem uma certa
+dificuldade em gerenciar os produtos e seus pedidos. Isso ocorre pelo fato de não terem um sistema para isso.
+
+Objetivo: 
+
+Explicação - Desenvolver um sistema rápido e prático para visualização dos produtos oferecidos pelo estabelecimento, realização de pedidos, produção e entrega final.
+
+Ações - Iremos fazer um sistema amigavel para facilitar o trabalho dos funcionários e melhorar a experiência dos clientes.
+
+Ações Objetivo - Primeiro, iremos deixar amigavel o contato do cliente com a cozinha: Fazendo com que os pedidos chegue a cozinha sem o contato direto do garçom.
+
+Também iremos fazer com que os clientes possam fazer seus próprios pedidos, sem a ajuda de um garçom. Isso será possível com a ajuda de um cardápio digital.
+
+
+Diferencial: Como explicado acima, nosso diferencial será a velocidade com que o pedido chegue a cozinha.
++ Facilitar a trajetório dos pedidos feito pelos garçons
++ Cardápio Digital para pedidos direto dos cliente.
++ Notificação para que os garçons saibam que a comida está pronta
