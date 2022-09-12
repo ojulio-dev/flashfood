@@ -1,4 +1,4 @@
-Título: FlashFood
+Título: FlashFood (Sistema de Gerenciamento de Comércios do ramo Alimentício).
 
 Problema: Geralmente, quando uma pessoa ou um grupo de pessoas abrem um estabelecimento, eles possuem uma certa
 dificuldade em gerenciar os produtos e seus pedidos. Isso ocorre pelo fato de não terem um sistema para isso.
@@ -13,8 +13,14 @@ Ações Objetivo - Primeiro, iremos deixar amigavel o contato do cliente com a c
 
 Também iremos fazer com que os clientes possam fazer seus próprios pedidos, sem a ajuda de um garçom. Isso será possível com a ajuda de um cardápio digital.
 
-
 Diferencial: Como explicado acima, nosso diferencial será a velocidade com que o pedido chegue a cozinha.
 + Facilitar a trajetório dos pedidos feito pelos garçons
 + Cardápio Digital para pedidos direto dos cliente.
 + Notificação para que os garçons saibam que a comida está pronta
+
+Titulo
+Problema
+Objetivo
+Diferencial
+
+Cadastro do Cliente (LEAD, integração com o Ifood).
