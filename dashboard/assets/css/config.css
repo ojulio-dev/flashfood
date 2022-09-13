@@ -23,12 +23,12 @@ aside {
 }
 
 ::-webkit-scrollbar {
-    background-color: #d2d2d2;
+    background-color: #bababa;
     width: 5px;
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #bababa;
-    border-radius: 8px;
+    background-color: #212121;
+    border-radius: 5px;
 }
