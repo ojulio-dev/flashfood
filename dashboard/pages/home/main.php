@@ -7,21 +7,6 @@
     </div>
 
     <div class="input-create-wrapper">
-        <label for="name">Título</label>
-        <input type="text" name="name" id="name">
-    </div>
-
-    <div class="input-create-wrapper">
-        <label for="name">Título</label>
-        <input type="text" name="name" id="name">
-    </div>
-
-    <div class="input-create-wrapper">
-        <label for="name">Título</label>
-        <input type="text" name="name" id="name">
-    </div>
-
-    <div class="input-create-wrapper">
         <label for="banner">Banner</label>
         <input type="text" name="banner" id="banner">
     </div>
