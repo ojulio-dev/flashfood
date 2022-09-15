@@ -137,3 +137,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+/* Main */
+
+.main-content {
+    width: 100%;
+    padding: 30px;
+    overflow-y: auto;
+}

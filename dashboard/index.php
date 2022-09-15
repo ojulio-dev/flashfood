@@ -33,10 +33,10 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
 
         <!-- Pages -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/home/style.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/style.css">
 
         <!-- Produtos -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/home/products/create.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/products/create.css">
 
         <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
     </head>
@@ -53,11 +53,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                     if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
                         require_once(__DIR__ . "/pages/$page/$action.php");
                     } else {
-                        header("Location: index.php?page=home");
+                        header("Location: index.php?page=item");
                     }
 
                     if (!isset($page)) {
-                        header("Location: index.php?page=home");
+                        header("Location: index.php?page=item");
                     }
 
                     ?>

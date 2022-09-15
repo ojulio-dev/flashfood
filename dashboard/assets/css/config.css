@@ -6,7 +6,11 @@
     font-family: 'Nunito';
 }
 
-input {
+option {
+    font-size: 17px;
+}
+
+input, select {
     outline: 0;
 }
 

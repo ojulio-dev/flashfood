@@ -8,8 +8,8 @@
             </div>
 
             <div class="click-wrapper">
-                <a href="">Cadastro</a>
-                <a href="">Listagem</a>
+                <a href="?page=item&action=create">Cadastro</a>
+                <a href="index.php">Listagem</a>
             </div>
         </li>
 
