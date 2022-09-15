@@ -1,5 +1,7 @@
 <?php
 
+require_once('vendor\autoload.php');
+
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
@@ -48,6 +50,12 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                 <?php require_once (__DIR__. '/pages/partials/aside.php') ?>
                 
                 <main class="main-content">
+                    <?php if (isset($_SESSION['flash'])): ?>
+                        <div class="flash-message <?= $_SESSION['flash']['color'] ?>">
+                            <span><?= $_SESSION['flash']['message'] ?></span>
+                        </div>
+                    <?php unset($_SESSION['flash']); endif ?>
+
                     <?php  
 
                     if (file_exists(__DIR__ . "/pages/$page/$action.php")) {

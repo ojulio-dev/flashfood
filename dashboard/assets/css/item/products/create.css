@@ -1,8 +1,40 @@
-.products-create-title {
-    font-size: 27px;
-    font-weight: 700;
+.products-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
-    margin-bottom: 20px;
+    margin-bottom: 70px;
+}
+
+.products-title-wrapper i {
+    position: absolute;
+
+    left: 0;
+    color: rgb(48, 48, 48);
+    cursor: pointer;
+}
+
+.products-create-title {
+    font-size: 31px;
+    font-weight: 600;
+
+    text-align: center;
+    position: relative;
+    color: #232323;
+}
+
+.products-create-title::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 3px;
+    border-radius: 5px;
+    background-color: #232323;
 }
 
 .products-create {
@@ -10,6 +42,7 @@
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
     gap: 15px 40px;
 }
 
@@ -17,6 +50,9 @@
     display: block;
     font-size: 19px;
     margin-bottom: 3px;
+    font-weight: 500;
+
+    color: #272727;
 }
 
 .products-create input, .products-create select {
@@ -25,10 +61,31 @@
     font-weight: 400;
     font-size: 16px;
 
-    border: 1px solid #121212;
+    border: 1px solid #9f9f9f;
     border-radius: 3px;
+    font-weight: 500;
+
+    color: #525252;
 }
 
-.products-create input:focus, .products-create select:focus {
-    box-shadow: 0 0 10px #5b5b5b;
+.main-create-form input[type=submit] {
+    margin-top: 30px;
+
+    color: #fff;
+    background-color: #28a745;
+    border: 2px solid #28a745;
+    border-radius: 4px;
+    width: 120px;
+    height: 50px;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: transform 100ms;
+}
+
+.main-create-form input[type=submit]:hover {
+    transform: scale(1.05);
+    background-color: #22943d;
+    border: none;
 }

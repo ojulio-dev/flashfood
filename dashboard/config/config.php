@@ -1,5 +1,4 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ecommerce/config/environment.php');
 
 if (ENVIRONMENT === 'development') {
     define('DB_HOST', 'localhost');

@@ -145,3 +145,36 @@
     padding: 30px;
     overflow-y: auto;
 }
+
+.flash-message {
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    animation: flashMessage 0.4s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes flashMessage {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: block;
+        margin: -15px;
+    }
+}
+
+.danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
