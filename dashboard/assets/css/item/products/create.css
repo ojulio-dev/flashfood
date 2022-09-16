@@ -21,7 +21,7 @@
 
     text-align: center;
     position: relative;
-    color: #232323;
+    color: #202020;
 }
 
 .products-create-title::before {
@@ -34,7 +34,7 @@
 
     height: 3px;
     border-radius: 5px;
-    background-color: #282828;
+    background-color: #252525;
 }
 
 .products-create {
