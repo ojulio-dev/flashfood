@@ -3,35 +3,45 @@
 use Dashboard\Model\ItemCategory;
 use Dashboard\Model\Item;
 
-// $itemCategory = new ItemCategory;
+$itemCategory = new ItemCategory;
 
-// $categories = $itemCategory->read();
+$item = new Item;
 
-// if (isset($_POST['submit'])) {
-//     $isEmpty = false;
+$categories = $itemCategory->read();
 
-//     foreach($_POST as $postItem) {
-//         if (empty($postItem)) {
-//             $isEmpty = true;
-//         }
-//     }
+if (isset($_POST['submit'])) {
+    $isEmpty = false;
 
-//     if ($isEmpty) {
-//         $_SESSION['flash']['message'] = 'Digite as informações!';
-//         $_SESSION['flash']['color'] = 'danger';
+    foreach($_POST as $postItem) {
+        if (empty($postItem)) {
+            $isEmpty = true;
+        }
+    }
 
-//         header("Location: index.php?page=item&action=create");
-//         exit();
-//     }
+    if ($isEmpty) {
+        $_SESSION['flash']['message'] = 'Digite as informações!';
+        $_SESSION['flash']['color'] = 'danger';
 
-//     DEFINE('NAME', filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
-//     DEFINE('CATEGORY', filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT));
-//     DEFINE('PRICE', filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT));
-//     DEFINE('SPECIAL_PRICE', filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_NUMBER_FLOAT));
-//     DEFINE('DESCRIPTION', filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
-//     DEFINE('STATUS', filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT));
-//     DEFINE('SLUG', strtolower(str_replace(' ', '-', NAME)));
-// }
+        header("Location: index.php?page=item&action=create");
+        exit();
+    }
+
+    $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+    $data['category_id'] = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT);
+    $data['price'] = str_replace(',', '.', filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT));
+    $data['special_price'] = str_replace(',', '.', filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_NUMBER_FLOAT));
+    $data['description'] = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
+    $data['status'] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT);
+    $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
+
+    $create = $item->create($data);
+
+    if ($create) {
+        header("Location: index.php?page=read");
+    } else {
+        echo "Erro ao cadastrar";
+    }
+}
 
 ?>
 
@@ -82,7 +92,7 @@ use Dashboard\Model\Item;
 
         <div class="input-create-wrapper">
             <label for="banner">Banner</label>
-            <input type="file" name="banner" id="banner" required>
+            <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner" required>
         </div>
     </div>
 

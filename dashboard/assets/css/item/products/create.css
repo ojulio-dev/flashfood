@@ -68,10 +68,6 @@
     color: #303030;
 }
 
-.products-create input::placeholder {
-    color: #818181;
-}
-
 .main-create-form input[type=submit] {
     margin-top: 30px;
 
