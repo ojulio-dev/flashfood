@@ -4,7 +4,7 @@
     align-items: center;
     position: relative;
 
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 }
 
 .products-title-wrapper i {
@@ -34,7 +34,7 @@
 
     height: 3px;
     border-radius: 5px;
-    background-color: #232323;
+    background-color: #1c1c1c;
 }
 
 .products-create {
@@ -65,7 +65,11 @@
     border-radius: 3px;
     font-weight: 500;
 
-    color: #525252;
+    color: #303030;
+}
+
+.products-create input::placeholder {
+    color: #303030;
 }
 
 .main-create-form input[type=submit] {

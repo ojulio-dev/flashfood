@@ -3,35 +3,35 @@
 use Dashboard\Model\ItemCategory;
 use Dashboard\Model\Item;
 
-$itemCategory = new ItemCategory;
+// $itemCategory = new ItemCategory;
 
-$categories = $itemCategory->read();
+// $categories = $itemCategory->read();
 
-if (isset($_POST['submit'])) {
-    $isEmpty = false;
+// if (isset($_POST['submit'])) {
+//     $isEmpty = false;
 
-    foreach($_POST as $postItem) {
-        if (empty($postItem)) {
-            $isEmpty = true;
-        }
-    }
+//     foreach($_POST as $postItem) {
+//         if (empty($postItem)) {
+//             $isEmpty = true;
+//         }
+//     }
 
-    if ($isEmpty) {
-        $_SESSION['flash']['message'] = 'Digite as informações!';
-        $_SESSION['flash']['color'] = 'danger';
+//     if ($isEmpty) {
+//         $_SESSION['flash']['message'] = 'Digite as informações!';
+//         $_SESSION['flash']['color'] = 'danger';
 
-        header("Location: index.php?page=item&action=create");
-        exit();
-    }
+//         header("Location: index.php?page=item&action=create");
+//         exit();
+//     }
 
-    DEFINE('NAME', filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
-    DEFINE('CATEGORY', filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT));
-    DEFINE('PRICE', filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT));
-    DEFINE('SPECIAL_PRICE', filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_NUMBER_FLOAT));
-    DEFINE('DESCRIPTION', filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
-    DEFINE('STATUS', filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT));
-    DEFINE('SLUG', strtolower(str_replace(' ', '-', NAME)));
-}
+//     DEFINE('NAME', filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
+//     DEFINE('CATEGORY', filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT));
+//     DEFINE('PRICE', filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT));
+//     DEFINE('SPECIAL_PRICE', filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_NUMBER_FLOAT));
+//     DEFINE('DESCRIPTION', filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
+//     DEFINE('STATUS', filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT));
+//     DEFINE('SLUG', strtolower(str_replace(' ', '-', NAME)));
+// }
 
 ?>
 
