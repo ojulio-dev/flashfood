@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS `item` (
   `name` varchar(255) NOT NULL,
   `banner` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `special_price` double NOT NULL,
-  `price` double NOT NULL,
+  `special_price` float(7,2) NOT NULL,
+  `price` float(7,2) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -36,6 +36,11 @@ CREATE TABLE IF NOT EXISTS `item_category` (
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `item_category` (`category_id`, `name`, `slug`, `status`, `updated_at`, `created_at`) VALUES
+	(1, 'Sorvete', 'sorvete', 1, '2022-09-17 17:02:47', '2022-09-17 17:02:47'),
+	(2, 'Hamburguer', 'hamburguer', 1, '2022-09-17 17:07:24', '2022-09-17 17:07:24'),
+	(3, 'Salgado', 'salgado', 1, '2022-09-17 21:42:04', '2022-09-17 21:42:04'),
+	(4, 'Bebidas', 'bebidas', 1, '2022-09-17 23:17:37', '2022-09-17 23:17:37');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
