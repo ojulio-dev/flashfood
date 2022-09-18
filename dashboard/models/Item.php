@@ -3,6 +3,8 @@
 namespace Dashboard\Model;
 
 use Dashboard\Classes\Database;
+use PDO;
+use PDOException;
 
 class Item extends Database{
 
@@ -41,17 +43,99 @@ class Item extends Database{
             $this->stmt->execute();
             
             if ($this->stmt->rowCount()) {
-                $id = $this->conn->query("SELECT item_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(\PDO::FETCH_ASSOC);
+                if (isset($_FILES['banner'])) {
+                    $id = $this->conn->query("SELECT item_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
 
-                $destiny = $this->createFile($_FILES['banner'], $id['item_id']);
+                    $destiny = $this->createFile($_FILES['banner'], $id['item_id']);
 
-                $this->updateByField($destiny, 'banner', $id['item_id']);
+                    $this->updateByField($destiny, 'banner', $id['item_id']);
+                }
 
                 return true;
             } else {
                 return false;
             }
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function read()
+    {
+        try {
+
+            $this->setSql("SELECT * FROM " . $this->table . "");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function readById($id)
+    {
+        try {
+
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE item_id = $id");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                return $this->stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function updateById($id, $data)
+    {
+        try {
+
+            $this->setSql("UPDATE " . $this->table . " SET category_id = " . $data['category_id'] . ", name = '" . $data['name'] . "', description = '" . $data['description'] . "', special_price = " . $data['special_price'] . ", price = " . $data['price'] .", status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE item_id = $id");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function deleteById($id)
+    {
+        try {
+
+            $this->setSql("DELETE FROM " . $this->table . " WHERE item_id = $id");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
@@ -66,14 +150,16 @@ class Item extends Database{
                 item_id = $itemId
             ");
 
-            $this->stmt = $this->conn->query($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
 
             if ($this->stmt->rowCount()) {
                 return true;
             } else {
                 return false;
             }
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             return $e->getMessage();
         }
     }

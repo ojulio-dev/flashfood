@@ -9,7 +9,7 @@
 
             <div class="click-wrapper">
                 <a href="?page=item&action=create">Cadastro</a>
-                <a href="index.php">Cardápio</a>
+                <a href="index.php">Listagem</a>
                 <a href="?page=item_category">Categorias</a>
             </div>
         </li>

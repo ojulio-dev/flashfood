@@ -1,0 +1,134 @@
+.products-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.products-title-wrapper i {
+    position: absolute;
+
+    left: 0;
+    color: rgb(48, 48, 48);
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.main-item-title {
+    font-size: 31px;
+    font-weight: 600;
+
+    text-align: center;
+    position: relative;
+    color: #202020;
+}
+
+.main-item-title::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 3px;
+    border-radius: 5px;
+    background-color: #252525;
+}
+
+.main-form-item {
+    width: 85%;
+
+    margin: 0 auto;
+    padding: 50px;
+
+    border-radius: 20px;
+    box-shadow: 0 4px 0.5rem rgb(0 0 0 / 20%), 0 -0.5px 0.5rem rgb(0 0 0 / 20%);
+}
+
+.form-items-item {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 17px 40px;
+}
+
+.main-form-item .input-item-wrapper label {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.main-form-item .input-item-wrapper input, .main-form-item .input-item-wrapper select {
+    border: 1px solid #ced4da;
+    height: 48px;
+    padding: 0 15px;
+
+    color: #495057;
+    font-weight: 500;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 4px;
+    border-radius: 3px;
+}
+
+.main-form-item .input-item-wrapper input::placeholder, .main-form-item .input-item-wrapper select::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #495057;
+} 
+
+.main-form-item .input-item-wrapper input:focus {
+    background-color: #FFF;
+    border-color: #86B7FE;
+    outline: 0;
+    box-shadow: 0 0 0 .18rem rgba(13, 110, 253, .25);
+}
+
+.input-item-wrapper input[type=file] {
+    height: auto;
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #495057;
+
+    padding: 9px 15px;
+}
+
+.input-item-wrapper input[type=file]::file-selector-button {
+    cursor: pointer;
+    transition: all 1s ease;
+    color: #495057;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 6px 13px;
+    margin-right: 10px;
+    border: 1px solid #c8ccd0;
+    font-size: 16px;
+}
+
+.main-form-item input[type=submit] {
+    margin-top: 25px;
+
+    color: #fff;
+    background-color: #28a745;
+    border: 2px solid #28a745;
+    border-radius: 4px;
+    width: 105px;
+    height: 50px;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: transform 100ms;
+}
+
+.main-form-item input[type=submit]:hover {
+    transform: scale(1.04);
+    background-color: #22943d;
+    border: none;
+}

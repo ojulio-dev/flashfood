@@ -35,6 +35,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
 
         <!-- Pages -->
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/create.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/read.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/item/style.css">
 
         <!-- Produtos -->
@@ -54,7 +56,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                         <div class="flash-message <?= $_SESSION['flash']['color'] ?>">
                             <span><?= $_SESSION['flash']['message'] ?></span>
                         </div>
-                    <?php unset($_SESSION['flash']); endif ?>
+                    <?php unset($_SESSION['flash']); endif; ?>
 
                     <?php  
 
