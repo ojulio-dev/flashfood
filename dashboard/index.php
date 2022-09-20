@@ -35,12 +35,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
 
         <!-- Pages -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/create.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/read.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/style.css">
-
-        <!-- Produtos -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/products/create.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/create.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/read.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/style.css">
 
         <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
     </head>
@@ -63,11 +60,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                     if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
                         require_once(__DIR__ . "/pages/$page/$action.php");
                     } else {
-                        header("Location: index.php?page=item");
+                        header("Location: index.php?page=products");
                     }
 
                     if (!isset($page)) {
-                        header("Location: index.php?page=item");
+                        header("Location: index.php?page=products");
                     }
 
                     ?>

@@ -6,7 +6,7 @@ use Dashboard\Classes\Database;
 use PDO;
 use PDOException;
 
-class Item extends Database{
+class Product extends Database{
 
     private $stmt, $sql, $conn, $table;
 
@@ -14,7 +14,7 @@ class Item extends Database{
     {
         $this->conn = parent::conn();
 
-        $this->table = 'item';
+        $this->table = 'product';
     }
 
     private function createFile($file, $id) {
@@ -23,7 +23,7 @@ class Item extends Database{
 
         $newName = $id . $extension;
 
-        $destiny = __DIR__ . '/../assets/images/item/' . $newName;
+        $destiny = __DIR__ . '/../assets/images/products/' . $newName;
 
         if (file_exists($destiny)) unlink($destiny);
 
@@ -43,12 +43,12 @@ class Item extends Database{
             $this->stmt->execute();
             
             if ($this->stmt->rowCount()) {
-                if (isset($_FILES['banner'])) {
-                    $id = $this->conn->query("SELECT item_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
+                if (file_exists($_FILES['banner']['tmp_name'])) {
+                    $id = $this->conn->query("SELECT product_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
 
-                    $destiny = $this->createFile($_FILES['banner'], $id['item_id']);
+                    $destiny = $this->createFile($_FILES['banner'], $id['product_id']);
 
-                    $this->updateByField($destiny, 'banner', $id['item_id']);
+                    $this->updateByField($destiny, 'banner', $id['product_id']);
                 }
 
                 return true;
@@ -84,7 +84,7 @@ class Item extends Database{
     {
         try {
 
-            $this->setSql("SELECT * FROM " . $this->table . " WHERE item_id = $id");
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = $id");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
@@ -104,13 +104,21 @@ class Item extends Database{
     {
         try {
 
-            $this->setSql("UPDATE " . $this->table . " SET category_id = " . $data['category_id'] . ", name = '" . $data['name'] . "', description = '" . $data['description'] . "', special_price = " . $data['special_price'] . ", price = " . $data['price'] .", status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE item_id = $id");
+            $this->setSql("UPDATE " . $this->table . " SET category_id = " . $data['category_id'] . ", name = '" . $data['name'] . "', description = '" . $data['description'] . "', special_price = " . $data['special_price'] . ", price = " . $data['price'] .", status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE product_id = $id");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
             $this->stmt->execute();
             
-            if ($this->stmt->rowCount()) {
+            if ($this->stmt->rowCount() || file_exists($_FILES['banner']['tmp_name'])) {
+                if (file_exists($_FILES['banner']['tmp_name'])) {
+                    $id = $this->conn->query("SELECT product_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
+
+                    $destiny = $this->createFile($_FILES['banner'], $id['product_id']);
+
+                    $this->updateByField($destiny, 'banner', $id['product_id']);
+                }
+                
                 return true;
             } else {
                 return false;
@@ -120,34 +128,14 @@ class Item extends Database{
         }
     }
 
-    public function deleteById($id)
-    {
-        try {
-
-            $this->setSql("DELETE FROM " . $this->table . " WHERE item_id = $id");
-
-            $this->stmt = $this->conn()->prepare($this->getSql());
-
-            $this->stmt->execute();
-            
-            if ($this->stmt->rowCount()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    public function updateByField($data, string $field, $itemId): bool
+    public function updateByField($data, string $field, $productId): bool
     {
         try {
             $this->setSql(
             "UPDATE " . $this->table . "
                 SET $field = '$data'
             WHERE
-                item_id = $itemId
+                product_id = $productId
             ");
 
             $this->stmt = $this->conn->prepare($this->getSql());
@@ -162,6 +150,36 @@ class Item extends Database{
         } catch (PDOException $e) {
             return $e->getMessage();
         }
+    }
+
+    public function deleteById($id)
+    {
+        try {
+            $banner = $this->conn->query("SELECT banner FROM " . $this->table . " WHERE product_id = {$id}")->fetch(PDO::FETCH_ASSOC);
+
+            $this->setSql("DELETE FROM " . $this->table . " WHERE product_id = $id");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                $deleteFile = $this->deleteFile($banner['banner']);
+
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function deleteFile($banner)
+    {
+        $destiny = __DIR__ . '/../assets/images/products/' . $banner;
+
+        if (file_exists($destiny)) unlink($destiny);
     }
 
     public function setSql($sql)

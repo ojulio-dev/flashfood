@@ -6,14 +6,14 @@ use Dashboard\Classes\Database;
 use PDO;
 use PDOException;
 
-class ItemCategory extends Database{
+class ProductCategory extends Database{
     private $stmt, $sql, $conn, $table;
 
     public function __construct()
     {
         $this->conn = parent::conn();
 
-        $this->table = 'item_category';
+        $this->table = 'product_category';
     }
 
     public function read()

@@ -13,11 +13,11 @@
     left: 0;
     color: rgb(48, 48, 48);
     cursor: pointer;
-    font-size: 23px;
+    font-size: 22px;
 }
 
-.main-item-title {
-    font-size: 31px;
+.main-products-title {
+    font-size: 29px;
     font-weight: 600;
 
     text-align: center;
@@ -25,7 +25,7 @@
     color: #202020;
 }
 
-.main-item-title::before {
+.main-products-title::before {
     content: '';
     position: absolute;
     bottom: -15px;
@@ -38,17 +38,17 @@
     background-color: #252525;
 }
 
-.main-form-item {
-    width: 85%;
+.main-form-products {
+    width: 90%;
 
     margin: 0 auto;
     padding: 50px;
 
     border-radius: 20px;
-    box-shadow: 0 4px 0.5rem rgb(0 0 0 / 20%), 0 -0.5px 0.5rem rgb(0 0 0 / 20%);
+    box-shadow: 0 2px 0.5rem rgb(0 0 0 / 20%), 0 2px 0.5rem rgb(0 0 0 / 20%);
 }
 
-.form-items-item {
+.form-items-products {
     width: 100%;
 
     display: grid;
@@ -57,12 +57,12 @@
     gap: 17px 40px;
 }
 
-.main-form-item .input-item-wrapper label {
+.main-form-products .input-products-wrapper label {
     font-weight: 400;
     font-size: 18px;
 }
 
-.main-form-item .input-item-wrapper input, .main-form-item .input-item-wrapper select {
+.main-form-products .input-products-wrapper input, .main-form-products .input-products-wrapper select {
     border: 1px solid #ced4da;
     height: 48px;
     padding: 0 15px;
@@ -75,21 +75,21 @@
     border-radius: 3px;
 }
 
-.main-form-item .input-item-wrapper input::placeholder, .main-form-item .input-item-wrapper select::placeholder {
+.main-form-products .input-products-wrapper input::placeholder, .main-form-products .input-products-wrapper select::placeholder {
     font-weight: 400;
     font-size: 16px;
 
     color: #495057;
 } 
 
-.main-form-item .input-item-wrapper input:focus {
+.main-form-products .input-products-wrapper input:focus {
     background-color: #FFF;
     border-color: #86B7FE;
     outline: 0;
     box-shadow: 0 0 0 .18rem rgba(13, 110, 253, .25);
 }
 
-.input-item-wrapper input[type=file] {
+.input-products-wrapper input[type=file] {
     height: auto;
     font-weight: 400;
     font-size: 16px;
@@ -99,7 +99,7 @@
     padding: 9px 15px;
 }
 
-.input-item-wrapper input[type=file]::file-selector-button {
+.input-products-wrapper input[type=file]::file-selector-button {
     cursor: pointer;
     transition: all 1s ease;
     color: #495057;
@@ -111,7 +111,7 @@
     font-size: 16px;
 }
 
-.main-form-item input[type=submit] {
+.main-form-products input[type=submit] {
     margin-top: 25px;
 
     color: #fff;
@@ -127,7 +127,7 @@
     transition: transform 100ms;
 }
 
-.main-form-item input[type=submit]:hover {
+.main-form-products input[type=submit]:hover {
     transform: scale(1.04);
     background-color: #22943d;
     border: none;

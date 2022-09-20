@@ -1,13 +1,13 @@
 <?php
 
-use Dashboard\Model\ItemCategory;
-use Dashboard\Model\Item;
+use Dashboard\Model\ProductCategory;
+use Dashboard\Model\Product;
 
-$itemCategory = new ItemCategory;
+$productCategory = new ProductCategory;
 
-$item = new Item;
+$product = new Product;
 
-$categories = $itemCategory->read();
+$categories = $productCategory->read();
 
 if (isset($_POST['submit'])) {
     $isEmpty = false;
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 
     if ($isEmpty || !isset($_FILES['banner'])) {
         
-        header("Location: index.php?page=item&action=create");
+        header("Location: index.php?page=products&action=create");
         exit();
     }
 
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 
     if ($extension != 'jpg' && $extension != 'jpeg' && $extension != 'png') {
 
-        header("Location: index.php?page=item&action=create");
+        header("Location: index.php?page=products&action=create");
         exit();
     }
 
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
     $data['status'] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT);
     $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
 
-    $create = $item->create($data);
+    $create = $product->create($data);
 
     if ($create) {
 
@@ -49,29 +49,29 @@ if (isset($_POST['submit'])) {
         exit();
     } else {
 
-        header("Location: index.php?page=item&action=create");
+        header("Location: index.php?page=products&action=create");
         exit();
     }
 }
 
 ?>
 
-<section class="main-create-item">
+<section class="main-create-product">
     <div class="products-title-wrapper">
-        <a href="?page=item">
+        <a href="?page=products">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
-        <h1 class="main-item-title">Cadastro de Produtos</h1>
+        <h1 class="main-products-title">Cadastro de Produtos</h1>
     </div>
 
-    <form action="" class="main-form-item" method="POST" enctype="multipart/form-data">
-        <div class="form-items-item">
-            <div class="input-item-wrapper">
+    <form action="" class="main-form-products" method="POST" enctype="multipart/form-data">
+        <div class="form-items-products">
+            <div class="input-products-wrapper">
                 <label for="name">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Digite o Nome" required>
             </div>
 
-            <div class="input-item-wrapper">
+            <div class="input-products-wrapper">
                 <label for="category">Categoria</label>
                 <select name="category" id="category" required>
                     <option value="" selected>Selecione uma Categoria</option>
@@ -81,22 +81,22 @@ if (isset($_POST['submit'])) {
                 </select>
             </div>
 
-            <div class="input-item-wrapper">
+            <div class="input-products-wrapper">
                 <label for="price">Preço</label>
                 <input type="number" name="price" id="price" step="0.01" placeholder="R$ 100,99" required>
             </div>
 
-            <div class="input-item-wrapper">
+            <div class="input-products-wrapper">
                 <label for="special_price">Desconto</label>
                 <input type="number" name="special_price" id="special_price" step="0.01" placeholder="R$ 50,99" required>
             </div>
 
-            <div class="input-item-wrapper">
+            <div class="input-products-wrapper">
                 <label for="description">Descrição</label>
                 <input type="text" name="description" id="description" placeholder="Digite a Descrição" required>
             </div>
 
-            <div class="input-item-wrapper">
+            <div class="input-products-wrapper">
                 <label for="status">Status</label>
                 <select name="status" id="status" required>
                     <option value="'1'" selected>Ativado</option>
@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
                 </select>
             </div>
 
-            <div class="input-item-wrapper">
+            <div class="input-products-wrapper">
                 <label for="banner">Banner</label>
                 <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner" required>
             </div>
