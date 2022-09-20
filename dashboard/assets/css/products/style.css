@@ -44,7 +44,7 @@
     margin: 0 auto;
     padding: 50px;
 
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 0 2px 0.5rem rgb(0 0 0 / 20%), 0 2px 0.5rem rgb(0 0 0 / 20%);
 }
 
@@ -64,7 +64,7 @@
 
 .main-form-products .input-products-wrapper input, .main-form-products .input-products-wrapper select {
     border: 1px solid #ced4da;
-    height: 48px;
+    height: 45px;
     padding: 0 15px;
 
     color: #495057;
@@ -96,7 +96,7 @@
 
     color: #495057;
 
-    padding: 9px 15px;
+    padding: 7px 15px;
 }
 
 .input-products-wrapper input[type=file]::file-selector-button {
