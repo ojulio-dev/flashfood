@@ -79,6 +79,7 @@
     width: 100%;
 
     padding: 15px;
+    padding-top: 20px;
     margin-bottom: 5px;
 
     cursor: pointer;
@@ -99,7 +100,7 @@
 .main-dashboard-aside li.active {
     border-radius: 5px;
 
-    background-color: #383838;
+    background-color: #323232;
 }
 
 .main-dashboard-aside li.active .arrow-click {
@@ -108,9 +109,8 @@
 
 .main-dashboard-aside .click-wrapper {
     display: none;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     font-size: 16px;
-    padding:5px 15px;
     padding-left: 32px;
 
     border-radius: 5px;
@@ -119,12 +119,13 @@
 .main-dashboard-aside li.active .click-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
 .click-wrapper a {
     color: #fff;
     text-decoration: none;
+
+    padding: 0.6rem 0;
 }
 
 .main-dashboard-aside .arrow-click {

@@ -19,7 +19,7 @@ $read = $product->read();
             <tbody>
                 <?php if ($read): foreach($read as $product): ?>
                     <tr>
-                        <td><img src="assets/images/products/<?= $product['banner'] ?>" alt=""></td>
+                        <td class="read-image-wrapper"><img src="assets/images/products/<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['name'] ?></td>
                         <td>R$ <?= number_format($product['special_price'], 2, ',', '.'); ?></td>
                         <td>

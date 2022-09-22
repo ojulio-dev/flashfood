@@ -31,13 +31,15 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <!-- CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/config.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
 
         <!-- Pages -->
         <link rel="stylesheet" href="<?= DIR_CSS ?>/products/create.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/products/read.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/products/style.css">
+
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/category/style.css">
 
         <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
     </head>
