@@ -1,3 +1,13 @@
+<?php
+
+use Dashboard\Model\ProductCategory;
+
+$productCategory = new ProductCategory;
+
+$read = $productCategory->readAll();
+
+?>
+
 <section class="main-category-products">
     <div class="products-title-wrapper">
         <h1 class="main-products-title">Categorias</h1>
@@ -8,10 +18,10 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" placeholder="Search...">
         </form>
-        <button class="category-button-create">Create +</button>
+        <a href="?page=category&action=create" class="category-button-create">Create +</a>
     </div>
 
-    <div>
+    <div class="category-table-scroll-wrapper">
         <table class="category-read-table">
             <thead>
                 <tr>
@@ -23,44 +33,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sorvete</td>
-                    <td>32 Produtos</td>
-                    <td>Ativo</td>
-                    <td class="category-table-action">
-                        <div class="category-icons-wrapper">
-                        <i class="fa-sharp fa-solid fa-eye"></i>
-                            <i class="fa-solid fa-trash fa-solid-trash"></i>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                <td>2</td>
-                    <td>Salgado</td>
-                    <td>12 Produtos</td>
-                    <td>Desativo</td>
-                    <td class="category-table-action">
-                        <div class="category-icons-wrapper">
-                        <i class="fa-sharp fa-solid fa-eye"></i>
-                            <i class="fa-solid fa-trash fa-solid-trash"></i>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                <td>3</td>
-                    <td>Hamburguer</td>
-                    <td>3 Produtos</td>
-                    <td>Ativo</td>
-                    <td class="category-table-action">
-                        <div class="category-icons-wrapper">
-                        <i class="fa-sharp fa-solid fa-eye"></i>
-                            <i class="fa-solid fa-trash fa-solid-trash"></i>
-                        </div>
-                    </td>
-                </tr>
+                <?php foreach($read as $category):
+                    $count = $productCategory->countProducts($category['category_id']); ?>
+                    
+                    <tr>
+                        <td><?= $category['category_id'] ?></td>
+                        <td><?= $category['name'] ?></td>
+                        <td>
+                            <?= $count > 0 ? $count : 'Nenhum' ?> <?= $count <= 1 ? 'Produto' : 'Produtos' ?>
+                        </td>
+                        <td class="product-table-status <?= $category['status'] ? 'active' : 'disabled' ?>"><?= $category['status'] ? 'Ativo' : 'Inativo' ?></td>
+                        <td class="category-table-action">
+                            <div class="category-icons-wrapper">
+                                <a href="index.php?page=category&action=update&id=<?= $category['category_id'] ?>">
+                                    <i class="fa-sharp fa-solid fa-eye"></i>
+                                </a>
+                                <a href="index.php?page=category&action=delete&id=<?= $category['category_id'] ?>">
+                                    <i class="fa-solid fa-trash fa-solid-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
     </div>

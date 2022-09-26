@@ -29,8 +29,12 @@
 }
 
 .category-button-create {
+    display: flex;
     width: 160px;
     height: 40px;
+
+    justify-content: center;
+    align-items: center;
 
     background-color: #9DD985;
     color: #fff;
@@ -45,6 +49,11 @@
 .category-button-create:hover {
     transform: scale(1.06);
     background-color: #96cf7f;
+}
+
+.category-table-scroll-wrapper {
+    height: 48vh;
+    overflow: auto;
 }
 
 .category-read-table {
@@ -86,8 +95,25 @@
 }
 
 .category-read-table .fa-eye {
-    font-size: 23px;
+    font-size: 22px;
 
     border-radius: 5px;
-    color: #212121;
+    color: #313131;
+}
+
+.product-table-status:before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.product-table-status.active:before {
+    background-color: #9DD985;
+}
+
+.product-table-status.disabled:before {
+    background-color: #eb4d4b;
 }

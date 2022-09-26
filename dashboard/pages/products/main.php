@@ -22,6 +22,7 @@ $read = $product->read();
                         <td class="read-image-wrapper"><img src="assets/images/products/<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['name'] ?></td>
                         <td>R$ <?= number_format($product['special_price'], 2, ',', '.'); ?></td>
+                        <td class="product-table-status <?= $product['status'] ? 'active' : 'disabled' ?>"><?= $product['status'] ? 'Ativo' : 'Desativado' ?></td>
                         <td>
                             <div class="read-icons-wrapper">
                                 <a class="read-icons-action" href="?page=products&action=update&id=<?= $product['product_id'] ?>">

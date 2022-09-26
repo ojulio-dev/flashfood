@@ -6,20 +6,20 @@
     margin: 0 auto;
 }
 
-.main-read-products table {
+.read-table-wrapper table {
     border-collapse: collapse;
     width: 98%;
     font-weight: 300;
     font-size: 17px;
 }
 
-.main-read-products table tr {
+.read-table-wrapper table tr {
     box-shadow: 2px 4px 10px #c2c2c2;
 
     height: 95px;
 }
 
-.main-read-products table td > img {
+.read-table-wrapper table td > img {
     width: 90px;
     height: 60px;
     object-fit: cover;
@@ -31,49 +31,49 @@
     padding-left: 20px;
 }
 
-.main-read-products table td .read-icons-action {
+.read-table-wrapper table td .read-icons-action {
     display: flex;
     align-items: center;
 
     text-decoration: none;
 }
 
-.main-read-products table td a > img {
+.read-table-wrapper table td a > img {
     width: 31px;
     height: 31px;
 
     transition: transform 200ms;
 }
-.main-read-products table td a > img:hover {
+.read-table-wrapper table td a > img:hover {
 
     transform: scale(1.2);
 }
 
 
-.main-read-products .read-icons-wrapper {
+.read-table-wrapper .read-icons-wrapper {
     display: flex;
 
     gap: 50px;
     justify-content: center;
 }
 
-.main-read-products table i {
+.read-table-wrapper table i {
     margin-left: 5px;
     font-size: 17px;
 }
 
-.main-read-products table a {
+.read-table-wrapper table a {
     text-decoration: none;
 
     color: #212121;
 }
 
-.main-read-products table .read-icons-action > i {
+.read-table-wrapper table .read-icons-action > i {
     font-size: 23px;
     padding: 5px;
     margin: 0;
 }
 
-.main-read-products table .fa-solid-edit {
+.read-table-wrapper table .fa-solid-edit {
     color: #343434;
 }

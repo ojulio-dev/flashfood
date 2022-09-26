@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
 
     if ($update) {
 
-        header("Location: index.php?page=read");
+        header("Location: index.php?page=products");
         exit();
     } else {
 
@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
         <h1 class="main-products-title">Atualização de Produtos</h1>
     </div>
 
-    <form action="" class="main-form-products" method="POST" enctype="multipart/form-data">
+    <form action="" class="main-products-form" method="POST" enctype="multipart/form-data">
         <div class="form-items-products">
             <div class="input-products-wrapper">
                 <label for="name">Nome</label>

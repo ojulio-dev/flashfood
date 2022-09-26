@@ -64,7 +64,7 @@ class Product extends Database{
     {
         try {
 
-            $this->setSql("SELECT * FROM " . $this->table . "");
+            $this->setSql("SELECT P.*, C.category_id, C.status  as " . $this->table . " FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 ORDER BY status DESC");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
@@ -155,17 +155,13 @@ class Product extends Database{
     public function deleteById($id)
     {
         try {
-            $banner = $this->conn->query("SELECT banner FROM " . $this->table . " WHERE product_id = {$id}")->fetch(PDO::FETCH_ASSOC);
-
-            $this->setSql("DELETE FROM " . $this->table . " WHERE product_id = $id");
+            $this->setSql("UPDATE " . $this->table . " SET status = 0 WHERE product_id = {$id}");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
             $this->stmt->execute();
             
             if ($this->stmt->rowCount()) {
-                $deleteFile = $this->deleteFile($banner['banner']);
-
                 return true;
             } else {
                 return false;

@@ -38,7 +38,7 @@
     background-color: #252525;
 }
 
-.main-form-products {
+.main-products-form {
     width: 90%;
 
     margin: 0 auto;
@@ -57,12 +57,12 @@
     gap: 17px 40px;
 }
 
-.main-form-products .input-products-wrapper label {
+.main-products-form .input-products-wrapper label {
     font-weight: 400;
     font-size: 18px;
 }
 
-.main-form-products .input-products-wrapper input, .main-form-products .input-products-wrapper select {
+.main-products-form .input-products-wrapper input, .main-products-form .input-products-wrapper select {
     border: 1px solid #ced4da;
     height: 45px;
     padding: 0 15px;
@@ -75,14 +75,14 @@
     border-radius: 3px;
 }
 
-.main-form-products .input-products-wrapper input::placeholder, .main-form-products .input-products-wrapper select::placeholder {
+.main-products-form .input-products-wrapper input::placeholder, .main-products-form .input-products-wrapper select::placeholder {
     font-weight: 400;
     font-size: 16px;
 
     color: #495057;
 } 
 
-.main-form-products .input-products-wrapper input:focus {
+.main-products-form .input-products-wrapper input:focus {
     background-color: #FFF;
     border-color: #86B7FE;
     outline: 0;
@@ -111,7 +111,7 @@
     font-size: 16px;
 }
 
-.main-form-products input[type=submit] {
+.main-products-form input[type=submit] {
     margin-top: 25px;
 
     color: #fff;
@@ -127,7 +127,7 @@
     transition: transform 100ms;
 }
 
-.main-form-products input[type=submit]:hover {
+.main-products-form input[type=submit]:hover {
     transform: scale(1.04);
     background-color: #22943d;
     border: none;

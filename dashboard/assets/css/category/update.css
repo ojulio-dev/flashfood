@@ -1,0 +1,21 @@
+.read-table-wrapper.category {
+    width: 90%;
+    height: 50vh;
+
+    margin-top: 60px;
+    margin-bottom: 25px;
+}
+
+.read-table-wrapper.category table {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.read-table-wrapper.category .read-image-wrapper {
+    padding-left: 54px;
+}
+
+.read-table-wrapper.category .read-icons-wrapper {
+    justify-content: right;
+    padding-right: 54px;
+}
