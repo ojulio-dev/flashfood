@@ -14,7 +14,6 @@ $read = $product->read();
     </div>
 
     <div class="read-table-wrapper">
-
         <table>
             <tbody>
                 <?php if ($read): foreach($read as $product): ?>
@@ -26,7 +25,7 @@ $read = $product->read();
                         <td>
                             <div class="read-icons-wrapper">
                                 <a class="read-icons-action" href="?page=products&action=update&id=<?= $product['product_id'] ?>">
-                                   <img src="<?= DIR_IMG ?>/system/editar.png">
+                                <img src="<?= DIR_IMG ?>/system/editar.png">
                                 </a>
                                 <a class="read-icons-action" href="?page=products&action=delete&id=<?= $product['product_id'] ?>">
                                     <i class="fa-solid fa-trash fa-solid-trash"></i>
@@ -36,7 +35,9 @@ $read = $product->read();
                     </tr>
                 <?php  endforeach; else: ?>
                     <tr>
-                        <td>Nenhum Produto cadastrado, cadastre clicando aqui <a href="?page=products&action=create"><i class="fa-solid fa-arrow-right"></i></a></td>
+                        <div class="table-line-wrapper">
+                            <td>Nenhum Produto cadastrado, cadastre clicando aqui <a href="?page=products&action=create"><i class="fa-solid fa-arrow-right"></i></a></td>
+                        </div>
                     </tr>
                 <?php endif; ?>
             </tbody>

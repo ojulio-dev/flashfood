@@ -64,7 +64,7 @@ class ProductCategory extends Database{
     {
         try {
 
-            $this->setSql("SELECT * FROM " . $this->table . "");
+            $this->setSql("SELECT * FROM " . $this->table . " ORDER BY status DESC");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -110,7 +110,7 @@ class ProductCategory extends Database{
             $this->setSql("SELECT po.* FROM
                 {$this->table} pc
             INNER JOIN product po on po.category_id = pc.category_id
-            WHERE pc.category_id = $id");
+            WHERE pc.category_id = $id ORDER BY status DESC");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

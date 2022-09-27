@@ -76,7 +76,27 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
         </div>
 
+    <script src="<?= DIR_JS ?>/lc_switch/lc_switch.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        lc_switch('input[type=checkbox], input[type=radio]', {
+
+            // (string) "checked" status label text
+            on_txt      : 'Ativo',
+            
+            // (string) "not checked" status label text
+            off_txt     : 'Inativo',
+
+            // (string) custom "on" color. Supports also gradients
+            on_color    : true,
+
+            // (bool) whether to enable compact mode
+            compact_mode: true
+        });
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="<?= DIR_JS ?>/script.js"></script>
 
     </body>

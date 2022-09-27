@@ -42,14 +42,15 @@ $read = $productCategory->readAll();
                         <td>
                             <?= $count > 0 ? $count : 'Nenhum' ?> <?= $count <= 1 ? 'Produto' : 'Produtos' ?>
                         </td>
-                        <td class="product-table-status <?= $category['status'] ? 'active' : 'disabled' ?>"><?= $category['status'] ? 'Ativo' : 'Inativo' ?></td>
+                        <td class="product-table-status">
+                            <form>
+                                <input type="checkbox" name="sample" value="1" />
+                            </form>
+                        </td>
                         <td class="category-table-action">
                             <div class="category-icons-wrapper">
                                 <a href="index.php?page=category&action=update&id=<?= $category['category_id'] ?>">
-                                    <i class="fa-sharp fa-solid fa-eye"></i>
-                                </a>
-                                <a href="index.php?page=category&action=delete&id=<?= $category['category_id'] ?>">
-                                    <i class="fa-solid fa-trash fa-solid-trash"></i>
+                                    <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
                         </td>

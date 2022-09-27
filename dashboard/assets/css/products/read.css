@@ -1,6 +1,7 @@
 .read-table-wrapper {
     width: 80%;
-    height: 60vh;
+    height: auto !important;
+    max-height: 60vh;
     overflow: auto;
 
     margin: 0 auto;
@@ -14,7 +15,7 @@
 }
 
 .read-table-wrapper table tr {
-    box-shadow: 2px 4px 10px #c2c2c2;
+    border-bottom: 1.5px solid #d2d2d2;
 
     height: 95px;
 }

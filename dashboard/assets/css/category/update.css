@@ -11,6 +11,10 @@
     border-radius: 5px;
 }
 
+.read-table-wrapper.category table tr {
+    box-shadow: none;
+}
+
 .read-table-wrapper.category .read-image-wrapper {
     padding-left: 54px;
 }
