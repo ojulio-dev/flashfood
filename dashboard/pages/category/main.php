@@ -44,7 +44,8 @@ $read = $productCategory->readAll();
                         </td>
                         <td class="product-table-status">
                             <form>
-                                <input type="checkbox" name="sample" value="1" />
+                                <input id="status" name="status" type="checkbox" data-id="<?= $category['category_id'] ?>" <?= $category['status'] == 1 ? 'checked' : '' ?>/>
+                                <label for="status"></label>
                             </form>
                         </td>
                         <td class="category-table-action">

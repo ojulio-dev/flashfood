@@ -165,6 +165,30 @@ class ProductCategory extends Database{
         }
     }
 
+    public function updateByField($data, string $field, $categoryId): bool
+    {
+        try {
+            $this->setSql(
+            "UPDATE " . $this->table . "
+                SET $field = '$data'
+            WHERE
+                category_id = $categoryId
+            ");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function deleteById($id)
     {
         try {
