@@ -50,6 +50,19 @@ aside {
     background-color: #bababa
 }
 
+
+.main-content::-webkit-scrollbar {
+    width: 8px;
+    background: #ccc;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.6);
+    background-clip: border-box;
+}
+
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
