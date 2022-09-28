@@ -21,14 +21,16 @@ $read = $product->read();
                         <td class="read-image-wrapper"><img src="assets/images/products/<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['name'] ?></td>
                         <td>R$ <?= number_format($product['special_price'], 2, ',', '.'); ?></td>
-                        <td class="product-table-status <?= $product['status'] ? 'active' : 'disabled' ?>"><?= $product['status'] ? 'Ativo' : 'Desativado' ?></td>
+                        <td class="product-table-status">
+                            <form>
+                                <input id="status" name="status" type="checkbox" data-id="<?= $product['product_id'] ?>" <?= $product['status'] == 1 ? 'checked' : '' ?>/>
+                                <label for="status"></label>
+                            </form>
+                        </td>
                         <td>
                             <div class="read-icons-wrapper">
                                 <a class="read-icons-action" href="?page=products&action=update&id=<?= $product['product_id'] ?>">
-                                <img src="<?= DIR_IMG ?>/system/editar.png">
-                                </a>
-                                <a class="read-icons-action" href="?page=products&action=delete&id=<?= $product['product_id'] ?>">
-                                    <i class="fa-solid fa-trash fa-solid-trash"></i>
+                                    <img src="<?= DIR_IMG ?>/system/editar.png">
                                 </a>
                             </div>
                         </td>

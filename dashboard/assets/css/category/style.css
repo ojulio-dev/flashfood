@@ -103,24 +103,33 @@
 }
 
 .product-table-status input[type=checkbox] {
-    opacity: 0;
-}
-
-.product-table-status label {
-    position: absolute;
-    width: 60px;
-    height: 30px;
-    background-color: #d2d2d2;
-
-    border-radius: 20%;
-}
-
-.product-table-status label:before {
-    content: '';
-    width: 20px;
+    position: relative;
+    width: 48px;
     height: 20px;
-    background-color: #000;
-    position: absolute;
+    -webkit-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, .2);
+    border-radius: 20px;
+}
 
+.product-table-status input[type=checkbox]:checked {
+    background: #9DD985;
+}
+
+.product-table-status input[type=checkbox]:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 100%;
     border-radius: 50%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 3px #c2c2c2;
+    background: #fff;
+    transition: .2s;
+}
+
+.product-table-status input:checked[type=checkbox]:before {
+    left: 28px;
 }

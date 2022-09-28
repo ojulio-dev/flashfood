@@ -15,23 +15,48 @@ $(document).ready(function() {
         }
     });
 
-    $('.product-table-status input').click(function(event) {
+    $('.category-read-table .product-table-status input').click(function(event) {
         var categoryId = $(event.target).data('id');
 
         event.preventDefault();
 
         $.ajax({
-            url: BASE_URL + 'api/?api=category&action=change_status',
+            url: BASE_URL + 'api/?api=category&action=changeStatus',
             type: 'POST',
             data: { categoryId },
             dataType: 'json',
             success: function (data, status, xhr) {
+                var checked = $(event.target).prop('checked')
+                $(event.target).prop('checked', !checked);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Foooi',
+                    text: 'Categoria alterada com sucesso!'
+                })
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
                 console.log(data);
+            }
+        });
+    });
+
+    $('.read-table-wrapper .product-table-status input').click(function(event) {
+        var productId = $(event.target).data('id');
+
+        event.preventDefault();
+
+        $.ajax({
+            url: BASE_URL + 'api/?api=products&action=changeStatus',
+            type: 'POST',
+            data: { productId },
+            dataType: 'json',
+            success: function (data, status, xhr) {
                 var checked = $(event.target).prop('checked')
                 $(event.target).prop('checked', !checked);
             },
             error: function (jqXhr, textStatus, errorMessage) {
-                console.log(data);
+                console.log('na foi');
             }
         });
     });
