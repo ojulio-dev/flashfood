@@ -1,58 +1,10 @@
 <?php
 
 use Dashboard\Model\ProductCategory;
-use Dashboard\Model\Product;
 
 $productCategory = new ProductCategory;
 
-$product = new Product;
-
 $categories = $productCategory->read();
-
-if (isset($_POST['submit'])) {
-    $isEmpty = false;
-
-    foreach($_POST as $postItem) {
-        if (empty($postItem)) {
-            $isEmpty = true;
-        }
-    }
-
-    if ($isEmpty || !isset($_FILES['banner'])) {
-        
-        header("Location: index.php?page=products&action=create");
-        exit();
-    }
-
-    $extension = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
-
-    if ($extension != 'jpg' && $extension != 'jpeg' && $extension != 'png') {
-
-        header("Location: index.php?page=products&action=create");
-        exit();
-    }
-
-    $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-    $data['category_id'] = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT);
-    $data['price'] = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_SPECIAL_CHARS);
-    $data['special_price'] = filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_SPECIAL_CHARS);
-
-    $data['description'] = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
-    $data['status'] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT);
-    $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
-
-    $create = $product->create($data);
-
-    if ($create) {
-
-        header("Location: index.php?page=products");
-        exit();
-    } else {
-
-        header("Location: index.php?page=products&action=create");
-        exit();
-    }
-}
 
 ?>
 
@@ -64,7 +16,7 @@ if (isset($_POST['submit'])) {
         <h1 class="main-products-title">Cadastro de Produtos</h1>
     </div>
 
-    <form action="" class="main-products-form" method="POST" enctype="multipart/form-data">
+    <form action="" id="main-products-form" class="main-products-form" method="POST" enctype="multipart/form-data">
         <div class="form-items-products">
             <div class="input-products-wrapper">
                 <label for="name">Nome</label>
@@ -110,6 +62,6 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
 
-        <input type="submit" value="Cadastrar" name="submit" id="submit">
+        <button type="button" class="products-create-submit" onclick="addProduct()" name="submit" id="submit">Cadastrar</button>
     </form>
 </section>

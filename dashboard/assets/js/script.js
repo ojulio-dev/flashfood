@@ -1,5 +1,3 @@
-const BASE_URL = "http://localhost/FlashFood/dashboard/";
-
 $(document).ready(function() {
     $('.main-dashboard-aside li').click(function(event) {
         
@@ -16,14 +14,17 @@ $(document).ready(function() {
     });
 
     $('.category-read-table .product-table-status input').click(function(event) {
-        var categoryId = $(event.target).data('id');
+        var statusData = {
+            statusId: $(event.target).data('id'),
+            statusAction: 'category'
+        }
 
         event.preventDefault();
 
         $.ajax({
-            url: BASE_URL + 'api/?api=category&action=changeStatus',
+            url: BASE_URL + 'api/?api=changeStatus',
             type: 'POST',
-            data: { categoryId },
+            data: { statusData },
             dataType: 'json',
             success: function (data, status, xhr) {
                 var checked = $(event.target).prop('checked')
@@ -36,27 +37,44 @@ $(document).ready(function() {
                 })
             },
             error: function (jqXhr, textStatus, errorMessage) {
-                console.log(data);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Foi',
+                    text: 'Categoria alterada com sucesso!'
+                })
             }
         });
     });
 
     $('.read-table-wrapper .product-table-status input').click(function(event) {
-        var productId = $(event.target).data('id');
+        var statusData = {
+            statusId: $(event.target).data('id'),
+            statusAction: 'product'
+        }
 
         event.preventDefault();
 
         $.ajax({
-            url: BASE_URL + 'api/?api=products&action=changeStatus',
+            url: BASE_URL + 'api/?api=changeStatus',
             type: 'POST',
-            data: { productId },
+            data: { statusData },
             dataType: 'json',
             success: function (data, status, xhr) {
                 var checked = $(event.target).prop('checked')
                 $(event.target).prop('checked', !checked);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Foi',
+                    text: 'Produto alterado com sucesso!'
+                })
             },
             error: function (jqXhr, textStatus, errorMessage) {
-                console.log('na foi');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Eita!',
+                    text: data
+                })
             }
         });
     });

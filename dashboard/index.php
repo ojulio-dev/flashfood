@@ -80,6 +80,12 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Vanilla -->
+
+    <script> const BASE_URL = "http://localhost/FlashFood/dashboard/"; </script>
+
+    <script src="<?= DIR_JS ?>/product.js"></script>
+
     <script src="<?= DIR_JS ?>/script.js"></script>
 
     </body>
