@@ -1,7 +1,7 @@
 <?php
 
-use Dashboard\Model\ProductCategory;
-use Dashboard\Model\Product;
+use Model\ProductCategory;
+use Model\Product;
 
 $categoryController = new ProductCategory;
 $productController = new Product;

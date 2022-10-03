@@ -1,8 +1,8 @@
 <?php
 
-namespace Dashboard\Model;
+namespace Model;
 
-use Dashboard\Classes\Database;
+use Classes\Database;
 use PDO;
 use PDOException;
 
@@ -64,7 +64,29 @@ class ProductCategory extends Database{
     {
         try {
 
-            $this->setSql("SELECT * FROM " . $this->table . " ORDER BY status DESC");
+            $this->setSql("SELECT * FROM " . $this->table . " ORDER BY category_id");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+
+    }
+
+    public function readWithCount()
+    {
+        try {
+
+            $this->setSql("SELECT pc.*, (SELECT COUNT(p.name) FROM product as p WHERE p.category_id = pc.category_id) AS 'count' FROM " . $this->table . " as pc ORDER BY pc.status DESC");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -102,6 +124,26 @@ class ProductCategory extends Database{
             return $e->getMessage();
         }
 
+    }
+
+    public function readBySlug($slug)
+    {
+        try {
+
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE slug = '{$slug}'");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                return $this->stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function readByCategory($id)
@@ -189,11 +231,33 @@ class ProductCategory extends Database{
         }
     }
 
-    public function deleteById($id)
+    public function deleteStatus($id)
     {
         try {
 
             $this->setSql("UPDATE " . $this->table ." SET status = 0 WHERE category_id = {$id}");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+
+    }
+
+    public function delete($id)
+    {
+        try {
+
+            $this->setSql("DELETE FROM " . $this->table ." WHERE category_id = {$id}");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

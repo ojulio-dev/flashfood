@@ -169,12 +169,7 @@
     }
 }
 
-.danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-
-.success {
-    background-color: #28a745;
-    border-color: #28a745;
+.link-no-results {
+    text-decoration: underline !important;
+    color: blue !important;
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Dashboard\Model\ProductCategory;
+use Model\ProductCategory;
 
 $productCategory = new ProductCategory;
 
@@ -16,7 +16,7 @@ $categories = $productCategory->read();
         <h1 class="main-products-title">Cadastro de Produtos</h1>
     </div>
 
-    <form action="" id="main-products-form" class="main-products-form" method="POST" enctype="multipart/form-data">
+    <form id="form-products-create" class="main-products-form" method="POST" enctype="multipart/form-data">
         <div class="form-items-products">
             <div class="input-products-wrapper">
                 <label for="name">Nome</label>
@@ -25,7 +25,7 @@ $categories = $productCategory->read();
 
             <div class="input-products-wrapper">
                 <label for="category">Categoria</label>
-                <select name="category" id="category" required>
+                <select name="category_id" id="id_category" required>
                     <option value="" selected>Selecione uma Categoria</option>
                     <?php foreach($categories as $category): ?>
                         <option value="<?= $category['category_id'] ?>"><?= $category['name'] ?></option>
@@ -51,8 +51,8 @@ $categories = $productCategory->read();
             <div class="input-products-wrapper">
                 <label for="status">Status</label>
                 <select name="status" id="status" required>
-                    <option value="'1'" selected>Ativado</option>
-                    <option value="'0'">Desativado</option>
+                    <option value="1" selected>Ativado</option>
+                    <option value="0">Desativado</option>
                 </select>
             </div>
 
@@ -62,6 +62,6 @@ $categories = $productCategory->read();
             </div>
         </div>
 
-        <button type="button" class="products-create-submit" onclick="addProduct()" name="submit" id="submit">Cadastrar</button>
+        <button type="button" class="button-submit success create-products" onclick="addProduct()">Cadastrar</button>
     </form>
 </section>

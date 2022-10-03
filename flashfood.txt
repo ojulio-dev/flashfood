@@ -24,3 +24,12 @@ Objetivo
 Diferencial
 
 Cadastro do Cliente (LEAD, integração com o Ifood).
+
+Dashboard
+CRUD - AJAX
+Produtos/Categorias - Falta UPDATE
+Detalhes: Filtrar os produtos por categoria
+
+PERGUNTAR SOBRE POST GET PUT DELETE
+
+FAZER AS VERIFICAÇÕES SE EXISTE O POST NAS API

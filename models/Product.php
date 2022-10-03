@@ -1,8 +1,8 @@
 <?php
 
-namespace Dashboard\Model;
+namespace Model;
 
-use Dashboard\Classes\Database;
+use Classes\Database;
 use PDO;
 use PDOException;
 
@@ -23,7 +23,7 @@ class Product extends Database{
 
         $newName = $id . $extension;
 
-        $destiny = __DIR__ . '/../assets/images/products/' . $newName;
+        $destiny = __DIR__ . '/../dashboard/assets/images/products/' . $newName;
 
         if (file_exists($destiny)) unlink($destiny);
 
@@ -36,7 +36,7 @@ class Product extends Database{
     {
         try {
 
-            $this->setSql("INSERT INTO " . $this->table . "(category_id, name, description, special_price, price, slug, status) VALUES (" . $data['category_id'] . ", '" . $data['name'] . "', '" . $data['description'] . "', " . $data['special_price'] .", " . $data['price'] .", '" . $data['slug'] . "', " . $data['status'] . ")");
+            $this->setSql("INSERT INTO " . $this->table . "(category_id, name, description, special_price, price, slug, status) VALUES (" . $data['category_id'] . ", '" . $data['name'] . "', '" . $data['description'] . "', '" . $data['special_price'] ."', '" . $data['price'] ."', '" . $data['slug'] . "', " . $data['status'] . ")");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
@@ -64,7 +64,7 @@ class Product extends Database{
     {
         try {
 
-            $this->setSql("SELECT P.*, C.category_id, C.status  as " . $this->table . " FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 ORDER BY status DESC");
+            $this->setSql("SELECT P.*, C.category_id, C.status as category_status, C.name as category FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 ORDER BY C.name DESC");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
@@ -85,6 +85,26 @@ class Product extends Database{
         try {
 
             $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = $id");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                return $this->stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function readBySlug($slug)
+    {
+        try {
+
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE slug = '{$slug}'");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
@@ -152,7 +172,7 @@ class Product extends Database{
         }
     }
 
-    public function deleteById($id)
+    public function deleteStatus($id)
     {
         try {
             $this->setSql("UPDATE " . $this->table . " SET status = 0 WHERE product_id = {$id}");
@@ -171,11 +191,39 @@ class Product extends Database{
         }
     }
 
+    public function delete($id)
+    {
+        try {
+
+            $banner = $this->conn->query("SELECT banner FROM " . $this->table . " WHERE product_id = {$id}")->fetch(PDO::FETCH_ASSOC);
+
+            $this->setSql("DELETE FROM " . $this->table ." WHERE product_id = {$id}");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+                $this->deleteFile($banner['banner']);
+
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+
+    }
+
     public function deleteFile($banner)
     {
-        $destiny = __DIR__ . '/../assets/images/products/' . $banner;
+        $destiny = __DIR__ . '/../dashboard/assets/images/products/' . $banner;
 
-        if (file_exists($destiny)) unlink($destiny);
+        if (file_exists($destiny)) {
+            unlink($destiny);   
+        }
     }
 
     public function setSql($sql)

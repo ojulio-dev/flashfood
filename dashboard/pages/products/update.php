@@ -1,66 +1,26 @@
 <?php
 
-use Dashboard\Model\Product;
+if (!isset($_GET['id'])) {
+    header("Location: index.php?page=products");
+}
 
-use Dashboard\Model\ProductCategory;
+use Model\Product;
+
+use Model\ProductCategory;
 
 $productCategory = new ProductCategory;
 
 $product = new Product;
 
-$categories = $productCategory->read();
-
 $readProducts = $product->readById($_GET['id']);
 
-if (isset($_POST['submit'])) {
+if (!$readProducts) {
     
-    $isEmpty = false;
-    
-    foreach($_POST as $postItem) {
-        if (empty(trim($postItem))) {
-            $isEmpty = true;
-        }
-    }
-
-    if ($isEmpty) {
-
-        header("Location: index.php?page=products&action=update?id=" . $_GET['id'] . "");
-        exit();
-    }
-
-    if (file_exists($_FILES['banner']['tmp_name'])) {
-        $extension = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
-
-        echo $extension;
-
-        if ($extension != 'jpg' && $extension != 'jpeg' && $extension != 'png') {
-
-            header("Location: index.php?page=products&action=update" . $_GET['id'] . "");
-            exit();
-        }
-    }
-
-    $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-    $data['category_id'] = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT);
-    $data['price'] = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_SPECIAL_CHARS);
-    $data['special_price'] = filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_SPECIAL_CHARS);
-
-    $data['description'] = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
-    $data['status'] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT);
-    $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
-
-    $update = $product->updateById($_GET['id'], $data);
-
-    if ($update) {
-
-        header("Location: index.php?page=products");
-        exit();
-    } else {
-
-        header("Location: index.php?page=products&action=update" . $_GET['id'] . "");
-        exit();
-    }
+    header("Location: index.php?page=products");
+    exit();
 }
+
+$categories = $productCategory->read();
 
 ?>
 
@@ -73,7 +33,7 @@ if (isset($_POST['submit'])) {
         <h1 class="main-products-title">Atualização de Produtos</h1>
     </div>
 
-    <form action="" class="main-products-form" method="POST" enctype="multipart/form-data">
+    <form id="form-products-update" class="main-products-form" method="POST" enctype="multipart/form-data">
         <div class="form-items-products">
             <div class="input-products-wrapper">
                 <label for="name">Nome</label>
@@ -118,6 +78,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
 
-        <input type="submit" value="Atualizar" name="submit" id="submit">
+        <button type="button" class="button-submit success" onclick="updateProduct(<?= $readProducts['product_id'] ?>)">Atualizar</button>
+        <button type="button" class="button-submit delete" onclick="deleteProduct(<?= $readProducts['product_id'] ?>)">Deletar</button>
     </form>
 </section>

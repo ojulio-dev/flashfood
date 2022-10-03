@@ -1,6 +1,6 @@
 <?php
 
-namespace Dashboard\Classes;
+namespace Classes;
 
 use PDO;
 

@@ -1,6 +1,6 @@
 <?php
 
-use Dashboard\Model\ProductCategory;
+use Model\ProductCategory;
 
 $productCategory = new ProductCategory;
 
@@ -32,10 +32,8 @@ $read = $productCategory->readAll();
                     <th class="category-table-action">Action</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php foreach($read as $category):
-                    $count = $productCategory->countProducts($category['category_id']); ?>
-                    
+            <tbody id="read-table-category-items">
+                <?php if ($read): foreach($read as $category): $count = $productCategory->countProducts($category['category_id'])?>
                     <tr>
                         <td><?= $category['category_id'] ?></td>
                         <td><?= $category['name'] ?></td>
@@ -44,7 +42,7 @@ $read = $productCategory->readAll();
                         </td>
                         <td class="product-table-status">
                             <form>
-                                <input id="status" name="status" type="checkbox" data-id="<?= $category['category_id'] ?>" <?= $category['status'] == 1 ? 'checked' : '' ?>/>
+                                <input id="status" name="status" onclick="changeStatus(<?= $category['category_id'] ?>, 'category')" type="checkbox" <?= $category['status'] == 1 ? 'checked' : '' ?>/>
                                 <label for="status"></label>
                             </form>
                         </td>
@@ -56,7 +54,11 @@ $read = $productCategory->readAll();
                             </div>
                         </td>
                     </tr>
-                <?php endforeach ?>
+                <?php  endforeach; else: ?>
+                    <tr>
+                        <td>Nenhuma Categoria cadastrada, cadastre clicando <a class="link-no-results" href="?page=category&action=create">aqui</a></td> 
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

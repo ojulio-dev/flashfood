@@ -1,9 +1,9 @@
 {
-    "name": "dashboard/model",
+    "name": "api/class",
     "autoload": {
         "psr-4": {
-            "Dashboard\\Model\\": "./models",
-            "Dashboard\\Classes\\": "./classes"
+            "Model\\": "./models",
+            "Classes\\": "./classes"
         }
     },
     "authors": [

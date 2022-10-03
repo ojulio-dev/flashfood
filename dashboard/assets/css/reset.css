@@ -53,13 +53,12 @@ aside {
 
 .main-content::-webkit-scrollbar {
     width: 8px;
-    background: #ccc;
 }
 
 .main-content::-webkit-scrollbar-thumb {
     width: 10px;
     border-radius: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: #3f3f3f;
     background-clip: border-box;
 }
 
@@ -73,7 +72,7 @@ input[type=number]::-webkit-inner-spin-button {
     transition: transform 200ms;
 }
 
-.fa-solid-trash {
+.fa-trash {
     color: #eb4d4b;
 }
 .main-content table i:hover {

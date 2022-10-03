@@ -28,10 +28,6 @@
     border-radius: 10px;
 }
 
-.read-image-wrapper {
-    padding-left: 20px;
-}
-
 .read-table-wrapper table td .read-icons-action {
     display: flex;
     align-items: center;
@@ -55,7 +51,7 @@
     display: flex;
 
     gap: 50px;
-    justify-content: center;
+    justify-content: right;
 }
 
 .read-table-wrapper table i {

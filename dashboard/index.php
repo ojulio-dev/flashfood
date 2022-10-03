@@ -1,6 +1,6 @@
 <?php
 
-require_once('vendor\autoload.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -9,7 +9,7 @@ ob_start();
 
 session_start();
 
-require_once('config/environment.php');
+require_once(__DIR__ . '/../config/environment.php');
  
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
@@ -35,7 +35,6 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
 
         <!-- Pages -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/create.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/products/read.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/products/style.css">
 
@@ -82,11 +81,21 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- Vanilla -->
 
-    <script> const BASE_URL = "http://localhost/FlashFood/dashboard/"; </script>
+    <script>
 
-    <script src="<?= DIR_JS ?>/product.js"></script>
+        const BASE_URL = "http://localhost/flashfood/dashboard/";
+        const API_URL = "http://localhost/flashfood/"; 
+
+    </script>
 
     <script src="<?= DIR_JS ?>/script.js"></script>
+
+    <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>
+
+        <script src="<?= DIR_JS ?>/<?= $page ?>.js"></script>
+
+    <?php endif ?>
+
 
     </body>
 </html>
