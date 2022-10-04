@@ -4,7 +4,7 @@ use Model\ProductCategory;
 
 $productCategory = new ProductCategory;
 
-$response = $productCategory->readByCategory($_POST['idCategory']);
+$response = $productCategory->readByCategory($_GET['idCategory']);
 
 if (!$response) {
     

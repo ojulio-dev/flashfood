@@ -42,12 +42,13 @@ const listProductByCategory = async (idCategory) => {
 
     $.ajax({
         url: API_URL + 'api/?api=category&action=listProductByCategory',
-        type: 'POST',
+        type: 'GET',
         data: { idCategory },
         dataType: 'json',
         success: function (data, status, xhr) {
             if (!data) {
                 Swal.fire({
+                    title: 'Oops',
                     text: 'Esta categoria não possui produtos',
                     icon: 'info'
                 })

@@ -75,10 +75,7 @@ if ($product->readBySlug($data['slug'])) {
 
     echo json_encode($response);
     exit();
-}  
-
-var_dump($data);
-exit();
+}
 
 $create = $product->create($data);
 

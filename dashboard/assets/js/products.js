@@ -40,19 +40,22 @@ const addProduct = () => {
 
 const updateProduct = (productId) => {
 
-    let form = new FormData($('#form-products-update')[0]);
-
-    const result = fetch(API_URL + 'api/?api=products&action=updateProduct',{
-        method: 'POST',
-        body: JSON.stringify({
-            ...Object.fromEntries(form.entries()), productId 
-        }),
-        headers: { 'Content-Type' : 'application/json' }
-    })
-    .then((response)=>response.json())
-    .then((result)=> {
-        alert(`oi`);
-    })
+    $.ajax({
+        url: API_URL + 'api/?api=products&action=updateProduct',
+        type: 'POST',
+        data: { productId },
+        dataType: 'json',
+        success: function (data, status, xhr) {
+            
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+        }
+    });
 
 };
 
