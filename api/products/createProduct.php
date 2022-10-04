@@ -77,6 +77,9 @@ if ($product->readBySlug($data['slug'])) {
     exit();
 }  
 
+var_dump($data);
+exit();
+
 $create = $product->create($data);
 
 if ($create) {

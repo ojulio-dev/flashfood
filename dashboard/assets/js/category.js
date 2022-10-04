@@ -46,6 +46,12 @@ const listProductByCategory = async (idCategory) => {
         data: { idCategory },
         dataType: 'json',
         success: function (data, status, xhr) {
+            if (!data) {
+                Swal.fire({
+                    text: 'Esta categoria não possui produtos',
+                    icon: 'info'
+                })
+            }
             $('#read-items-category').html('');
             data.map(product=>{
                 $('#read-items-category').append(`

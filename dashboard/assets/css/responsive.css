@@ -1,0 +1,13 @@
+@media only screen and (max-width:1350px) {
+    .main-dashboard-header img {
+        width: 145px;
+    }
+
+    .main-dashboard-header {
+        height: 14%;
+    }
+
+    .main-section {
+        height: 86%;
+    }
+}
