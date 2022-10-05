@@ -35,12 +35,12 @@ $categories = $productCategory->read();
 
             <div class="input-products-wrapper">
                 <label for="price">Preço</label>
-                <input type="number" name="price" id="price" step="0.01" placeholder="R$ 100,99" required>
+                <input type="text" name="price" id="create-price" placeholder="R$ 00,00" required>
             </div>
 
             <div class="input-products-wrapper">
                 <label for="special_price">Desconto</label>
-                <input type="number" name="special_price" id="special_price" step="0.01" placeholder="R$ 50,99" required>
+                <input type="text" name="special_price" id="create-special-price" placeholder="R$ 00,00" required>
             </div>
 
             <div class="input-products-wrapper">

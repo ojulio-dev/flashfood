@@ -61,8 +61,10 @@ if ($extension != 'jpg' && $extension != 'jpeg' && $extension != 'png') {
 
 $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $data['category_id'] = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
-$data['price'] = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_INT);
-$data['special_price'] = filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_NUMBER_INT);
+
+$data['price'] = substr_replace(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_INT), '.', -2, 0);
+$data['special_price'] = substr_replace(filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_NUMBER_INT), '.', -2, 0);
+
 $data['description'] = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
 $data['status'] = filter_input(INPUT_POST, 'status', FILTER_VALIDATE_INT);
 $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
@@ -71,6 +73,16 @@ if ($product->readBySlug($data['slug'])) {
     $response = array(
         'response' => false,
         'message' => 'Produto já cadastrado! Altere o nome e tente novamente'
+    );
+
+    echo json_encode($response);
+    exit();
+}
+
+if (strlen($data['price']) > 7 || strlen($data['special_price']) > 7) {
+    $response = array(
+        'response' => false,
+        'message' => 'Valor do Produto inválido!'
     );
 
     echo json_encode($response);
