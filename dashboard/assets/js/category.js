@@ -66,7 +66,7 @@ const listProductByCategory = async (idCategory) => {
 
                     <td class="product-table-status">
                         <form>
-                            <input id="status" name="status" onclick="changeStatus(${ product.product_id }, 'product')" type="checkbox" ${ product.status == 1 ? 'checked' : '' }/>
+                            <input name="status" onclick="changeStatus(${ product.product_id }, 'product')" type="checkbox" ${ product.status == 1 ? 'checked' : '' }/>
                             <label for="status"></label>
                         </form>
                     </td>

@@ -33,12 +33,12 @@ $readProducts = $productCategory->readByCategory($_GET['id']);
         <div class="form-items-products">
             <div class="input-products-wrapper">
                 <label for="name">Categoria</label>
-                <input type="text" name="name" id="name" placeholder="Digite a Categoria" value="<?= $read['name'] ?>" required>
+                <input type="text" name="name" placeholder="Digite a Categoria" value="<?= $read['name'] ?>" required>
             </div>
 
             <div class="input-products-wrapper">
                 <label for="status">Status</label>
-                <select name="status" id="status" required>
+                <select name="status" required>
                     <option value="'1'" <?= 1 == $read['status'] ? 'selected' : '' ?>>Ativado</option>
                     <option value="'0'" <?= 0 == $read['status'] ? 'selected' : '' ?>>Desativado</option>
                 </select>

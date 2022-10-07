@@ -129,20 +129,17 @@ class Product extends Database{
             $this->stmt = $this->conn()->prepare($this->getSql());
 
             $this->stmt->execute();
-            
-            if ($this->stmt->rowCount() || file_exists($_FILES['banner']['tmp_name'])) {
-                if (file_exists($_FILES['banner']['tmp_name'])) {
-                    $id = $this->conn->query("SELECT product_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
 
-                    $destiny = $this->createFile($_FILES['banner'], $id['product_id']);
+            if (!empty($_FILES['banner']['tmp_name'])) {
 
-                    $this->updateByField($destiny, 'banner', $id['product_id']);
-                }
-                
-                return true;
-            } else {
-                return false;
+                $id = $this->conn->query("SELECT product_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
+
+                $destiny = $this->createFile($_FILES['banner'], $id['product_id']);
+
+                $this->updateByField($destiny, 'banner', $id['product_id']);
+
             }
+
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

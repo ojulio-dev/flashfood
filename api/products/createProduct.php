@@ -9,9 +9,7 @@ if
     !key_exists('description', $_POST) || 
     !key_exists('status', $_POST) ||
     !key_exists('banner', $_FILES)
-)
-
-{
+) {
     $response = array(
         'response' => false,
         'message' => 'Informações insuficientes para o Cadastro!'

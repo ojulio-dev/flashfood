@@ -20,12 +20,12 @@ $categories = $productCategory->read();
         <div class="form-items-products">
             <div class="input-products-wrapper">
                 <label for="name">Nome</label>
-                <input type="text" name="name" id="name" placeholder="Digite o Nome" required>
+                <input type="text" name="name" placeholder="Digite o Nome" required>
             </div>
 
             <div class="input-products-wrapper">
                 <label for="category">Categoria</label>
-                <select name="category_id" id="id_category" required>
+                <select name="category_id" required>
                     <option value="" selected>Selecione uma Categoria</option>
                     <?php foreach($categories as $category): ?>
                         <option value="<?= $category['category_id'] ?>"><?= $category['name'] ?></option>
@@ -35,22 +35,22 @@ $categories = $productCategory->read();
 
             <div class="input-products-wrapper">
                 <label for="price">Preço</label>
-                <input type="text" name="price" id="create-price" placeholder="R$ 00,00" required>
+                <input type="text" class="input-mask-money" name="price" placeholder="R$ 00,00" required>
             </div>
 
             <div class="input-products-wrapper">
                 <label for="special_price">Desconto</label>
-                <input type="text" name="special_price" id="create-special-price" placeholder="R$ 00,00" required>
+                <input type="text" class="input-mask-money" name="special_price" placeholder="R$ 00,00" required>
             </div>
 
             <div class="input-products-wrapper">
                 <label for="description">Descrição</label>
-                <input type="text" name="description" id="description" placeholder="Digite a Descrição" required>
+                <input type="text" name="description" placeholder="Digite a Descrição" required>
             </div>
 
             <div class="input-products-wrapper">
                 <label for="status">Status</label>
-                <select name="status" id="status" required>
+                <select name="status" required>
                     <option value="1" selected>Ativado</option>
                     <option value="0">Desativado</option>
                 </select>
@@ -58,7 +58,7 @@ $categories = $productCategory->read();
 
             <div class="input-products-wrapper">
                 <label for="banner">Banner</label>
-                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner" required>
+                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" required>
             </div>
         </div>
 

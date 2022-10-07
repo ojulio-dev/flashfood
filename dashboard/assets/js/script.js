@@ -13,9 +13,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#create-price').maskMoney({prefix:'R$ ', allowNegative: false, thousands:'.', decimal:',', affixesStay: false, allowZero: true, defaultZero: false}).attr('maxlength', 11);
-    
-    $('#create-special-price').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false}).attr('maxlength', 11);
+    $('.input-mask-money').maskMoney({prefix:'R$ ', allowNegative: false, thousands:'.', decimal:',', affixesStay: false, allowZero: true, defaultZero: false}).attr('maxlength', 11);
 });
 
 const changeStatus = (id, action) => {

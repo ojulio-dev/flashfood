@@ -38,15 +38,43 @@ const addProduct = () => {
 
 };
 
-const updateProduct = (productId) => {
+$('#button-update-products').click(function(event) {
+
+    var dataProduct = {
+
+        name: $('#update-name-products').val(),
+
+        category_id: $('#update-category-products').val(),
+
+        price: $('#update-price-products').val(),
+
+        special_price: $('#update-special-price-products').val(),
+
+        description: $('#update-description-products').val(),
+
+        status: $('#update-status-products').val(),
+
+        productId: $(this).data('product-id')
+
+    }
 
     $.ajax({
         url: API_URL + 'api/?api=products&action=updateProduct',
         type: 'POST',
-        data: { productId },
+        data: dataProduct,
         dataType: 'json',
         success: function (data, status, xhr) {
-            
+
+            Swal.fire({
+                title: 'Foi!',
+                text: 'Produto Atualizado com sucesso!',
+                icon: 'success'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace(BASE_URL + '?page=products'); 
+                }
+            })
+
         },
         error: function (jqXhr, textStatus, errorMessage) {
             Swal.fire({
@@ -56,8 +84,7 @@ const updateProduct = (productId) => {
             })
         }
     });
-
-};
+})
 
 const deleteProduct = (productId) => {
 

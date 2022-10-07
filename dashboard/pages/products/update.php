@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['slug'])) {
     header("Location: index.php?page=products");
 }
 
@@ -12,7 +12,7 @@ $productCategory = new ProductCategory;
 
 $product = new Product;
 
-$readProducts = $product->readById($_GET['id']);
+$readProducts = $product->readBySlug($_GET['slug']);
 
 if (!$readProducts) {
     
@@ -36,13 +36,13 @@ $categories = $productCategory->read();
     <form id="form-products-update" class="main-products-form" method="POST" enctype="multipart/form-data">
         <div class="form-items-products">
             <div class="input-products-wrapper">
-                <label for="name">Nome</label>
-                <input type="text" name="name" id="name" placeholder="Digite o Nome"  value="<?= $readProducts['name'] ?>">
+                <label for="update-name-products">Nome</label>
+                <input type="text" name="name" id="update-name-products" placeholder="Digite o Nome"  value="<?= $readProducts['name'] ?>">
             </div>
 
             <div class="input-products-wrapper">
-                <label for="category">Categoria</label>
-                <select name="category" id="category" >
+                <label for="update-category-products">Categoria</label>
+                <select name="category" id="update-category-products">
                     <?php foreach($categories as $category): ?>
                         <option value="<?= $category['category_id'] ?>" <?=$category['category_id'] == $readProducts['category_id'] ? 'selected' : ''?>><?= $category['name'] ?></option>
                     <?php endforeach ?>
@@ -50,35 +50,31 @@ $categories = $productCategory->read();
             </div>
 
             <div class="input-products-wrapper">
-                <label for="price">Preço</label>
-                <input type="number" name="price" id="price" step="0.01" placeholder="R$ 100,99"  value="<?= $readProducts['price'] ?>">
+                <label for="update-price-products">Preço</label>
+                <input type="text" class="input-mask-money" name="price" id="update-price-products" placeholder="R$ 00,00"  value="<?= $readProducts['price'] ?>">
             </div>
 
             <div class="input-products-wrapper">
-                <label for="special_price">Desconto</label>
-                <input type="number" name="special_price" id="special_price" step="0.01" placeholder="R$ 50,99"  value="<?= $readProducts['special_price'] ?>">
+                <label for="update-special-price-products">Desconto</label>
+                <input type="text" class="input-mask-money" name="special_price" id="update-special-price-products" placeholder="R$ 00,00"  value="<?= $readProducts['special_price'] ?>">
             </div>
 
             <div class="input-products-wrapper">
-                <label for="description">Descrição</label>
-                <input type="text" name="description" id="description" placeholder="Digite a Descrição"  value="<?= $readProducts['description'] ?>">
+                <label for="update-description-products">Descrição</label>
+                <input type="text" name="description" id="update-description-products" placeholder="Digite a Descrição" value="<?= $readProducts['description'] ?>">
             </div>
 
             <div class="input-products-wrapper">
-                <label for="status">Status</label>
-                <select name="status" id="status" >
+                <label for="update-status-products">Status</label>
+                <select name="status" id="update-status-products">
                     <option value="'1'" <?= 1 == $readProducts['status'] ? 'selected' : '' ?>>Ativado</option>
                     <option value="'0'" <?= 0 == $readProducts['status'] ? 'selected' : '' ?>>Desativado</option>
                 </select>
             </div>
-
-            <div class="input-products-wrapper">
-                <label for="banner">Banner</label>
-                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner" >
-            </div>
         </div>
 
-        <button type="button" class="button-submit success" onclick="updateProduct(<?= $readProducts['product_id'] ?>)">Atualizar</button>
+        <button type="button" class="button-submit success" id="button-update-products" data-product-id="<?= $readProducts['product_id'] ?>">Atualizar</button>
+        
         <button type="button" class="button-submit delete" onclick="deleteProduct(<?= $readProducts['product_id'] ?>)">Deletar</button>
     </form>
 </section>

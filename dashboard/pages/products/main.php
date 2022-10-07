@@ -24,13 +24,13 @@ $read = $product->read();
                         <td>R$ <?= number_format($product['special_price'], 2, ',', '.') ?></td>
                         <td class="product-table-status">
                             <form>
-                                <input id="status" name="status" type="checkbox" onclick="changeStatus(<?= $product['product_id']?>, 'product')" <?= $product['status'] == 1 ? 'checked' : '' ?>/>
+                                <input name="status" type="checkbox" onclick="changeStatus(<?= $product['product_id']?>, 'product')" <?= $product['status'] == 1 ? 'checked' : '' ?>/>
                                 <label for="status"></label>
                             </form>
                         </td>
                         <td>
                             <div class="read-icons-wrapper">
-                                <a class="read-icons-action" href="?page=products&action=update&id=<?= $product['product_id'] ?>">
+                                <a class="read-icons-action" href="?page=products&action=update&slug=<?= $product['slug'] ?>">
                                     <img src="<?= DIR_IMG ?>/system/editar.png">
                                 </a>
                             </div>

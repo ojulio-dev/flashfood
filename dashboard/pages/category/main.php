@@ -42,7 +42,7 @@ $read = $productCategory->readAll();
                         </td>
                         <td class="product-table-status">
                             <form>
-                                <input id="status" name="status" onclick="changeStatus(<?= $category['category_id'] ?>, 'category')" type="checkbox" <?= $category['status'] == 1 ? 'checked' : '' ?>/>
+                                <input name="status" onclick="changeStatus(<?= $category['category_id'] ?>, 'category')" type="checkbox" <?= $category['status'] == 1 ? 'checked' : '' ?>/>
                                 <label for="status"></label>
                             </form>
                         </td>

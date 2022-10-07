@@ -1,9 +1,5 @@
 <?php
 
-if (!isset($_POST['productId'])) {
-    // ...
-}
-
 use Model\Product;
 
 $product = new Product;
