@@ -231,6 +231,27 @@ class ProductCategory extends Database{
         }
     }
 
+    public function updateById($id, $data)
+    {
+        try {
+
+            $this->setSql("UPDATE " . $this->table . " SET name = '" . $data['name'] . "', status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE category_id = $id");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function deleteStatus($id)
     {
         try {
@@ -257,14 +278,18 @@ class ProductCategory extends Database{
     {
         try {
 
-            $this->setSql("DELETE FROM " . $this->table ." WHERE category_id = {$id}");
+            $this->setSql("DELETE FROM product WHERE category_id = {$id}");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
             if ($this->stmt->rowCount()) {
+
+                $this->stmt = $this->conn->query("DELETE FROM " . $this->table . " WHERE category_id = {$id}");
+
                 return true;
+
             } else {
                 return false;
             }

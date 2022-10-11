@@ -39,15 +39,15 @@ if ($isEmpty) {
     exit();
 }
 
-if (!empty($_FILES['banner']['name'])) {
-    $extension = pathinfo($_FILES['banner'], PATHINFO_EXTENSION);
+// if (!empty($_FILES['banner']['name'])) {
+//     $extension = pathinfo($_FILES['banner'], PATHINFO_EXTENSION);
 
-    if ($extension != 'jpg' && $$extension != 'jpeg' && $$extension != 'png') {
+//     if ($extension != 'jpg' && $$extension != 'jpeg' && $$extension != 'png') {
 
-        header("Location: index.php?page=item&action=update" . $_GET['id'] . "");
-        exit();
-    }
-}
+//         header("Location: index.php?page=item&action=update" . $_GET['id'] . "");
+//         exit();
+//     }
+// }
 
 $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $data['category_id'] = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_NUMBER_INT);

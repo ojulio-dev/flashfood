@@ -38,6 +38,7 @@ const addProduct = () => {
 
 };
 
+// Update
 $('#button-update-products').click(function(event) {
 
     var dataProduct = {
@@ -69,10 +70,6 @@ $('#button-update-products').click(function(event) {
                 title: 'Foi!',
                 text: 'Produto Atualizado com sucesso!',
                 icon: 'success'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.replace(BASE_URL + '?page=products'); 
-                }
             })
 
         },

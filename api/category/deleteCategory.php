@@ -10,4 +10,8 @@ $productCategory = new ProductCategory;
 
 $response = $productCategory->delete($_POST['categoryId']);
 
-echo json_encode($response);
+if ($response) {
+    
+    echo json_encode($response);
+    exit();
+}

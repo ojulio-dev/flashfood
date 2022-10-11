@@ -73,8 +73,8 @@ const listProductByCategory = async (idCategory) => {
 
                     <td>
                         <div class="read-icons-wrapper">
-                            <a class="read-icons-action" href="?page=products&action=update&id=${ product.product_id }">
-                                <img src="${BASE_URL}/assets/images/system/editar.png">
+                            <a class="read-icons-action noHover" href="?page=products&action=update&slug=${ product.slug }">
+                                <img class="icon-no-hover" src="${BASE_URL}/assets/images/system/editar.png">
                             </a>
                         </div>
                     </td>
@@ -91,6 +91,42 @@ const listProductByCategory = async (idCategory) => {
         }
     });
 };
+
+$('#button-update-category').click(function(event) {
+
+    var dataCategory = {
+
+        name: $('#update-name-category').val(),
+
+        status: $('#update-status-category').val(),
+
+        categoryId: $(this).data('category-id')
+
+    }
+
+    $.ajax({
+        url: API_URL + 'api/?api=category&action=updateCategory',
+        type: 'POST',
+        data: dataCategory,
+        dataType: 'json',
+        success: function (data, status, xhr) {
+
+            Swal.fire({
+                title: 'Foi!',
+                text: 'Categoria Atualizada com sucesso!',
+                icon: 'success'
+            })
+
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+        }
+    });
+})
 
 const deleteCategory = (categoryId) => {
 

@@ -41,11 +41,15 @@
 
     transition: transform 200ms;
 }
+
 .read-table-wrapper table td a > img:hover {
 
     transform: scale(1.2);
 }
 
+.icon-no-hover {
+    pointer-events: none;
+}
 
 .read-table-wrapper .read-icons-wrapper {
     display: flex;
