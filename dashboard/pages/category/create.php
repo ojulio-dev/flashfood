@@ -22,6 +22,6 @@
             </div>
         </div>
 
-        <button type="button" class="button-submit success" onclick="addCategory()">Cadastrar</button>
+        <button type="button" id="button-create-category" class="button-submit success" onclick="addCategory()">Cadastrar</button>
     </form>
 </section>

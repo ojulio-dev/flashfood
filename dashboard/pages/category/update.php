@@ -45,13 +45,13 @@ $readProducts = $productCategory->readByCategory($_GET['id']);
             </div>
         </div>
 
-        <button type="button" class="button-submit success" id="button-update-category" data-category-id="<?= $read['category_id'] ?>">Atualizar</button>
-        <button type="button" class="button-submit delete" onclick="deleteCategory(<?= $read['category_id'] ?>)">Deletar</button>
+        <button type="button" id="button-update-category" class="button-submit success" data-category-id="<?= $read['category_id'] ?>">Atualizar</button>
+        <button type="button" id="button-delete-category" class="button-submit delete" data-category-id="<?= $read['category_id'] ?>">Deletar</button>
     </form>
 
     <section class="category-products-wrapper">
        
-        <button onclick="listProductByCategory(<?= $idCategory ?>)" class="button-reload-category"><i class="fa-solid fa-rotate"></i> Ver Produtos</button>
+        <button id="button-read-products-category" class="button-reload-category" data-product-id="<?= $idCategory ?>"><i class="fa-solid fa-rotate"></i> Ver Produtos</button>
 
         <div class="read-table-wrapper category">
 

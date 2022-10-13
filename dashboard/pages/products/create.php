@@ -62,6 +62,6 @@ $categories = $productCategory->read();
             </div>
         </div>
 
-        <button type="button" class="button-submit success create-products" onclick="addProduct()">Cadastrar</button>
+        <button type="button" id="button-create-products" class="button-submit success create-products">Cadastrar</button>
     </form>
 </section>

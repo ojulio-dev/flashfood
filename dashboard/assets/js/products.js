@@ -1,5 +1,5 @@
-const addProduct = () => {
-    
+// Create
+$('#button-create-products').click(function(event) {
     let form = new FormData($('#form-products-create')[0]);
 
     const result = fetch(API_URL + 'api/?api=products&action=createProduct',{
@@ -35,8 +35,7 @@ const addProduct = () => {
             })
         }
     })
-
-};
+})
 
 // Update
 $('#button-update-products').click(function(event) {
@@ -83,7 +82,9 @@ $('#button-update-products').click(function(event) {
     });
 })
 
-const deleteProduct = (productId) => {
+// Delete
+$('#button-delete-products').click(function(event) {
+    var productId = $(this).data('product-id');
 
     Swal.fire({
         title: 'Cuidado',
@@ -134,5 +135,4 @@ const deleteProduct = (productId) => {
             });
         }
     })
-
-};
+})

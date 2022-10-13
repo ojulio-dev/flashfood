@@ -1,5 +1,5 @@
-const addCategory = () => {
-    
+// Create
+$('#button-create-category').click(function(event) {
     let form = new FormData($('#form-category-create')[0]);
 
     const result = fetch(API_URL + 'api/?api=category&action=createCategory',{
@@ -35,10 +35,12 @@ const addCategory = () => {
             })
         }
     })
+});
 
-};
+// readProducts
+$('#button-read-products-category').click(function(event) {
 
-const listProductByCategory = async (idCategory) => {
+    var idCategory = $(this).data('product-id');
 
     $.ajax({
         url: API_URL + 'api/?api=category&action=listProductByCategory',
@@ -90,8 +92,10 @@ const listProductByCategory = async (idCategory) => {
             })
         }
     });
-};
 
+});
+
+// Update
 $('#button-update-category').click(function(event) {
 
     var dataCategory = {
@@ -128,7 +132,10 @@ $('#button-update-category').click(function(event) {
     });
 })
 
-const deleteCategory = (categoryId) => {
+// Delete
+$('#button-delete-category').click(function(event) {
+
+    var categoryId = $(this).data('category-id')
 
     Swal.fire({
         title: 'Cuidado',
@@ -178,6 +185,6 @@ const deleteCategory = (categoryId) => {
                 }
             });
         }
-    })
+    });
 
-};
+});

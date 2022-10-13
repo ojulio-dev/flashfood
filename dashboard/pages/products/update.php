@@ -75,6 +75,6 @@ $categories = $productCategory->read();
 
         <button type="button" id="button-update-products" class="button-submit success" data-product-id="<?= $readProducts['product_id'] ?>">Atualizar</button>
         
-        <button type="button" class="button-submit delete" onclick="deleteProduct(<?= $readProducts['product_id'] ?>)">Deletar</button>
+        <button type="button" id="button-delete-products" class="button-submit delete"  data-product-id="<?= $readProducts['product_id'] ?>">Deletar</button>
     </form>
 </section>

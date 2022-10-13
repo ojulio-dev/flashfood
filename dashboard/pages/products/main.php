@@ -1,10 +1,15 @@
 <?php
 
 use Model\Product;
+use Model\ProductCategory;
 
 $product = new Product;
 
-$read = $product->read();
+$productCategory = new ProductCategory;
+
+$readProduct = $product->read();
+
+$readCategory = $productCategory->read();
 
 ?>
 
@@ -13,10 +18,21 @@ $read = $product->read();
         <h1 class="main-products-title">Produtos</h1>
     </div>
 
+    <form class="products-select-category">
+        <select name="" id="">
+            <option selected>Todos</option>
+
+            <?php foreach($readCategory as $category): ?>
+                <option value="<?= $category['id_category'] ?>"><?= $category['name'] ?></option>
+            <?php endforeach ?>
+        </select>
+    </form>
+
     <div class="read-table-wrapper">
+        
         <table>
             <tbody id="read-table-products-items">
-                <?php if ($read): foreach($read as $product): ?>
+                <?php if ($readProduct): foreach($readProduct as $product): ?>
                     <tr>
                         <td class="read-image-wrapper"><img src="assets/images/products/<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['category'] ?></td>

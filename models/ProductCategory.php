@@ -278,7 +278,7 @@ class ProductCategory extends Database{
     {
         try {
 
-            $this->setSql("DELETE FROM product WHERE category_id = {$id}");
+            $this->setSql("DELETE FROM product_category WHERE category_id = {$id}");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -286,7 +286,7 @@ class ProductCategory extends Database{
 
             if ($this->stmt->rowCount()) {
 
-                $this->stmt = $this->conn->query("DELETE FROM " . $this->table . " WHERE category_id = {$id}");
+                $this->stmt = $this->conn->query("DELETE FROM product WHERE category_id = {$id}");
 
                 return true;
 

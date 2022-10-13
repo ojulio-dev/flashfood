@@ -46,7 +46,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     </head>
     <body>
         <div id="container">
-            <?php require_once (__DIR__. '/pages/partials/header.html') ?>
+            <?php require_once (__DIR__. '/pages/partials/header.php') ?>
             
             <section class="main-section">
                 <?php require_once (__DIR__. '/pages/partials/aside.php') ?>
