@@ -14,10 +14,11 @@ $read = $productCategory->readAll();
     </div>
 
     <div class="category-search-wrapper">
-        <form class="category-search-form">
+        <div class="category-search-form">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" placeholder="Search...">
-        </form>
+            <input id="category-search" type="search" placeholder="Search...">
+        </div>
+        
         <a href="?page=category&action=create" class="category-button-create">Create +</a>
     </div>
 

@@ -173,5 +173,8 @@
     border: none;
     box-shadow: 0 0 3px #232323;
     margin-bottom: 10px;
-    -webkit-appearance: none;
+}
+
+select::-ms-expand {
+    display: none !important;
 }

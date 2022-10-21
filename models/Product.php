@@ -100,6 +100,26 @@ class Product extends Database{
         }
     }
 
+    public function readByCategoryId($id)
+    {
+        try {
+
+            $this->setSql("SELECT P.*, C.name as category FROM " . $this->table . " as P INNER JOIN product_category as C ON C.category_id = P.category_id WHERE P.category_id = $id");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function readBySlug($slug)
     {
         try {

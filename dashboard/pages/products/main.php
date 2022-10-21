@@ -19,11 +19,11 @@ $readCategory = $productCategory->read();
     </div>
 
     <form class="products-select-category">
-        <select name="" id="">
-            <option selected>Todos</option>
+        <select id="options-list-products">
+            <option value="all" selected>Todos</option>
 
             <?php foreach($readCategory as $category): ?>
-                <option value="<?= $category['id_category'] ?>"><?= $category['name'] ?></option>
+                <option value="<?= $category['category_id'] ?>"><?= $category['name'] ?></option>
             <?php endforeach ?>
         </select>
     </form>
