@@ -1,5 +1,5 @@
 <header class="main-dashboard-header">
-    <img src="<?= DIR_IMG ?>/home/flashfood_icon.png" alt="">
+    <img src="<?= DIR_IMG ?>/header/flashfood_icon.png" alt="">
 
     <div class="header-customer-wrapper">
         <i class="fa-regular fa-envelope fa-lg"></i>

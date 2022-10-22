@@ -1,0 +1,80 @@
+.read-table-wrapper {
+    width: 90%;
+    height: auto !important;
+    max-height: 60vh;
+    overflow: auto;
+
+    margin: 0 auto;
+}
+
+.read-table-wrapper table {
+    border-collapse: collapse;
+    width: 98%;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.read-table-wrapper table tr {
+    border-bottom: 1.5px solid #d2d2d2;
+
+    height: 95px;
+}
+
+.read-table-wrapper table td > img {
+    width: 90px;
+    height: 60px;
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+.read-table-wrapper table td .read-icons-action {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.read-table-wrapper table td a > img {
+    width: 31px;
+    height: 31px;
+
+    transition: transform 200ms;
+}
+
+.read-table-wrapper table td a > img:hover {
+
+    transform: scale(1.2);
+}
+
+.icon-no-hover {
+    pointer-events: none;
+}
+
+.read-table-wrapper .read-icons-wrapper {
+    display: flex;
+
+    gap: 50px;
+    justify-content: right;
+}
+
+.read-table-wrapper table i {
+    margin-left: 5px;
+    font-size: 17px;
+}
+
+.read-table-wrapper table a {
+    text-decoration: none;
+
+    color: #212121;
+}
+
+.read-table-wrapper table .read-icons-action > i {
+    font-size: 23px;
+    padding: 5px;
+    margin: 0;
+}
+
+.read-table-wrapper table .fa-solid-edit {
+    color: #343434;
+}

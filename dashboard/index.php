@@ -1,6 +1,6 @@
 <?php
 
-require_once('vendor\autoload.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -9,7 +9,7 @@ ob_start();
 
 session_start();
 
-require_once('config/environment.php');
+require_once(__DIR__ . '/../config/environment.php');
  
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
@@ -31,18 +31,18 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <!-- CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/config.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
 
         <!-- Pages -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/create.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/read.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/style.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/read.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/style.css">
 
-        <!-- Produtos -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/item/products/create.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/category/style.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/category/update.css">
 
         <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/responsive.css">
     </head>
     <body>
         <div id="container">
@@ -63,11 +63,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                     if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
                         require_once(__DIR__ . "/pages/$page/$action.php");
                     } else {
-                        header("Location: index.php?page=item");
+                        header("Location: index.php?page=products");
                     }
 
                     if (!isset($page)) {
-                        header("Location: index.php?page=item");
+                        header("Location: index.php?page=products");
                     }
 
                     ?>
@@ -77,7 +77,32 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Input Mask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js" integrity="sha512-jTgBq4+dMYh73dquskmUFEgMY5mptcbqSw2rmhOZZSJjZbD2wMt0H5nhqWtleVkyBEjmzid5nyERPSNBafG4GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Mask Money -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Vanilla -->
+
+    <script>
+
+        const BASE_URL = "http://localhost/flashfood/dashboard/";
+        const API_URL = "http://localhost/flashfood/"; 
+
+    </script>
+
     <script src="<?= DIR_JS ?>/script.js"></script>
+
+    <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>
+
+        <script src="<?= DIR_JS ?>/<?= $page ?>.js"></script>
+
+    <?php endif ?>
+
 
     </body>
 </html>

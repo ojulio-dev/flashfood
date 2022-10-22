@@ -1,0 +1,136 @@
+.category-search-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 80px;
+    margin-bottom: 25px;
+    padding: 0 30px;
+}
+
+.category-search-form {
+    position: relative;
+    width: 25%;
+}
+
+.category-search-form input {
+    width: 100%;
+    height: 45px;
+    padding: 15px 25px;
+    padding-left: 51px;
+}
+
+.category-search-form i{
+    position: absolute;
+    top: 15px;
+    left: 18px;
+    color: #707070;
+    font-size: 14px;
+}
+
+.category-button-create {
+    display: flex;
+    width: 160px;
+    height: 40px;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #9DD985;
+    color: #fff;
+    font-size: 19px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+
+    transition: transform 170ms cubic-bezier(.45, .97, .68, 2.48);
+}
+
+.category-button-create:hover {
+    transform: scale(1.06);
+    background-color: #96cf7f;
+}
+
+.category-table-scroll-wrapper {
+    height: auto;
+    max-height: 48vh;
+    overflow: auto;
+}
+
+.category-read-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.category-read-table th {
+    text-align: left;
+    font-weight: 500;
+}
+
+.category-read-table tr {
+    height: 60px;
+    cursor: pointer;
+}
+
+.category-read-table td, .category-read-table th {
+    padding: 0 30px;
+}
+
+.category-read-table tr:hover {
+    background-color: #d8d8d8;
+}
+
+.category-table-action {
+    text-align: right !important;
+}
+
+.category-table-center {
+    text-align: center !important;
+}
+
+.category-icons-wrapper {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 55px;
+}
+
+.category-read-table .fa-eye {
+    font-size: 22px;
+
+    border-radius: 5px;
+    color: #313131;
+}
+
+.product-table-status input[type=checkbox] {
+    position: relative;
+    width: 48px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, .2);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.product-table-status input[type=checkbox]:checked {
+    background: #9DD985;
+}
+
+.product-table-status input[type=checkbox]:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 3px #c2c2c2;
+    background: #fff;
+    transition: .2s;
+}
+
+.product-table-status input:checked[type=checkbox]:before {
+    left: 28px;
+}

@@ -1,0 +1,16 @@
+{
+    "name": "api/class",
+    "autoload": {
+        "psr-4": {
+            "Model\\": "./models",
+            "Classes\\": "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "ojuliocesar",
+            "email": "97842753+ojuliocesar@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
