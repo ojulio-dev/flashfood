@@ -71,6 +71,11 @@ $categories = $productCategory->read();
                     <option value="'0'" <?= 0 == $readProducts['status'] ? 'selected' : '' ?>>Desativado</option>
                 </select>
             </div>
+
+            <div class="input-products-wrapper">
+                <label for="banner">Banner</label>
+                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" required>
+            </div>
         </div>
 
         <button type="button" id="button-update-products" class="button-submit success" data-product-id="<?= $readProducts['product_id'] ?>">Atualizar</button>

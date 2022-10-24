@@ -1,5 +1,6 @@
 <?php
 
+// Verifica se os campos necessários foram enviados.
 if 
 (
     !key_exists('name', $_POST) || 
@@ -25,6 +26,7 @@ $product = new Product;
 
 $isEmpty = false;
 
+// Verifica se cada valor do formulário está vazio.
 foreach($_POST as $postItem) {
     if ($postItem != '0') {
         if (empty(trim($postItem))) {

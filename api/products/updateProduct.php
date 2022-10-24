@@ -12,7 +12,7 @@ if
 ) {
     $response = array(
         'response' => false,
-        'message' => 'Informações insuficientes para o Cadastro!'
+        'message' => 'Informações insuficientes para a Atualização!'
     );
 
     echo json_encode($response);
@@ -35,19 +35,29 @@ foreach($_POST as $postItem) {
 
 if ($isEmpty) {
 
-    header("Location: index.php?page=item&action=update?id=" . $_GET['id'] . "");
+    $response = array(
+        'response' => false,
+        'message' => 'Digite as informações corretamente!'
+    );
+
+    echo json_encode($response);
     exit();
 }
 
-// if (!empty($_FILES['banner']['name'])) {
-//     $extension = pathinfo($_FILES['banner'], PATHINFO_EXTENSION);
+if (!empty($_FILES['banner']['name'])) {
+    $extension = pathinfo($_FILES['banner'], PATHINFO_EXTENSION);
 
-//     if ($extension != 'jpg' && $$extension != 'jpeg' && $$extension != 'png') {
+    if ($extension != 'jpg' && $$extension != 'jpeg' && $$extension != 'png') {
 
-//         header("Location: index.php?page=item&action=update" . $_GET['id'] . "");
-//         exit();
-//     }
-// }
+        $response = array(
+            'response' => false,
+            'message' => 'Formato de arquivo inválido!'
+        );
+    
+        echo json_encode($response);
+        exit();
+    }
+}
 
 $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $data['category_id'] = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_NUMBER_INT);

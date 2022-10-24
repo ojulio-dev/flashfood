@@ -42,28 +42,14 @@ $(document).ready(function() {
     // Update
     $('#button-update-products').click(function(event) {
 
-        var dataProduct = {
+        let form = new FormData($('#form-products-update')[0]);
 
-            name: $('#update-name-products').val(),
-
-            category_id: $('#update-category-products').val(),
-
-            price: $('#update-price-products').val(),
-
-            special_price: $('#update-special-price-products').val(),
-
-            description: $('#update-description-products').val(),
-
-            status: $('#update-status-products').val(),
-
-            productId: $(this).data('product-id')
-
-        }
+        dados.append('id', $(this).data('product-id'));
 
         $.ajax({
             url: API_URL + 'api/?api=products&action=updateProduct',
             type: 'POST',
-            data: dataProduct,
+            data: form,
             dataType: 'json',
             success: function (data, status, xhr) {
 
@@ -158,7 +144,7 @@ $(document).ready(function() {
                 if (!data) {
                     $('#read-table-products-items').html(`
                         <tr>
-                            <td>Nenhum Produto cadastrado, cadastre clicando <a class="link-no-results" href="?page=products&action=create">aqui</a></td>
+                            <td>Essa categoria não possui produtos, cadastre clicando <a class="link-no-results" href="?page=products&action=create">aqui</a></td>
                         </tr>
                     `);
 
