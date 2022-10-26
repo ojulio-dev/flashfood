@@ -3,7 +3,7 @@
 if 
 (
     !key_exists('name', $_POST) || 
-    !key_exists('category_id', $_POST) || 
+    !key_exists('category', $_POST) || 
     !key_exists('price', $_POST) || 
     !key_exists('special_price', $_POST) || 
     !key_exists('description', $_POST) || 
@@ -45,7 +45,7 @@ if ($isEmpty) {
 }
 
 if (!empty($_FILES['banner']['name'])) {
-    $extension = pathinfo($_FILES['banner'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
 
     if ($extension != 'jpg' && $$extension != 'jpeg' && $$extension != 'png') {
 
@@ -60,13 +60,14 @@ if (!empty($_FILES['banner']['name'])) {
 }
 
 $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-$data['category_id'] = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_NUMBER_INT);
+$data['category_id'] = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT);
 $data['price'] = substr_replace(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_INT), '.', -2, 0);
 $data['special_price'] = substr_replace(filter_input(INPUT_POST, 'special_price', FILTER_SANITIZE_NUMBER_INT), '.', -2, 0);
 
 $data['description'] = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
 $data['status'] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT);
 $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
+$data['banner'] = $_FILES['banner'];
 
 $update = $product->updateById($_POST['productId'], $data);
 

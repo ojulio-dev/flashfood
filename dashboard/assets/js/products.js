@@ -44,13 +44,15 @@ $(document).ready(function() {
 
         let form = new FormData($('#form-products-update')[0]);
 
-        dados.append('id', $(this).data('product-id'));
+        form.append('productId', $(this).data('product-id'));
 
         $.ajax({
             url: API_URL + 'api/?api=products&action=updateProduct',
             type: 'POST',
             data: form,
             dataType: 'json',
+            processData: false,
+            contentType: false,
             success: function (data, status, xhr) {
 
                 Swal.fire({

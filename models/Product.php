@@ -150,7 +150,7 @@ class Product extends Database{
 
             $this->stmt->execute();
 
-            if (!empty($_FILES['banner']['tmp_name'])) {
+            if (!empty($data['banner']['tmp_name'])) {
 
                 $id = $this->conn->query("SELECT product_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
 
