@@ -41,6 +41,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <link rel="stylesheet" href="<?= DIR_CSS ?>/category/style.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/category/update.css">
 
+        <link rel="stylesheet" href="<?= DIR_CSS ?>/request/style.css">
+
         <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
         <link rel="stylesheet" href="<?= DIR_CSS ?>/responsive.css">
     </head>

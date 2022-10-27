@@ -46,3 +46,18 @@ const changeStatus = (id, action) => {
         }
     });
 }
+
+// Show Cart Modal
+$('#icon-cart-modal').click(function(event) {
+
+    event.preventDefault();
+
+    $('#modal-cart').show();
+
+});
+
+$('#icon-cart-exit').click(function(event) {
+
+    $('#modal-cart').hide();
+
+});

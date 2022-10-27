@@ -22,7 +22,7 @@
             </div>
 
             <div class="click-wrapper">
-                <a href="">Novo</a>
+                <a href="?page=request">Novo</a>
                 <a href="">Listagem</a>
             </div>
         </li>

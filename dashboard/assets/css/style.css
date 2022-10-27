@@ -173,3 +173,50 @@
     text-decoration: underline !important;
     color: blue !important;
 }
+
+.main-modal {
+    display: none;
+
+    position: fixed;
+    z-index: 99;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.main-modal-wrapper {
+    position: absolute;
+    z-index: 9999;
+    background-color: #fff;
+    border-radius: 10px;
+
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+}
+
+.main-modal-title {
+    position: relative;
+    width: 100%;
+
+    border-radius: 10px 10px 0 0;
+    padding: 10px 0;
+    text-align: center;
+
+    background-color: #52A84B;
+    color: #fff;
+}
+
+.main-modal-title .icon-exit {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25px;
+    font-size: 25px;
+
+    cursor: pointer;
+}
