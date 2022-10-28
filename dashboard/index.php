@@ -18,68 +18,70 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <!-- Title -->
-        <link rel="shortcut icon" href="assets/images/favicon/favicon.png" type="image/x-icon">
-        <title>Dashboard</title>
+<head>
+    <!-- Title -->
+    <link rel="shortcut icon" href="assets/images/favicon/favicon.png" type="image/x-icon">
+    <title>Dashboard</title>
 
-        <!-- Meta TAGs -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta TAGs -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
 
-        <!-- Pages -->
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/read.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/products/style.css">
+    <!-- Pages -->
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/products/read.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/products/style.css">
 
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/category/style.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/category/update.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/category/style.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/category/update.css">
 
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/request/style.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/request/style.css">
 
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
-        <link rel="stylesheet" href="<?= DIR_CSS ?>/responsive.css">
-    </head>
-    <body>
-        <div id="container">
-            <?php require_once (__DIR__. '/pages/partials/header.php') ?>
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/responsive.css">
+</head>
+<body>
+    <div id="container">
+        <?php require_once (__DIR__. '/pages/partials/header.php') ?>
+        
+        <section class="main-section">
+            <?php require_once (__DIR__. '/pages/partials/aside.php') ?>
             
-            <section class="main-section">
-                <?php require_once (__DIR__. '/pages/partials/aside.php') ?>
-                
-                <main class="main-content">
-                    <?php if (isset($_SESSION['flash'])): ?>
-                        <div class="flash-message <?= $_SESSION['flash']['color'] ?>">
-                            <span><?= $_SESSION['flash']['message'] ?></span>
-                        </div>
-                    <?php unset($_SESSION['flash']); endif; ?>
+            <main class="main-content">
+                <?php if (isset($_SESSION['flash'])): ?>
+                    <div class="flash-message <?= $_SESSION['flash']['color'] ?>">
+                        <span><?= $_SESSION['flash']['message'] ?></span>
+                    </div>
+                <?php unset($_SESSION['flash']); endif; ?>
 
-                    <?php  
+                <?php  
 
-                    if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
-                        require_once(__DIR__ . "/pages/$page/$action.php");
-                    } else {
-                        header("Location: index.php?page=products");
-                    }
+                if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
+                    require_once(__DIR__ . "/pages/$page/$action.php");
+                } else {
+                    header("Location: index.php?page=products");
+                }
 
-                    if (!isset($page)) {
-                        header("Location: index.php?page=products");
-                    }
+                if (!isset($page)) {
+                    header("Location: index.php?page=products");
+                }
 
-                    ?>
-                </main>
-            </section>
+                ?>
+            </main>
+        </section>
 
-        </div>
+    </div>
 
+    <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- SweetAlert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Input Mask -->
@@ -89,14 +91,12 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Vanilla -->
-
     <script>
-
         const BASE_URL = "http://localhost/flashfood/dashboard/";
+        
         const API_URL = "http://localhost/flashfood/"; 
-
     </script>
-
+    
     <script src="<?= DIR_JS ?>/script.js"></script>
 
     <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>
@@ -105,6 +105,5 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <?php endif ?>
 
-
-    </body>
+</body>
 </html>

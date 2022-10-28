@@ -4,7 +4,7 @@
     overflow: auto;
 }
 
-.table-modal {
+.cart-table-modal {
     width: 750px;
     overflow: auto;
 
@@ -12,38 +12,21 @@
     padding-bottom: 0;
 }
 
-.table-modal th {
+.cart-table-modal th {
     font-size: 17px;
     font-weight: 400;
 }
 
-.table-modal th:nth-child(1) {
+.cart-table-modal th, .cart-table-modal td {
+    padding: 10px 0;
+}
+
+.cart-table-modal th:nth-child(1), .cart-table-modal td:nth-child(1), .cart-table-modal th:nth-child(2), .cart-table-modal td:nth-child(2) {
     text-align: left;
-    width: 180px;
 }
 
-.table-modal tbody {
+.cart-table-modal tbody {
     text-align: center;
-}
-
-.modal-name-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 0;
-}
-
-.modal-name-wrapper h4 {
-    font-weight: 400;
-}
-
-.modal-name-wrapper img{
-    width: 65px;
-    height: 45px;
-
-    border-radius: 5px;
-    object-fit: cover;
 }
 
 .modal-action-wrapper {
@@ -70,4 +53,20 @@
     margin: 20px 0;
     text-decoration: underline;
     color: #4e4e4e;
+}
+
+.main-request-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    justify-items: center;
+    grid-gap: 35px 0;
+}
+
+.main-request-item img {
+    width: 270px;
+    height: 150px;
+    object-fit: cover;
+
+    border-radius: 10px;
 }

@@ -16,8 +16,15 @@ $mock = array(
         'table' => 2
     ],
     [
-        'name' => 'Açaí',
-        'banner' => '110.jpg',
+        'name' => 'Sorvete Qualquer',
+        'banner' => '14.jpg',
+        'amount' => 2,
+        'price' => 14.99,
+        'table' => 2
+    ],
+    [
+        'name' => 'Açaí ao Molho',
+        'banner' => '14.jpg',
         'amount' => 2,
         'price' => 14.99,
         'table' => 2
@@ -35,10 +42,10 @@ $mock = array(
         </div>
 
         <div class="cart-table-wrapper">
-            <table class="table-modal">
+            <table class="cart-table-modal">
                 <thead>
                     <tr>
-                        <th>Produto</th>
+                        <th>Nome</th>
                         <th>Preço</th>
                         <th>Quantidade</th>
                         <th>Mesa</th>
@@ -49,15 +56,10 @@ $mock = array(
                 <tbody>
                     <?php foreach($mock as $product): ?>
                         <tr>
-                            <td>
-                                <div class="modal-name-wrapper">
-                                    <h4><?= strlen($product['name']) > 10 
-                ? substr($product['name'], 0, 10) . '...' 
-                : $product['name'] ?></h4>
-                                    <img src="<?= DIR_IMG ?>/products/<?= $product['banner'] ?>" alt="">
-                                </div>
-                            </td>
-                            <td><?= $product['price'] ?></td>
+                            <td><?= strlen($product['name']) > 17
+                ? substr($product['name'], 0, 17) . '...' 
+                : $product['name'] ?></td>
+                            <td><?= number_format($product['price'], 2, ',', '.') ?></td>
                             <td><?= $product['amount'] ?></td>
                             <td><?= $product['table'] ?></td>
                             <td>
