@@ -8,26 +8,6 @@
     padding: 0 30px;
 }
 
-.category-search-form {
-    position: relative;
-    width: 25%;
-}
-
-.category-search-form input {
-    width: 100%;
-    height: 45px;
-    padding: 15px 25px;
-    padding-left: 51px;
-}
-
-.category-search-form i{
-    position: absolute;
-    top: 15px;
-    left: 18px;
-    color: #707070;
-    font-size: 14px;
-}
-
 .category-button-create {
     display: flex;
     width: 160px;

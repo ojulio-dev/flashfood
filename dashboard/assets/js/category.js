@@ -192,37 +192,23 @@ $(document).ready(function() {
     });
 
     $('#category-search').keyup(function(event) {
+        // Pega o valor do Search
         var search = event.target.value.toLowerCase();
         
+        // Pegamos todas as tr da tabela
         var rows = $('#read-table-category-items tr');
 
+
         rows.each(function(index, tr) {
+            // find procura elementos HTML dentro de elementos
+            // Aqui pegamos o nome da categoria no Loop
             var category = $(tr).find('td:nth-child(2)')[0].innerHTML.toLowerCase();
 
+            // Fazemos a verificação se dentro da variavel category existe o valor da variavel search
+            // Se não tiver incluido o valor, ele esconde o elemento, se não ele mostra
             !category.includes(search) ? $(tr).hide() : $(tr).show();
 
         });
-
-        var hasEmpty = !!rows.filter((_, row) => {
-            if (row.style.display != 'none') {
-                return row;
-            }
-
-        }).length;
-
-        // if (hasEmpty) {
-        //     $('#read-table-category-items').append(`
-
-        //         <tr>
-        //             <td>Nenhuma Categoria cadastrada, cadastre clicando <a class="link-no-results" href="?page=category&action=create">aqui</a></td> 
-        //         </tr>
-            
-        //     `);
-        // }
-
-        if (!rows.length) {
-            console.log('oi');
-        }
     });
 
 });

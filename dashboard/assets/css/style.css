@@ -192,10 +192,6 @@
     z-index: 9999;
     background-color: #fff;
     border-radius: 10px;
-
-    left: 50%;
-    transform: translateX(-50%);
-    top: 100px;
 }
 
 .main-modal-title {
@@ -215,8 +211,16 @@
 
     top: 50%;
     transform: translateY(-50%);
-    right: 25px;
+    right: 20px;
     font-size: 25px;
 
     cursor: pointer;
+}
+
+.main-item-modal {
+    height: auto;
+    max-height: 350px;
+    overflow: auto;
+
+    padding: 30px 15px;
 }

@@ -35,43 +35,31 @@ $mock = array(
 
 <div class="main-modal" id="modal-cart">
     <div class="main-modal-wrapper -cart">
-        <div class="main-modal-title">
+        <div class="main-modal-title -cart">
             <h2>Carrinho</h2>
             
             <i class="fa-solid fa-xmark icon-exit" id="icon-cart-exit"></i>
         </div>
 
-        <div class="cart-table-wrapper">
-            <table class="cart-table-modal">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Mesa</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
+        <ul class="main-item-modal -cart">
+            <?php foreach($mock as $product): ?>
+                <li>
+                    <div class="cart-name-wrapper">
+                        <i class="fa-solid fa-cart-shopping"></i>
 
-                <tbody>
-                    <?php foreach($mock as $product): ?>
-                        <tr>
-                            <td><?= strlen($product['name']) > 17
-                ? substr($product['name'], 0, 17) . '...' 
-                : $product['name'] ?></td>
-                            <td><?= number_format($product['price'], 2, ',', '.') ?></td>
-                            <td><?= $product['amount'] ?></td>
-                            <td><?= $product['table'] ?></td>
-                            <td>
-                                <button class="cart-button -remove"><i class="fa-sharp fa-solid fa-circle-minus"></i></button>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                        <div class="cart-info-wrapper">
+                            <h3><?= $product['name'] ?></h3>
+                            <p><?= $product['price'] ?></p>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach ?>
+
+        </ul>
+
+        <div class="button-order-wrapper">
+            <button type="button">Finalizar Pedido</button>
         </div>
-
-        <a href="" class="cart-plus-link">Mais informações</a>
     </div>
 </div>
 

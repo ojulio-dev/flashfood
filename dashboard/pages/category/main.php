@@ -14,7 +14,7 @@ $read = $productCategory->readAll();
     </div>
 
     <div class="category-search-wrapper">
-        <div class="category-search-form">
+        <div class="search-form">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input id="category-search" type="search" placeholder="Search...">
         </div>

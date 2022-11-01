@@ -22,8 +22,8 @@
             </div>
 
             <div class="click-wrapper">
-                <a href="?page=request">Cardápio</a>
-                <a href="">Listagem</a>
+                <a href="?page=orders">Cardápio</a>
+                <a href="">Pedidos</a>
             </div>
         </li>
 

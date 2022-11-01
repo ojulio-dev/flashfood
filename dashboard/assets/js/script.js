@@ -62,3 +62,28 @@ $('#icon-cart-exit').click(function(event) {
     $('#modal-cart').hide();
 
 });
+
+$('.owl-carousel').owlCarousel({
+    loop: false,
+    animateOut: 'slideOutDown',
+    animateIn: 'flipInX',
+    nav: true,
+    smartSpeed:450,
+    margin: 15,
+    nav:true,
+    lazyLoad: true,
+    autoplay:true,
+    autoplayTimeout:5500,
+    autoplayHoverPause:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
+})

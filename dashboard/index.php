@@ -41,7 +41,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <link rel="stylesheet" href="<?= DIR_CSS ?>/category/style.css">
     <link rel="stylesheet" href="<?= DIR_CSS ?>/category/update.css">
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/request/style.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/orders/style.css">
+
+    <!-- Carousel -->
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/owlcarousel/owl.theme.default.min.css">
 
     <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
     <link rel="stylesheet" href="<?= DIR_CSS ?>/responsive.css">
@@ -89,6 +93,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- Mask Money -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- OwlCarousel -->
+    <script src="<?= DIR_JS ?>/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Vanilla -->
     <script>
