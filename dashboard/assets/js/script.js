@@ -15,6 +15,31 @@ $(document).ready(function() {
     });
 
     $('.input-mask-money').maskMoney({prefix:'R$ ', allowNegative: false, thousands:'.', decimal:',', affixesStay: false, allowZero: true, defaultZero: false}).attr('maxlength', 11);
+
+    $('.owl-carousel').owlCarousel({
+        loop: false,
+        animateOut: 'slideOutDown',
+        animateIn: 'flipInX',
+        nav: true,
+        smartSpeed:450,
+        margin: 15,
+        nav:true,
+        lazyLoad: true,
+        autoplay:true,
+        autoplayTimeout:5500,
+        autoplayHoverPause:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:4
+            }
+        }
+    });
 });
 
 const changeStatus = (id, action) => {
@@ -51,8 +76,6 @@ const changeStatus = (id, action) => {
 // Show Cart Modal
 $('#icon-cart-modal').click(function(event) {
 
-    event.preventDefault();
-
     $('#modal-cart').show();
 
 });
@@ -63,27 +86,10 @@ $('#icon-cart-exit').click(function(event) {
 
 });
 
-$('.owl-carousel').owlCarousel({
-    loop: false,
-    animateOut: 'slideOutDown',
-    animateIn: 'flipInX',
-    nav: true,
-    smartSpeed:450,
-    margin: 15,
-    nav:true,
-    lazyLoad: true,
-    autoplay:true,
-    autoplayTimeout:5500,
-    autoplayHoverPause:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:4
-        }
+function delay(fn, ms) {
+    let timer = 0
+    return function(...args) {
+      clearTimeout(timer)
+      timer = setTimeout(fn.bind(this, ...args), ms || 0)
     }
-})
+}

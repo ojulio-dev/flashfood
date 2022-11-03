@@ -2,7 +2,7 @@
 
 $mock = array(
     [
-        'name' => 'Sorvete Qualquer',
+        'name' => 'Sorvete Qualquer qualquer coisa sei la amarelo',
         'banner' => '14.jpg',
         'amount' => 2,
         'price' => 14.99,
@@ -45,26 +45,35 @@ $mock = array(
             <?php foreach($mock as $product): ?>
                 <li>
                     <div class="cart-name-wrapper">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i class="fa-solid fa-cart-shopping icon-cart"></i>
 
                         <div class="cart-info-wrapper">
-                            <h3><?= $product['name'] ?></h3>
-                            <p><?= $product['price'] ?></p>
+                            <h3><?=
+                                strlen($product['name']) > 15
+                                ? substr($product['name'], 0, 15) . '...' 
+                                : $product['name']
+                            ?></h3>
+                            <p>R$ <?= number_format($product['price'], 2, ',', '.') ?></p>
                         </div>
+                    </div>
+                    <div class="cart-edit-amount">
+                        <button type="button"><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" disabled value="2">
+                        <button type="button"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
             <?php endforeach ?>
-
         </ul>
 
         <div class="button-order-wrapper">
-            <button type="button">Finalizar Pedido</button>
+            <button class="button-order cancel" type="button">Cancelar</button>
+            <button class="button-order success" type="button">Finalizar Pedido</button>
         </div>
     </div>
 </div>
 
 <header class="main-dashboard-header">
-    <img src="<?= DIR_IMG ?>/header/flashfood_icon.png" alt="">
+    <img src="<?= DIR_SYSTEM ?>/assets/images/system/flashfood_icon.png" alt="">
 
     <div class="header-customer-wrapper">
         <i class="fa-solid fa-cart-shopping fa-lg" id="icon-cart-modal"></i>

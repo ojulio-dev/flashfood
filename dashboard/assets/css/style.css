@@ -219,8 +219,19 @@
 
 .main-item-modal {
     height: auto;
-    max-height: 350px;
+    max-height: 77%;
     overflow: auto;
 
-    padding: 30px 15px;
+    padding: 30px 18px;
+    padding-bottom: 0;
+}
+
+.search-not-found {
+    font-size: 17px;
+    margin-top: 25px;
+}
+
+.search-not-found i {
+    font-size: 24px;
+    margin-right: 5px;
 }

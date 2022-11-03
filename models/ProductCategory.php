@@ -164,6 +164,24 @@ class ProductCategory extends Database{
         }
     }
 
+    public function readBySearch($id, $search)
+    {
+        try {
+            $this->setSql("SELECT po.* FROM
+                {$this->table} pc
+            INNER JOIN product po on po.category_id = pc.category_id
+            WHERE pc.category_id = $id AND po.name LIKE '$search%' ORDER BY status DESC");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function countProducts($id)
     {
         try {

@@ -9,7 +9,7 @@ ob_start();
 
 session_start();
 
-require_once(__DIR__ . '/../config/environment.php');
+require_once(__DIR__ . '/config/environment.php');
  
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
@@ -20,7 +20,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <html lang="pt-BR">
 <head>
     <!-- Title -->
-    <link rel="shortcut icon" href="assets/images/favicon/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= DIR_SYSTEM ?>/assets/images/favicon/favicon.png" type="image/x-icon">
     <title>Dashboard</title>
 
     <!-- Meta TAGs -->
@@ -103,14 +103,14 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         
         const API_URL = "http://localhost/flashfood/"; 
     </script>
-    
-    <script src="<?= DIR_JS ?>/script.js"></script>
+
 
     <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>
-
+    
         <script src="<?= DIR_JS ?>/<?= $page ?>.js"></script>
-
+    
     <?php endif ?>
-
+    
+    <script src="<?= DIR_JS ?>/script.js"></script>
 </body>
 </html>

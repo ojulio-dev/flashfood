@@ -1,34 +1,91 @@
-$('#menu-search').keyup(function(event) {
-    var search = event.target.value.toLowerCase();
+$(document).ready(function() {
+
+    let cart = [];
+
+    // read
+    const readProducts = (search) => {
+        $.ajax({
+            url: API_URL + `api/?api=products&action=listProductsOrders&search=${search}`,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (data, status, xhr) {
+
+                $('#read-menu-wrapper').html('');
     
-    var rows = $('.main-orders');
+                data.length ? data.map(category => {
 
-    rows.each(function(index, div) {
+                    let products = category.products.map(function(product) {
+                        return (`
+                            <div class="main-orders-item">
+                                <a href="#">
+                                    <div class="products-image-wrapper">
+                                        <img src="${BASE_URL}assets/images/products/${product.banner}">
+                                        <button type="button" class="button-add-cart"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
 
-        var category = $(div).find('strong')[0].innerHTML.toLowerCase();
+                                    <strong>${product.name}</strong>
+                                    <p>R$ ${Number(product.special_price).toFixed(2).replace('.', ',')}</p>
+                                </a>   
+                            </div>
+                        `)
+                    })
+                
+                    $('#read-menu-wrapper').append(`
 
-        !category.includes(search) ? $(div).hide() : $(div).show();
+                        <li class="main-orders">
+                            <div class="menu-category-wrapper">
+                                <h3>${category.name}</h3>
+                                ${category.products.length >= 4 ? '<a href="#">Ver todos</a>' : '' }
+                            </div>
 
-    });
+                            <div class="owl-carousel owl-theme">
+                                ${products.join('')}
+                            </div>
+                        </li>
+                    `)
+                }) : $('#read-menu-wrapper').append('<li class="search-not-found"><i class="fa-solid fa-triangle-exclamation"></i> A sua pesquisa não retornou resultados</li>')
 
-    var hasEmpty = !!rows.filter((_, row) => {
-        if (row.style.display != 'none') {
-            return row;
-        }
-
-    }).length;
-
-    // if (hasEmpty) {
-    //     $('#read-table-category-items').append(`
-
-    //         <tr>
-    //             <td>Nenhuma Categoria cadastrada, cadastre clicando <a class="link-no-results" href="?page=category&action=create">aqui</a></td> 
-    //         </tr>
-        
-    //     `);
-    // }
-
-    if (!rows.length) {
-        console.log('oi');
+                $('.owl-carousel').owlCarousel({
+                    loop: false,
+                    animateOut: 'slideOutDown',
+                    animateIn: 'flipInX',
+                    nav: true,
+                    smartSpeed:450,
+                    margin: 15,
+                    nav:true,
+                    lazyLoad: true,
+                    autoplay:true,
+                    autoplayTimeout:5500,
+                    autoplayHoverPause:true,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:3
+                        },
+                        1000:{
+                            items:4
+                        }
+                    }
+                });
+    
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+            }
+        });
     }
-});
+
+    $('#menu-search').keyup(delay(function(event) {
+        var search = event.target.value.toLowerCase();
+
+        readProducts(search);
+    }, 250));
+    
+})

@@ -23,7 +23,7 @@
 
             <div class="click-wrapper">
                 <a href="?page=orders">Cardápio</a>
-                <a href="">Pedidos</a>
+                <a href="#">Pedidos</a>
             </div>
         </li>
 
@@ -35,7 +35,7 @@
             </div>
 
             <div class="click-wrapper">
-                <a href="">Config</a>
+                <a href="#">Config</a>
             </div>
         </li>
     </ul>
