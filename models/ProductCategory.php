@@ -142,7 +142,7 @@ class ProductCategory extends Database{
                 return false;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 
@@ -266,7 +266,7 @@ class ProductCategory extends Database{
             }
 
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 

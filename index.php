@@ -40,6 +40,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <link rel="stylesheet" href="<?= DIR_CSS . '/' . $page . '/style.css' ?>">
     <?php endif ?>
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/style.css">
+
 </head>
 <body>
     <div id="container">
@@ -69,9 +72,6 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- Mask Money -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- OwlCarousel -->
-    <script src="<?= DIR_JS ?>/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Vanilla -->
     <script>

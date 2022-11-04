@@ -17,13 +17,23 @@
     display: flex;
     flex-direction: column;
 
-    gap: 15px;
+    gap: 16px;
 }
 
-#main-login-system img {
-    width: 200px;
+#main-login-system .login-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
-    margin-bottom: 15px;
+#main-login-system .login-title-wrapper img {
+    width: 200px;
+}
+
+#main-login-system .login-title-wrapper h3 {
+    font-weight: 600;
+    font-size: 22px;
+    color: #1b1b1b;
 }
 
 #main-login-system input {
@@ -37,24 +47,25 @@
     padding: 6px 10px 6px 0;
 
     font-size: 16px;
-    color: #333333b9;
+    color: #0d0d0dc9;
+    background-color: #d8e1d0;
 
-    font-weight: 300;
+    font-weight: 500;
 }
 
 #main-login-system small {
     margin: 10px 0 5px 0;
 
-    font-size: 13px;
+    font-size: 14.5px;
     font-weight: lighter;
 
-    color: #333333ba;
-    font-weight: 300;
+    color: #000000e3;
+    font-weight: 400;
     letter-spacing: 0.2px;
 }
 
 #main-login-system small a {
-    color: #0068b8cb;
+    color: #0068b8;
     text-decoration: none;
 }
 
@@ -73,6 +84,10 @@
     cursor: pointer;
 
     transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
+}
+
+#main-login-system button.-create {
+    margin-top: 10px;
 }
 
 #main-login-system button:hover {

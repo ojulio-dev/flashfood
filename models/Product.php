@@ -6,7 +6,7 @@ use Classes\Database;
 use PDO;
 use PDOException;
 
-class Product extends Database{
+class Product extends Database {
 
     private $stmt, $sql, $conn, $table;
 
@@ -56,7 +56,7 @@ class Product extends Database{
                 return false;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 
@@ -76,7 +76,7 @@ class Product extends Database{
                 return false;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 
@@ -96,7 +96,7 @@ class Product extends Database{
                 return false;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 
@@ -116,7 +116,7 @@ class Product extends Database{
                 return false;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 
@@ -136,7 +136,7 @@ class Product extends Database{
                 return false;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 
@@ -161,7 +161,7 @@ class Product extends Database{
             }
 
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 
@@ -204,7 +204,7 @@ class Product extends Database{
                 return false;
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 

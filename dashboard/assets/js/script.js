@@ -67,7 +67,7 @@ const changeStatus = (id, action) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Eita!',
-                text: data
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!'
             })
         }
     });
