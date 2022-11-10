@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
 
-    background-color: #d8e1d0;
+    background-color: #fff;
 }
 
 #main-login-system form {
@@ -48,7 +48,7 @@
 
     font-size: 15.5px;
     color: #0d0d0dc9;
-    background-color: #d8e1d0;
+    background-color: #fff;
 
     font-weight: 500;
 }
