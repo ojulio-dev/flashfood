@@ -15,7 +15,7 @@ if
         'message' => 'Informações insuficientes para a Atualização!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -40,7 +40,7 @@ if ($isEmpty) {
         'message' => 'Digite as informações corretamente!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -54,7 +54,7 @@ if (!empty($_FILES['banner']['name'])) {
             'message' => 'Formato de arquivo inválido!'
         );
     
-        echo json_encode($response);
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
         exit();
     }
 }
@@ -75,5 +75,5 @@ $response = array(
     'response' => true
 );
 
-echo json_encode($response);
+echo json_encode($response, JSON_UNESCAPED_UNICODE);
 exit();

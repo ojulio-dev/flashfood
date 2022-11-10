@@ -86,6 +86,6 @@ $(document).ready(function() {
         var search = event.target.value.toLowerCase();
 
         readProducts(search);
-    }, 250));
+    }, 500));
     
 })

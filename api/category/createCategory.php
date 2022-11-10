@@ -6,7 +6,7 @@ if (!key_exists('name', $_POST) || !key_exists('status', $_POST)) {
         'message' => 'Informações insuficientes para o Cadastro!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -31,7 +31,7 @@ if ($isEmpty) {
         'message' => 'Digite as Informações corretamente!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -45,7 +45,7 @@ if ($productCategory->readBySlug($data['slug'])) {
         'message' => 'Esta categoria já foi cadastrada! Altere o nome e tente novamente'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -55,7 +55,7 @@ if (!$data['name'] || !$data['status']) {
         'message' => 'Digite as Informações corretamente!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -68,7 +68,7 @@ if ($create) {
         'message' => 'Categoria cadastrada com sucesso!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 
 } else {
@@ -78,6 +78,6 @@ if ($create) {
             'message' => 'Algo de errado aconteceu. Informe a equipe técnica o mais rápido possível!'
         );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }

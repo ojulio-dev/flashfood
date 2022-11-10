@@ -3,21 +3,54 @@
 namespace Model;
 
 use Classes\Database;
+
+use PDO;
 use PDOException;
 
-class Admin extends Database {
+class User extends Database {
     private $stmt, $sql, $table, $conn;
 
     public function __construct()
     {
         $this->setConn(parent::conn());
 
-        $this->setTable('admin');
+        $this->setTable('user');
     }
 
-    public function create()
+    public function create($email, $password)
     {
+        try {
 
+            $emailExists = $this->conn->query("SELECT email FROM " . $this->table . " WHERE email = '{$email}'")->fetch(PDO::FETCH_ASSOC);
+
+            if ($emailExists) {
+                $response = [
+                    'response' => false,
+                    'message' => 'O E-mail inserido já foi cadastrado! Adicione outro e tente novamente.'
+                ];
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                exit();
+            }
+            
+            $this->setSql("INSERT INTO " . $this->table . " (email, password) VALUES ('{$email}', '{$password}')");
+    
+            $this->stmt = $this->conn->prepare($this->getSql());
+    
+            $this->stmt->execute();
+    
+            if ($this->stmt->rowCount()) {
+    
+                return true;
+            } else {
+    
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 
     public function read()

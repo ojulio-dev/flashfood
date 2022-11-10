@@ -8,5 +8,5 @@ if (isset($_POST['categoryId'])) {
 
     $response = $product->readByCategoryId($_POST['categoryId']);
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
 }

@@ -10,7 +10,7 @@ ob_start();
 session_start();
 
 require_once(__DIR__ . '/config/environment.php');
- 
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 

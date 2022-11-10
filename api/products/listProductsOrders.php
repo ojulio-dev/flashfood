@@ -23,9 +23,9 @@ foreach($categories as $category) {
     }
 };
 
-$return = $products;
+$response = $products;
 
-$json = json_encode($return, JSON_UNESCAPED_UNICODE);
+$json = json_encode($response, JSON_UNESCAPED_UNICODE);
 
 echo $json;
 

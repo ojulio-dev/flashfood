@@ -16,7 +16,7 @@ if
         'message' => 'Informações insuficientes para o Cadastro!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -42,7 +42,7 @@ if ($isEmpty || empty($_FILES['banner']['tmp_name'])) {
         'message' => 'Digite as Informações corretamente!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -55,7 +55,7 @@ if ($extension != 'jpg' && $extension != 'jpeg' && $extension != 'png') {
         'message' => 'Formato de Arquivo inválido!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -75,7 +75,7 @@ if ($product->readBySlug($data['slug'])) {
         'message' => 'Produto já cadastrado! Altere o nome e tente novamente'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -85,7 +85,7 @@ if (strlen($data['price']) > 7 || strlen($data['special_price']) > 7) {
         'message' => 'Valor do Produto inválido!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -97,7 +97,7 @@ if ($create) {
         'message' => 'Produto cadastrado com Sucesso!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
     
 } else {
@@ -107,7 +107,7 @@ if ($create) {
         'message' => 'Eita, algo deu errado. Chame a equipe de manutenção o mais rápido possível!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 

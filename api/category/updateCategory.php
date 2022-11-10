@@ -11,7 +11,7 @@ if
         'message' => 'Informações insuficientes para o Cadastro!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -36,7 +36,7 @@ if ($isEmpty) {
         'message' => 'Digite as informações corretamente!'
     );
 
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
 
@@ -50,5 +50,5 @@ $response = array(
     'response' => true
 );
 
-echo json_encode($response);
+echo json_encode($response, JSON_UNESCAPED_UNICODE);
 exit();

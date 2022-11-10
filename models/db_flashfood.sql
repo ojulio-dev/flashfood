@@ -10,16 +10,19 @@
 CREATE DATABASE IF NOT EXISTS `db_flashfood` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `db_flashfood`;
 
-CREATE TABLE IF NOT EXISTS `account` (
-  `account_id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`account_id`)
+CREATE TABLE IF NOT EXISTS `address` (
+  `address_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `CEP` varchar(8) NOT NULL,
+  `state` varchar(150) NOT NULL,
+  `city` varchar(150) NOT NULL,
+  `district` varchar(150) NOT NULL,
+  `road` varchar(100) NOT NULL,
+  `number` varchar(100) NOT NULL,
+  `reference` varchar(255) NOT NULL,
+  PRIMARY KEY (`address_id`) USING BTREE,
+  KEY `FK_address_user` (`user_id`),
+  CONSTRAINT `FK_address_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -77,6 +80,36 @@ INSERT INTO `product_category` (`category_id`, `name`, `slug`, `status`, `update
 	(4, 'Bebidas', 'bebidas', 1, '2022-09-17 23:17:37', '2022-09-17 23:17:37'),
 	(13, 'Sobremesas', 'sobremesas', 1, '2022-09-24 20:43:23', '2022-09-24 20:43:23'),
 	(15, 'Principais', 'principais', 1, '2022-09-30 04:06:47', '2022-09-30 04:06:47');
+
+CREATE TABLE IF NOT EXISTS `role` (
+  `role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `role` (`role_id`, `name`, `status`, `created_at`) VALUES
+	(1, 'admin', 1, '2022-11-10 16:51:50');
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`user_id`) USING BTREE,
+  UNIQUE KEY `email` (`email`),
+  KEY `FK_user_role` (`role_id`),
+  CONSTRAINT `FK_user_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `user` (`user_id`, `role_id`, `email`, `password`, `name`, `image`, `status`, `created_at`, `updated_at`) VALUES
+	(31, 1, 'ojuliocesar@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, NULL, 1, '2022-11-10 16:54:29', '2022-11-10 16:54:29');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

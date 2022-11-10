@@ -1,5 +1,5 @@
 <section id="main-login-system">
-    <form id="form-login-admin">
+    <form id="form-login-user">
         <div class="login-title-wrapper">
             <img src="<?= DIR_IMG ?>/system/flashfood_icon_black.png" alt="">
             <h3>Login</h3>
@@ -8,8 +8,6 @@
         <input type="email" placeholder="E-mail" name="email" id="email">
         <input type="password" placeholder="Senha" name="password" id="password">
 
-        <small>Não tem conta? <a href="index.php?page=login&action=create">Cadastre!</a></small>
-
-        <button type="button" id="button-login-admin">Entrar</button>
+        <button type="button" id="button-login-user">Entrar</button>
     </form>
 </section>

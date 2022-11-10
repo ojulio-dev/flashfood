@@ -8,6 +8,18 @@
     right: 0;
 
     border-radius: 10px 0 0 10px;
+
+    animation: viewCart 0.3s ;
+}
+
+@keyframes viewCart {
+    0% {
+        right: -360px;
+    }
+
+    100% {
+        right: 0;
+    }
 }
 
 .main-modal-title.-cart {

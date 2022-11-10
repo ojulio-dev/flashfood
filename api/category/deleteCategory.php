@@ -12,6 +12,6 @@ $response = $productCategory->delete($_POST['categoryId']);
 
 if ($response) {
     
-    echo json_encode($response);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }

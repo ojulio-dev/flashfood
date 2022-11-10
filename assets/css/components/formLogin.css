@@ -31,8 +31,8 @@
 }
 
 #main-login-system .login-title-wrapper h3 {
-    font-weight: 600;
-    font-size: 22px;
+    font-weight: 500;
+    font-size: 20px;
     color: #1b1b1b;
 }
 
@@ -46,7 +46,7 @@
     height: 35px;
     padding: 6px 10px 6px 0;
 
-    font-size: 16px;
+    font-size: 15.5px;
     color: #0d0d0dc9;
     background-color: #d8e1d0;
 
@@ -73,9 +73,10 @@
     color: #fff;
     border: none;
     background-color: #0067b8;
-    font-size: 14px;
+    font-size: 15px;
 
     padding: 9px 0;
+    margin-top: 10px;
     width: 125px;
 
     align-self: end;
@@ -84,10 +85,6 @@
     cursor: pointer;
 
     transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
-}
-
-#main-login-system button.-create {
-    margin-top: 10px;
 }
 
 #main-login-system button:hover {
