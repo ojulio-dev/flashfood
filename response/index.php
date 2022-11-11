@@ -30,6 +30,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <?php if (file_exists(__DIR__ . '/assets/css/' . $page . '/style.css')): ?>
         <link rel="stylesheet" href="<?= DIR_CSS . '/' . $page . '/style.css' ?>">
@@ -41,6 +42,16 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 </head>
 <body>
     <div id="container">
+        <header class="header-responsivo">
+            <div class="circulo-menu">
+                <h4>Mesa 4</h4>
+            </div>
+
+            <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo">
+
+            <i id="icone-header-carrinho" class="fa-solid fa-cart-shopping"></i>
+        </header>
+
         <?php
 
             if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
