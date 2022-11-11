@@ -16,6 +16,21 @@ class ProductCategory extends Database{
         $this->table = 'product_category';
     }
 
+    private function createFile($file, $id) {
+
+        $extension = strtolower( substr($file['name'], -4) );
+
+        $newName = $id . $extension;
+
+        $destiny = __DIR__ . '/../dashboard/assets/images/categories/' . $newName;
+
+        if (file_exists($destiny)) unlink($destiny);
+
+        move_uploaded_file($file['tmp_name'], $destiny);
+
+        return "$newName";
+    }
+
     public function create($data)
     {
         try {
@@ -27,6 +42,15 @@ class ProductCategory extends Database{
             $this->stmt->execute();
 
             if ($this->stmt->rowCount()) {
+
+                if (file_exists($data['banner']['tmp_name'])) {
+                    $id = $this->conn->query("SELECT category_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
+
+                    $destiny = $this->createFile($data['banner'], $id['category_id']);
+
+                    $this->updateByField($destiny, 'banner', $id['category_id']);
+                }
+
                 return true;
             } else {
                 return false;
@@ -296,6 +320,8 @@ class ProductCategory extends Database{
     {
         try {
 
+            $banner = $this->conn->query("SELECT banner FROM " . $this->table . " WHERE category_id = {$id}")->fetch(PDO::FETCH_ASSOC);
+
             $this->setSql("DELETE FROM product_category WHERE category_id = {$id}");
 
             $this->stmt = $this->conn->prepare($this->getSql());
@@ -305,6 +331,8 @@ class ProductCategory extends Database{
             if ($this->stmt->rowCount()) {
 
                 $this->stmt = $this->conn->query("DELETE FROM product WHERE category_id = {$id}");
+
+                $this->deleteFile($banner['banner']);
 
                 return true;
 
@@ -316,6 +344,15 @@ class ProductCategory extends Database{
             return $e->getMessage();
         }
 
+    }
+
+    public function deleteFile($banner)
+    {
+        $destiny = __DIR__ . '/../dashboard/assets/images/categories/' . $banner;
+
+        if (file_exists($destiny)) {
+            unlink($destiny);   
+        }
     }
 
     public function setSql($sql)

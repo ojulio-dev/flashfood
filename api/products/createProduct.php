@@ -1,5 +1,7 @@
 <?php
 
+use Model\Product;
+
 // Verifica se os campos necessários foram enviados.
 if 
 (
@@ -19,8 +21,6 @@ if
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
-
-use Model\Product;
 
 $product = new Product;
 

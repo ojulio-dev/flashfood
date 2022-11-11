@@ -141,7 +141,7 @@ $(document).ready(function() {
 
         Swal.fire({
             title: 'Cuidado',
-            text: "Tem certeza que deseja excluir esta categoria?",
+            text: "Tem certeza que deseja excluir esta categoria? Todos os Produtos da Categoria selecionada será deletados!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

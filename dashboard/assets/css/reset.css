@@ -78,7 +78,7 @@ aside {
 .main-content::-webkit-scrollbar-thumb {
     width: 10px;
     border-radius: 0;
-    background: #3f3f3f;
+    background: #272727;
     background-clip: border-box;
 }
 

@@ -1,17 +1,16 @@
 <?php
 
-if (!isset($_POST['categoryId'])) {
-    // ...
-}
-
 use Model\ProductCategory;
 
-$productCategory = new ProductCategory;
+if (isset($_POST['categoryId'])) {
 
-$response = $productCategory->delete($_POST['categoryId']);
+    $productCategory = new ProductCategory;
 
-if ($response) {
-    
-    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-    exit();
+    $response = $productCategory->delete($_POST['categoryId']);
+
+    if ($response) {
+        
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
 }

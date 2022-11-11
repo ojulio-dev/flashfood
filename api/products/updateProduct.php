@@ -1,5 +1,7 @@
 <?php
 
+use Model\Product;
+
 if 
 (
     !key_exists('name', $_POST) || 
@@ -18,8 +20,6 @@ if
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
-
-use Model\Product;
 
 $product = new Product;
   

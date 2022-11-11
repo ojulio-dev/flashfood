@@ -14,6 +14,11 @@
             </div>
 
             <div class="input-products-wrapper">
+                <label for="banner">Banner</label>
+                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" required>
+            </div>
+
+            <div class="input-products-wrapper">
                 <label for="status">Status</label>
                 <select name="status" required>
                     <option value="1" selected>Ativado</option>
@@ -22,6 +27,6 @@
             </div>
         </div>
 
-        <button type="button" id="button-create-category" class="button-submit success" onclick="addCategory()">Cadastrar</button>
+        <button type="button" id="button-create-category" class="button-submit success">Cadastrar</button>
     </form>
 </section>

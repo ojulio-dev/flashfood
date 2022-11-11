@@ -3,7 +3,7 @@
 define('ENVIRONMENT', 'development');
 
 // Caso o projeto esteja dentro de uma pasta e não na raiz do www|htdocs
-define('DIR_ROOT', 'flashfood');
+define('DIR_ROOT', 'flashfood/responsive');
 
 // Define o nome do servidor
 define('DIR_SERVER', $_SERVER['SERVER_NAME']);
@@ -14,7 +14,7 @@ define('DIR_DOCUMENT', $_SERVER['DOCUMENT_ROOT']);
 define('DIR_PROTOCOL', ($_SERVER['SERVER_PORT'] != '80') ? 'https' : 'http');
 
 // Monta a url -- http://localhost/flashfood
-define('DIR_PATH', DIR_PROTOCOL . '://' . DIR_SERVER . '/' . DIR_ROOT . '/response');
+define('DIR_PATH', DIR_PROTOCOL . '://' . DIR_SERVER . '/' . DIR_ROOT);
 
 // Define caminhos
 define('DIR_CSS', DIR_PATH . '/assets/css');

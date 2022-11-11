@@ -1,5 +1,7 @@
 <?php
 
+use Model\ProductCategory;
+
 if (!key_exists('name', $_POST) || !key_exists('status', $_POST)) {
     $response = array(
         'response' => false,
@@ -10,7 +12,6 @@ if (!key_exists('name', $_POST) || !key_exists('status', $_POST)) {
     exit();
 }
 
-use Model\ProductCategory;
 
 $productCategory = new ProductCategory;
 
@@ -24,7 +25,7 @@ foreach($_POST as $postItem) {
     }
 }
 
-if ($isEmpty) {
+if ($isEmpty || empty($_FILES['banner']['tmp_name'])) {
     
     $response = array(
         'response' => false,
@@ -35,8 +36,22 @@ if ($isEmpty) {
     exit();
 }
 
+$extension = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
+
+if ($extension != 'jpg' && $extension != 'jpeg' && $extension != 'png') {
+
+    $response = array(
+        'response' => false,
+        'message' => 'Formato de Arquivo inválido!'
+    );
+
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    exit();
+}
+
 $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
+$data['banner'] = $_FILES['banner'];
 $data['status'] = filter_input(INPUT_POST, 'status', FILTER_VALIDATE_INT);
 
 if ($productCategory->readBySlug($data['slug'])) {
