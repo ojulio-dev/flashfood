@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.header-responsivo{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding: 14px;
+
+    width: 100%;
+    height: 70px;
+    background-color: #b59d90;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.486);
+}
+
+.circulo-menu h4 {
+    font-family: 'inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.circulo-menu {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    
+    width: 63px;
+    height: 40px;
+
+    background-color: #51ff0046;
+    border-radius: 30px;
+    border-top: 10px;
+
+}
+
+.header-responsivo img{
+    width: 34px;
+
+    justify-self: center;
+}
+
+#icone-header-carrinho{
+    font-size: 25px;
+
+    justify-self: end;
+}
