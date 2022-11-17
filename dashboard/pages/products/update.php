@@ -1,16 +1,26 @@
 <?php
 
-if (!isset($_GET['slug'])) {
-    header("Location: index.php?page=products");
-}
-
 use Model\Product;
 
 use Model\ProductCategory;
 
+use Model\Additional;
+
+use Model\Ingredient;
+
+use function PHPSTORM_META\type;
+
 $productCategory = new ProductCategory;
 
 $product = new Product;
+
+$additional = new Additional;
+
+$ingredient = new Ingredient;
+
+if (!isset($_GET['slug'])) {
+    header("Location: index.php?page=products");
+}
 
 $readProducts = $product->readBySlug($_GET['slug']);
 
@@ -21,6 +31,27 @@ if (!$readProducts) {
 }
 
 $categories = $productCategory->read();
+
+$additionals = $additional->readIngredientsBySlug($_GET['slug']);
+
+$ingredients = $ingredient->read();
+
+$extraIngredients = [];
+
+if ($additionals) {
+
+    foreach($ingredients as $ingredient) {
+        $arraySearch = array_search($ingredient['ingredient_id'], array_column($additionals, 'ingredient_id'));
+    
+        if (is_bool($arraySearch)) {
+            array_push($extraIngredients, $ingredient);
+        }
+    }
+
+} else {
+
+    $extraIngredients = $ingredients;
+}
 
 ?>
 
@@ -73,8 +104,22 @@ $categories = $productCategory->read();
             </div>
 
             <div class="input-products-wrapper">
-                <label for="banner">Banner</label>
-                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" required>
+                <label for="banner-update-products">Banner</label>
+                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner-update-products" required>
+            </div>
+
+            <div class="input-products-wrapper -ingredients">
+                <label for="ingredients-create-products">Adicionais</label>
+                <select class="js-example-basic-multiple" name="ingredients[]" id="ingredients-create-products" multiple="multiple">
+                    <option disabled>Selecione um Adicional para seu Produto (ou não)</option>
+                    <?php foreach($additionals as $additional): ?>
+                        <option selected value="<?= $additional['ingredient_id'] ?>"><?= $additional['name'] ?></option>
+                    <?php endforeach ?>
+
+                    <?php foreach($extraIngredients as $ingredientItem): ?>
+                        <option value="<?= $ingredientItem['ingredient_id'] ?>"><?= $ingredientItem['name'] ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
         </div>
 

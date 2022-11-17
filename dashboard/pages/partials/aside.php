@@ -11,6 +11,7 @@
                 <a href="?page=products&action=create">Cadastro</a>
                 <a href="index.php">Listagem</a>
                 <a href="?page=category">Categorias</a>
+                <a href="?page=ingredient">Adicionais</a>
             </div>
         </li>
 
@@ -24,6 +25,19 @@
             <div class="click-wrapper">
                 <a href="?page=orders">Cardápio</a>
                 <a href="#">Pedidos</a>
+            </div>
+        </li>
+
+        <li class="dashboard-items">
+            <div class="items-wrapper">
+                <h2><i class="fa-solid fa-user"></i>Usuários</h2>
+
+                <i class="fa-solid fa-angle-down arrow-click"></i>
+            </div>
+
+            <div class="click-wrapper">
+                <a href="#">Cadastro</a>
+                <a href="#">Listagem</a>
             </div>
         </li>
 

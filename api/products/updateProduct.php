@@ -1,6 +1,11 @@
 <?php
 
 use Model\Product;
+use Model\Additional;
+
+$product = new Product;
+
+$additional = new Additional;
 
 if 
 (
@@ -20,13 +25,11 @@ if
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
-
-$product = new Product;
   
 $isEmpty = false;
 
 foreach($_POST as $postItem) {
-    if ($postItem != '0') {
+    if ($postItem != '0' && !is_array($postItem)) {
         if (empty(trim($postItem))) {
             $isEmpty = true;
         }
@@ -70,6 +73,13 @@ $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
 $data['banner'] = $_FILES['banner'];
 
 $update = $product->updateById($_POST['productId'], $data);
+
+$additional->delete($_POST['productId']);
+
+if (isset($_POST['ingredients'])) {
+
+    $additional->create($_POST['ingredients'], $_POST['productId']);
+}
 
 $response = array(
     'response' => true

@@ -34,7 +34,7 @@
     content: '';
     position: absolute;
     bottom: -15px;
-    width: 30%;
+    width: 20%;
     left: 50%;
     transform: translateX(-50%);
 
@@ -202,4 +202,27 @@
 
 select::-ms-expand {
     display: none !important;
+}
+
+.main-products-form.-ingredient {
+    width: 100%;
+    box-shadow: none;
+}
+
+.main-products-form.-ingredient .form-items {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+} 
+
+.main-products-form.-ingredient .input-products-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.reload-list-wrapper ul li{
+    font-size: 17px;
+    margin-bottom: 10px;
 }

@@ -68,10 +68,10 @@ $(document).ready(function() {
                             currency: 'BRL',
                             minimumFractionDigits: 2 }).format( product.special_price )}</td>
 
-                        <td class="product-table-status">
+                        <td class="read-table-status">
                             <form>
                                 <input name="status" onclick="changeStatus(${ product.product_id }, 'product')" type="checkbox" ${ product.status == 1 ? 'checked' : '' }/>
-                                <label for="status"></label>
+                                <label></label>
                             </form>
                         </td>
 

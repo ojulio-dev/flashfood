@@ -32,12 +32,12 @@ $readProducts = $productCategory->readByCategory($_GET['id']);
     <form class="main-products-form" method="POST">
         <div class="form-items-products">
             <div class="input-products-wrapper">
-                <label for="name">Categoria</label>
+                <label for="update-name-category">Categoria</label>
                 <input type="text" name="name" id="update-name-category" placeholder="Digite a Categoria" value="<?= $read['name'] ?>" required>
             </div>
 
             <div class="input-products-wrapper">
-                <label for="status">Status</label>
+                <label for="update-status-category">Status</label>
                 <select name="status" id="update-status-category" required>
                     <option value="'1'" <?= 1 == $read['status'] ? 'selected' : '' ?>>Ativado</option>
                     <option value="'0'" <?= 0 == $read['status'] ? 'selected' : '' ?>>Desativado</option>
@@ -51,7 +51,7 @@ $readProducts = $productCategory->readByCategory($_GET['id']);
 
     <section class="category-products-wrapper">
        
-        <button id="button-read-products-category" class="button-reload-category" data-product-id="<?= $idCategory ?>"><i class="fa-solid fa-rotate"></i> Ver Produtos</button>
+        <button id="button-read-products-category" class="button-reload" data-product-id="<?= $idCategory ?>"><i class="fa-solid fa-rotate"></i> Ver Produtos</button>
 
         <div class="read-table-wrapper category">
 

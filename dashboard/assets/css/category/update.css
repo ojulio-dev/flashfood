@@ -20,7 +20,7 @@
     box-shadow: none;
 }
 
-.button-reload-category {
+.button-reload {
     width: 165px;
     height: 46px;
     border: none;
@@ -36,12 +36,12 @@
     transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
 }
 
-.button-reload-category i {
+.button-reload i {
     margin-right: 5px;
     color: #414141;
     font-size: 15px;
 }
 
-.button-reload-category:hover {
+.button-reload:hover {
     transform: scale(1.08);
 }

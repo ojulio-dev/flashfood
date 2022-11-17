@@ -38,10 +38,10 @@ $readCategory = $productCategory->read();
                         <td><?= $product['category'] ?></td>
                         <td><?= $product['name'] ?></td>
                         <td>R$ <?= number_format($product['special_price'], 2, ',', '.') ?></td>
-                        <td class="product-table-status">
+                        <td class="read-table-status">
                             <form>
-                                <input name="status" type="checkbox" onclick="changeStatus(<?= $product['product_id']?>, 'product')" <?= $product['status'] == 1 ? 'checked' : '' ?>/>
-                                <label for="status"></label>
+                                <input name="status" id="status-read-products" type="checkbox" onclick="changeStatus(<?= $product['product_id']?>, 'product')" <?= $product['status'] == 1 ? 'checked' : '' ?>/>
+                                <label for="status-read-products"></label>
                             </form>
                         </td>
                         <td>

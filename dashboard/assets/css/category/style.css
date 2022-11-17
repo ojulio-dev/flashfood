@@ -1,4 +1,4 @@
-.category-search-wrapper {
+.products-search-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,7 +8,7 @@
     padding: 0 30px;
 }
 
-.category-button-create {
+.products-read-button-create {
     display: flex;
     width: 160px;
     height: 40px;
@@ -26,7 +26,7 @@
     transition: transform 170ms cubic-bezier(.45, .97, .68, 2.48);
 }
 
-.category-button-create:hover {
+.products-read-button-create:hover {
     transform: scale(1.06);
     background-color: #96cf7f;
 }
@@ -37,30 +37,30 @@
     overflow: auto;
 }
 
-.category-read-table {
+.main-read-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.category-read-table th {
+.main-read-table th {
     text-align: left;
     font-weight: 500;
 }
 
-.category-read-table tr {
+.main-read-table tr {
     height: 60px;
     cursor: pointer;
 }
 
-.category-read-table td, .category-read-table th {
+.main-read-table td, .main-read-table th {
     padding: 0 30px;
 }
 
-.category-read-table tr:hover {
+.main-read-table tr:hover {
     background-color: #d8d8d8;
 }
 
-.category-table-action {
+.read-table-action {
     text-align: right !important;
 }
 
@@ -68,21 +68,21 @@
     text-align: center !important;
 }
 
-.category-icons-wrapper {
+.read-table-icons-wrapper {
     display: flex;
     justify-content: right;
     align-items: center;
     gap: 55px;
 }
 
-.category-read-table .fa-eye {
+.main-read-table .fa-eye {
     font-size: 22px;
 
     border-radius: 5px;
     color: #313131;
 }
 
-.product-table-status input[type=checkbox] {
+.read-table-status input[type=checkbox] {
     position: relative;
     width: 48px;
     height: 20px;
@@ -94,11 +94,11 @@
     cursor: pointer;
 }
 
-.product-table-status input[type=checkbox]:checked {
+.read-table-status input[type=checkbox]:checked {
     background: #9DD985;
 }
 
-.product-table-status input[type=checkbox]:before {
+.read-table-status input[type=checkbox]:before {
     content: '';
     position: absolute;
     width: 20px;
@@ -111,6 +111,6 @@
     transition: .2s;
 }
 
-.product-table-status input:checked[type=checkbox]:before {
+.read-table-status input:checked[type=checkbox]:before {
     left: 28px;
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Model\Product;
+use Model\Additional;
 
 // Verifica se os campos necessários foram enviados.
 if 
@@ -24,11 +25,13 @@ if
 
 $product = new Product;
 
+$additional = new Additional;
+
 $isEmpty = false;
 
 // Verifica se cada valor do formulário está vazio.
 foreach($_POST as $postItem) {
-    if ($postItem != '0') {
+    if ($postItem != '0' && !is_array($postItem)) {
         if (empty(trim($postItem))) {
             $isEmpty = true;
         }
@@ -90,6 +93,11 @@ if (strlen($data['price']) > 7 || strlen($data['special_price']) > 7) {
 }
 
 $create = $product->create($data);
+
+if (isset($_POST['ingredients'])) {
+
+    $additional->create($_POST['ingredients']);
+}
 
 if ($create) {
     $response = array(

@@ -42,10 +42,10 @@ $(document).ready(function() {
     });
 });
 
-const changeStatus = (id, action) => {
+const changeStatus = (id, table) => {
     statusData = {
         statusId: id,
-        statusAction: action
+        table: table
     }
 
     $.ajax({
@@ -59,8 +59,8 @@ const changeStatus = (id, action) => {
 
             Swal.fire({
                 icon: 'success',
-                title: 'Foi',
-                text: `${action == 'product' ? 'Produto alterado' : 'Categoria alterada'} com sucesso!`
+                title: 'Foi!',
+                text: data.message
             })
         },
         error: function (jqXhr, textStatus, errorMessage) {

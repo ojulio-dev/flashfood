@@ -27,7 +27,8 @@ $(document).ready(function() {
                     }
                 })
 
-                $('#form-products-create')[0].reset()
+                $('#form-products-create')[0].reset();
+                $('#ingredients-create-products').val(null).trigger('change');
             } else {
                 Swal.fire({
                     title: 'Atenção!',
@@ -127,6 +128,43 @@ $(document).ready(function() {
         })
     });
 
+    // ListIngredients
+    $('#button-read-ingredients').click(function() {
+        
+        let productSlug = $(this).data('product-slug');
+
+        $.ajax({
+            url: API_URL + 'api/?api=ingredient&action=listIngredientsByProduct',
+            type: 'POST',
+            data: {
+                productSlug
+            },
+            dataType: 'JSON',
+            success: function(data) {
+                
+                if (data.response) {
+
+                    data.ingredients.map(ingredient=> {
+                        $('#read-items-category').append(
+                            `<tr>
+                                <td>Resultado</td>
+                            </tr>`
+                        )
+                    });
+                }
+
+            },
+            error: function() {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+            }
+
+        })
+    });
+
     //Change ListProducts
     $('#options-list-products').change(function(event) {
         var categoryId = event.target.value;
@@ -160,10 +198,10 @@ $(document).ready(function() {
                             <td>${product.category}</td>
                             <td>${product.name}</td>
                             <td>R$ ${Number(product.special_price).toFixed(2).replace('.', ',')}</td>
-                            <td class="product-table-status">
+                            <td class="read-table-status">
                                 <form>
-                                    <input name="status" type="checkbox" onclick="changeStatus(${product.product_id}, 'product')"  ${product.status == 1 ? 'checked' : ''}>
-                                    <label for="status"></label>
+                                    <input name="status" id="status-read-products" type="checkbox" onclick="changeStatus(${product.product_id}, 'product')"  ${product.status == 1 ? 'checked' : ''}>
+                                    <label for="status-read-products"></label>
                                 </form>
                             </td>
                             <td>
@@ -190,5 +228,34 @@ $(document).ready(function() {
         });
     });
 
+    function matchCustom(params, data) {
+        // If there are no search terms, return all of the data
+        if ($.trim(params.term) === '') {
+          return data;
+        }
     
+        // Do not display the item if there is no 'text' property
+        if (typeof data.text === 'undefined') {
+          return null;
+        }
+    
+        // `params.term` should be the term that is used for searching
+        // `data.text` is the text that is displayed for the data object
+        if (data.text.indexOf(params.term) > -1) {
+          var modifiedData = $.extend({}, data, true);
+          modifiedData.text += ' (matched)';
+    
+          // You can return modified objects from here
+          // This includes matching the `children` how you want in nested data sets
+          return modifiedData;
+        }
+
+        // Return `null` if the term should not be displayed
+        return null;
+    }
+
+    $('.js-example-basic-multiple').select2({
+        matcher: matchCustom,
+        theme: "classic"
+    });
 });

@@ -235,3 +235,33 @@
     font-size: 24px;
     margin-right: 5px;
 }
+
+.select2-container--classic .select2-selection--multiple {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: 0;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+    margin-top: 0;
+}
+
+.select2-container--classic .select2-selection--multiple {
+    display: flex;
+    align-items: center;
+
+    min-height: 45px;
+    height: auto;
+}
+
+.select2-container {
+    margin-top: 4px;
+}
+
+.select2-container--below {
+    width: 100% !important;
+}

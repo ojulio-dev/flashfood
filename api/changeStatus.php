@@ -1,33 +1,27 @@
 <?php
 
-use Model\ProductCategory;
-use Model\Product;
+use Classes\Functions;
 
-$categoryController = new ProductCategory;
-$productController = new Product;
+$functions = new Functions;
 
-$statusData = $_POST['statusData'];
+if (isset($_POST)) {
 
-$response = ['status' => false];
+    $statusData = $_POST['statusData'];
+    
+    $itemId = $statusData['statusId'];
+    
+    $item = $functions->readByTableId($itemId, $statusData['table']);
 
-if (isset($statusData['statusId'])) {
+    if ($item) {
 
-    if ($statusData['statusAction'] == 'product') {
+        $functions->changeStatus(!$item['status'], $itemId ,$statusData['table']);
 
-        $productId = $statusData['statusId'];
+        $response = [
+            'response' => true,
+            'message' => 'Status atualizado com Sucesso!'
+        ];
 
-        $product = $productController->readById($productId);
-
-        $response['status'] = $productController->updateByField(!$product['status'], 'status', $productId);
-
-    } elseif ($statusData['statusAction'] == 'category') {
-
-        $categoryId = $statusData['statusId'];
-
-        $category = $categoryController->readById($categoryId);
-
-        $response['status'] = $categoryController->updateByField(!$category['status'], 'status', $categoryId);
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
     }
-}
 
-echo json_encode($response, JSON_UNESCAPED_UNICODE);
+}

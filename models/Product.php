@@ -229,7 +229,7 @@ class Product extends Database {
             }
 
         } catch (PDOException $e) {
-            return $e->getMessage();
+            throw $e->getMessage();
         }
 
     }

@@ -1,10 +1,13 @@
 <?php
 
 use Model\ProductCategory;
+use Model\Ingredient;
 
 $productCategory = new ProductCategory;
+$ingredient = new Ingredient;
 
 $categories = $productCategory->read();
+$ingredients = $ingredient->read();
 
 ?>
 
@@ -19,14 +22,14 @@ $categories = $productCategory->read();
     <form id="form-products-create" class="main-products-form" method="POST" enctype="multipart/form-data">
         <div class="form-items-products">
             <div class="input-products-wrapper">
-                <label for="name">Nome</label>
-                <input type="text" name="name" placeholder="Digite o Nome" required>
+                <label for="name-create-products">Nome</label>
+                <input type="text" name="name" id="name-create-products" placeholder="Digite o Nome" required>
             </div>
 
             <div class="input-products-wrapper">
-                <label for="category">Categoria</label>
-                <select name="category_id" required>
-                    <option value="" selected>Selecione uma Categoria</option>
+                <label for="category-create-products">Categoria</label>
+                <select name="category_id" id="category-create-products" required>
+                    <option value="" selected disabled>Selecione uma Categoria</option>
                     <?php foreach($categories as $category): ?>
                         <option value="<?= $category['category_id'] ?>"><?= $category['name'] ?></option>
                     <?php endforeach ?>
@@ -34,31 +37,41 @@ $categories = $productCategory->read();
             </div>
 
             <div class="input-products-wrapper">
-                <label for="price">Preço</label>
-                <input type="text" class="input-mask-money" name="price" placeholder="R$ 00,00" required>
+                <label for="price-create-products">Preço</label>
+                <input type="text" class="input-mask-money" name="price" id="price-create-products" placeholder="R$ 00,00" required>
             </div>
 
             <div class="input-products-wrapper">
-                <label for="special_price">Desconto</label>
-                <input type="text" class="input-mask-money" name="special_price" placeholder="R$ 00,00" required>
+                <label for="special_price_create_category">Desconto</label>
+                <input type="text" class="input-mask-money" name="special_price" id="special_price_create_category" placeholder="R$ 00,00" required>
             </div>
 
             <div class="input-products-wrapper">
-                <label for="description">Descrição</label>
-                <input type="text" name="description" placeholder="Digite a Descrição" required>
+                <label for="description-create-products">Descrição</label>
+                <input type="text" name="description" id="description-create-products" placeholder="Digite a Descrição" required>
             </div>
 
             <div class="input-products-wrapper">
-                <label for="status">Status</label>
-                <select name="status" required>
+                <label for="status-create-products">Status</label>
+                <select name="status" id="status-create-products" required>
                     <option value="1" selected>Ativado</option>
                     <option value="0">Desativado</option>
                 </select>
             </div>
 
             <div class="input-products-wrapper">
-                <label for="banner">Banner</label>
-                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" required>
+                <label for="banner-create-products">Banner</label>
+                <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner-create-products" required>
+            </div>
+
+            <div class="input-products-wrapper -ingredients">
+                <label for="ingredients-create-products">Adicionais</label>
+                <select class="js-example-basic-multiple" name="ingredients[]" id="ingredients-create-products" multiple="multiple">
+                    <option disabled>Selecione um Adicional para seu Produto (ou não)</option>
+                    <?php foreach($ingredients as $ingredientItem): ?>
+                        <option value="<?= $ingredientItem['ingredient_id'] ?>"><?= $ingredientItem['name'] ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
         </div>
 

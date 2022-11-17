@@ -3,6 +3,7 @@
 namespace Classes;
 
 use PDO;
+use PDOException;
 
 require_once(__DIR__ . '/../config/config.php');
 
@@ -14,6 +15,27 @@ class Database {
         $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 
         return $conn;
+    }
+
+    public function lastInsertId($table)
+    {
+        try {
+
+            $id = $table . '_id';
+            
+            $sql = "SELECT MAX({$id}) as id FROM $table";
+
+            $stmt = $this->conn()->prepare($sql);
+
+            $stmt->execute();
+
+            $id = $stmt->fetch()['id'];
+
+            return $id;
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 
 }
