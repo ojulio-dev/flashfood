@@ -14,8 +14,8 @@ $readCategory = $productCategory->read();
 ?>
 
 <section id="main-read-products" class="main-read-products">
-    <div class="products-title-wrapper">
-        <h1 class="main-products-title">Produtos</h1>
+    <div class="dashboard-title-wrapper">
+        <h1 class="main-dashboard-title">Produtos</h1>
     </div>
 
     <form class="products-select-category">
@@ -34,7 +34,7 @@ $readCategory = $productCategory->read();
             <tbody id="read-table-products-items">
                 <?php if ($readProduct): foreach($readProduct as $product): ?>
                     <tr>
-                        <td class="read-image-wrapper"><img src="assets/images/products/<?= $product['banner'] ?>" alt=""></td>
+                        <td class="read-image-wrapper"><img src="<?= DIR_SYSTEM ?>/assets/images/products/<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['category'] ?></td>
                         <td><?= $product['name'] ?></td>
                         <td>R$ <?= number_format($product['special_price'], 2, ',', '.') ?></td>

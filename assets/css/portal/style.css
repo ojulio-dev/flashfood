@@ -1,0 +1,37 @@
+.main-portal-section {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-portal-wrapper {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.main-portal-wrapper a {
+    width: 400px;
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(25, 25, 25, 0.936);
+    border-radius: 20px;
+
+    cursor: pointer;
+    transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
+
+    color: #fff;
+    font-size: 17px;
+}
+
+.main-portal-wrapper a:hover {
+    transform: scale(1.04);
+}

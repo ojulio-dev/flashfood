@@ -128,43 +128,6 @@ $(document).ready(function() {
         })
     });
 
-    // ListIngredients
-    $('#button-read-ingredients').click(function() {
-        
-        let productSlug = $(this).data('product-slug');
-
-        $.ajax({
-            url: API_URL + 'api/?api=ingredient&action=listIngredientsByProduct',
-            type: 'POST',
-            data: {
-                productSlug
-            },
-            dataType: 'JSON',
-            success: function(data) {
-                
-                if (data.response) {
-
-                    data.ingredients.map(ingredient=> {
-                        $('#read-items-category').append(
-                            `<tr>
-                                <td>Resultado</td>
-                            </tr>`
-                        )
-                    });
-                }
-
-            },
-            error: function() {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
-                    icon: 'error'
-                })
-            }
-
-        })
-    });
-
     //Change ListProducts
     $('#options-list-products').change(function(event) {
         var categoryId = event.target.value;
@@ -194,7 +157,7 @@ $(document).ready(function() {
                 var list = data.map(function(product) {
                       return `
                         <tr>
-                            <td class="read-image-wrapper"><img src="assets/images/products/${product.banner}" alt=""></td>
+                            <td class="read-image-wrapper"><img src="${API_URL}/assets/images/products/${product.banner}" alt=""></td>
                             <td>${product.category}</td>
                             <td>${product.name}</td>
                             <td>R$ ${Number(product.special_price).toFixed(2).replace('.', ',')}</td>

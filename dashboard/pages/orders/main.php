@@ -10,8 +10,8 @@ $product = new Product;
 ?>
 
 <section id="main-read-menu" class="main-read-menu">
-    <div class="products-title-wrapper">
-        <h1 class="main-products-title">Cardápio</h1>
+    <div class="dashboard-title-wrapper">
+        <h1 class="main-dashboard-title">Cardápio</h1>
     </div>
 
     <div class="search-form">
@@ -35,8 +35,8 @@ $product = new Product;
                             <div class="main-orders-item">
                                 <a href="#">
                                     <div class="products-image-wrapper">
-                                        <img src="<?= DIR_IMG ?>/products/<?= $product['banner'] ?>">
-                                        <button type="button" class="button-add-cart"><i class="fa-solid fa-plus"></i></button>
+                                        <img src="<?= DIR_SYSTEM ?>/assets/images/products/<?= $product['banner'] ?>">
+                                        <button type="button" class="show-modal-product" data-product-id="<?= $product['product_id'] ?>"><i class="fa-solid fa-plus"></i></button>
                                     </div>
 
                                     <strong><?= $product['name'] ?></strong>
@@ -48,4 +48,10 @@ $product = new Product;
                 </li>
         <?php endif; endforeach ?>
     </ul>
+
+    <div class="main-modal" id="modal-orders">
+        <div class="main-modal-wrapper -orders">
+
+        </div>
+    </div>
 </section>

@@ -9,8 +9,8 @@ $read = $productCategory->readAll();
 ?>
 
 <section class="main-category-products">
-    <div class="products-title-wrapper">
-        <h1 class="main-products-title">Categorias</h1>
+    <div class="dashboard-title-wrapper">
+        <h1 class="main-dashboard-title">Categorias</h1>
     </div>
 
     <div class="products-search-wrapper">

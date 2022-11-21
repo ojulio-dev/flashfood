@@ -36,8 +36,8 @@
             </div>
 
             <div class="click-wrapper">
-                <a href="#">Cadastro</a>
-                <a href="#">Listagem</a>
+                <a href="?page=users&action=create">Cadastro</a>
+                <a href="?page=users">Listagem</a>
             </div>
         </li>
 

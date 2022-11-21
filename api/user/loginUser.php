@@ -34,10 +34,12 @@ if (isset($_POST)) {
         
         exit();
     }
+
+    $dataUser = $user->checkUser($email, $password);
     
-    if ($user->checkUser($email, $password)) {
+    if ($dataUser) {
         
-        $_SESSION['user']['email'] = $email;
+        $_SESSION['user'] = $dataUser;
 
         $response = [
             'response' => true,

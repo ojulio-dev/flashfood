@@ -61,7 +61,7 @@ $(document).ready(function() {
                 data.map(product=>{
                     $('#read-items-category').append(`
                     <tr>
-                        <td class="read-image-wrapper"><img src="assets/images/products/${ product.banner }" alt=""></td>
+                        <td class="read-image-wrapper"><img src="${API_URL}/assets/images/products/${ product.banner }" alt=""></td>
                         <td>${ product.name }</td>
                         <td>${ new Intl.NumberFormat('pt-BR', {
                             style: 'currency',

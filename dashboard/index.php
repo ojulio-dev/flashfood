@@ -9,6 +9,11 @@ ob_start();
 
 session_start();
 
+if (!isset($_SESSION['user']) || $_SESSION['user']['role_id'] > 1) {
+    header("Location: ../");
+    exit();
+}
+
 require_once(__DIR__ . '/config/environment.php');
  
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';

@@ -1,6 +1,14 @@
-<section>
-    <ul>
-        <li><a href="">Dashboard</a></li>
-        <li><a href="">Response</a></li>
+<?php
+
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php");
+} 
+
+?>
+
+<section class="main-portal-section">
+    <ul class="main-portal-wrapper">
+        <li><a href="<?= DIR_PATH ?>/dashboard/">Dashboard</a></li>
+        <li><a href="<?= DIR_PATH ?>/responsive/">Responsive</a></li>
     </ul>
 </section>

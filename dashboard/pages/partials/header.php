@@ -38,7 +38,7 @@ $mock = array(
         <div class="main-modal-title -cart">
             <h2>Carrinho</h2>
             
-            <i class="fa-solid fa-xmark icon-exit" id="icon-cart-exit"></i>
+            <i class="fa-solid fa-xmark cart-icon-exit icon-exit"></i>
         </div>
 
         <ul class="main-item-modal -cart">
@@ -77,8 +77,6 @@ $mock = array(
 
     <div class="header-customer-wrapper">
         <i class="fa-solid fa-cart-shopping fa-lg" id="icon-cart-modal"></i>
-
-        <i class="fa-solid fa-bell fa-lg"></i>
 
         <i class="fa-solid fa-user fa-lg"></i>
     </div>

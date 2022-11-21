@@ -1,25 +1,24 @@
 <?php
 
-use Model\Ingredient;
+use Model\User;
 
-$ingredientController = new Ingredient;
+$user = new User;
 
-$readIngredients = $ingredientController->read();
+$users = $user->read();
 
 ?>
 
-<section class="main-ingredient-products">
+<section class="main-read-users">
     <div class="dashboard-title-wrapper">
-        <h1 class="main-dashboard-title">Adicionais</h1>
+        <h1 class="main-dashboard-title">Usuários</h1>
     </div>
 
     <div class="products-search-wrapper">
         <div class="search-form">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input id="ingredient-search" type="search" placeholder="Search...">
+            <input id="user-search" type="search" placeholder="Search...">
         </div>
-        
-        <a href="index.php?page=ingredient&action=create" class="products-read-button-create">Create +</a>
+    
     </div>
 
     <div class="ingredient-table-scroll-wrapper">
@@ -27,27 +26,31 @@ $readIngredients = $ingredientController->read();
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Ingredientes</th>
-                    <th>Preços</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Nível</th>
+                    <th>Data de Nascimento</th>
                     <th>Status</th>
                     <th class="read-table-action">Action</th>
                 </tr>
             </thead>
-            <tbody id="read-table-ingredients-items">
-                <?php if ($readIngredients): foreach($readIngredients as $ingredient): $count = $ingredientController->countIngredients($ingredient['ingredient_id'])?>
+            <tbody id="read-table-users-items">
+                <?php if ($users): foreach($users as $userItem): ?>
                     <tr>
-                        <td><?= $ingredient['ingredient_id'] ?></td>
-                        <td><?= $ingredient['name'] ?></td>
-                        <td><?=  number_format($ingredient['price'], 2, ',', '.') ?></td>
+                        <td><?= $userItem['user_id'] ?></td>
+                        <td><?= $userItem['name'] ?></td>
+                        <td><?= $userItem['email'] ?></td>
+                        <td><?= ucfirst($userItem['role']) ?></td>
+                        <td><?= date('d/m/Y', strtotime($userItem['birthdate'])) ?></td>
                         <td class="read-table-status">
                             <form>
-                                <input name="status-read-ingredient" id="status-read-ingredient" onclick="changeStatus(<?= $ingredient['ingredient_id'] ?>, 'ingredient')" type="checkbox" <?= $ingredient['status'] == 1 ? 'checked' : '' ?>/>
+                                <input name="status-read-users" id="status-read-users" onclick="changeStatus(<?= $userItem['user_id'] ?>, 'user')" type="checkbox" <?= $userItem['status'] == 1 ? 'checked' : '' ?>/>
                                 <label for="status"></label>
                             </form>
                         </td>
                         <td class="read-table-action">
                             <div class="read-table-icons-wrapper">
-                                <a href="index.php?page=ingredient&action=update&id=<?= $ingredient['ingredient_id'] ?>">
+                                <a href="index.php?page=users&action=update&id=<?= $userItem['user_id'] ?>">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>

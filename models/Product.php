@@ -3,6 +3,8 @@
 namespace Model;
 
 use Classes\Database;
+use Model\Additional;
+
 use PDO;
 use PDOException;
 
@@ -23,7 +25,7 @@ class Product extends Database {
 
         $newName = $id . $extension;
 
-        $destiny = __DIR__ . '/../dashboard/assets/images/products/' . $newName;
+        $destiny = __DIR__ . '/../assets/images/products/' . $newName;
 
         if (file_exists($destiny)) unlink($destiny);
 
@@ -82,6 +84,9 @@ class Product extends Database {
 
     public function readById($id)
     {
+
+        $additional = new Additional;
+
         try {
 
             $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = $id");
@@ -91,7 +96,13 @@ class Product extends Database {
             $this->stmt->execute();
             
             if ($this->stmt->rowCount()) {
-                return $this->stmt->fetch(PDO::FETCH_ASSOC);
+                $product = [];
+                $product = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                $product['additionals'] = $additional->readIngredientsById($product['product_id']);
+
+                return $product;
+
             } else {
                 return false;
             }
@@ -236,7 +247,7 @@ class Product extends Database {
 
     public function deleteFile($banner)
     {
-        $destiny = __DIR__ . '/../dashboard/assets/images/products/' . $banner;
+        $destiny = __DIR__ . '/../assets/images/products/' . $banner;
 
         if (file_exists($destiny)) {
             unlink($destiny);   

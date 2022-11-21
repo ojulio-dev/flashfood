@@ -27,33 +27,31 @@ if (isset($_POST)) {
         echo json_encode($response, JSON_UNESCAPED_UNICODE);
         exit();
     }
+
+    $name = filter_input(INPUT_POST, 'name');
     
-    $email = $_POST['email'];
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
-    $password = sha1($_POST['password']);
-    $confirmPassword = sha1($_POST['confirmPassword']);
+    $role = filter_input(INPUT_POST, 'role_id', FILTER_SANITIZE_NUMBER_INT);
 
-    if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
+    $birthdate = $_POST['birthdate'];
+
+    $password = date('dmY', strtotime($birthdate));
+
+    $password = sha1($password);
+
+    if (!$name || !$email || !$role) {
+
         $response = [
             'response' => false,
-            'message' => 'E-mail inválido! Verifique e tente novamente'
+            'message' => 'Informações inválidas! Verifique e tente Novamente'
         ];
 
         echo json_encode($response, JSON_UNESCAPED_UNICODE);
         exit();
     }
 
-    if ($password != $confirmPassword) {
-        $response = [
-            'response' => false,
-            'message' => 'As senhas não conferem! Verifique e tente novamente.'
-        ];
-        
-        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-        exit();
-    }
-
-    $create = $user->create($email, $password);
+    $create = $user->create($name, $email, $password, $role, $birthdate);
 
     if ($create) {
 

@@ -22,7 +22,7 @@ class ProductCategory extends Database{
 
         $newName = $id . $extension;
 
-        $destiny = __DIR__ . '/../dashboard/assets/images/categories/' . $newName;
+        $destiny = __DIR__ . '/../assets/images/categories/' . $newName;
 
         if (file_exists($destiny)) unlink($destiny);
 
@@ -348,7 +348,7 @@ class ProductCategory extends Database{
 
     public function deleteFile($banner)
     {
-        $destiny = __DIR__ . '/../dashboard/assets/images/categories/' . $banner;
+        $destiny = __DIR__ . '/../assets/images/categories/' . $banner;
 
         if (file_exists($destiny)) {
             unlink($destiny);   

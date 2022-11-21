@@ -78,11 +78,32 @@ class Additional extends Database {
                 return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
             } else {
                 
-                return false;
+                return [];
             }
             
         } catch (PDOException $e) {
             throw $e->getMessage();
+        }
+    }
+
+    public function readIngredientsById($id)
+    {
+        try {
+
+            $this->setSql("SELECT I.*, A.additional_id FROM " . $this->table . " A INNER JOIN ingredient I on I.ingredient_id = A.ingredient_id INNER JOIN product P on P.product_id = A.product_id WHERE P.product_id = '{$id}' AND A.status = 1");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+
+                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return [];
+            }
+        } catch (PDOException $e) {
+            return $e->getMessage();
         }
     }
 

@@ -56,22 +56,22 @@ if ($additionals) {
 ?>
 
 <section class="main-update-products">
-    <div class="products-title-wrapper">
+    <div class="dashboard-title-wrapper">
         <a href="?page=products">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
 
-        <h1 class="main-products-title">Atualização de Produtos</h1>
+        <h1 class="main-dashboard-title">Atualização de Produtos</h1>
     </div>
 
-    <form id="form-products-update" class="main-products-form" method="POST" enctype="multipart/form-data">
-        <div class="form-items-products">
-            <div class="input-products-wrapper">
+    <form id="form-products-update" class="main-dashboard-form" method="POST" enctype="multipart/form-data">
+        <div class="main-form-items">
+            <div class="main-input-wrapper">
                 <label for="update-name-products">Nome</label>
                 <input type="text" name="name" id="update-name-products" placeholder="Digite o Nome"  value="<?= $readProducts['name'] ?>">
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-category-products">Categoria</label>
                 <select name="category" id="update-category-products">
                     <?php foreach($categories as $category): ?>
@@ -80,22 +80,22 @@ if ($additionals) {
                 </select>
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-price-products">Preço</label>
                 <input type="text" class="input-mask-money" name="price" id="update-price-products" placeholder="R$ 00,00"  value="<?= $readProducts['price'] ?>">
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-special-price-products">Desconto</label>
                 <input type="text" class="input-mask-money" name="special_price" id="update-special-price-products" placeholder="R$ 00,00"  value="<?= $readProducts['special_price'] ?>">
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-description-products">Descrição</label>
                 <input type="text" name="description" id="update-description-products" placeholder="Digite a Descrição" value="<?= $readProducts['description'] ?>">
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-status-products">Status</label>
                 <select name="status" id="update-status-products">
                     <option value="'1'" <?= 1 == $readProducts['status'] ? 'selected' : '' ?>>Ativado</option>
@@ -103,12 +103,12 @@ if ($additionals) {
                 </select>
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="banner-update-products">Banner</label>
                 <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner-update-products" required>
             </div>
 
-            <div class="input-products-wrapper -ingredients">
+            <div class="main-input-wrapper -ingredients">
                 <label for="ingredients-create-products">Adicionais</label>
                 <select class="js-example-basic-multiple" name="ingredients[]" id="ingredients-create-products" multiple="multiple">
                     <option disabled>Selecione um Adicional para seu Produto (ou não)</option>

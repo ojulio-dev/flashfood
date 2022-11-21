@@ -22,21 +22,21 @@ $readProducts = $productCategory->readByCategory($_GET['id']);
 ?>
 
 <section class="main-update-category">
-    <div class="products-title-wrapper">
+    <div class="dashboard-title-wrapper">
         <a href="?page=category">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
-        <h1 class="main-products-title">Atualização</h1>
+        <h1 class="main-dashboard-title">Atualização</h1>
     </div>
 
-    <form class="main-products-form" method="POST">
-        <div class="form-items-products">
-            <div class="input-products-wrapper">
+    <form class="main-dashboard-form" method="POST">
+        <div class="main-form-items">
+            <div class="main-input-wrapper">
                 <label for="update-name-category">Categoria</label>
                 <input type="text" name="name" id="update-name-category" placeholder="Digite a Categoria" value="<?= $read['name'] ?>" required>
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-status-category">Status</label>
                 <select name="status" id="update-status-category" required>
                     <option value="'1'" <?= 1 == $read['status'] ? 'selected' : '' ?>>Ativado</option>

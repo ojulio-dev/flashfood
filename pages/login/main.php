@@ -1,3 +1,11 @@
+<?php
+
+if (isset($_SESSION['user'])) {
+    header("Location: index.php?page=portal");
+}
+
+?>
+
 <section id="main-login-system">
     <form id="form-login-user">
         <div class="login-title-wrapper">

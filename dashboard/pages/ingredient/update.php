@@ -20,26 +20,26 @@ if (!$read) {
 ?>
 
 <section class="main-update-ingredient">
-    <div class="products-title-wrapper">
+    <div class="dashboard-title-wrapper">
         <a href="?page=ingredient">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
-        <h1 class="main-products-title">Atualização</h1>
+        <h1 class="main-dashboard-title">Atualização</h1>
     </div>
 
-    <form id="form-update-ingredient" class="main-products-form" method="POST">
-        <div class="form-items-products">
-            <div class="input-products-wrapper">
+    <form id="form-update-ingredient" class="main-dashboard-form" method="POST">
+        <div class="main-form-items">
+            <div class="main-input-wrapper">
                 <label for="update-name-ingredient">Ingrediente</label>
                 <input type="text" name="name" id="update-name-ingredient" placeholder="Digite o Ingrediente" value="<?= $read['name'] ?>" required>
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-price-ingredient">Preço</label>
                 <input type="text" id="update-price-ingredient" name="price" class="input-mask-money" placeholder="Digite o Preço" value="<?= number_format($read['price'], 2, ',', '.') ?>" required>
             </div>
 
-            <div class="input-products-wrapper">
+            <div class="main-input-wrapper">
                 <label for="update-status-ingredient">Status</label>
                 <select name="status" id="update-status-ingredient" required>
                     <option value="1" <?= 1 == $read['status'] ? 'selected' : '' ?>>Ativado</option>

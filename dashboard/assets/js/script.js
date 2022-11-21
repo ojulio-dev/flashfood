@@ -74,15 +74,15 @@ const changeStatus = (id, table) => {
 }
 
 // Show Cart Modal
-$('#icon-cart-modal').click(function(event) {
+$('#icon-cart-modal').click(function() {
 
     $('#modal-cart').show();
 
 });
 
-$('#icon-cart-exit').click(function(event) {
+$('body').on('click', '.icon-exit', function() {
 
-    $('#modal-cart').hide();
+    $('.main-modal').hide();
 
 });
 

@@ -45,8 +45,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
 </head>
 <body>
-    <div id="container">
-        <?php
+    <div id="container-landingpage">
+        <?php require_once (__DIR__. '/pages/partials/header.php') ?>
+
+        <main>
+            <?php
 
             if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
                 require_once(__DIR__ . "/pages/$page/$action.php");
@@ -58,7 +61,10 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                 header("Location: index.php?page=home");
             }
 
-        ?>
+            ?>
+        </main>
+
+        <?php require_once (__DIR__. '/pages/partials/footer.php') ?>
     </div>
 
     <!-- JQuery -->

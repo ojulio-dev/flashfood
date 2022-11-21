@@ -2,6 +2,107 @@ $(document).ready(function() {
 
     let cart = [];
 
+    // Show Orders Modal
+    $('.show-modal-product').click(function() {
+
+        let productId = $(this).data('product-id');
+
+        $.ajax({
+            url: API_URL + 'api/?api=products&action=listProductById',
+            type: 'POST',
+            data: {productId},
+            dataType: 'json',
+            success: function (data) {
+
+                let additionals = data.additionals.map(function(additional) {
+                    return (`<li>
+                            <input type="checkbox" name="checkboxAdditional" data-additional-id="${additional.additional_id}">
+                            <label>${additional.name}</label>
+                        </li>`)
+                })
+
+                $('#modal-orders .main-modal-wrapper').html('');
+
+                $('#modal-orders .main-modal-wrapper').append(`
+
+                    <div class="header">
+                        <img src="${API_URL}assets/images/products/${data.banner}" alt="">
+                        <i class="fa-solid fa-xmark icon-exit"></i>
+                    </div>
+
+                    <div class="main-item-modal -orders">
+                        <div class="modal-orders-items-wrapper">
+                            <h2>${data.name}</h2>
+                            <small>${data.description}</small>
+                            ${data.additionals.length ? `
+                                <div>
+                                    <h4>Adicionais</h4>
+                                    
+                                    <ul>
+                                        ${additionals.join('')}
+                                    </ul>
+                                </div>`
+                            : ''}
+                        </div>
+
+                        <button class="button-order success" id="button-add-cart" data-product-id="${data.product_id}">Adicionar ao Carrinho</button>
+                    </div>
+
+                `)
+
+                $('#modal-orders').show();
+
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+            }
+        });
+
+    });
+
+    $('body').on('click', '#button-add-cart', (function() {
+        
+        let productId = $(this).data('product-id');
+
+        let additionals = []
+
+        let checkbox = $('input[name=checkboxAdditional]:checked');
+
+        if (checkbox.length) {
+            checkbox.map(function(_, additional) {
+
+                additionals = [...additionals, additional.dataset.additionalId]
+            });
+        }
+
+        $.ajax({
+            url: API_URL + 'api/?api=cart&action=addCart',
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            type: 'POST',
+            data: {
+                productId: productId, additionals: additionals
+            },
+            dataType: 'json',
+            success: function (data) {
+
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+            }
+        });
+
+    }));
+
     // read
     const readProducts = (search) => {
         $.ajax({
@@ -20,8 +121,8 @@ $(document).ready(function() {
                             <div class="main-orders-item">
                                 <a href="#">
                                     <div class="products-image-wrapper">
-                                        <img src="${BASE_URL}assets/images/products/${product.banner}">
-                                        <button type="button" class="button-add-cart"><i class="fa-solid fa-plus"></i></button>
+                                        <img src="${API_URL}/assets/images/products/${product.banner}">
+                                        <button type="button" class="show-modal-product"><i class="fa-solid fa-plus"></i></button>
                                     </div>
 
                                     <strong>${product.name}</strong>
