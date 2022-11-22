@@ -1,35 +1,10 @@
 <?php
 
-$mock = array(
-    [
-        'name' => 'Sorvete Qualquer qualquer coisa sei la amarelo',
-        'banner' => '14.jpg',
-        'amount' => 2,
-        'price' => 14.99,
-        'table' => 2
-    ],
-    [
-        'name' => 'Açaí ao Molho',
-        'banner' => '14.jpg',
-        'amount' => 2,
-        'price' => 14.99,
-        'table' => 2
-    ],
-    [
-        'name' => 'Sorvete Qualquer',
-        'banner' => '14.jpg',
-        'amount' => 2,
-        'price' => 14.99,
-        'table' => 2
-    ],
-    [
-        'name' => 'Açaí ao Molho',
-        'banner' => '14.jpg',
-        'amount' => 2,
-        'price' => 14.99,
-        'table' => 2
-    ]
-);
+use Model\Cart\Cart;
+
+$cart = new Cart;
+
+$cartItems = $cart->read();
 
 ?>
 
@@ -41,29 +16,7 @@ $mock = array(
             <i class="fa-solid fa-xmark cart-icon-exit icon-exit"></i>
         </div>
 
-        <ul class="main-item-modal -cart">
-            <?php foreach($mock as $product): ?>
-                <li>
-                    <div class="cart-name-wrapper">
-                        <i class="fa-solid fa-cart-shopping icon-cart"></i>
-
-                        <div class="cart-info-wrapper">
-                            <h3><?=
-                                strlen($product['name']) > 15
-                                ? substr($product['name'], 0, 15) . '...' 
-                                : $product['name']
-                            ?></h3>
-                            <p>R$ <?= number_format($product['price'], 2, ',', '.') ?></p>
-                        </div>
-                    </div>
-                    <div class="cart-edit-amount">
-                        <button type="button"><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" disabled value="2">
-                        <button type="button"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                </li>
-            <?php endforeach ?>
-        </ul>
+        <ul class="main-item-modal -cart"></ul>
 
         <div class="button-order-wrapper">
             <button class="button-order cancel" type="button">Cancelar</button>

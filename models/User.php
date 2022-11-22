@@ -104,7 +104,7 @@ class User extends Database {
     {
         try {
             
-            $this->setSql("SELECT name, email, role_id, image, birthdate FROM " . $this->getTable() . " WHERE email = '$email' AND BINARY password = '$password' AND status = 1");
+            $this->setSql("SELECT user_id, name, email, role_id, image, birthdate FROM " . $this->getTable() . " WHERE email = '$email' AND BINARY password = '$password' AND status = 1");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

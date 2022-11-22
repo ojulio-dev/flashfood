@@ -40,6 +40,8 @@ $(document).ready(function() {
             }
         }
     });
+
+    readCart();
 });
 
 const changeStatus = (id, table) => {
@@ -93,4 +95,51 @@ function delay(fn, ms) {
       clearTimeout(timer);
       timer = setTimeout(fn.bind(this, ...args), ms || 0);
     }
+}
+
+const readCart = () => {
+    $.ajax({
+        url: API_URL + 'api/?api=cart&action=listCart', 
+        dataType: 'json',
+        success: function (data) {
+
+            $('.main-item-modal.-cart').html('');
+
+            if (data.length) {
+                data.map(function(product) {
+                    $('.main-item-modal.-cart').append(`
+                        <li>
+                            <div class="cart-name-wrapper">
+                                <i class="fa-solid fa-cart-shopping icon-cart"></i>
+
+                                <div class="cart-info-wrapper">
+                                    <h3>${product.name.length > 15 ? product.name.substr(0, 15) + '...' : product.name}</h3>
+                                    <p>R$ ${Number(product.special_price).toFixed(2).replace('.', ',')}</p>
+                                </div>
+                            </div>
+                            <div class="cart-edit-amount">
+                                <button type="button"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" disabled value="${product.quantity}">
+                                <button type="button"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </li>
+                    `);
+                })
+            } else {
+                $('.main-item-modal.-cart').append(`
+                    <li class="cart-empty-wrapper">
+                        <p>Você não possui produtos no Carrinho :/</p>
+                        <p>Adicione clicando <a href="index.php?page=orders">Aqui</a></p>
+                    </li>
+                `); 
+            }
+        },
+        error: function () {
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+        }
+    });
 }

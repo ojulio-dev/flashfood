@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
-    let cart = [];
+    $('#menu-search').keyup(delay(function(event) {
+        var search = event.target.value.toLowerCase();
+
+        readProducts(search);
+    }, 500));
 
     // Show Orders Modal
     $('.show-modal-product').click(function() {
@@ -80,10 +84,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: API_URL + 'api/?api=cart&action=addCart',
-            headers: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
+            url: API_URL + 'api/?api=cart&action=insertCart',
             type: 'POST',
             data: {
                 productId: productId, additionals: additionals
@@ -100,6 +101,8 @@ $(document).ready(function() {
                 })
             }
         });
+
+        readCart();
 
     }));
 
@@ -182,11 +185,4 @@ $(document).ready(function() {
             }
         });
     }
-
-    $('#menu-search').keyup(delay(function(event) {
-        var search = event.target.value.toLowerCase();
-
-        readProducts(search);
-    }, 500));
-    
 })
