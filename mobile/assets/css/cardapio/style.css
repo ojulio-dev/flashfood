@@ -47,12 +47,16 @@ div.fundo-produto{
 }
 
 div.fundo-produto h2{
-  /* position: absolute; */
-  width: 203px;
-  height: 45px;
-
+  position: relative;
+  top: -30px;
+  /*text-shadow: 
+    -3px -3px 2px #473227, 
+   -3px 3px 2px #473227,                    
+    3px -3px 2px #473227,                  
+    3px 2px 2px #473227;   */
+  -webkit-text-stroke: 2px #473227;
+  /* text-stroke: 2px #473227; */
   font-family: 'Inter';
-  font-style: normal;
   font-weight: 800;
   font-size: 32px;
   line-height: 39px;
