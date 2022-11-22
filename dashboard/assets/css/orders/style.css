@@ -87,6 +87,10 @@
     cursor: pointer;
 }
 
+.main-item-modal .icon-cart:last-child {
+    margin-bottom: 7px;
+}
+
 .button-order-wrapper {
     flex: 1;
     display: flex;

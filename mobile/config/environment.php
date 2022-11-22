@@ -3,7 +3,7 @@
 define('ENVIRONMENT', 'development');
 
 // Caso o projeto esteja dentro de uma pasta e não na raiz do www|htdocs
-define('DIR_ROOT', 'flashfood/responsive');
+define('DIR_ROOT', 'flashfood/mobile');
 
 // Define o nome do servidor
 define('DIR_SERVER', $_SERVER['SERVER_NAME']);
