@@ -1,17 +1,19 @@
 <section class="sistema-cardapio-wrapper">
     <div class="sistema-info-wrapper">
-        <div class="titulo-cardapio-wrappera">
+        <div class="titulo-cardapio-wrapper">
             <img src="<?= DIR_IMG ?>/left.png" alt="">
             <h2>Big Burguer</h2>
         </div>
 
-        <div>
-            <img src="" alt="">
-            <div>
-                <strong></strong>
-                <small></small>
+        <div class="caixa-img-strong">
+            <div class="div-caixa-hamburguer">
+                <img src="<?= DIR_IMG ?>/cardapio/abuguie.jpg" alt="">
             </div>
-            a
+            <div class="caixa-strong">
+                <strong>Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.</strong>
+                <small class="valor-strong">R$:32,99</small>
+            </div>
+            
         </div>
 
         <div>
