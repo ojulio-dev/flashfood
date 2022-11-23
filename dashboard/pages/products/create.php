@@ -51,13 +51,11 @@ $ingredients = $ingredient->read();
                 <input type="text" name="description" id="description-create-products" placeholder="Digite a Descrição" required>
             </div>
 
-            <div class="main-input-wrapper -ingredients">
-                <label for="ingredients-create-products">Adicionais</label>
-                <select class="js-example-basic-multiple" name="ingredients[]" id="ingredients-create-products" multiple="multiple">
-                    <option disabled>Selecione um Adicional para seu Produto (ou não)</option>
-                    <?php foreach($ingredients as $ingredientItem): ?>
-                        <option value="<?= $ingredientItem['ingredient_id'] ?>"><?= $ingredientItem['name'] ?></option>
-                    <?php endforeach ?>
+            <div class="main-input-wrapper">
+                <label for="status-create-products">Status</label>
+                <select name="status" id="status-create-products" required>
+                    <option value="1" selected>Ativado</option>
+                    <option value="0">Desativado</option>
                 </select>
             </div>
 
@@ -66,11 +64,13 @@ $ingredients = $ingredient->read();
                 <input type="file"  accept=".jpg, .png, .jpeg, .gif" name="banner" id="banner-create-products" required>
             </div>
 
-            <div class="main-input-wrapper">
-                <label for="status-create-products">Status</label>
-                <select name="status" id="status-create-products" required>
-                    <option value="1" selected>Ativado</option>
-                    <option value="0">Desativado</option>
+            <div class="main-input-wrapper -ingredients">
+                <label for="ingredients-create-products">Adicionais</label>
+                <select class="js-example-basic-multiple" name="ingredients[]" id="ingredients-create-products" multiple="multiple">
+                    <option disabled>Selecione um Adicional para seu Produto (ou não)</option>
+                    <?php foreach($ingredients as $ingredientItem): ?>
+                        <option value="<?= $ingredientItem['ingredient_id'] ?>"><?= $ingredientItem['name'] ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>

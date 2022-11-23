@@ -87,6 +87,10 @@
     cursor: pointer;
 }
 
+.main-item-modal li:last-child .icon-cart {
+    margin-bottom: 7px;
+}
+
 .main-item-modal .icon-cart:last-child {
     margin-bottom: 7px;
 }

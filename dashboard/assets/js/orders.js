@@ -91,7 +91,13 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function (data) {
+                data.response && $('#modal-orders').hide();
 
+                Swal.fire({
+                    title: data.response ? 'Sucesso!' : 'Oops...',
+                    text: data.message,
+                    icon: data.response ? 'success' : 'info'
+                })
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 Swal.fire({

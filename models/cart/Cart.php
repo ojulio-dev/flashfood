@@ -55,6 +55,23 @@ class Cart extends Database {
         }
     }
 
+    public function readByProductId($id)
+    {
+        try {
+            
+            $this->setSql("SELECT product_id FROM " . $this->table . " WHERE product_id = {$id}");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            throw $e->getMessage();
+        }
+    }
+
     public function update()
     {
 
