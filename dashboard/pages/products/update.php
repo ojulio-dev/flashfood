@@ -19,14 +19,14 @@ $additional = new Additional;
 $ingredient = new Ingredient;
 
 if (!isset($_GET['slug'])) {
-    header("Location: index.php?page=products");
+    header("Location: ?page=products");
 }
 
 $readProducts = $product->readBySlug($_GET['slug']);
 
 if (!$readProducts) {
     
-    header("Location: index.php?page=products");
+    header("Location: ?page=products");
     exit();
 }
 

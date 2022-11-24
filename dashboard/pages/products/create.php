@@ -29,7 +29,7 @@ $ingredients = $ingredient->read();
             <div class="main-input-wrapper">
                 <label for="category-create-products">Categoria</label>
                 <select name="category_id" id="category-create-products" required>
-                    <option value="" selected disabled>Selecione uma Categoria</option>
+                    <option selected disabled>Selecione uma Categoria</option>
                     <?php foreach($categories as $category): ?>
                         <option value="<?= $category['category_id'] ?>"><?= $category['name'] ?></option>
                     <?php endforeach ?>

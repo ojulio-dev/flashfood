@@ -14,11 +14,11 @@ if (isset($_SESSION['user'])) {
 
 <header class="main-landingpage-header">
     <nav>
-        <a href="index.php">Home</a>
+        <a href="?page=home">Home</a>
         <a href="">Sobre</a>
     </nav>
 
-    <a href="index.php?page=login">
-        <img src="<?= $userIcon ?>" alt="">
+    <a href="?page=login">
+        <img src="<?= $userIcon ?>" alt="Ícone do Usuário">
     </a>
 </header>

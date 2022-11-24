@@ -31,7 +31,7 @@ $roles = $role->read();
             <div class="main-input-wrapper">
                 <label for="role-create-users">Nível de Acesso</label>
                 <select name="role_id" id="role-create-users" required>
-                    <option value="" selected disabled>Selecione um Nivel</option>
+                    <option selected disabled>Selecione um Nivel</option>
 
                     <?php foreach($roles as $roleItem): ?>
                         <option value="<?= $roleItem['role_id'] ?>"><?= $roleItem['name'] ?></option>

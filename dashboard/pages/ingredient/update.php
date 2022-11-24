@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_GET['id'])) {
-    header("Location: index.php?page=ingredient");
+    header("Location: ?page=ingredient");
 }
 
 $idIngredient = $_GET['id'];
@@ -13,7 +13,7 @@ $ingredientController = new Ingredient;
 $read = $ingredientController->readById($_GET['id']);
 
 if (!$read) {
-    header("Location: index.php?page=ingredient");
+    header("Location: ?page=ingredient");
     exit();
 }
 

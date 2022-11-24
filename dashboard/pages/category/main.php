@@ -49,7 +49,7 @@ $read = $productCategory->readAll();
                         </td>
                         <td class="read-table-action">
                             <div class="read-table-icons-wrapper">
-                                <a href="index.php?page=category&action=update&id=<?= $category['category_id'] ?>">
+                                <a href="?page=category&action=update&id=<?= $category['category_id'] ?>">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>

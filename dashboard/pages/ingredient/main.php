@@ -19,7 +19,7 @@ $readIngredients = $ingredientController->read();
             <input id="ingredient-search" type="search" placeholder="Search...">
         </div>
         
-        <a href="index.php?page=ingredient&action=create" class="products-read-button-create">Create +</a>
+        <a href="?page=ingredient&action=create" class="products-read-button-create">Create +</a>
     </div>
 
     <div class="ingredient-table-scroll-wrapper">
@@ -47,7 +47,7 @@ $readIngredients = $ingredientController->read();
                         </td>
                         <td class="read-table-action">
                             <div class="read-table-icons-wrapper">
-                                <a href="index.php?page=ingredient&action=update&id=<?= $ingredient['ingredient_id'] ?>">
+                                <a href="?page=ingredient&action=update&id=<?= $ingredient['ingredient_id'] ?>">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
@@ -55,7 +55,7 @@ $readIngredients = $ingredientController->read();
                     </tr>
                 <?php  endforeach; else: ?>
                     <tr>
-                        <td>Nenhum Ingrediente cadastrado, cadastre clicando <a class="link-no-results" href="index.php?page=ingredient&action=create">aqui</a></td> 
+                        <td>Nenhum Ingrediente cadastrado, cadastre clicando <a class="link-no-results" href="?page=ingredient&action=create">aqui</a></td> 
                     </tr>
                 <?php endif; ?>
             </tbody>

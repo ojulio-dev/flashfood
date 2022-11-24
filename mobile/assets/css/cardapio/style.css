@@ -65,23 +65,19 @@ div.fundo-produto h2{
   color: #FFFFFF;
 }
 
-div.img-produto{
+div.img-produto {
   border: 2px solid #000;
   border-radius: 20px;
   width: 100%;
   margin-top: -35px;
   height: 130px;
-  overflow: hidden;
-
 }
 
-div.img-produto img{
-  box-sizing: border-box;
+div.img-produto img {
   width: 100%;
-  position: relative;
-  top: -70px;
-  margin: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
 }
 
 div.especificacoes-produto{
@@ -116,6 +112,7 @@ div.especificacoes-produto div.preco-produto h5{
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-shadow: 1px 1px 4px #000;
 }
 
 div.especificacoes-produto div.texto-produto img#logo-especificacao{

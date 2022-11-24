@@ -50,7 +50,7 @@ $users = $user->read();
                         </td>
                         <td class="read-table-action">
                             <div class="read-table-icons-wrapper">
-                                <a href="index.php?page=users&action=update&id=<?= $userItem['user_id'] ?>">
+                                <a href="?page=users&action=update&id=<?= $userItem['user_id'] ?>">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
@@ -58,7 +58,7 @@ $users = $user->read();
                     </tr>
                 <?php  endforeach; else: ?>
                     <tr>
-                        <td>Nenhum Ingrediente cadastrado, cadastre clicando <a class="link-no-results" href="index.php?page=ingredient&action=create">aqui</a></td> 
+                        <td>Nenhum Ingrediente cadastrado, cadastre clicando <a class="link-no-results" href="?page=ingredient&action=create">aqui</a></td> 
                     </tr>
                 <?php endif; ?>
             </tbody>

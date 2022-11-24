@@ -9,7 +9,7 @@ $role = new Role;
 $user = new User;
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: index.php?page=users");
+    header("Location: ?page=users");
 }
 
 $roles = $role->read();
@@ -18,7 +18,7 @@ $readUser = $user->readById($_GET['id']);
 
 if (!$readUser) {
     
-    header("Location: index.php?page=products");
+    header("Location: ?page=products");
     exit();
 }
 

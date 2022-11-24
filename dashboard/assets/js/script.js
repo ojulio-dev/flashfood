@@ -129,7 +129,7 @@ const readCart = () => {
                 $('.main-item-modal.-cart').append(`
                     <li class="cart-empty-wrapper">
                         <p>Você não possui produtos no Carrinho :/</p>
-                        <p>Adicione clicando <a href="index.php?page=orders">Aqui</a></p>
+                        <p>Adicione clicando <a href="?page=orders">Aqui</a></p>
                     </li>
                 `); 
             }

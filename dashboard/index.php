@@ -79,11 +79,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                 if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
                     require_once(__DIR__ . "/pages/$page/$action.php");
                 } else {
-                    header("Location: index.php?page=products");
+                    header("Location: ?page=products");
                 }
 
                 if (!isset($page)) {
-                    header("Location: index.php?page=products");
+                    header("Location: ?page=products");
                 }
 
                 ?>

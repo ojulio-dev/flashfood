@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_GET['id'])) {
-    header("Location: index.php?page=category");
+    header("Location: ?page=category");
 }
 
 $idCategory = $_GET['id'];
@@ -13,7 +13,7 @@ $productCategory = new ProductCategory;
 $read = $productCategory->readById($_GET['id']);
 
 if (!$read) {
-    header("Location: index.php?page=category");
+    header("Location: ?page=category");
     exit();
 }
 
