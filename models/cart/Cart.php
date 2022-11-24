@@ -27,7 +27,11 @@ class Cart extends Database {
 
             $this->stmt->execute();
 
-            return $this->stmt->rowCount();
+            if ($this->stmt->rowCount()) {
+                return $this->conn()->query("SELECT * FROM " . $this->table . " WHERE status = 1")->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
             
         } catch (PDOException $e) {
             throw $e->getMessage();

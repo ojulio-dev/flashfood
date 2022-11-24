@@ -29,7 +29,10 @@ $cartItems = $cart->read();
     <img src="<?= DIR_SYSTEM ?>/assets/images/system/flashfood_icon.png" alt="">
 
     <div class="header-customer-wrapper">
-        <i class="fa-solid fa-cart-shopping fa-lg" id="icon-cart-modal"></i>
+        <div class="header-cart-wrapper">
+            <i class="fa-solid fa-cart-shopping fa-lg icon-cart-modal"></i>
+            <span class="icon-cart-modal" id="icon-count-cart-items"><?= count($cartItems) ?></span>
+        </div>
 
         <i class="fa-solid fa-user fa-lg"></i>
     </div>

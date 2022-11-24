@@ -91,6 +91,9 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function (data) {
+
+                readIconCart();
+
                 data.response && $('#modal-orders').hide();
 
                 Swal.fire({
@@ -181,6 +184,23 @@ $(document).ready(function() {
                     }
                 });
     
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+            }
+        });
+    }
+
+    const readIconCart = () => {
+        $.ajax({
+            url: API_URL + 'api/?api=cart&action=listCart',
+            dataType: 'json',
+            success: function (data) {
+                $('#icon-count-cart-items').html(data.length);
             },
             error: function (jqXhr, textStatus, errorMessage) {
                 Swal.fire({

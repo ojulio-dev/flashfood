@@ -49,6 +49,33 @@
     width: 22px;
 }
 
+.header-customer-wrapper .header-cart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.header-customer-wrapper .header-cart-wrapper span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: red;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+
+    border-radius: 50%;
+
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+    cursor: pointer;
+}
+
 /* Aside */
 .main-dashboard-aside {
     display: flex;

@@ -76,7 +76,7 @@ const changeStatus = (id, table) => {
 }
 
 // Show Cart Modal
-$('#icon-cart-modal').click(function() {
+$('.icon-cart-modal').click(function() {
 
     $('#modal-cart').show();
 
@@ -119,7 +119,7 @@ const readCart = () => {
                             </div>
                             <div class="cart-edit-amount">
                                 <button type="button"><i class="fa-solid fa-minus"></i></button>
-                                <input type="text" disabled value="${product.quantity}">
+                                <input type="text" value="${product.quantity}">
                                 <button type="button"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </li>

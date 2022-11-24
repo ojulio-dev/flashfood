@@ -18,14 +18,16 @@ if (isset($_POST)) {
         exit();
     }
 
-    $cart->create($_SESSION['user']['user_id'], $_POST['productId']);
+    $response = $cart->create($_SESSION['user']['user_id'], $_POST['productId']);
 
-    $response = [
-        'response' => true,
-        'message' => 'Carrinho atualizado com Sucesso!'
-    ];
-
-    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-    exit();
+    if ($response) {
+        $response = [
+            'response' => $response,
+            'message' => 'Carrinho atualizado com Sucesso!'
+        ];
+    
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
 
 }
