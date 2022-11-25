@@ -1,10 +1,14 @@
 $(document).ready(function() {
 
-    $('#menu-search').keyup(delay(function(event) {
-        var search = event.target.value.toLowerCase();
+    $('#menu-search').keyup(function(event) {
+        
+        delay(function() {
+            var search = event.target.value.toLowerCase();
+    
+            readProducts(search);
+        }, 500);
 
-        readProducts(search);
-    }, 500));
+    });
 
     // Show Orders Modal
     $('.show-modal-product').click(function() {
@@ -211,27 +215,4 @@ $(document).ready(function() {
             }
         });
     }
-
-    $('body').on('click', '#button-insert-cart', function() {
-
-        let productId = $(this).data('product-id');
-
-        $.ajax({
-            url: API_URL + 'api/?api=cart&action=addQuantity',
-            type: 'POST',
-            data: `productId=${productId}`,
-            dataType: 'json',
-            processData: false,
-            success: function (data) {
-                readCart();
-            },
-            error: function (jqXhr, textStatus, errorMessage) {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
-                    icon: 'error'
-                })
-            }
-        });
-    })
 })

@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    let timer;
+
     $('.main-dashboard-aside li').click(function(event) {
         
         var item = event.target.closest('li');
@@ -73,6 +75,7 @@ const changeStatus = (id, table) => {
             })
         }
     });
+
 }
 
 // Show Cart Modal
@@ -88,13 +91,12 @@ $('body').on('click', '.icon-exit', function() {
 
 });
 
-function delay(fn, ms) {
-    let timer = 0
+let timer;
 
-    return function(...args) {
-      clearTimeout(timer);
-      timer = setTimeout(fn.bind(this, ...args), ms || 0);
-    }
+let delay = function(fn, ms) {
+    clearTimeout(timer);
+    
+    timer = setTimeout(fn, ms);
 }
 
 const readCart = () => {
@@ -108,7 +110,7 @@ const readCart = () => {
             if (data.length) {
                 data.map(function(product) {
                     $('.main-item-modal.-cart').append(`
-                        <li>
+                        <li data-product-id="${product.product_id}">
                             <div class="cart-name-wrapper">
                                 <i class="fa-solid fa-cart-shopping icon-cart"></i>
 
@@ -118,9 +120,9 @@ const readCart = () => {
                                 </div>
                             </div>
                             <div class="cart-edit-amount">
-                                <button type="button" id="button-remove-cart" data-product-id="${product.product_id}">${product.quantity <= 1 ? '<i class="fa-solid fa-down-long"></i>' : '<i class="fa-solid fa-minus"></i>'}</button>
-                                <input type="text" value="${product.quantity}" id="input-cart-amount">
-                                <button type="button" id="button-insert-cart" data-product-id="${product.product_id}"><i class="fa-solid fa-plus"></i></button>
+                                <button type="button" class="decrement-product-cart" data-action="decrement">${product.quantity <= 1 ? '<i class="fa-solid fa-down-long"></i>' : '<i class="fa-solid fa-minus"></i>'}</button>
+                                <input type="number" value="${product.quantity}" max="99" min="1" class="input-cart-amount">
+                                <button type="button" class="increment-product-cart" data-action="increment"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </li>
                     `);
@@ -131,7 +133,7 @@ const readCart = () => {
                         <p>Você não possui produtos no Carrinho :/</p>
                         <p>Adicione clicando <a href="?page=orders">Aqui</a></p>
                     </li>
-                `); 
+                `);
             }
         },
         error: function () {
@@ -143,3 +145,51 @@ const readCart = () => {
         }
     });
 }
+
+$('body').on('click', '.cart-edit-amount button', function() {
+
+    let product = $(this).closest('[data-product-id]');
+
+    let quantity = $(product).find('input')[0].value;
+
+    if ($(this).data('action') == 'increment') {
+
+        $(product).find('input')[0].value = parseInt(quantity) + 1;
+
+    } else {
+
+        $(product).find('input')[0].value = parseInt(quantity) - 1;
+    }
+
+    $(product).find('input').trigger('change');
+})
+
+$('body').on('change', '.input-cart-amount', function(event) {
+    
+    let product = $(this).closest('[data-product-id]').data();
+
+    if (event.target.value <= 0 || event.target.value > 99) {
+        event.target.value = 1;
+    }
+
+    delay(function() {
+
+        $.ajax({
+            url: API_URL + 'api/?api=cart&action=changeQuantity',
+            type: 'POST',
+            data: {
+                quantity: event.target.value,
+                productId: product.productId
+            },
+            dataType: 'json',
+            error: function (jqXhr, textStatus, errorMessage) {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+            }
+        });
+    
+    }, 400);
+})

@@ -80,12 +80,10 @@ class Cart extends Database {
         }
     }
     
-    public function updateQuantity($quantity, $productId)
+    public function changeQuantity($quantity, $productId)
     {
 
         try {
-            
-            $quantity = $quantity + 1;
 
             $this->setSql("UPDATE " . $this->table . " SET quantity = {$quantity} WHERE product_id = {$productId}");
 
