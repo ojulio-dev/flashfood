@@ -118,9 +118,9 @@ const readCart = () => {
                                 </div>
                             </div>
                             <div class="cart-edit-amount">
-                                <button type="button"><i class="fa-solid fa-minus"></i></button>
-                                <input type="text" value="${product.quantity}">
-                                <button type="button"><i class="fa-solid fa-plus"></i></button>
+                                <button type="button" id="button-remove-cart" data-product-id="${product.product_id}">${product.quantity <= 1 ? '<i class="fa-solid fa-down-long"></i>' : '<i class="fa-solid fa-minus"></i>'}</button>
+                                <input type="text" value="${product.quantity}" id="input-cart-amount">
+                                <button type="button" id="button-insert-cart" data-product-id="${product.product_id}"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </li>
                     `);

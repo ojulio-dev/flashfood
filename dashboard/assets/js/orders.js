@@ -211,4 +211,27 @@ $(document).ready(function() {
             }
         });
     }
+
+    $('body').on('click', '#button-insert-cart', function() {
+
+        let productId = $(this).data('product-id');
+
+        $.ajax({
+            url: API_URL + 'api/?api=cart&action=addQuantity',
+            type: 'POST',
+            data: `productId=${productId}`,
+            dataType: 'json',
+            processData: false,
+            success: function (data) {
+                readCart();
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+            }
+        });
+    })
 })

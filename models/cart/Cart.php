@@ -63,7 +63,31 @@ class Cart extends Database {
     {
         try {
             
-            $this->setSql("SELECT product_id FROM " . $this->table . " WHERE product_id = {$id}");
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = {$id}");
+
+            $this->stmt = $this->conn()->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+                return $this->stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            throw $e->getMessage();
+        }
+    }
+    
+    public function updateQuantity($quantity, $productId)
+    {
+
+        try {
+            
+            $quantity = $quantity + 1;
+
+            $this->setSql("UPDATE " . $this->table . " SET quantity = {$quantity} WHERE product_id = {$productId}");
 
             $this->stmt = $this->conn()->prepare($this->getSql());
 
@@ -72,8 +96,9 @@ class Cart extends Database {
             return $this->stmt->rowCount();
 
         } catch (PDOException $e) {
-            throw $e->getMessage();
+            echo $e->getMessage();
         }
+
     }
 
     public function update()
