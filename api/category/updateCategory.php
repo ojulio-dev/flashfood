@@ -47,7 +47,8 @@ $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
 $update = $productCategory->updateById($_POST['categoryId'], $data);
 
 $response = array(
-    'response' => true
+    'response' => true,
+    'message' => 'Categoria atualizada com Sucesso!'
 );
 
 echo json_encode($response, JSON_UNESCAPED_UNICODE);

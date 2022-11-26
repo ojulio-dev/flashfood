@@ -82,7 +82,8 @@ if (isset($_POST['ingredients'])) {
 }
 
 $response = array(
-    'response' => true
+    'response' => true,
+    'message' => 'Produto atualizado com Sucesso!'
 );
 
 echo json_encode($response, JSON_UNESCAPED_UNICODE);

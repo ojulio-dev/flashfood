@@ -57,9 +57,9 @@ $(document).ready(function() {
             success: function (data, status, xhr) {
 
                 Swal.fire({
-                    title: 'Foi!',
-                    text: 'Produto Atualizado com sucesso!',
-                    icon: 'success'
+                    title: data.response ? 'Foi!' : 'Oops...',
+                    text: data.message,
+                    icon: data.response ? 'success' : 'error'
                 })
 
             },
