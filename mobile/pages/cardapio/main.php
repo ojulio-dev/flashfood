@@ -16,7 +16,7 @@
 
     <div id="itens-cardapio">
         <div class="fundo-produto">
-            <h2>Big Smigoul</h2>
+            <h2 class="main-titulo-produto">Big Smigoul</h2>
             <div class="img-produto">
                 <img src="<?= DIR_IMG ?>/cardapio/smougolburg.jfif" alt="">
             </div>

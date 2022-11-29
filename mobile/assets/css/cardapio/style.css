@@ -46,7 +46,7 @@ div.fundo-produto{
   border-radius: 20px;
 }
 
-div.fundo-produto h2{
+.main-titulo-produto {
   position: relative;
   top: -35px;
   /*text-shadow: 
