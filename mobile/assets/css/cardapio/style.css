@@ -23,13 +23,14 @@ div.opcoes{
   background-color: #ccc;
   /* margin-left: 10px;
   margin-right: 10px; */
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   border-radius: 4px;
 }
 
 div.opcoes h3{
   text-align: center;
+  color: #FFFFFF;
 }
 
 div.fundo-produto{
@@ -92,11 +93,13 @@ div.especificacoes-produto{
 
 div.especificacoes-produto div.texto-produto{
   display: flex;
-  font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
   font-size: 18px;
   line-height: 17px;
+}
+
+div.especificacoes-produto div.texto-produto h4{
+  font-weight: 400;
 }
 
 div.especificacoes-produto div.preco-produto h5{
@@ -115,7 +118,7 @@ div.especificacoes-produto div.preco-produto h5{
   text-shadow: 1px 1px 4px #000;
 }
 
-div.especificacoes-produto div.texto-produto img#logo-especificacao{
+div.especificacoes-produto div.texto-produto img.logo-especificacao{
   height: 16px;
   width: 16px;
   margin-top: 3px;
