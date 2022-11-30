@@ -8,86 +8,31 @@
         <div class="caixa-img-strong">
             <img src="<?= DIR_IMG ?>/cardapio/abuguie.jpg" alt="">
 
-            <div class="caixa-strong">
+            <div class="especificacoes-produto">
                 <div class="texto-produto">
-                    <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="" id="logo-especificacao">
-                    <strong>Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.</strong>
+                    <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="" class="logo-especificacao"><h4>Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.</h4>
                 </div>
-                <small class="valor-strong">R$ 32,99</small>
+                <div class="preco-produto">
+                    <h5>R$ 32,99</h5>
+                </div>
             </div>
-            
         </div>
 
-        <div>
+        <div class="main-adicionais-wrapper">
             <h3>Adicionais</h3>
             <ul>
                 <li>
-                    <p>Hamburguer</p>
-                    <div>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Hamburguer</h5>
                         <small>R$ 4,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
                     </div>
-                </li>
-                <li>
-                <p>Queijo Prato</p>
-                    <div>
-                        <small>R$ 2,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
-                    </div>
-                </li>
-                <li>
-                <p>Queijo Cheedar</p>
-                    <div>
-                        <small>R$ 3,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
-                    </div>
-                </li>
-                <li>
-                <p>Cebola</p>
-                    <div>
-                        <small>R$ 2,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
-                    </div>
-                </li>
-                <li>
-                <p>Tomate</p>
-                    <div>
-                        <small>R$ 2,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
-                    </div>
-                </li>
-                <li>
-                <p>Molho Barbecue</p>
-                    <div>
-                        <small>R$ 3,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text">
+                        <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
             </ul>
         </div>
-        <div>
-            <div>
-                <form action="">
-                    <input type="text">
-                </form>
-            </div>
-            <div>
-                <i></i>
-                <a href=""></a>
-            </div>
-        </div>
-        <button>Adicionar ao Carrinho (R$ 36,59)</button>
     </div>
 </section>
