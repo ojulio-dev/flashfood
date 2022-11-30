@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.sistema-cardapio-wrapperr{
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.caixa-img-strong {
+    width: 100%;
+    height: 150px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    background-color: #A1A1A1;
+    border-radius: 20px;
+}
+
+.produto-carrinho h3{
+    text-align: center;
+    color: white;
+    text-shadow: -3px -3px 2px #473227, -3px 3px 2px #473227,                    3px -3px 2px #473227,                  
+    3px 2px 2px #473227; 
+}
+
+.produto-carrinho strong{
+    font-size: 10px;
+}
+
+.produto-carrinho h4{
+    text-align: center;
+    color: white;
+}
+

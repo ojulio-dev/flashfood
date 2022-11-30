@@ -31,11 +31,14 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <!-- CSS -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/cardapio/style.css">    
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/cardapio/style.css">   
+
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/carrinho/style.css">
+
+    <!-- Não importar a baixo dessas duas! Importe acima -->
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/style.css">
