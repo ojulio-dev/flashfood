@@ -1,7 +1,7 @@
 <section >
     <div class="sistema-cardapio-wrapperr">
-    <div class="caixa-img-strong">
-        <div>
+    <div class="caixa-img-carrinho">
+        <div class="caixa-image">
             <img src="<?= DIR_IMG ?>/carrinho/hamburguer.jpeg" alt="">
         </div>
         <div class="produto-carrinho">
