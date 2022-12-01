@@ -6,9 +6,9 @@
         </div>
 
         <div class="caixa-img-strong">
-            <img src="<?= DIR_IMG ?>/cardapio/abuguie.jpg" alt="">
-
-            <div class="especificacoes-produto">
+            <img class="img" src="<?= DIR_IMG ?>/cardapio/abuguie.jpg" alt="">
+        </div>
+        <div class="especificacoes-produto">
                 <div class="texto-produto">
                     <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="" class="logo-especificacao"><h4>Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.</h4>
                 </div>
@@ -16,7 +16,6 @@
                     <h5>R$ 32,99</h5>
                 </div>
             </div>
-        </div>
 
         <div class="main-adicionais-wrapper">
             <h3>Adicionais</h3>
