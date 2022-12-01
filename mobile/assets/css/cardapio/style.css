@@ -72,10 +72,10 @@ div.fundo-produto{
     -3px -3px 2px #473227, 
    -3px 3px 2px #473227,                    
     3px -3px 2px #473227,                  
-    3px 2px 2px #473227;
+    3px 2px 2px #473227;  
   font-family: 'Inter';
   font-weight: 1000;
-  font-size: 40px;
+  font-size: 36px;
   line-height: 50px;
   text-align: center;
 
@@ -97,12 +97,12 @@ div.img-produto img {
   border-radius: 18px;
 }
 
-div.especificacoes-produto{
+div.especificacoes-produto {
   width: 100%;
   height: auto;
   padding: 10px;
   margin-top: 10px;
-  background: #A39E9E;
+  background: rgba(163, 158, 158, 65%);
   border-radius: 20px;
   /* display: grid; */
 }
