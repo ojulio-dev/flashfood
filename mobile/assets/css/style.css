@@ -107,22 +107,23 @@
 }
 
 .main-adicionais-wrapper {
-    background-color: rgba(163, 158, 158, 68%);
+    background: rgba(163, 158, 158, 65%);
     padding: 15px;
     border-radius: 20px;
-    margin-top: 40px;
+    margin-top: 13px;
     position: relative;
 }
 
-.main-adicionais-wrapper h3 {
+.titulo-adicionais {
     position: relative;
-    top: -28px;
+    bottom: -28px;
     text-shadow: -3px -3px 2px #473227, -3px 3px 2px #473227, 3px -3px 2px #473227, 3px 2px 2px #473227;
     font-family: 'Inter';
     font-weight: 1000;
     font-size: 25px;
     text-align: center;
     color: #FFFFFF;
+    z-index: 9999;
 }
 
 .main-adicionais-wrapper li {
@@ -140,4 +141,45 @@
 
 .main-adicionais-wrapper .adicionais-quantidades input{
     width: 20px;
+}
+
+.adicionais-info-wrapper h5{
+    font-size: small;
+    font-weight: 600;
+}
+
+.adicionais-quantidades{
+    border: 1.5px solid black;
+    border-radius: 8px;
+    background-color: #CECECE;
+    margin: 2px;
+    padding: 1px;
+}
+
+.adicionais-quantidades button{
+    border: none;
+    background-color: #CECECE;
+    padding: 1px;
+    margin: 0px 2px;
+}
+
+.adicionais-quantidades input{
+    border: none;
+    background-color: #CECECE;
+    text-align: center; 
+}
+
+.adicionais-quantidades input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.adicionais-quantidades input::placeholder{
+    color: #000;
+}
+
+.quantidade-observacao{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

@@ -15,10 +15,11 @@
                 <div class="preco-produto">
                     <h5>R$ 32,99</h5>
                 </div>
-            </div>
+        </div>
 
+        <h3 class="titulo-adicionais">Adicionais</h3>
         <div class="main-adicionais-wrapper">
-            <h3>Adicionais</h3>
+            
             <ul>
                 <li>
                     <div class="adicionais-info-wrapper">
@@ -27,11 +28,80 @@
                     </div>
                     <div class="adicionais-quantidades">
                         <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text">
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Queijo Prato</h5>
+                        <small>R$ 2,00</small>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Queijo Cheddar</h5>
+                        <small>R$ 3,00</small>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Cebola</h5>
+                        <small>R$ 2,00</small>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Tomate</h5>
+                        <small>R$ 2,00</small>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Molho Barbie Kill</h5>
+                        <small>R$ 2,00</small>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
                         <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
             </ul>
+        </div>
+        <div class="quantidade-observacao">
+            <div class="quantidade-grid">
+                <div class="adicionais-quantidades">
+                    <button><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" placeholder="0">
+                    <button><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <h5>Quantidade</h5>
+            </div>
+            <div class="quantidade-grid">
+                <i class="fa-regular fa-pen-to-square"></i>
+                <h5>Adicionar Observação?</h5>
+            </div>
         </div>
     </div>
 </section>
