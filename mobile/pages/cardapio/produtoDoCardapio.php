@@ -28,7 +28,7 @@
                     </div>
                     <div class="adicionais-quantidades">
                         <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
+                        <input type="number" placeholder="0">
                         <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="adicionais-quantidades">
                         <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
+                        <input type="number" placeholder="0">
                         <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="adicionais-quantidades">
                         <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
+                        <input type="number" placeholder="0">
                         <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="adicionais-quantidades">
                         <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
+                        <input type="number" placeholder="0">
                         <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="adicionais-quantidades">
                         <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
+                        <input type="number" placeholder="0">
                         <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="adicionais-quantidades">
                         <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
+                        <input type="number" placeholder="0">
                         <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
@@ -92,14 +92,14 @@
         <div class="quantidade-observacao">
             <div class="quantidade-grid">
                 <div class="adicionais-quantidades">
-                    <button><i class="fa-solid fa-minus"></i></button>
-                    <input type="text" placeholder="0">
-                    <button><i class="fa-solid fa-plus"></i></button>
+                    <button class="btn-minus"><i class="fa-solid fa-minus"></i></button>
+                    <input type="number" placeholder="0">
+                    <button class="btn-plus"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <h5>Quantidade</h5>
             </div>
-            <div class="quantidade-grid">
-                <i class="fa-regular fa-pen-to-square"></i>
+            <div class="observacao-grid">
+                <i class="fa-regular fa-2x fa-pen-to-square"></i>
                 <h5>Adicionar Observação?</h5>
             </div>
         </div>

@@ -182,4 +182,20 @@
 .quantidade-observacao{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 15px;
 }
+
+.quantidade-grid .adicionais-quantidades{
+    width: 40%;
+    height: 32px;
+    margin-left: 10px;
+}
+
+.adicionais-quantidades input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+
+.quantidade-grid .adicionais-quantidades input{
+    max-width: 40%;
+}
+
