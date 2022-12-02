@@ -6,16 +6,16 @@
         </div>
         <div class="produto-carrinho">
             <h3>Big Burguer</h3>
-            <strong>
+            <p>
             Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.
-            </strong>
+            </p>
             <div>
                 <h4>Adicionais</h4>
-                <div>
+                <div class="caixa-hamb">
                     <h5>Hamburguer</h5>
                     <small>R$:4,00</small>
                 </div>
-                <div>
+                <div class="caixa-calcelar">
                     <strong>R$:36,00</strong>
                     <button>cancelar</button>
                 </div>
