@@ -1,91 +1,107 @@
 <section class="sistema-cardapio-wrapper">
     <div class="sistema-info-wrapper">
-        <div class="titulo-cardapio-wrapper">
-            <img src="<?= DIR_IMG ?>/left.png" alt="">
-            <h2>Big Burguer</h2>
+        <div class="title-arrow-wrapper">
+            <img class="main-arrow-back" src="<?= DIR_IMG ?>/left.png" alt="">
+            <h2 class="main-titulo-produto">Big Burguer</h2>
         </div>
 
         <div class="caixa-img-strong">
-            <div class="div-caixa-hamburguer">
-                <img src="<?= DIR_IMG ?>/cardapio/abuguie.jpg" alt="">
-            </div>
-            <div class="caixa-strong">
-                <strong>Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.</strong>
-                <small class="valor-strong">R$:32,99</small>
-            </div>
-            
+            <img class="img" src="<?= DIR_IMG ?>/cardapio/abuguie.jpg" alt="">
+        </div>
+        <div class="especificacoes-produto">
+                <div class="texto-produto">
+                    <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="" class="logo-especificacao"><h4>Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.</h4>
+                </div>
+                <div class="preco-produto">
+                    <h5>R$ 32,99</h5>
+                </div>
         </div>
 
-        <div>
-            <h3>Adicionais</h3>
+        <h3 class="titulo-adicionais">Adicionais</h3>
+        <div class="main-adicionais-wrapper">
+            
             <ul>
                 <li>
-                    <p>Hamburguer</p>
-                    <div>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Hamburguer</h5>
                         <small>R$ 4,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
-                <p>Queijo Prato</p>
-                    <div>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Queijo Prato</h5>
                         <small>R$ 2,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
-                <p>Queijo Cheedar</p>
-                    <div>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Queijo Cheddar</h5>
                         <small>R$ 3,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
-                <p>Cebola</p>
-                    <div>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Cebola</h5>
                         <small>R$ 2,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
-                <p>Tomate</p>
-                    <div>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Tomate</h5>
                         <small>R$ 2,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
-                <p>Molho Barbecue</p>
-                    <div>
-                        <small>R$ 3,00</small>
-                        <form action="">
-                            <input type="text" name="" id="">
-                        </form>
+                    <div class="adicionais-info-wrapper">
+                        <h5>Molho Barbie Kill</h5>
+                        <small>R$ 2,00</small>
+                    </div>
+                    <div class="adicionais-quantidades">
+                        <button><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" placeholder="0">
+                        <button><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
             </ul>
         </div>
-        <div>
-            <div>
-                <form action="">
-                    <input type="text">
-                </form>
+        <div class="quantidade-observacao">
+            <div class="quantidade-grid">
+                <div class="adicionais-quantidades">
+                    <button><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" placeholder="0">
+                    <button><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <h5>Quantidade</h5>
             </div>
-            <div>
-                <i></i>
-                <a href=""></a>
+            <div class="quantidade-grid">
+                <i class="fa-regular fa-pen-to-square"></i>
+                <h5>Adicionar Observação?</h5>
             </div>
         </div>
-        <button>Adicionar ao Carrinho (R$ 36,59)</button>
     </div>
 </section>

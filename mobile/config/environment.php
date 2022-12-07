@@ -16,6 +16,8 @@ define('DIR_PROTOCOL', ($_SERVER['SERVER_PORT'] != '80') ? 'https' : 'http');
 // Monta a url -- http://localhost/flashfood
 define('DIR_PATH', DIR_PROTOCOL . '://' . DIR_SERVER . '/' . DIR_ROOT);
 
+define('DIR_URL', DIR_PROTOCOL . '://' . DIR_SERVER . '/' . 'flashfood');
+
 // Define caminhos
 define('DIR_CSS', DIR_PATH . '/assets/css');
 define('DIR_JS', DIR_PATH . '/assets/js');

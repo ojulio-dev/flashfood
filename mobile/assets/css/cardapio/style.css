@@ -13,23 +13,43 @@ section#main-cardapio-categorias{
 }
 
 div.menu-opcoes{
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px 20px;
+  gap: 15px;
+  background-color: #D9D9D9;
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  border-radius: 10px;
   /* margin-top: 15px; */
 }
 
-div.opcoes{
-  background-color: #ccc;
+div.menu-opcoes div.opcoes {
+  height: 80px;
   /* margin-left: 10px;
   margin-right: 10px; */
-  padding-top: 25px;
-  padding-bottom: 25px;
-  border-radius: 4px;
+  border-radius: 10px;
+  position: relative;
 }
 
-div.opcoes h3{
+div.menu-opcoes div.opcoes img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: brightness(83%)
+}
+
+div.menu-opcoes div.opcoes h3{
   text-align: center;
+  color: #FFFFFF;
+  z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.717);
 }
 
 div.fundo-produto{
@@ -46,19 +66,17 @@ div.fundo-produto{
   border-radius: 20px;
 }
 
-div.fundo-produto h2{
+.main-titulo-produto{
   position: relative;
   top: -35px;
-  /*text-shadow: 
+  text-shadow: 
     -3px -3px 2px #473227, 
    -3px 3px 2px #473227,                    
     3px -3px 2px #473227,                  
-    3px 2px 2px #473227;   */
-  -webkit-text-stroke: 2px #473227;
-  /* text-stroke: 2px #473227; */
+    3px 2px 2px #473227;  
   font-family: 'Inter';
   font-weight: 1000;
-  font-size: 40px;
+  font-size: 36px;
   line-height: 50px;
   text-align: center;
 
@@ -80,23 +98,25 @@ div.img-produto img {
   border-radius: 18px;
 }
 
-div.especificacoes-produto{
+div.especificacoes-produto {
   width: 100%;
   height: auto;
   padding: 10px;
   margin-top: 10px;
-  background: #A39E9E;
+  background: rgba(163, 158, 158, 65%);
   border-radius: 20px;
   /* display: grid; */
 }
 
 div.especificacoes-produto div.texto-produto{
   display: flex;
-  font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
   line-height: 17px;
+}
+
+div.especificacoes-produto div.texto-produto h4{
+  font-weight: 400;
+  font-size: 14px;
 }
 
 div.especificacoes-produto div.preco-produto h5{
@@ -115,7 +135,7 @@ div.especificacoes-produto div.preco-produto h5{
   text-shadow: 1px 1px 4px #000;
 }
 
-div.especificacoes-produto div.texto-produto img#logo-especificacao{
+div.especificacoes-produto div.texto-produto img.logo-especificacao{
   height: 16px;
   width: 16px;
   margin-top: 3px;
