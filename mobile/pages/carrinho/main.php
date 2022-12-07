@@ -5,11 +5,13 @@
             <img src="<?= DIR_IMG ?>/carrinho/hamburguer.jpeg" alt="">
         </div>
         <div class="produto-carrinho">
-            <h3>Big Burguer</h3>
-            <p>
-            Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.
-            </p>
-            <div>
+            <div class="carrinho-titulo-wrapper">
+                <h3>Big Burguer</h3>
+                <p>
+                Pão caseiro com gergelim, dois hamburguer, arfacy, tomate, queijo, molho especial.
+                </p>
+            </div>
+            <div class="carrinho-adicionais-wrapper">
                 <h4>Adicionais</h4>
                 <div class="caixa-hamb">
                     <h5>Hamburguer</h5>
