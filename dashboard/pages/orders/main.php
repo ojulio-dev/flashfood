@@ -21,7 +21,7 @@ $product = new Product;
 
     <ul id="read-menu-wrapper">
         <?php foreach($productCategory->read() as $category): ?>
-            <?php $products = $productCategory->readByCategory($category['category_id']); ?>
+            <?php $products = $productCategory->readByCategoryStatus($category['category_id']); ?>
 
             <?php if(count($products)): ?>
                 <li class="main-orders">

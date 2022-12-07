@@ -99,11 +99,30 @@ let delay = function(fn, ms) {
     timer = setTimeout(fn, ms);
 }
 
+const readIconCart = () => {
+    $.ajax({
+        url: API_URL + 'api/?api=cart&action=listCart',
+        dataType: 'json',
+        success: function (data) {
+            $('#icon-count-cart-items').html(data.length);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+        }
+    });
+}
+
 const readCart = () => {
     $.ajax({
         url: API_URL + 'api/?api=cart&action=listCart', 
         dataType: 'json',
         success: function (data) {
+
+            readIconCart();
 
             $('.main-item-modal.-cart').html('');
 
@@ -120,9 +139,9 @@ const readCart = () => {
                                 </div>
                             </div>
                             <div class="cart-edit-amount">
-                                <button type="button" class="decrement-product-cart" data-action="decrement">${product.quantity <= 1 ? '<i class="fa-solid fa-down-long"></i>' : '<i class="fa-solid fa-minus"></i>'}</button>
+                                <button type="button" data-action="decrement"'<i class="fa-solid fa-minus"></i></button>
                                 <input type="number" value="${product.quantity}" max="99" min="1" class="input-cart-amount">
-                                <button type="button" class="increment-product-cart" data-action="increment"><i class="fa-solid fa-plus"></i></button>
+                                <button type="button" data-action="increment"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </li>
                     `);
@@ -168,8 +187,45 @@ $('body').on('change', '.input-cart-amount', function(event) {
     
     let product = $(this).closest('[data-product-id]').data();
 
-    if (event.target.value <= 0 || event.target.value > 99) {
+    if (event.target.value <= 1 || event.target.value > 99) {
         event.target.value = 1;
+    }
+
+    if (event.target.value <= 1) {
+        Swal.fire({
+            title: 'Aviso...',
+            text: "Deseja retirar o produto do Carrinho?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, quero retirar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                $.ajax({
+                    url: API_URL + 'api/?api=cart&action=removeCart',
+                    type: 'POST',
+                    data: {
+                        productId: product.productId
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        readCart();
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                        Swal.fire({
+                            title: 'Erro!',
+                            text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                            icon: 'error'
+                        })
+                    }
+                });
+            }
+        })
+
+        return false;
     }
 
     delay(function() {

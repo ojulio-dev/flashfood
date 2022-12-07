@@ -198,21 +198,4 @@ $(document).ready(function() {
             }
         });
     }
-
-    const readIconCart = () => {
-        $.ajax({
-            url: API_URL + 'api/?api=cart&action=listCart',
-            dataType: 'json',
-            success: function (data) {
-                $('#icon-count-cart-items').html(data.length);
-            },
-            error: function (jqXhr, textStatus, errorMessage) {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
-                    icon: 'error'
-                })
-            }
-        });
-    }
 })
