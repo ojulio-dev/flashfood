@@ -215,8 +215,8 @@
 }
 
 .btn-adicionar-carrinho{
-  background-color: #13aa52;
-  border: 1px solid #13aa52;
+  background-color: #52A84B;
+  border: 1px solid #52A84B;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
@@ -239,6 +239,7 @@
 /* css modal */
 
 #main-modal-obs{
+    display: none;
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -249,6 +250,11 @@
 }
 
 .modal-obs-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
     position: absolute;
     z-index: 999999;
     top: 50%;
@@ -256,17 +262,18 @@
     background-color: #fff;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    width: 60%;
-    height: 30%;
+    width: 70%;
+    height: 20%;
 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .obs-titulo{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #13aa52;
+    background-color: #52A84B;
     border-radius: 10px 10px 0px 0px;
     height: 30px;
 }
@@ -281,9 +288,44 @@
     display: flex;
     align-items: center;
 
-    width: 180px;
-    height: 26.55px;
+    padding: 15px;
+    width: 210px;
+    height: 35px;
     background: #D7D7D7;
     border: 1px solid #D2D2D2;
     border-radius: 5px;
+}
+
+.obs-button{
+    margin-bottom: 10px;
+    display: flex;
+    gap: 55px;
+}
+
+.obs-button .obs-modal-cancelar{
+
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 0px;
+}
+
+.obs-button .obs-modal-enviar{
+
+    background-color: #52A84B;
+    border: 1px solid #52A84B;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 0px;
+}
+
+.obs-button button{
+    width: 80px;
 }

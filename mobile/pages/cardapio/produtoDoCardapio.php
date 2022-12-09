@@ -99,7 +99,7 @@
                 <h5>Quantidade</h5>
             </div>
             <div class="quantidade-grid">
-                <i class="fa-regular fa-2x fa-pen-to-square"></i>
+                <i class="fa-regular fa-2x fa-pen-to-square" id="button-modal-obs"></i>
                 <h5>Adicionar Observação</h5>
             </div>
         </div>
@@ -119,8 +119,8 @@
             <input type="text" class="input-modal-obs" placeholder="Qual a sua observação?">
 
             <div class="obs-button">
-                <button class="obs-modal-cancelar">Cancelar</button>
-                <button class="obs-modal-enviar">Enviar</button>
+                <button class="obs-modal-cancelar" id="cancelar-modal-obs">Cancelar</button>
+                <button class="obs-modal-enviar" id="enviar-modal-obs">Enviar</button>
             </div>
         </div>
     </div>
