@@ -9,7 +9,7 @@
     padding: 14px;
     border-radius: 20px;
     margin: 14px;
-    height: 100vh;
+    height: 15\ 0vh;
 
 }
 
@@ -22,6 +22,7 @@
     border-radius: 20px;
     padding: 1px;
     gap: 0px 10px;
+    margin-bottom: 20px;
 }
 
 .caixa-image{
@@ -45,10 +46,14 @@
 
 
 .produto-carrinho h3{
+    font-size: 25px;
     text-align: center;
     color: white;
-    text-shadow: -3px -3px 2px #473227, -3px 3px 2px #473227,                    3px -3px 2px #473227,                  
-    3px 2px 2px #473227;
+    text-shadow: 
+    -3px -3px 2px #473227, 
+   -3px 3px 2px #473227,                    
+    3px -3px 2px #473227,                  
+    3px 2px 2px #473227; 
     align-items: start;
 }
 
@@ -58,13 +63,16 @@
     /* margin-bottom: 10px; */
 }
 
-.produto-carrinho h4{
+.carrinho-adicionais-wrapper h4{
     text-align: center;
     color: white;
-    font-size: 12px;
+    font-size: 15px;
     padding: 5px;
-    text-shadow: -3px -3px 2px #473227, -3px 3px 2px #473227,                    3px -3px 2px #473227,                  
-    3px 2px 2px #473227;
+    text-shadow: 
+    -3px -3px 2px #473227, 
+   -3px 3px 2px #473227,                    
+    3px -3px 2px #473227,                  
+    3px 2px 2px #473227; 
 }
 
 .caixa-hamb{
@@ -87,19 +95,47 @@
     align-self:end;
 }
 
-.caixa-calcelar{
+.caixa-cancelar{
     display:grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+    justify-items: stretch;
     margin-bottom: 4px;
 }
 
-.caixa-calcelar button{
-    border-radius: 5px;
+.caixa-cancelar button{
+    border-radius: 15px;
     border: none;
     background-color: red;
     color: white;
     padding: 5px;
+    margin-right: 4px;
+    font-weight: bold;
+}
+
+.div-finalizar{
+    background-color: #473227;
+    width: 100%;
+    height: 91px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.div-finalizar strong{
+    color: white;
+    font-size: 25px;
+}
+
+.div-finalizar button {
+    width: 250px;
+    height: 52px;
+    background-color:#7CCC71;
+    border-radius: 20px ;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 
