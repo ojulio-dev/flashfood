@@ -17,8 +17,24 @@ class CartAdditional extends Database {
         $this->table = 'cart_additional';
     }
 
-    public function create()
+    public function create($cartId, $additionals)
     {
+
+        try {
+            
+            foreach($additionals as $additional) {
+
+                $this->setSql("INSERT INTO " . $this->table . " (cart_id, additional_id) VALUES ({$cartId}, {$additional})");
+
+                $this->stmt = $this->conn->prepare($this->getSql());
+
+                $this->stmt->execute();
+
+            }
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
 
     }
 

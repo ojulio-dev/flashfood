@@ -28,7 +28,7 @@ class Role extends Database {
             
             $this->setSql("SELECT * FROM " . $this->table . "");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 

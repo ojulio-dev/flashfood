@@ -199,3 +199,7 @@ $(document).ready(function() {
         });
     }
 })
+
+$('#button-order-finalize').click(function() {
+    alert('finalizando');
+})

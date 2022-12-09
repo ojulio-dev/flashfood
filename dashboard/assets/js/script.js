@@ -187,11 +187,10 @@ $('body').on('change', '.input-cart-amount', function(event) {
     
     let product = $(this).closest('[data-product-id]').data();
 
-    if (event.target.value <= 1 || event.target.value > 99) {
-        event.target.value = 1;
-    }
+    if (event.target.value < 1) {
 
-    if (event.target.value <= 1) {
+        event.target.value = 1;
+
         Swal.fire({
             title: 'Aviso...',
             text: "Deseja retirar o produto do Carrinho?",
@@ -205,7 +204,7 @@ $('body').on('change', '.input-cart-amount', function(event) {
             if (result.isConfirmed) {
                 
                 $.ajax({
-                    url: API_URL + 'api/?api=cart&action=removeCart',
+                    url: API_URL + 'api/?api=cart&action=removeProduct',
                     type: 'POST',
                     data: {
                         productId: product.productId
@@ -226,6 +225,10 @@ $('body').on('change', '.input-cart-amount', function(event) {
         })
 
         return false;
+    }
+
+    if (event.target.value <= 1 || event.target.value > 99) {
+        event.target.value = 1;
     }
 
     delay(function() {
@@ -249,3 +252,36 @@ $('body').on('change', '.input-cart-amount', function(event) {
     
     }, 400);
 })
+
+
+// Remove to Cart
+$('#button-order-cancel').click(function() {
+    
+    $.ajax({
+        url: API_URL + 'api/?api=cart&action=removeProducts',
+        type: 'DELETE',
+        dataType: 'json',
+        success: function(data) {
+
+            $('.main-modal').hide();
+
+            Swal.fire({
+                title: 'Sucesso!',
+                text: 'Pedidos cancelados com Sucesso!',
+                icon: 'success'
+            });
+
+            readCart();
+
+
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+        }
+    });
+});
+
