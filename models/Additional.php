@@ -20,7 +20,7 @@ class Additional extends Database {
     public function create($ingredientIds, $productId = null)
     {
 
-        $productId = $productId ?? parent::lastInsertId('product');
+        $productId = $productId ?? $this->lastProductId();
 
         $values = "";
 
@@ -34,7 +34,7 @@ class Additional extends Database {
             
             $this->setSql("INSERT INTO " . $this->table . " (ingredient_id, product_id) VALUES {$values}");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -92,7 +92,7 @@ class Additional extends Database {
 
             $this->setSql("SELECT I.*, A.additional_id FROM " . $this->table . " A INNER JOIN ingredient I on I.ingredient_id = A.ingredient_id INNER JOIN product P on P.product_id = A.product_id WHERE P.product_id = '{$id}' AND A.status = 1");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -113,7 +113,7 @@ class Additional extends Database {
 
             $this->setSql("SELECT I.* FROM " . $this->table . " A INNER JOIN ingredient I on I.ingredient_id = A.ingredient_id INNER JOIN product P on P.product_id = A.product_id WHERE P.slug = '{$slug}' AND A.status = 1");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -123,6 +123,25 @@ class Additional extends Database {
             } else {
                 return false;
             }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function lastProductId()
+    {
+        try {
+            
+            $sql = "SELECT MAX(product_id) as id FROM product";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute();
+
+            $id = $stmt->fetch()['id'];
+
+            return $id;
+
         } catch (PDOException $e) {
             return $e->getMessage();
         }

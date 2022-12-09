@@ -72,7 +72,7 @@ class User extends Database {
             
             $this->setSql("SELECT U.*, R.name as role FROM user as U INNER JOIN role R on U.role_id = R.role_id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -89,7 +89,7 @@ class User extends Database {
             
             $this->setSql("SELECT U.*, R.name as role, R.role_id FROM user as U INNER JOIN role R on U.role_id = R.role_id WHERE user_id = {$id}");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -127,7 +127,7 @@ class User extends Database {
             
             $this->setSql("UPDATE " . $this->table . " SET name = '" . $data['name'] . "', email = '" . $data['email'] . "', password = '" . $data['password'] . "', role_id = " . $data['role'] . ", birthdate = '" . $data['birthdate'] . "' WHERE user_id = {$id}");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             if ($this->stmt->execute()) {
 

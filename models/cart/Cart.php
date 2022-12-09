@@ -23,12 +23,14 @@ class Cart extends Database {
             
             $this->setSql("INSERT INTO " . $this->table . " (user_id, product_Id) VALUES ({$userId}, $productId)");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
             if ($this->stmt->rowCount()) {
-                return $this->conn()->query("SELECT * FROM " . $this->table . " WHERE status = 1")->fetchAll(PDO::FETCH_ASSOC);
+                $id = $this->conn->lastInsertId();
+
+                return $id;
             } else {
                 return false;
             }
@@ -41,10 +43,12 @@ class Cart extends Database {
     public function read()
     {
         try {
-            
-            $this->setSql("SELECT P.*, C.quantity FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id WHERE C.status = 1");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $userId = $_SESSION['user']['user_id'];
+            
+            $this->setSql("SELECT P.*, C.quantity FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id WHERE C.status = 1 AND C.user_id = {$userId}");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -62,10 +66,12 @@ class Cart extends Database {
     public function readByProductId($id)
     {
         try {
-            
-            $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = {$id}");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $userId = $_SESSION['user']['user_id'];
+            
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = {$id} AND status = 1 AND user_id = {$userId}");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -87,7 +93,7 @@ class Cart extends Database {
 
             $this->setSql("UPDATE " . $this->table . " SET quantity = {$quantity} WHERE product_id = {$productId}");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -111,7 +117,7 @@ class Cart extends Database {
             
             $this->setSql("DELETE FROM " . $this->table . " WHERE product_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -125,7 +131,23 @@ class Cart extends Database {
 
     public function delete()
     {
+
+        $userId = $_SESSION['user']['user_id'];
         
+        try {
+            
+            $this->setSql("DELETE FROM " . $this->table . " WHERE status = 1 AND user_id = {$userId}");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            throw $e->getMessage();
+        }
+
     }
 
     public function setSql($sql)

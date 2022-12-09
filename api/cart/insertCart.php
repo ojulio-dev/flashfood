@@ -18,11 +18,17 @@ if (isset($_POST)) {
         exit();
     }
 
-    $response = $cart->create($_SESSION['user']['user_id'], $_POST['productId']);
+    $cartId = $cart->create($_SESSION['user']['user_id'], $_POST['productId']);
 
-    if ($response) {
+    if (isset($_POST['additionals'])) {
+
+        $cartAdditional->create($cartId, $_POST['additionals']);
+        
+    };
+
+    if ($cartId) {
         $response = [
-            'response' => $response,
+            'response' => $cartId,
             'message' => 'Carrinho atualizado com Sucesso!'
         ];
     

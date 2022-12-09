@@ -24,7 +24,7 @@ class Ingredient extends Database {
             
             $this->setSql("INSERT INTO " . $this->table . " (name, price, slug, status) VALUES ('" . $data['name'] . "', '" . $data['price'] . "', '" . $data['slug'] . "', " . $data['status'] . ")");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -47,7 +47,7 @@ class Ingredient extends Database {
         try {
             $this->setSql("SELECT * FROM " . $this->table . "");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -71,7 +71,7 @@ class Ingredient extends Database {
 
             $this->setSql("SELECT * FROM " . $this->table . " WHERE ingredient_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -91,7 +91,7 @@ class Ingredient extends Database {
 
             $this->setSql("SELECT * FROM " . $this->table . " WHERE slug = '$slug'");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -113,7 +113,7 @@ class Ingredient extends Database {
 
             $this->setSql("");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -158,7 +158,7 @@ class Ingredient extends Database {
             
             $this->setSql("UPDATE " . $this->table ." SET name = '" . $data['name'] . "', price = '" . $data['price'] . "', slug = '" . $data['slug'] . "', status = " . $data['status'] . " WHERE ingredient_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 

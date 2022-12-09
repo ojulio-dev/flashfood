@@ -19,8 +19,8 @@ $cartItems = $cart->read();
         <ul class="main-item-modal -cart"></ul>
 
         <div class="button-order-wrapper">
-            <button class="button-order cancel" type="button">Cancelar</button>
-            <button class="button-order success" type="button">Finalizar Pedido</button>
+            <button class="button-order cancel" id="button-order-cancel" type="button">Cancelar</button>
+            <button class="button-order success" id="button-order-finalize" type="button">Finalizar Pedido</button>
         </div>
     </div>
 </div>

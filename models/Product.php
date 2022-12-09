@@ -40,7 +40,7 @@ class Product extends Database {
 
             $this->setSql("INSERT INTO " . $this->table . "(category_id, name, description, special_price, price, slug, status) VALUES (" . $data['category_id'] . ", '" . $data['name'] . "', '" . $data['description'] . "', '" . $data['special_price'] ."', '" . $data['price'] ."', '" . $data['slug'] . "', " . $data['status'] . ")");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -68,7 +68,7 @@ class Product extends Database {
 
             $this->setSql("SELECT P.*, C.category_id, C.status as category_status, C.name as category FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 ORDER BY C.name DESC");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -91,7 +91,7 @@ class Product extends Database {
 
             $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -117,7 +117,7 @@ class Product extends Database {
 
             $this->setSql("SELECT P.*, C.name as category FROM " . $this->table . " as P INNER JOIN product_category as C ON C.category_id = P.category_id WHERE P.category_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -137,7 +137,7 @@ class Product extends Database {
 
             $this->setSql("SELECT * FROM " . $this->table . " WHERE slug = '{$slug}'");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -157,7 +157,7 @@ class Product extends Database {
 
             $this->setSql("UPDATE " . $this->table . " SET category_id = " . $data['category_id'] . ", name = '" . $data['name'] . "', description = '" . $data['description'] . "', special_price = " . $data['special_price'] . ", price = " . $data['price'] .", status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE product_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -205,7 +205,7 @@ class Product extends Database {
         try {
             $this->setSql("UPDATE " . $this->table . " SET status = 0 WHERE product_id = {$id}");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
