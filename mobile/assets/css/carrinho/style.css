@@ -9,6 +9,7 @@
     padding: 14px;
     border-radius: 20px;
     margin: 14px;
+    height: 100vh;
 
 }
 
@@ -36,6 +37,13 @@
     padding: 10px;
 }
 
+.produto-carrinho{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
 .produto-carrinho h3{
     text-align: center;
     color: white;
@@ -45,7 +53,7 @@
 }
 
 .produto-carrinho p{
-    font-size: 10px;
+    font-size: 13px;
     padding: 5px;
     /* margin-bottom: 10px; */
 }
@@ -63,6 +71,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+
+    margin: 10px 0;
+}
+
+.caixa-hamb h5 {
+    justify-self: start;
+}
+
+.caixa-hamb small {
+    justify-self: end;
 }
 
 .caixa-hamb small{
@@ -73,6 +91,7 @@
     display:grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+    margin-bottom: 4px;
 }
 
 .caixa-calcelar button{
@@ -80,7 +99,7 @@
     border: none;
     background-color: red;
     color: white;
-    padding: 3px;
+    padding: 5px;
 }
 
 

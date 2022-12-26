@@ -98,9 +98,29 @@
                 </div>
                 <h5>Quantidade</h5>
             </div>
-            <div class="observacao-grid">
-                <i class="fa-regular fa-2x fa-pen-to-square"></i>
-                <h5>Adicionar Observação?</h5>
+            <div class="quantidade-grid">
+                <i class="fa-regular fa-2x fa-pen-to-square" id="button-modal-obs"></i>
+                <h5>Adicionar Observação</h5>
+            </div>
+        </div>
+        <div class="btn-adicionar-grid">
+            <button class="btn-adicionar-carrinho">Adicionar ao carrinho  (R$ 39,90)</button>
+        </div>
+    </div>
+
+    <!-- div modal -->
+
+    <div id="main-modal-obs">
+        <div class="modal-obs-wrapper">
+            <div class="obs-titulo">
+                <h2>Adicionar Observação</h2>
+            </div>
+
+            <input type="text" class="input-modal-obs" placeholder="Qual a sua observação?">
+
+            <div class="obs-button">
+                <button class="obs-modal-cancelar" id="cancelar-modal-obs">Cancelar</button>
+                <button class="obs-modal-enviar" id="enviar-modal-obs">Enviar</button>
             </div>
         </div>
     </div>
