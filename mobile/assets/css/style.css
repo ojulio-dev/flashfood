@@ -180,21 +180,29 @@
 }
  
 .quantidade-observacao{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0px;
+    padding: 0px 5px;
 }
 
-.quantidade-grid{
+.quantidade-grid:nth-child(1) {
+    width: 95px;
+}
+
+.quantidade-grid {
     margin-top: 7px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    gap: 5px;
 }
 
 .quantidade-observacao .adicionais-quantidades{
-    max-width: 41%;
+    width: 100%;
     border: 2px solid black;
     height: 32px;
     display: flex;
@@ -216,6 +224,7 @@
 }
 
 .btn-adicionar-carrinho{
+  width: 100%;
   background-color: #52A84B;
   border: 1px solid #52A84B;
   border-radius: 10px;
@@ -329,4 +338,19 @@
 
 .obs-button button{
     width: 80px;
+}
+
+/* Quantidade e Observação */
+.obs-quantity-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    background: red;
+}
+
+input[type=nyumber] {
+    background: orange;
 }
