@@ -156,7 +156,7 @@ class ProductCategory extends Database{
 
             $this->setSql("SELECT * FROM " . $this->table . " WHERE slug = '{$slug}'");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             
@@ -279,7 +279,7 @@ class ProductCategory extends Database{
 
             $this->setSql("UPDATE " . $this->table . " SET name = '" . $data['name'] . "', status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE category_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 

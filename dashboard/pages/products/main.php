@@ -34,7 +34,7 @@ $readCategory = $productCategory->read();
             <tbody id="read-table-products-items">
                 <?php if ($readProduct): foreach($readProduct as $product): ?>
                     <tr>
-                        <td class="read-image-wrapper"><img src="<?= DIR_SYSTEM ?>/assets/images/products/<?= $product['banner'] ?>" alt=""></td>
+                        <td class="read-image-wrapper"><img src="<?= SERVER_HOST ?>/assets/images/products/<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['category'] ?></td>
                         <td><?= $product['name'] ?></td>
                         <td>R$ <?= number_format($product['special_price'], 2, ',', '.') ?></td>

@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#button-create-category').click(function(event) {
         let form = new FormData($('#form-category-create')[0]);
 
-        const result = fetch(API_URL + 'api/?api=category&action=createCategory',{
+        const result = fetch(SERVER_HOST + '/api/?api=category&action=createCategory',{
             method: 'POST',
             body: form
         })
@@ -23,7 +23,7 @@ $(document).ready(function() {
                     cancelButtonText: 'Ficar'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.replace(BASE_URL + '?page=category'); 
+                        window.location.replace(DIR_PATH + '/?page=category'); 
                     }
                 })
 
@@ -45,7 +45,7 @@ $(document).ready(function() {
         var idCategory = $(this).data('product-id');
 
         $.ajax({
-            url: API_URL + 'api/?api=category&action=listProductByCategory',
+            url: SERVER_HOST + '/api/?api=category&action=listProductByCategory',
             type: 'GET',
             data: { idCategory },
             dataType: 'json',
@@ -61,7 +61,7 @@ $(document).ready(function() {
                 data.map(product=>{
                     $('#read-items-category').append(`
                     <tr>
-                        <td class="read-image-wrapper"><img src="${API_URL}/assets/images/products/${ product.banner }" alt=""></td>
+                        <td class="read-image-wrapper"><img src="${SERVER_HOST}/assets/images/products/${ product.banner }" alt=""></td>
                         <td>${ product.name }</td>
                         <td>${ new Intl.NumberFormat('pt-BR', {
                             style: 'currency',
@@ -78,7 +78,7 @@ $(document).ready(function() {
                         <td>
                             <div class="read-icons-wrapper">
                                 <a class="read-icons-action noHover" href="?page=products&action=update&slug=${ product.slug }">
-                                    <img class="icon-no-hover" src="${BASE_URL}/assets/images/system/editar.png">
+                                    <img class="icon-no-hover" src="${DIR_PATH}/assets/images/system/editar.png">
                                 </a>
                             </div>
                         </td>
@@ -111,7 +111,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: API_URL + 'api/?api=category&action=updateCategory',
+            url: SERVER_HOST + '/api/?api=category&action=updateCategory',
             type: 'POST',
             data: dataCategory,
             dataType: 'json',
@@ -152,7 +152,7 @@ $(document).ready(function() {
             
             if (result.isConfirmed) {
                 $.ajax({
-                    url: API_URL + 'api/?api=category&action=deleteCategory',
+                    url: SERVER_HOST + '/api/?api=category&action=deleteCategory',
                     type: 'POST',
                     data: { categoryId },
                     dataType: 'json',
@@ -167,7 +167,7 @@ $(document).ready(function() {
                                 confirmButtonText: 'Ok'
                             }).then((result) => {
                                 
-                                window.location.replace(BASE_URL + '?page=category'); 
+                                window.location.replace(DIR_PATH + '/?page=category'); 
                             })
                         } else {
                             

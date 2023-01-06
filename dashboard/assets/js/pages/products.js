@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#button-create-products').click(function(event) {
         let form = new FormData($('#form-products-create')[0]);
 
-        const result = fetch(API_URL + 'api/?api=products&action=createProduct',{
+        const result = fetch(SERVER_HOST + '/api/?api=products&action=createProduct',{
             method: 'POST',
             body: form
         })
@@ -23,7 +23,7 @@ $(document).ready(function() {
                     cancelButtonText: 'Ficar'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.replace(BASE_URL + '?page=products'); 
+                        window.location.replace(DIR_PATH + '/?page=products'); 
                     }
                 })
 
@@ -48,7 +48,7 @@ $(document).ready(function() {
         form.append('productId', $(this).data('product-id'));
 
         $.ajax({
-            url: API_URL + 'api/?api=products&action=updateProduct',
+            url: SERVER_HOST + '/api/?api=products&action=updateProduct',
             type: 'POST',
             data: form,
             dataType: 'json',
@@ -90,7 +90,7 @@ $(document).ready(function() {
             
             if (result.isConfirmed) {
                 $.ajax({
-                    url: API_URL + 'api/?api=products&action=deleteProduct',
+                    url: SERVER_HOST + '/api/?api=products&action=deleteProduct',
                     type: 'POST',
                     data: { productId },
                     dataType: 'json',
@@ -105,7 +105,7 @@ $(document).ready(function() {
                                 confirmButtonText: 'Ok'
                             }).then((result) => {
                                 
-                                window.location.replace(BASE_URL + '?page=products'); 
+                                window.location.replace(DIR_PATH + '/?page=products'); 
                             })
                         } else {
                             
@@ -136,7 +136,7 @@ $(document).ready(function() {
 
 
         $.ajax({
-            url: API_URL + `api/?api=products&action=${action}`,
+            url: SERVER_HOST + `/api/?api=products&action=${action}`,
             type: 'POST',
             data: {
                 categoryId
@@ -157,7 +157,7 @@ $(document).ready(function() {
                 var list = data.map(function(product) {
                       return `
                         <tr>
-                            <td class="read-image-wrapper"><img src="${API_URL}/assets/images/products/${product.banner}" alt=""></td>
+                            <td class="read-image-wrapper"><img src="${SERVER_HOST}/assets/images/products/${product.banner}" alt=""></td>
                             <td>${product.category}</td>
                             <td>${product.name}</td>
                             <td>R$ ${Number(product.special_price).toFixed(2).replace('.', ',')}</td>

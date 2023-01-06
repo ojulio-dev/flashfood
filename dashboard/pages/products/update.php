@@ -24,6 +24,10 @@ if (!isset($_GET['slug'])) {
 
 $readProducts = $product->readBySlug($_GET['slug']);
 
+$readProducts['price'] = number_format($readProducts['price'], 2, ',', '.');
+
+$readProducts['special_price'] = number_format($readProducts['special_price'], 2, ',', '.');
+
 if (!$readProducts) {
     
     header("Location: ?page=products");

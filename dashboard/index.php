@@ -5,6 +5,8 @@ require_once(__DIR__ . '/../vendor/autoload.php');
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
+date_default_timezone_set('America/Sao_Paulo');
+
 ob_start();
 
 session_start();
@@ -25,15 +27,13 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <html lang="pt-BR">
 <head>
     <!-- Title -->
-    <link rel="shortcut icon" href="<?= DIR_SYSTEM ?>/assets/images/favicon/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= SERVER_HOST ?>/assets/images/favicon/favicon.png" type="image/x-icon">
     <title>Dashboard</title>
 
     <!-- Meta TAGs -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS -->
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -52,6 +52,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <link rel="stylesheet" href="<?= DIR_CSS ?>/category/update.css">
 
     <link rel="stylesheet" href="<?= DIR_CSS ?>/orders/style.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/orders/orders.css">
 
     <!-- Carousel -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/owlcarousel/owl.carousel.min.css">
@@ -68,23 +69,17 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
             <?php require_once (__DIR__. '/pages/partials/aside.php') ?>
             
             <main class="main-content">
-                <?php if (isset($_SESSION['flash'])): ?>
-                    <div class="flash-message <?= $_SESSION['flash']['color'] ?>">
-                        <span><?= $_SESSION['flash']['message'] ?></span>
-                    </div>
-                <?php unset($_SESSION['flash']); endif; ?>
-
                 <?php  
 
-                if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
-                    require_once(__DIR__ . "/pages/$page/$action.php");
-                } else {
-                    header("Location: ?page=products");
-                }
+                    if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
+                        require_once(__DIR__ . "/pages/$page/$action.php");
+                    } else {
+                        header("Location: ?page=products");
+                    }
 
-                if (!isset($page)) {
-                    header("Location: ?page=products");
-                }
+                    if (!isset($page)) {
+                        header("Location: ?page=products");
+                    }
 
                 ?>
             </main>
@@ -110,17 +105,19 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <!-- OwlCarousel -->
     <script src="<?= DIR_JS ?>/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Vanilla -->
     <script>
-        const BASE_URL = "http://localhost/flashfood/dashboard/";
+
+        const DIR_PATH = "<?= DIR_PATH ?>";
         
-        const API_URL = "http://localhost/flashfood/"; 
+        const SERVER_HOST = "http://localhost/flashfood/";
+
     </script>
 
+    <script src="<?= DIR_JS ?>/cart.js"></script>
 
-    <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>
+    <?php if (file_exists(__DIR__ . "/assets/js/pages/" . $page . ".js")): ?>
     
-        <script src="<?= DIR_JS ?>/<?= $page ?>.js"></script>
+        <script src="<?= DIR_JS ?>/pages/<?= $page ?>.js"></script>
     
     <?php endif ?>
     

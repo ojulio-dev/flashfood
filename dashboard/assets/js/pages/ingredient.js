@@ -5,7 +5,7 @@ $(document).ready(function() {
         let formData = new FormData($('#form-ingredient-create')[0]);
 
         $.ajax({
-            url: API_URL + 'api/?api=ingredient&action=createIngredient',
+            url: SERVER_HOST + '/api/?api=ingredient&action=createIngredient',
             type: 'POST',
             data: formData,
             dataType: 'JSON',
@@ -26,7 +26,7 @@ $(document).ready(function() {
                         cancelButtonText: 'Ficar'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.replace(BASE_URL + '?page=ingredient'); 
+                            window.location.replace(DIR_PATH + '/?page=ingredient'); 
                         }
                     })
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
         formData.append('ingredientId', $(this).data('ingredient-id'));
 
         $.ajax({
-            url: API_URL + 'api/?api=ingredient&action=updateIngredient',
+            url: SERVER_HOST + '/api/?api=ingredient&action=updateIngredient',
             type: 'POST',
             data: formData,
             dataType: 'JSON',
@@ -112,7 +112,7 @@ $(document).ready(function() {
             
             if (result.isConfirmed) {
                 $.ajax({
-                    url: API_URL + 'api/?api=ingredient&action=deleteIngredient',
+                    url: SERVER_HOST + '/api/?api=ingredient&action=deleteIngredient',
                     type: 'POST',
                     data: { id },
                     dataType: 'json',
@@ -128,7 +128,7 @@ $(document).ready(function() {
                                 confirmButtonText: 'Ok'
                             }).then((result) => {
                                 
-                                window.location.replace(BASE_URL + '?page=ingredient'); 
+                                window.location.replace(DIR_PATH + '/?page=ingredient'); 
                             })
                         } else {
                             

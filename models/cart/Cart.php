@@ -23,28 +23,24 @@ class Cart extends Database {
             
             $this->setSql("INSERT INTO " . $this->table . " (user_id, product_Id) VALUES ({$userId}, $productId)");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
-            if ($this->stmt->rowCount()) {
-                return $this->conn()->query("SELECT * FROM " . $this->table . " WHERE status = 1")->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                return false;
-            }
+            return $this->conn->lastInsertId();
             
         } catch (PDOException $e) {
             throw $e->getMessage();
         }
     }
 
-    public function read()
+    public function read($userId)
     {
         try {
             
-            $this->setSql("SELECT P.*, C.quantity FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id WHERE C.status = 1");
+            $this->setSql("SELECT P.*, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id WHERE C.status = 1 AND C.user_id = $userId");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -59,13 +55,13 @@ class Cart extends Database {
         }
     }
 
-    public function readByProductId($id)
+    public function readByProductId($userId, $productId)
     {
         try {
             
-            $this->setSql("SELECT * FROM " . $this->table . " WHERE product_id = {$id}");
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE user_id = $userId AND product_id = {$productId} AND status = 1");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -80,14 +76,33 @@ class Cart extends Database {
         }
     }
     
-    public function changeQuantity($quantity, $productId)
+    public function changeQuantity($userId, $quantity, $productId)
     {
 
         try {
 
-            $this->setSql("UPDATE " . $this->table . " SET quantity = {$quantity} WHERE product_id = {$productId}");
+            $this->setSql("UPDATE " . $this->table . " SET quantity = {$quantity} WHERE user_id = $userId AND product_id = {$productId}");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+    }
+
+    public function changeStatus($userId)
+    {
+
+        try {
+            
+            $this->setSql("UPDATE " . $this->table . " SET status = 0 WHERE user_id = $userId AND status = 1");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
@@ -104,9 +119,41 @@ class Cart extends Database {
 
     }
 
-    public function delete()
+    public function deleteByProductId($userId, $id)
     {
         
+        try {
+            
+            $this->setSql("DELETE FROM " . $this->table . " WHERE product_id = {$id} AND user_id = {$userId}");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+    }
+
+    public function delete($userId) {
+
+        try {
+            
+            $this->setSql("DELETE FROM " . $this->table . " WHERE user_id = {$userId} AND status = 1");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
     }
 
     public function setSql($sql)

@@ -23,7 +23,7 @@ class Functions extends Database {
 
             $this->setSql("SELECT * FROM {$table} WHERE  " . ($table == 'product_category' ? 'category' : $table) . "_id = $id");
 
-            $this->stmt = $this->conn()->prepare($this->getSql());
+            $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
             

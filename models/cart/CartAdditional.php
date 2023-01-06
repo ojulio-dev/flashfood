@@ -17,13 +17,49 @@ class CartAdditional extends Database {
         $this->table = 'cart_additional';
     }
 
-    public function create()
+    public function create($cartId, $additionals)
     {
+
+        $values = "";
+
+        foreach($additionals as $id) {
+            $values .= "({$cartId}, {$id}),";
+        }
+
+        $values = substr($values, 0, -1);
+
+        try {
+            
+            $this->setSql("INSERT INTO " . $this->table . " (cart_id, additional_id) VALUES {$values}");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
 
     }
 
-    public function read()
+    public function readByCartId($cartId)
     {
+
+        try {
+            
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE cart_id = $cartId");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
 
     }
 

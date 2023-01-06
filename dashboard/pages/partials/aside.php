@@ -23,8 +23,8 @@
             </div>
 
             <div class="click-wrapper">
-                <a href="?page=orders">Cardápio</a>
-                <a href="#">Pedidos</a>
+                <a href="?page=orders">Pedidos</a>
+                <a href="?page=orders&action=menu">Cardápio</a>
             </div>
         </li>
 

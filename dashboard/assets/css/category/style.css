@@ -34,7 +34,7 @@
 .category-table-scroll-wrapper {
     height: auto;
     max-height: 48vh;
-    overflow: auto;
+    overflow: scroll;
 }
 
 .main-read-table {

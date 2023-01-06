@@ -5,7 +5,7 @@ $(document).ready(function() {
         let formData = new FormData($('#form-users-create')[0]);
 
         $.ajax({
-            url: API_URL + 'api/?api=user&action=createUser',
+            url: SERVER_HOST + '/api/?api=user&action=createUser',
             type: 'POST',
             data: formData,
             dataType: 'JSON',
@@ -41,7 +41,7 @@ $(document).ready(function() {
         formData.append('userId', $(this).data('user-id'));
 
         $.ajax({
-            url: API_URL + 'api/?api=user&action=updateUser',
+            url: SERVER_HOST + '/api/?api=user&action=updateUser',
             type: 'POST',
             data: formData,
             dataType: 'JSON',

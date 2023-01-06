@@ -16,7 +16,7 @@ $(document).ready(function() {
         let productId = $(this).data('product-id');
 
         $.ajax({
-            url: API_URL + 'api/?api=products&action=listProductById',
+            url: SERVER_HOST + '/api/?api=products&action=listProductById',
             type: 'POST',
             data: {productId},
             dataType: 'json',
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 $('#modal-orders .main-modal-wrapper').append(`
 
                     <div class="header">
-                        <img src="${API_URL}assets/images/products/${data.banner}" alt="">
+                        <img src="${SERVER_HOST}/assets/images/products/${data.banner}" alt="">
                         <i class="fa-solid fa-xmark icon-exit"></i>
                     </div>
 
@@ -88,15 +88,13 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: API_URL + 'api/?api=cart&action=insertCart',
+            url: SERVER_HOST + '/api/?api=cart&action=insertCart',
             type: 'POST',
             data: {
                 productId: productId, additionals: additionals
             },
             dataType: 'json',
             success: function (data) {
-
-                readIconCart();
 
                 data.response && $('#modal-orders').hide();
 
@@ -122,7 +120,7 @@ $(document).ready(function() {
     // read
     const readProducts = (search) => {
         $.ajax({
-            url: API_URL + `api/?api=products&action=listProductsOrders&search=${search}`,
+            url: SERVER_HOST + `/api/?api=products&action=listProductsOrders&search=${search}`,
             dataType: 'json',
             processData: false,
             contentType: false,
@@ -137,7 +135,7 @@ $(document).ready(function() {
                             <div class="main-orders-item">
                                 <a href="#">
                                     <div class="products-image-wrapper">
-                                        <img src="${API_URL}/assets/images/products/${product.banner}">
+                                        <img src="${SERVER_HOST}/assets/images/products/${product.banner}">
                                         <button type="button" class="show-modal-product"><i class="fa-solid fa-plus"></i></button>
                                     </div>
 
@@ -198,21 +196,52 @@ $(document).ready(function() {
             }
         });
     }
+})
 
-    const readIconCart = () => {
-        $.ajax({
-            url: API_URL + 'api/?api=cart&action=listCart',
-            dataType: 'json',
-            success: function (data) {
-                $('#icon-count-cart-items').html(data.length);
-            },
-            error: function (jqXhr, textStatus, errorMessage) {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
-                    icon: 'error'
-                })
-            }
-        });
-    }
+$('.orders-image-wrapper').click(function(event) {
+
+    let orderNumber = this.querySelector('strong').innerHTML;
+
+    orderNumber = orderNumber.replace('#', '');
+
+    $.ajax({
+        url: SERVER_HOST + '/api/?api=orders&action=listByOrderNumber',
+        type: 'POST',
+        data: {
+            orderNumber
+        },
+        dataType: 'JSON',
+        success: function(data) {
+            $('#modal-order').show();
+
+            console.log(data);
+
+            // $('.main-modal-wrapper.-order .table-wrapper > table tbody').html('');
+
+            // data.map(product => {
+
+            //     $('.main-modal-wrapper.-order .table-wrapper > table tbody').append(`
+            //         <tr>
+            //             <td>
+            //                 <img src="${SERVER_HOST}assets/images/products/${product.banner}" alt="Imagem do Produto">
+            //             </td>
+            //             <td>${product.category}</td>
+            //             <td>${product.name}</td>
+            //             <td>Qtd - ${product.quantity}</td>
+            //             <td><i class="fa-solid fa-angle-down"></i></td>
+            //         </tr>
+            //     `);
+            // })
+            
+        },
+        error: function() {
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+        }
+
+    })
+    
 })
