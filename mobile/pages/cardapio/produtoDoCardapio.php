@@ -26,10 +26,10 @@
                         <h5>Hamburguer</h5>
                         <small>R$ 4,00</small>
                     </div>
-                    <div class="adicionais-quantidades">
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
-                        <button><i class="fa-solid fa-plus"></i></button>
+                    <div class="adicionais-quantidades" data-additional-id="1">
+                        <button class="btn-additional-product" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
+                        <input id="input-additional-quantity" type="number" value="0" min="0" max="9">
+                        <button class="btn-additional-product" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
@@ -37,10 +37,10 @@
                         <h5>Queijo Prato</h5>
                         <small>R$ 2,00</small>
                     </div>
-                    <div class="adicionais-quantidades">
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
-                        <button><i class="fa-solid fa-plus"></i></button>
+                    <div class="adicionais-quantidades" data-additional-id="1">
+                        <button class="btn-additional-product" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
+                        <input id="input-additional-quantity" type="number" value="0" min="0" max="9">
+                        <button class="btn-additional-product" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
@@ -48,10 +48,10 @@
                         <h5>Queijo Cheddar</h5>
                         <small>R$ 3,00</small>
                     </div>
-                    <div class="adicionais-quantidades">
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
-                        <button><i class="fa-solid fa-plus"></i></button>
+                    <div class="adicionais-quantidades" data-additional-id="1">
+                        <button class="btn-additional-product" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
+                        <input id="input-additional-quantity" type="number" value="0" min="0" max="9">
+                        <button class="btn-additional-product" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
@@ -59,10 +59,10 @@
                         <h5>Cebola</h5>
                         <small>R$ 2,00</small>
                     </div>
-                    <div class="adicionais-quantidades">
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
-                        <button><i class="fa-solid fa-plus"></i></button>
+                    <div class="adicionais-quantidades" data-additional-id="1">
+                        <button class="btn-additional-product" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
+                        <input id="input-additional-quantity" type="number" value="0" min="0" max="9">
+                        <button class="btn-additional-product" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
@@ -70,10 +70,10 @@
                         <h5>Tomate</h5>
                         <small>R$ 2,00</small>
                     </div>
-                    <div class="adicionais-quantidades">
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
-                        <button><i class="fa-solid fa-plus"></i></button>
+                    <div class="adicionais-quantidades" data-additional-id="1">
+                        <button class="btn-additional-product" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
+                        <input id="input-additional-quantity" type="number" value="0" min="0" max="9">
+                        <button class="btn-additional-product" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
                 <li>
@@ -81,26 +81,47 @@
                         <h5>Molho Barbie Kill</h5>
                         <small>R$ 2,00</small>
                     </div>
-                    <div class="adicionais-quantidades">
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <input type="text" placeholder="0">
-                        <button><i class="fa-solid fa-plus"></i></button>
+                    <div class="adicionais-quantidades" data-additional-id="1">
+                        <button class="btn-additional-product" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
+                        <input id="input-additional-quantity" type="number" value="0" min="0" max="9">
+                        <button class="btn-additional-product" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </li>
             </ul>
         </div>
         <div class="quantidade-observacao">
             <div class="quantidade-grid">
-                <div class="adicionais-quantidades">
-                    <button><i class="fa-solid fa-minus"></i></button>
-                    <input type="text" placeholder="0">
-                    <button><i class="fa-solid fa-plus"></i></button>
+                <div class="adicionais-quantidades" data-additional-id="1">
+                    <button class="button-product-quantity btn-minus" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
+                    <input id="input-product-quantity" type="number" value="1" min="1" max="99">
+                    <button class="button-product-quantity btn-plus" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <h5>Quantidade</h5>
             </div>
             <div class="quantidade-grid">
-                <i class="fa-regular fa-pen-to-square"></i>
-                <h5>Adicionar Observação?</h5>
+                <i class="fa-regular fa-2x fa-pen-to-square" id="button-modal-obs"></i>
+                <h5>Adicionar Observação</h5>
+            </div>
+        </div>
+        
+        <div class="btn-adicionar-grid">
+            <button class="btn-adicionar-carrinho">Adicionar ao carrinho  (R$ 39,90)</button>
+        </div>
+    </div>
+
+    <!-- div modal -->
+
+    <div id="main-modal-obs">
+        <div class="modal-obs-wrapper">
+            <div class="obs-titulo">
+                <h2>Adicionar Observação</h2>
+            </div>
+
+            <input type="text" class="input-modal-obs" placeholder="Qual a sua observação?">
+
+            <div class="obs-button">
+                <button class="obs-modal-cancelar" id="cancelar-modal-obs">Cancelar</button>
+                <button class="obs-modal-enviar" id="enviar-modal-obs">Enviar</button>
             </div>
         </div>
     </div>

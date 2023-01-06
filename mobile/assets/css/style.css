@@ -178,8 +178,179 @@
 .adicionais-quantidades input::placeholder{
     color: #000;
 }
-
+ 
 .quantidade-observacao{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0px;
+    padding: 0px 5px;
+}
+
+.quantidade-grid:nth-child(1) {
+    width: 95px;
+}
+
+.quantidade-grid {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 5px;
+}
+
+.quantidade-observacao .adicionais-quantidades{
+    width: 100%;
+    border: 2px solid black;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.quantidade-observacao .adicionais-quantidades input{
+    max-width: 60%;   
+}
+
+
+/* Butão*/
+.btn-adicionar-grid{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.btn-adicionar-carrinho{
+  width: 100%;
+  background-color: #52A84B;
+  border: 1px solid #52A84B;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* css modal */
+
+#main-modal-obs{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-obs-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    position: absolute;
+    z-index: 999999;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    width: 70%;
+    height: 20%;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.obs-titulo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #52A84B;
+    border-radius: 10px 10px 0px 0px;
+    height: 30px;
+}
+
+.obs-titulo h2{
+    color: white;
+    font-weight: 600;
+    font-size: small;
+}
+
+.input-modal-obs{
+    display: flex;
+    align-items: center;
+
+    padding: 15px;
+    width: 210px;
+    height: 35px;
+    background: #D7D7D7;
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+}
+
+.obs-button{
+    margin-bottom: 10px;
+    display: flex;
+    gap: 55px;
+}
+
+.obs-button .obs-modal-cancelar{
+
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 0px;
+}
+
+.obs-button .obs-modal-enviar{
+
+    background-color: #52A84B;
+    border: 1px solid #52A84B;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 0px;
+}
+
+.obs-button button{
+    width: 80px;
+}
+
+/* Quantidade e Observação */
+.obs-quantity-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    background: red;
+}
+
+input[type=nyumber] {
+    background: orange;
 }

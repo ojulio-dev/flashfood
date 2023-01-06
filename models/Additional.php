@@ -20,7 +20,7 @@ class Additional extends Database {
     public function create($ingredientIds, $productId = null)
     {
 
-        $productId = $productId ?? parent::lastInsertId('product');
+        $productId = $productId ?? $this->lastProductId();
 
         $values = "";
 
@@ -123,6 +123,25 @@ class Additional extends Database {
             } else {
                 return false;
             }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function lastProductId()
+    {
+        try {
+            
+            $sql = "SELECT MAX(product_id) as id FROM product";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute();
+
+            $id = $stmt->fetch()['id'];
+
+            return $id;
+
         } catch (PDOException $e) {
             return $e->getMessage();
         }
