@@ -43,6 +43,19 @@
 
         <li class="dashboard-items">
             <div class="items-wrapper">
+                <h2><i class="fa-solid fa-mug-hot"></i>Mesas</h2>
+
+                <i class="fa-solid fa-angle-down arrow-click"></i>
+            </div>
+
+            <div class="click-wrapper">
+                <a href="?page=tables&action=create">Cadastro</a>
+                <a href="?page=tables">Listagem</a>
+            </div>
+        </li>
+
+        <li class="dashboard-items">
+            <div class="items-wrapper">
                 <h2><i class="fa-solid fa-gear"></i></i>Config</h2>
 
                 <i class="fa-solid fa-angle-down arrow-click"></i>

@@ -166,15 +166,16 @@
     background-color: #e43633;
 }
 
-.products-select-category {
+.main-select-form.-products {
     width: 90%;
     margin: 0 auto;
     margin-bottom: 10px;
 }
 
-.products-select-category select {
+.main-select-form select {
+    width: 130px;
+
     box-sizing: content-box;
-    width: 18%;
     height: 25px;
     padding: 5px 0;
     padding-left: 10px;
@@ -185,7 +186,6 @@
 
     border: none;
     box-shadow: 0 0 3px #232323;
-    margin-bottom: 10px;
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
@@ -194,6 +194,11 @@
     background-position-x: 95.5%;
     background-position-y: 12.5px;
     background-size: 10px;
+}
+
+.main-select-form #options-list-wrapper {
+    width: 18%;
+    margin-bottom: 10px;
 }
 
 select::-ms-expand {

@@ -21,7 +21,7 @@ class Functions extends Database {
     {
         try {
 
-            $this->setSql("SELECT * FROM {$table} WHERE  " . ($table == 'product_category' ? 'category' : $table) . "_id = $id");
+            $this->setSql("SELECT * FROM `{$table}` WHERE  " . ($table == 'product_category' ? 'category' : $table) . "_id = $id");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -46,7 +46,7 @@ class Functions extends Database {
     {
         try {
 
-            $this->setSql("UPDATE {$table} SET status = '$status' WHERE " . ($table !== 'product_category' ? $table : 'category') . "_id = $id");
+            $this->setSql("UPDATE `{$table}` SET status = '$status' WHERE " . ($table !== 'product_category' ? $table : 'category') . "_id = $id");
             
             $this->stmt = $this->conn->prepare($this->getSql());
 

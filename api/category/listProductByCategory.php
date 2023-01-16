@@ -4,11 +4,15 @@ use Model\ProductCategory;
 
 $productCategory = new ProductCategory;
 
-$response = $productCategory->readByCategory($_GET['idCategory']);
+if (isset($_GET['idCategory'])) {
 
-if (!$response) {
-    
-    $response = false;
+    $response = $productCategory->readByCategory($_GET['idCategory']);
+
+    if (!$response) {
+        
+        $response = false;
+    }
+
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
 }
-
-echo json_encode($response, JSON_UNESCAPED_UNICODE);

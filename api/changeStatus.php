@@ -14,7 +14,7 @@ if (isset($_POST)) {
 
     if ($item) {
 
-        $functions->changeStatus(!$item['status'], $itemId ,$statusData['table']);
+        $functions->changeStatus(!$item['status'], $itemId, $statusData['table']);
 
         $response = [
             'response' => true,

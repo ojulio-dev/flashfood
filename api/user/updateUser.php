@@ -67,6 +67,25 @@ $data['birthdate'] = $_POST['birthdate'];
 
 $data['password'] = sha1(date('dmY', strtotime($data['birthdate'])));
 
+$readByEmail = $user->readByEmail($data['email']);
+
+if ($readByEmail) {
+    
+    $readById = $user->readById($_POST['userId']);
+
+    if ($readByEmail['email'] != $readById['email']) {
+
+        $response = array(
+            'response' => false,
+            'message' => 'Esse E-mail já está cadastrado! Insira outro e tente Novamente.'
+        );
+    
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+    
+    }
+}
+
 $update = $user->update($data, $_POST['userId']);
 
 if ($update) {

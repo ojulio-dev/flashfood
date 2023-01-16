@@ -2,6 +2,8 @@
 
 use Model\ProductCategory;
 
+$productCategory = new ProductCategory();
+
 if 
 (
     !key_exists('name', $_POST) || 
@@ -16,8 +18,6 @@ if
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
-
-$productCategory = new ProductCategory;
   
 $isEmpty = false;
 
@@ -40,9 +40,43 @@ if ($isEmpty) {
     exit();
 }
 
+if (!empty($_FILES['banner']['name'])) {
+    $extension = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
+
+    if ($extension != 'jpg' && $$extension != 'jpeg' && $$extension != 'png') {
+
+        $response = array(
+            'response' => false,
+            'message' => 'Formato de arquivo inválido!'
+        );
+    
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+}
+
 $data['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $data['status'] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT);
 $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
+
+$data['banner'] = $_FILES['banner'];
+
+$readBySlug = $productCategory->readBySlug($data['slug']);
+
+if ($readBySlug) {
+    
+    $readById = $productCategory->readById($_POST['categoryId']);
+
+    if ($readById['slug'] != $readBySlug['slug']) {
+        $response = array(
+            'response' => false,
+            'message' => 'Essa Categoria já está Cadastrada! Altere o Nome e tente Novamente.'
+        );
+
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+}
 
 $update = $productCategory->updateById($_POST['categoryId'], $data);
 

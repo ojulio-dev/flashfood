@@ -38,7 +38,9 @@ class Product extends Database {
     {
         try {
 
-            $this->setSql("INSERT INTO " . $this->table . "(category_id, name, description, special_price, price, slug, status) VALUES (" . $data['category_id'] . ", '" . $data['name'] . "', '" . $data['description'] . "', '" . $data['special_price'] ."', '" . $data['price'] ."', '" . $data['slug'] . "', " . $data['status'] . ")");
+            $specialPrice = isset($data['special_price']) ? $data['special_price'] : 'NULL';
+
+            $this->setSql("INSERT INTO " . $this->table . "(category_id, name, description, special_price, price, slug, status) VALUES (" . $data['category_id'] . ", '" . $data['name'] . "', '" . $data['description'] . "', $specialPrice, '" . $data['price'] ."', '" . $data['slug'] . "', " . $data['status'] . ")");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -58,7 +60,7 @@ class Product extends Database {
                 return false;
             }
         } catch (PDOException $e) {
-            return $e->getMessage();
+            echo $e->getMessage();
         }
     }
 
@@ -66,7 +68,7 @@ class Product extends Database {
     {
         try {
 
-            $this->setSql("SELECT P.*, C.category_id, C.status as category_status, C.name as category FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 ORDER BY C.name DESC");
+            $this->setSql("SELECT P.*, C.category_id, C.status as category_status, C.name as category FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 ORDER BY P.product_id DESC");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -106,6 +108,23 @@ class Product extends Database {
             } else {
                 return false;
             }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function readByProductId($id)
+    {
+        try {
+
+            $this->setSql("SELECT * FROM {$this->table} WHERE product_id = $id");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
+
         } catch (PDOException $e) {
             return $e->getMessage();
         }
@@ -151,11 +170,32 @@ class Product extends Database {
         }
     }
 
+    public function countBySlug($slug, $multiple = false)
+    {
+        $condition = $multiple ? 'LIKE' : '=';
+
+        try {
+
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE slug $condition '{$slug}%'");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function updateById($id, $data)
     {
         try {
 
-            $this->setSql("UPDATE " . $this->table . " SET category_id = " . $data['category_id'] . ", name = '" . $data['name'] . "', description = '" . $data['description'] . "', special_price = " . $data['special_price'] . ", price = " . $data['price'] .", status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE product_id = $id");
+            $specialPrice = isset($data['special_price']) ? $data['special_price'] : 'NULL';
+
+            $this->setSql("UPDATE " . $this->table . " SET category_id = " . $data['category_id'] . ", name = '" . $data['name'] . "', description = '" . $data['description'] . "', special_price = $specialPrice, price = " . $data['price'] .", status = " . $data['status'] . ", slug = '" . $data['slug'] . "' WHERE product_id = $id");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -240,7 +280,7 @@ class Product extends Database {
             }
 
         } catch (PDOException $e) {
-            throw $e->getMessage();
+            echo $e->getMessage();
         }
 
     }

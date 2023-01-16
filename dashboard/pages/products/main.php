@@ -18,8 +18,8 @@ $readCategory = $productCategory->read();
         <h1 class="main-dashboard-title">Produtos</h1>
     </div>
 
-    <form class="products-select-category">
-        <select id="options-list-products">
+    <form class="main-select-form -products">
+        <select id="options-list-wrapper">
             <option value="all" selected>Todos</option>
 
             <?php foreach($readCategory as $category): ?>
@@ -31,13 +31,15 @@ $readCategory = $productCategory->read();
     <div class="read-table-wrapper">
         
         <table>
-            <tbody id="read-table-products-items">
+            <tbody id="main-read-table-items">
                 <?php if ($readProduct): foreach($readProduct as $product): ?>
+                    <?php $product['final_price'] = number_format($product['special_price'] ?? $product['price'], 2, ',', '.') ?>
+
                     <tr>
                         <td class="read-image-wrapper"><img src="<?= SERVER_HOST ?>/assets/images/products/<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['category'] ?></td>
                         <td><?= $product['name'] ?></td>
-                        <td>R$ <?= number_format($product['special_price'], 2, ',', '.') ?></td>
+                        <td>R$ <?= $product['final_price'] ?></td>
                         <td class="read-table-status">
                             <form>
                                 <input name="status" id="status-read-products" type="checkbox" onclick="changeStatus(<?= $product['product_id']?>, 'product')" <?= $product['status'] == 1 ? 'checked' : '' ?>/>

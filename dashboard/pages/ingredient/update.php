@@ -1,16 +1,14 @@
 <?php
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['slug'])) {
     header("Location: ?page=ingredient");
 }
 
-$idIngredient = $_GET['id'];
-
 use Model\Ingredient;
 
-$ingredientController = new Ingredient;
+$ingredient = new Ingredient;
 
-$read = $ingredientController->readById($_GET['id']);
+$read = $ingredient->readBySlug($_GET['slug']);
 
 if (!$read) {
     header("Location: ?page=ingredient");

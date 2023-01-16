@@ -45,6 +45,29 @@ class Ingredient extends Database {
     public function read()
     {
         try {
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE status = 1");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+                
+                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                
+                return false;
+            }
+
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
+    public function readAdmin()
+    {
+        try {
             $this->setSql("SELECT * FROM " . $this->table . "");
 
             $this->stmt = $this->conn->prepare($this->getSql());
@@ -95,35 +118,8 @@ class Ingredient extends Database {
 
             $this->stmt->execute();
             
-            if ($this->stmt->rowCount()) {
-
-                return true;
-            } else {
-
-                return false;
-            }
-        } catch (PDOException $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function readByProductSlug($slug)
-    {
-        try {
-
-            $this->setSql("");
-
-            $this->stmt = $this->conn->prepare($this->getSql());
-
-            $this->stmt->execute();
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
             
-            if ($this->stmt->rowCount()) {
-
-                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-
-                return false;
-            }
         } catch (PDOException $e) {
             return $e->getMessage();
         }

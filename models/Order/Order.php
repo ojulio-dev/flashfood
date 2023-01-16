@@ -4,6 +4,7 @@ namespace Model\Order;
 
 use Classes\Database;
 use Model\Order\OrderItem;
+use Model\Order\OrderItemAdditional;
 
 use PDO;
 use PDOException;
@@ -12,6 +13,7 @@ class Order extends Database {
 
     private $stmt, $sql, $conn, $table;
     private $orderItem;
+    private $orderItemAdditional;
 
     public function __construct()
     {
@@ -20,6 +22,8 @@ class Order extends Database {
         $this->table = 'order';
 
         $this->orderItem = new OrderItem();
+
+        $this->orderItemAdditional = new OrderItemAdditional();
     }
 
     /**
@@ -30,7 +34,6 @@ class Order extends Database {
     */
     public function create($orderItems, $tableId, $userId)
     {
-
         $this->setSql("SELECT MAX(order_number) as order_number FROM `order`");
 
         $this->stmt = $this->conn->prepare($this->getSql());
@@ -58,7 +61,26 @@ class Order extends Database {
 
         try {
             
-            $this->setSql("SELECT * FROM `" . $this->table . "` WHERE status = 1");
+            $this->setSql("SELECT O.*, S.name as status_name, S.color as status_color FROM `" . $this->table . "` O INNER JOIN order_status as S on S.status_id = O.status_id ORDER BY order_number DESC");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+    }
+
+    public function readByStatusId($statusId)
+    {
+
+        try {
+            
+            $this->setSql("SELECT O.*, S.name as status_name, S.color as status_color FROM `" . $this->table . "` O INNER JOIN order_status as S on S.status_id = O.status_id WHERE O.status_id = $statusId");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -77,18 +99,94 @@ class Order extends Database {
 
         try {
             
-            $this->setSql("SELECT O.order_id, I.order_item_id, O.order_number, O.table_number, P.name, P.banner, P.description, P.price, P.special_price, P.slug, O.created_at, I.quantity, C.name as category FROM `" . $this->table . "` O INNER JOIN order_item AS I ON I.order_id = O.order_id INNER JOIN product AS P ON I.product_id = P.product_id INNER JOIN product_category as C on P.category_id = C.category_id WHERE order_number = $orderNumber");
+            $this->setSql("SELECT O.order_id, I.*, O.order_number, O.table_number, O.status_id, O.created_at FROM `" . $this->table . "` O INNER JOIN order_item AS I ON I.order_id = O.order_id WHERE order_number = $orderNumber");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
-            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            $products = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $itemsIds = [];
+
+            foreach($products as $product) {
+                $itemsIds[] = $product['order_item_id'];
+            }
+
+            $additionals = $this->orderItemAdditional->readByItemsIds($itemsIds);
+
+            foreach($products as $productKey => $product) {
+
+                $itemId = $product['order_item_id'];
+
+                $products[$productKey]['additionals'] = [];
+                
+                foreach($additionals as $additionalKey => $additional) {
+                    
+                    if ($itemId == $additional['order_item_id']) {
+                        $products[$productKey]['additionals'][] = $additionals[$additionalKey];
+                    }
+
+                }
+            }
+
+            return $products;
 
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
+    }
+
+    public function finishOrder($orderNumber)
+    {
+        try {
+            
+            $this->setSql("UPDATE `" . $this->table . "` SET status_id = 3 WHERE order_number = '$orderNumber'");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function cancelOrder($orderNumber)
+    {
+        try {
+            
+            $this->setSql("UPDATE `" . $this->table . "` SET status_id = 4 WHERE order_number = '$orderNumber'");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function processingOrder($orderNumber)
+    {
+        try {
+            
+            $this->setSql("UPDATE `" . $this->table . "` SET status_id = 2 WHERE order_number = '$orderNumber'");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function update()

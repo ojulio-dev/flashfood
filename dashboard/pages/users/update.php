@@ -65,5 +65,7 @@ if (!$readUser) {
         </div>
 
         <button type="button" id="button-update-users" class="button-submit success" data-user-id="<?= $_GET['id'] ?>">Atualizar</button>
+
+        <button type="button" id="button-delete-users" class="button-submit delete" data-user-id="<?= $_GET['id'] ?>">Deletar</button>
     </form>
 </section>

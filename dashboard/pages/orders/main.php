@@ -2,11 +2,15 @@
 
 use Model\Order\Order;
 use Model\Order\OrderItem;
+use Model\Order\OrderStatus;
 
 $order = new Order();
 $orderItem = new OrderItem();
+$orderStatus = new OrderStatus();
 
 $orders = $order->read();
+
+$readStatus = $orderStatus->read();
 
 $dateTime = new DateTime('now');
 
@@ -47,15 +51,49 @@ for ($i = 0; $i < count($orders); $i++) {
         <h1 class="main-dashboard-title">Pedidos</h1>
     </div>
 
-    <?php if ($orders): ?>
-        <ul class="main-orders-wrapper">
+    <div class="orders-search-wrapper">
+        <div class="search-form">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="orders-search" type="number" placeholder="Search...">
+        </div>
+        
+        <form class="main-select-form">
+            <select>
+                <option value="" selected>Todos</option>
+
+                <?php foreach($readStatus as $status): ?>
+                    <option value="<?= $status['status_id'] ?>"><?= ucfirst($status['name']) ?></option>
+                <?php endforeach ?>
+            </select>
+        </form>
+    </div>
+
+    <ul class="main-orders-wrapper" id="main-orders-wrapper">
+        <?php if ($orders): ?>
             <?php foreach($orders as $order): ?>
-                <li>
+                <style>
+                    .main-orders-wrapper li#order-<?= $order['order_number'] ?> .orders-image-wrapper .number-status-wrapper .status-wrapper::after {
+                        background-color: <?= $order['status_color'] ?>;
+                    }
+
+                    .main-orders-wrapper li#order-<?= $order['order_number'] ?> .orders-image-wrapper .number-status-wrapper .status-wrapper::before {
+                        color: <?= $order['status_color'] ?>;
+                    }
+                        
+                </style>
+                
+                <li id="order-<?= $order['order_number'] ?>">
                     <div class="orders-image-wrapper">
-                        <img src="<?= DIR_IMG ?>/system/shopping-bag.png" alt="Imagem do Pedido">
+                        <img src="<?= DIR_IMG ?>/system/delivery-box.png" alt="Imagem do Pedido">
 
                         <strong>#<?= $order['order_number'] ?></strong>
-                        <span><?= $order['quantity'] ?></span>
+                        <div class="number-status-wrapper">
+                            <span class="quantity-products"><?= $order['quantity'] ?></span>
+
+                            <span class="status-wrapper">
+                                <small data-status-id="<?= $order['status_id'] ?>"><?= ucfirst($order['status_name']) ?></small>
+                            </span>
+                        </div>
                     </div>
 
                     <div class="orders-info-wrapper">
@@ -66,11 +104,10 @@ for ($i = 0; $i < count($orders); $i++) {
                     </div>
                 </li>
             <?php endforeach ?>
+            <?php else: ?>
+                <li class="filter-notfound">O sistema ainda não possui pedidos. Faça algum pedido clicando <a href="?page=orders&action=menu">aqui</a></li>
+            <?php endif ?>
         </ul>
-
-    <?php else: ?>
-        <span>O sistema ainda não possui pedidos :/ Faça algum pedido clicando <a href="?page=orders&action=menu">aqui</a></span>
-    <?php endif ?>
 
     <div class="main-modal" id="modal-order">
         <div class="modal-exit"></div>
@@ -83,47 +120,14 @@ for ($i = 0; $i < count($orders); $i++) {
             </div>
 
             <div class="info-container">
-                <div class="table-wrapper">
+                <div class="table-orders-wrapper">
                     <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img src="http://localhost/flashfood/assets/images/products/127.jpg" alt="Imagem do Produto">
-                                </td>
-                                <td>Sorvetes</td>
-                                <td>Sorvete Maneiro</td>
-                                <td>Qtd - 2</td>
-                                <td><i class="fa-solid fa-angle-down"></i></td>
-
-                                <td colspan="5">oioi</td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    <img src="http://localhost/flashfood/assets/images/products/45.jpg" alt="Imagem do Produto">
-                                </td>
-                                <td>Salgados</td>
-                                <td>Coxinha</td>
-                                <td>Qtd - 1</td>
-                                <td><i class="fa-solid fa-angle-down"></i></td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    <img src="http://localhost/flashfood/assets/images/products/52.jpg" alt="Imagem do Produto">
-                                </td>
-                                <td>Salgados</td>
-                                <td>Pizza 4 Quejos</td>
-                                <td>Qtd - 2</td>
-                                <td><i class="fa-solid fa-angle-down"></i></td>
-                            </tr>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
 
                 <div class="buttons-wrapper">
-                    <button>Pedido Finalizado</button>
-                    <button>Cancelar Pedido</button>
+                    <button id="cancel-order-button">Cancelar Pedido</button>
                 </div>
             </div>
         </div>

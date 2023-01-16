@@ -83,6 +83,23 @@ class User extends Database {
         }
     }
 
+    public function readByEmail($email)
+    {
+        try {
+            
+            $this->setSql("SELECT * FROM {$this->table} WHERE email = BINARY '$email'");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
+            
+        } catch (PDOException $e) {
+            throw $e->getMessage();
+        }
+    }
+
     public function readById($id)
     {
         try {
@@ -172,9 +189,21 @@ class User extends Database {
         }
     }
 
-    public function delete()
+    public function delete($userId)
     {
+        try {
+            
+            $this->setSql("DELETE FROM {$this->table} WHERE user_id = $userId");
 
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->rowCount();
+            
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     // Getters e Setters

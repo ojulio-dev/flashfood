@@ -2,11 +2,12 @@
 
 if (isset($_SESSION['user'])) {
 
-    $userIcon = DIR_IMG . '/user/' . $_SESSION['user']['image'];
+    $destinyIcon = DIR_IMG . '/user/' . $_SESSION['user']['image'];
 
-    !file_exists($userIcon) && $userIcon = DIR_IMG . '/header/user_default.png';
-
+    $userIcon = !file_exists($destinyIcon) ? $destinyIcon : DIR_IMG . '/header/user_default.png';
+    
 } else {
+
     $userIcon = DIR_IMG . '/header/user_default.png';
 }
 

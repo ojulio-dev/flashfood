@@ -45,6 +45,24 @@ $data['price'] = substr_replace(filter_input(INPUT_POST, 'price', FILTER_SANITIZ
 $data['status'] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_NUMBER_INT);
 $data['slug'] = strtolower(str_replace(' ', '-', $data['name']));
 
+$readBySlug = $ingredient->readBySlug($data['slug']);
+
+if ($readBySlug) {
+
+    $readById = $ingredient->readById($_POST['ingredientId']);
+
+    if ($readById['slug'] != $readBySlug['slug']) {
+        $response = array(
+            'response' => false,
+            'message' => 'Esse Ingrediente já está Cadastrado! Altere o Nome e tente Novamente.'
+        );
+
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+
+}
+
 $update = $ingredient->updateById($_POST['ingredientId'], $data);
 
 if ($update === true) {

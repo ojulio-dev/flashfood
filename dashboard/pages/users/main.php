@@ -21,7 +21,7 @@ $users = $user->read();
     
     </div>
 
-    <div class="ingredient-table-scroll-wrapper">
+    <div class="read-table-scroll-wrapper">
         <table class="main-read-table">
             <thead>
                 <tr>
@@ -58,7 +58,7 @@ $users = $user->read();
                     </tr>
                 <?php  endforeach; else: ?>
                     <tr>
-                        <td>Nenhum Ingrediente cadastrado, cadastre clicando <a class="link-no-results" href="?page=ingredient&action=create">aqui</a></td> 
+                        <td colspan="7">Nenhum Usuário cadastrado, cadastre clicando <a class="link-no-results" href="?page=ingredient&action=create">aqui</a></td> 
                     </tr>
                 <?php endif; ?>
             </tbody>

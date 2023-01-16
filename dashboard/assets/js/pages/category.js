@@ -58,15 +58,18 @@ $(document).ready(function() {
                     })
                 }
                 $('#read-items-category').html('');
-                data.map(product=>{
+                data.map(product => {
+                    
+                    let productPrice = new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    }).format(product.special_price ?? product.price);
+
                     $('#read-items-category').append(`
                     <tr>
                         <td class="read-image-wrapper"><img src="${SERVER_HOST}/assets/images/products/${ product.banner }" alt=""></td>
                         <td>${ product.name }</td>
-                        <td>${ new Intl.NumberFormat('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL',
-                            minimumFractionDigits: 2 }).format( product.special_price )}</td>
+                        <td>${productPrice}</td>
 
                         <td class="read-table-status">
                             <form>
@@ -100,22 +103,18 @@ $(document).ready(function() {
     // Update
     $('#button-update-category').click(function(event) {
 
-        var dataCategory = {
+        let dataCategory = new FormData($('#form-category-update')[0]);
 
-            name: $('#update-name-category').val(),
-
-            status: $('#update-status-category').val(),
-
-            categoryId: $(this).data('category-id')
-
-        }
+        dataCategory.append('categoryId', $(this).data('category-id'))
 
         $.ajax({
             url: SERVER_HOST + '/api/?api=category&action=updateCategory',
             type: 'POST',
             data: dataCategory,
+            processData: false,
+            contentType: false,
             dataType: 'json',
-            success: function (data, status, xhr) {
+            success: function (data) {
 
                 Swal.fire({
                     title: data.response ? 'Succeso!' : 'Oops...',
@@ -124,7 +123,7 @@ $(document).ready(function() {
                 })
 
             },
-            error: function (jqXhr, textStatus, errorMessage) {
+            error: function () {
                 Swal.fire({
                     title: 'Erro!',
                     text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',

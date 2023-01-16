@@ -129,7 +129,7 @@ $(document).ready(function() {
     });
 
     //Change ListProducts
-    $('#options-list-products').change(function(event) {
+    $('#options-list-wrapper').change(function(event) {
         var categoryId = event.target.value;
 
         var action = categoryId == 'all' ? 'listProducts' : 'listProductsByCategory';
@@ -145,7 +145,7 @@ $(document).ready(function() {
             success: function (data, status, xhr) {
 
                 if (!data) {
-                    $('#read-table-products-items').html(`
+                    $('#main-read-table-items').html(`
                         <tr>
                             <td>Essa categoria não possui produtos, cadastre clicando <a class="link-no-results" href="?page=products&action=create">aqui</a></td>
                         </tr>
@@ -155,12 +155,18 @@ $(document).ready(function() {
                 }
 
                 var list = data.map(function(product) {
+
+                    let productPrice = new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    }).format(product.special_price ?? product.price);
+
                       return `
                         <tr>
                             <td class="read-image-wrapper"><img src="${SERVER_HOST}/assets/images/products/${product.banner}" alt=""></td>
                             <td>${product.category}</td>
                             <td>${product.name}</td>
-                            <td>R$ ${Number(product.special_price).toFixed(2).replace('.', ',')}</td>
+                            <td>${productPrice}</td>
                             <td class="read-table-status">
                                 <form>
                                     <input name="status" id="status-read-products" type="checkbox" onclick="changeStatus(${product.product_id}, 'product')"  ${product.status == 1 ? 'checked' : ''}>
@@ -178,7 +184,7 @@ $(document).ready(function() {
                     `;
                 });
 
-                $('#read-table-products-items').html(list);
+                $('#main-read-table-items').html(list);
 
             },
             error: function (jqXhr, textStatus, errorMessage) {

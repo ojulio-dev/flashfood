@@ -2,7 +2,7 @@
     width: 90%;
     height: auto !important;
     max-height: 60vh;
-    overflow: scroll;
+    overflow: auto;
 
     margin: 0 auto;
 }

@@ -44,14 +44,19 @@ const readCart = () => {
 
             if (data.length) {
                 data.map(function(product) {
+                    let productPrice = new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    }).format(product.special_price ?? product.price);
+
                     $('.main-item-modal.-cart').append(`
-                        <li data-product-id="${product.product_id}">
+                        <li data-cart-id="${product.cart_id}">
                             <div class="cart-name-wrapper">
                                 <i class="fa-solid fa-cart-shopping icon-cart"></i>
 
                                 <div class="cart-info-wrapper">
                                     <h3>${product.name.length > 15 ? product.name.substr(0, 15) + '...' : product.name}</h3>
-                                    <p>R$ ${Number(product.special_price).toFixed(2).replace('.', ',')}</p>
+                                    <p>${productPrice}</p>
                                 </div>
                             </div>
                             <div class="cart-edit-amount">
@@ -110,7 +115,7 @@ const changeCart = (direction) => {
 
 $('body').on('click', '.cart-edit-amount button', function() {
 
-    let product = $(this).closest('[data-product-id]');
+    let product = $(this).closest('[data-cart-id]');
 
     let quantity = $(product).find('input')[0].value;
 
@@ -128,7 +133,7 @@ $('body').on('click', '.cart-edit-amount button', function() {
 
 $('body').on('change', '.input-cart-amount', function(event) {
     
-    let product = $(this).closest('[data-product-id]').data();
+    let product = $(this).closest('[data-cart-id]').data();
 
     if (event.target.value == 0) {
 
@@ -149,7 +154,7 @@ $('body').on('change', '.input-cart-amount', function(event) {
                     url: SERVER_HOST + '/api/?api=cart&action=removeProduct',
                     type: 'POST',
                     data: {
-                        productId: product.productId
+                        cartId: product.cartId
                     },
                     dataType: 'json',
                     success: function(data) {
@@ -185,7 +190,7 @@ $('body').on('change', '.input-cart-amount', function(event) {
             type: 'POST',
             data: {
                 quantity: event.target.value,
-                productId: product.productId
+                cartId: product.cartId
             },
             dataType: 'json',
             error: function (jqXhr, textStatus, errorMessage) {
@@ -314,7 +319,7 @@ $('.modal-subtitle-wrapper i').click(function() {
     changeCart('revert');
 })
 
-$('.cart-tables-wrapper ul li').click(function(event) {
+$('.cart-tables-wrapper ul .element-table').click(function(event) {
     var item = event.target.closest('li');
 
     if ($(item).hasClass('table-checked')) {

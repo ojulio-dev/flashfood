@@ -4,6 +4,10 @@ use Model\Cart\Cart;
 
 $cart = new Cart;
 
-$response = $cart->changeQuantity($_SESSION['user']['user_id'], $_POST['quantity'], $_POST['productId']);
+if (isset($_POST)) {
 
-echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    $response = $cart->changeQuantity($_SESSION['user']['user_id'], $_POST['quantity'], $_POST['cartId']);
+
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+}

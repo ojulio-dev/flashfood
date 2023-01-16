@@ -31,10 +31,14 @@
     background-color: #96cf7f;
 }
 
-.category-table-scroll-wrapper {
+.read-table-scroll-wrapper {
     height: auto;
     max-height: 48vh;
-    overflow: scroll;
+    overflow: auto;
+}
+
+.read-table-scroll-wrapper.-tables {
+    max-height: 58vh !important;
 }
 
 .main-read-table {
@@ -73,6 +77,17 @@
     justify-content: right;
     align-items: center;
     gap: 55px;
+}
+
+.read-table-icons-wrapper .remove-action {
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.read-table-icons-wrapper .remove-action i {
+    font-size: 20px;
 }
 
 .main-read-table .fa-eye {

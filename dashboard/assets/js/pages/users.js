@@ -68,6 +68,63 @@ $(document).ready(function() {
 
     });
 
+    // Delete
+    $('#button-delete-users').click(function() {
+        let userId = $(this).data('user-id');
+
+        Swal.fire({
+            title: 'Cuidado',
+            text: "Tem certeza que deseja excluir este Usuário?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, certeza',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: SERVER_HOST + '/api/?api=user&action=deleteUser',
+                    type: 'POST',
+                    data: {
+                        userId
+                    },
+                    dataType: 'JSON',
+                    success: function (data) {
+                        if (data) {
+                                Swal.fire({
+                                title: 'Foi!',
+                                text: 'Usuário deletado com sucesso!',
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Ok'
+                            }).then((result) => {
+                                
+                                window.location.replace(DIR_PATH + '/?page=users'); 
+                            })
+                        } else {
+                            
+                            Swal.fire({
+                                title: 'Erro!',
+                                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                                icon: 'error'
+                            })
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: 'Erro!',
+                            text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                            icon: 'error'
+                        })
+                    }
+                });
+            }
+        })
+    })
+
     // Search
     $('#user-search').keyup(function(event) {
         // Pega o valor do Search

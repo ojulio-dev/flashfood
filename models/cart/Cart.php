@@ -6,15 +6,20 @@ use Classes\Database;
 use PDO;
 use PDOException;
 
+use Model\Cart\CarAdditional;
+
 class Cart extends Database {
 
     private $stmt, $sql, $conn, $table;
+    private $cartAdditional;
 
     public function __construct()
     {
         $this->conn = parent::conn();
 
         $this->table = 'cart';
+
+        $this->cartAdditional = new CartAdditional();
     }
 
     public function create($userId, $productId)
@@ -38,17 +43,19 @@ class Cart extends Database {
     {
         try {
             
-            $this->setSql("SELECT P.*, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id WHERE C.status = 1 AND C.user_id = $userId");
+            $this->setSql("SELECT P.*, PO.name as category_name, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id INNER JOIN product_category PO on P.category_id = PO.category_id WHERE C.status = 1 AND C.user_id = $userId");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
 
-            if ($this->stmt->rowCount()) {
-                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                return [];
+            $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            for ($i = 0; $i < count($products); $i++) {
+                $products[$i]['additionals'] = $this->cartAdditional->readByCartId($products[$i]['cart_id']);
             }
+
+            return $products;
 
         } catch (PDOException $e) {
             throw $e->getMessage();
@@ -76,12 +83,12 @@ class Cart extends Database {
         }
     }
     
-    public function changeQuantity($userId, $quantity, $productId)
+    public function changeQuantity($userId, $quantity, $cartId)
     {
 
         try {
 
-            $this->setSql("UPDATE " . $this->table . " SET quantity = {$quantity} WHERE user_id = $userId AND product_id = {$productId}");
+            $this->setSql("UPDATE " . $this->table . " SET quantity = {$quantity} WHERE user_id = $userId AND cart_id = {$cartId}");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -99,6 +106,10 @@ class Cart extends Database {
     {
 
         try {
+
+            $this->setSql("UPDATE cart_additional SET status = 0 WHERE status = 1");
+
+            $this->conn->query($this->getSql());
             
             $this->setSql("UPDATE " . $this->table . " SET status = 0 WHERE user_id = $userId AND status = 1");
 
@@ -119,12 +130,12 @@ class Cart extends Database {
 
     }
 
-    public function deleteByProductId($userId, $id)
+    public function deleteByCartId($userId, $cartId)
     {
         
         try {
             
-            $this->setSql("DELETE FROM " . $this->table . " WHERE product_id = {$id} AND user_id = {$userId}");
+            $this->setSql("DELETE FROM " . $this->table . " WHERE cart_id = {$cartId} AND user_id = {$userId}");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

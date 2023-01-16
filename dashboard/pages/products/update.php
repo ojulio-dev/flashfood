@@ -19,14 +19,20 @@ $additional = new Additional;
 $ingredient = new Ingredient;
 
 if (!isset($_GET['slug'])) {
+
     header("Location: ?page=products");
 }
 
 $readProducts = $product->readBySlug($_GET['slug']);
 
+if (!$readProducts) {
+
+    header("Location: ?page=products");
+}
+
 $readProducts['price'] = number_format($readProducts['price'], 2, ',', '.');
 
-$readProducts['special_price'] = number_format($readProducts['special_price'], 2, ',', '.');
+$readProducts['special_price'] = number_format($readProducts['special_price'] ?? 0, 2, ',', '.');
 
 if (!$readProducts) {
     

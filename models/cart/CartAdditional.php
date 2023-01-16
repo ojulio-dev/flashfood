@@ -22,15 +22,15 @@ class CartAdditional extends Database {
 
         $values = "";
 
-        foreach($additionals as $id) {
-            $values .= "({$cartId}, {$id}),";
+        foreach($additionals as $additional) {
+            $values .= "({$cartId}, " . $additional['id'] . ", " . $additional['quantity'] . "),";
         }
 
         $values = substr($values, 0, -1);
 
         try {
             
-            $this->setSql("INSERT INTO " . $this->table . " (cart_id, additional_id) VALUES {$values}");
+            $this->setSql("INSERT INTO " . $this->table . " (cart_id, additional_id, quantity) VALUES {$values}");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -49,7 +49,7 @@ class CartAdditional extends Database {
 
         try {
             
-            $this->setSql("SELECT * FROM " . $this->table . " WHERE cart_id = $cartId");
+            $this->setSql("SELECT I.name, I.price, CA.* FROM " . $this->table . " CA INNER JOIN additional as A on CA.additional_id = A.additional_id INNER JOIN ingredient as I on I.ingredient_id = A.ingredient_id WHERE CA.cart_id = $cartId");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

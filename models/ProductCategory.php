@@ -138,11 +138,7 @@ class ProductCategory extends Database{
 
             $this->stmt->execute();
 
-            if ($this->stmt->rowCount()) {
-                return $this->stmt->fetch(PDO::FETCH_ASSOC);
-            } else {
-                return false;
-            }
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
             return $e->getMessage();
@@ -160,11 +156,8 @@ class ProductCategory extends Database{
 
             $this->stmt->execute();
             
-            if ($this->stmt->rowCount()) {
-                return $this->stmt->fetch(PDO::FETCH_ASSOC);
-            } else {
-                return false;
-            }
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
+
         } catch (PDOException $e) {
             return $e->getMessage();
         }
@@ -300,6 +293,16 @@ class ProductCategory extends Database{
             $this->stmt = $this->conn->prepare($this->getSql());
 
             $this->stmt->execute();
+
+            if (!empty($data['banner']['tmp_name'])) {
+
+                $id = $this->conn->query("SELECT category_id FROM " . $this->table . " WHERE slug = '" . $data['slug'] . "'")->fetch(PDO::FETCH_ASSOC);
+
+                $destiny = $this->createFile($_FILES['banner'], $id['category_id']);
+
+                $this->updateByField($destiny, 'banner', $id['category_id']);
+
+            }
 
             if ($this->stmt->rowCount()) {
                 return true;

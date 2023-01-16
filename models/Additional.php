@@ -90,7 +90,7 @@ class Additional extends Database {
     {
         try {
 
-            $this->setSql("SELECT I.*, A.additional_id FROM " . $this->table . " A INNER JOIN ingredient I on I.ingredient_id = A.ingredient_id INNER JOIN product P on P.product_id = A.product_id WHERE P.product_id = '{$id}' AND A.status = 1");
+            $this->setSql("SELECT I.*, A.additional_id FROM " . $this->table . " A INNER JOIN ingredient I on I.ingredient_id = A.ingredient_id INNER JOIN product P on P.product_id = A.product_id WHERE P.product_id = '{$id}' AND A.status = 1 AND I.status = 1");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

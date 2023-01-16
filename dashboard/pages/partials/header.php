@@ -32,9 +32,13 @@ $tables = $table->read();
                 </div>
 
                 <ul>
-                    <?php foreach($tables as $tableItem): ?>
-                        <li data-table-id="<?= $tableItem['table_id'] ?>"><?= $tableItem['table_number'] ?></li>
-                    <?php endforeach ?>
+                    <?php if (count($tables)): ?>
+                        <?php foreach($tables as $tableItem): ?>
+                            <li class="element-table" data-table-id="<?= $tableItem['table_id'] ?>"><?= $tableItem['table_number'] ?></li>
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <li class="table-notfound" >O sistema ainda não possui nenhuma Mesa cadastrada. Para prosseguir com o Pedido, clique <a href="?page=tables&action=create">aqui.</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
 

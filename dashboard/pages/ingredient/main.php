@@ -4,7 +4,7 @@ use Model\Ingredient;
 
 $ingredientController = new Ingredient;
 
-$readIngredients = $ingredientController->read();
+$readIngredients = $ingredientController->readAdmin();
 
 ?>
 
@@ -22,7 +22,7 @@ $readIngredients = $ingredientController->read();
         <a href="?page=ingredient&action=create" class="products-read-button-create">Create +</a>
     </div>
 
-    <div class="ingredient-table-scroll-wrapper">
+    <div class="read-table-scroll-wrapper">
         <table class="main-read-table">
             <thead>
                 <tr>
@@ -38,7 +38,7 @@ $readIngredients = $ingredientController->read();
                     <tr>
                         <td><?= $ingredient['ingredient_id'] ?></td>
                         <td><?= $ingredient['name'] ?></td>
-                        <td><?=  number_format($ingredient['price'], 2, ',', '.') ?></td>
+                        <td>R$ <?=  number_format($ingredient['price'], 2, ',', '.') ?></td>
                         <td class="read-table-status">
                             <form>
                                 <input name="status-read-ingredient" id="status-read-ingredient" onclick="changeStatus(<?= $ingredient['ingredient_id'] ?>, 'ingredient')" type="checkbox" <?= $ingredient['status'] == 1 ? 'checked' : '' ?>/>
@@ -47,7 +47,7 @@ $readIngredients = $ingredientController->read();
                         </td>
                         <td class="read-table-action">
                             <div class="read-table-icons-wrapper">
-                                <a href="?page=ingredient&action=update&id=<?= $ingredient['ingredient_id'] ?>">
+                                <a href="?page=ingredient&action=update&slug=<?= $ingredient['slug'] ?>">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
@@ -55,7 +55,7 @@ $readIngredients = $ingredientController->read();
                     </tr>
                 <?php  endforeach; else: ?>
                     <tr>
-                        <td>Nenhum Ingrediente cadastrado, cadastre clicando <a class="link-no-results" href="?page=ingredient&action=create">aqui</a></td> 
+                        <td colspan="5">Nenhum Ingrediente cadastrado, cadastre clicando <a class="link-no-results" href="?page=ingredient&action=create">aqui</a></td> 
                     </tr>
                 <?php endif; ?>
             </tbody>

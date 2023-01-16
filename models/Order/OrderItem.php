@@ -12,6 +12,8 @@ use PDOException;
 class OrderItem extends Database {
 
     private $stmt, $sql, $conn, $table;
+    private $orderItemAdditional;
+    private $cartAdditional;
 
     public function __construct()
     {
@@ -28,20 +30,24 @@ class OrderItem extends Database {
     {
 
         try {
-            
-            // $items = "";
-
-            // foreach($orderItems as $item) {
-            //     $items .= "({$orderId}, " . $item['product_id'] . ", " . $item['quantity'] . "),";
-            // }
-
-            // $items = substr($items, 0, -1);
 
             foreach($orderItems as $item) {
 
-                $this->setSql("INSERT INTO " . $this->table . " (order_id, product_id, quantity) VALUES ($orderId, " . $item['product_id'] . ", " . $item['quantity'] . ")");
+                $this->setSql("INSERT INTO " . $this->table . " (order_id, product_id, category_name, product_name, product_banner, product_description, product_price, product_special_price, quantity)
+                VALUES ($orderId, :product_id, :category_name, :product_name, :product_banner, :product_description, :product_price, :product_special_price, :quantity)");
 
-                $this->stmt = $this->conn->query($this->getSql());
+                $this->stmt = $this->conn->prepare($this->getSql());
+
+                $this->stmt->bindValue(':product_id', $item['product_id']);
+                $this->stmt->bindValue(':category_name', $item['category_name']);
+                $this->stmt->bindValue(':product_name', $item['name']);
+                $this->stmt->bindValue(':product_banner', $item['banner']);
+                $this->stmt->bindValue(':product_description', $item['description']);
+                $this->stmt->bindValue(':product_price', $item['price']);
+                $this->stmt->bindValue(':product_special_price', $item['special_price']);
+                $this->stmt->bindValue(':quantity', $item['quantity']);
+
+                $this->stmt->execute();
 
                 $orderItemId = $this->conn->lastInsertId();
 
@@ -64,7 +70,7 @@ class OrderItem extends Database {
 
         try {
             
-            $this->setSql("SELECT SUM(quantity) as quantity FROM " . $this->table . " WHERE order_id = $orderId AND status = 1");
+            $this->setSql("SELECT SUM(quantity) as quantity FROM " . $this->table . " WHERE order_id = $orderId");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -83,7 +89,7 @@ class OrderItem extends Database {
 
         try {
             
-            $this->setSql("SELECT * FROM " . $this->table . " WHERE order_id = $orderId AND status = 1");
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE order_id = $orderId");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

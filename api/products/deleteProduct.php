@@ -4,6 +4,10 @@ use Model\Product;
 
 $product = new Product;
 
-$response = $product->delete($_POST['productId']);
+if (isset($_POST['productId'])) {
 
-echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    $response = $product->delete($_POST['productId']);
+
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+}
