@@ -67,7 +67,7 @@ $(document).ready(function() {
 
                     $('#read-items-category').append(`
                     <tr>
-                        <td class="read-image-wrapper"><img src="${SERVER_HOST}/assets/images/products/${ product.banner }" alt=""></td>
+                        <td class="read-image-wrapper"><img src="${product.banner}" alt=""></td>
                         <td>${ product.name }</td>
                         <td>${productPrice}</td>
 

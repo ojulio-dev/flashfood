@@ -154,6 +154,8 @@ $(document).ready(function() {
                     return false;
                 }
 
+                console.log(data);
+
                 var list = data.map(function(product) {
 
                     let productPrice = new Intl.NumberFormat('pt-BR', {
@@ -163,7 +165,7 @@ $(document).ready(function() {
 
                       return `
                         <tr>
-                            <td class="read-image-wrapper"><img src="${SERVER_HOST}/assets/images/products/${product.banner}" alt=""></td>
+                            <td class="read-image-wrapper"><img src="${product.banner}" alt=""></td>
                             <td>${product.category}</td>
                             <td>${product.name}</td>
                             <td>${productPrice}</td>

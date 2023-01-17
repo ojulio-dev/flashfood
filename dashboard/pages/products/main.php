@@ -36,7 +36,7 @@ $readCategory = $productCategory->read();
                     <?php $product['final_price'] = number_format($product['special_price'] ?? $product['price'], 2, ',', '.') ?>
 
                     <tr>
-                        <td class="read-image-wrapper"><img src="<?= SERVER_HOST ?>/assets/images/products/<?= $product['banner'] ?>" alt=""></td>
+                        <td class="read-image-wrapper"><img src="<?= $product['banner'] ?>" alt=""></td>
                         <td><?= $product['category'] ?></td>
                         <td><?= $product['name'] ?></td>
                         <td>R$ <?= $product['final_price'] ?></td>

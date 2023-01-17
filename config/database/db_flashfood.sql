@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `additional` (
   KEY `FK_additional_product` (`product_id`),
   CONSTRAINT `FK_additional_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ingredient_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_additional_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela db_flashfood.additional: ~5 rows (aproximadamente)
 INSERT INTO `additional` (`additional_id`, `ingredient_id`, `product_id`, `status`, `created_at`) VALUES
@@ -53,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `FK_cart_user` (`user_id`),
   CONSTRAINT `FK_cart_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `FK_cart_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=341 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=345 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.cart: ~27 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.cart: ~31 rows (aproximadamente)
 INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`, `status`) VALUES
 	(312, 32, 46, 1, b'0'),
 	(313, 32, 127, 1, b'0'),
@@ -83,7 +83,11 @@ INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`, `status`) VA
 	(337, 32, 44, 1, b'0'),
 	(338, 32, 125, 1, b'0'),
 	(339, 32, 125, 1, b'0'),
-	(340, 32, 125, 1, b'0');
+	(340, 32, 125, 1, b'0'),
+	(341, 32, 138, 5, b'0'),
+	(342, 32, NULL, 5, b'0'),
+	(343, 32, 12, 1, b'0'),
+	(344, 32, NULL, 5, b'0');
 
 -- Copiando estrutura para tabela db_flashfood.cart_additional
 CREATE TABLE IF NOT EXISTS `cart_additional` (
@@ -97,9 +101,9 @@ CREATE TABLE IF NOT EXISTS `cart_additional` (
   KEY `FK_cart_additional_cart` (`cart_id`),
   CONSTRAINT `FK_cart_additional_additional` FOREIGN KEY (`additional_id`) REFERENCES `additional` (`additional_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `FK_cart_additional_cart` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.cart_additional: ~17 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.cart_additional: ~21 rows (aproximadamente)
 INSERT INTO `cart_additional` (`cart_additional_id`, `cart_id`, `additional_id`, `quantity`, `status`) VALUES
 	(62, 319, 50, 9, b'0'),
 	(63, 320, 55, 9, b'0'),
@@ -117,7 +121,11 @@ INSERT INTO `cart_additional` (`cart_additional_id`, `cart_id`, `additional_id`,
 	(77, 339, 55, 1, b'0'),
 	(78, 339, 56, 1, b'0'),
 	(79, 340, 55, 1, b'0'),
-	(80, 340, 56, 1, b'0');
+	(80, 340, 56, 1, b'0'),
+	(81, 341, 58, 9, b'0'),
+	(82, 342, NULL, 9, b'0'),
+	(83, 342, NULL, 9, b'0'),
+	(84, 344, NULL, 5, b'0');
 
 -- Copiando estrutura para tabela db_flashfood.ingredient
 CREATE TABLE IF NOT EXISTS `ingredient` (
@@ -149,11 +157,14 @@ CREATE TABLE IF NOT EXISTS `order` (
   KEY `FK_order_order_status` (`status_id`),
   CONSTRAINT `FK_order_order_status` FOREIGN KEY (`status_id`) REFERENCES `order_status` (`status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.order: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.order: ~4 rows (aproximadamente)
 INSERT INTO `order` (`order_id`, `user_id`, `status_id`, `order_number`, `table_number`, `created_at`) VALUES
-	(133, 32, 1, '000003', 20, '2023-01-16 14:22:07');
+	(133, 32, 1, '000003', 20, '2023-01-16 14:22:07'),
+	(134, 32, 1, '000006', 20, '2023-01-17 13:14:16'),
+	(135, 32, 1, '000009', 20, '2023-01-17 13:23:53'),
+	(136, 32, 1, '000012', 14, '2023-01-17 13:33:38');
 
 -- Copiando estrutura para tabela db_flashfood.order_item
 CREATE TABLE IF NOT EXISTS `order_item` (
@@ -173,18 +184,22 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   KEY `FK_order_item_product` (`product_id`),
   CONSTRAINT `FK_order_item_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_item_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.order_item: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.order_item: ~5 rows (aproximadamente)
 INSERT INTO `order_item` (`order_item_id`, `order_id`, `product_id`, `category_name`, `product_name`, `product_banner`, `product_description`, `product_price`, `product_special_price`, `quantity`, `created_at`) VALUES
-	(186, 133, 125, 'Principais', 'Prato do Dia', '125.jpg', 'Melhor Prato da Cidade', 18.50, 15.99, 1, '2023-01-16 14:22:07');
+	(186, 133, 125, 'Principais', 'Prato do Dia', '125.jpg', 'Melhor Prato da Cidade', 18.50, 15.99, 1, '2023-01-16 14:22:07'),
+	(187, 134, 138, 'Pratos Japoneses', 'Sushi Yoda', '138.jpg', 'Melhor Sushi do mundo', 5.00, 3.25, 5, '2023-01-17 13:14:16'),
+	(188, 135, 12, 'Bebidas', 'Coca-Cola', '12.jpg', 'Melhor Coca-Cola da Cidade', 5.99, 4.99, 1, '2023-01-17 13:23:53'),
+	(189, 135, NULL, 'Bebidas', 'Testeeeeeee', '154.png', 'asdasdasdas', 1.23, 1231.23, 5, '2023-01-17 13:23:53'),
+	(190, 136, NULL, 'Sorvetes', '123', '155.jpg', 'asd', 1.23, 1.23, 5, '2023-01-17 13:33:38');
 
 -- Copiando estrutura para tabela db_flashfood.order_item_additional
 CREATE TABLE IF NOT EXISTS `order_item_additional` (
   `order_item_additional_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `order_item_id` int(11) NOT NULL,
-  `additional_id` int(11) NOT NULL,
+  `additional_id` int(11) DEFAULT NULL,
   `additional_name` varchar(255) NOT NULL,
   `additional_price` float(8,2) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT 1,
@@ -192,15 +207,14 @@ CREATE TABLE IF NOT EXISTS `order_item_additional` (
   KEY `FK_order_item_additional_additional` (`additional_id`),
   KEY `FK_order_item_additional_order` (`order_id`),
   KEY `FK_order_item_additional_order_item` (`order_item_id`),
-  CONSTRAINT `FK_order_item_additional_additional` FOREIGN KEY (`additional_id`) REFERENCES `additional` (`additional_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `FK_order_item_additional_additional` FOREIGN KEY (`additional_id`) REFERENCES `additional` (`additional_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_item_additional_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_item_additional_order_item` FOREIGN KEY (`order_item_id`) REFERENCES `order_item` (`order_item_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.order_item_additional: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.order_item_additional: ~1 rows (aproximadamente)
 INSERT INTO `order_item_additional` (`order_item_additional_id`, `order_id`, `order_item_id`, `additional_id`, `additional_name`, `additional_price`, `quantity`) VALUES
-	(49, 133, 186, 55, 'Batata-Palha', 15.00, 1),
-	(50, 133, 186, 56, 'Cebola', 2.50, 1);
+	(54, 136, 190, NULL, 'Filé de Frango', 12.00, 5);
 
 -- Copiando estrutura para tabela db_flashfood.order_status
 CREATE TABLE IF NOT EXISTS `order_status` (
@@ -237,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   UNIQUE KEY `slug` (`slug`),
   KEY `FK_product_product_category` (`category_id`),
   CONSTRAINT `FK_product_product_category` FOREIGN KEY (`category_id`) REFERENCES `product_category` (`category_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela db_flashfood.product: ~13 rows (aproximadamente)
 INSERT INTO `product` (`product_id`, `category_id`, `name`, `banner`, `description`, `price`, `special_price`, `slug`, `status`, `updated_at`, `created_at`) VALUES
@@ -285,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.role: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.role: ~0 rows (aproximadamente)
 INSERT INTO `role` (`role_id`, `name`, `created_at`) VALUES
 	(1, 'admin', '2022-11-10 16:51:50');
 

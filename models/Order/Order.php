@@ -106,6 +106,14 @@ class Order extends Database {
             $this->stmt->execute();
 
             $products = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+            foreach($products as $key => $product) {
+                $products[$key]['product_banner'] = file_exists(__DIR__ . '/../../assets/images/products/' . $products[$key]['product_banner']) 
+                    ?
+                SERVER_HOST . '/assets/images/products/' . $products[$key]['product_banner']
+                    : 
+                SERVER_HOST . '/assets/images/system/placeholder.png';
+            }
 
             $itemsIds = [];
 

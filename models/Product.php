@@ -75,7 +75,19 @@ class Product extends Database {
             $this->stmt->execute();
             
             if ($this->stmt->rowCount()) {
-                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($products as $key => $product) {
+                    $products[$key]['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $products[$key]['banner']) 
+                        ?
+                    SERVER_HOST . '/assets/images/products/' . $products[$key]['banner']
+                        : 
+                    SERVER_HOST . '/assets/images/system/placeholder.png';
+                }
+
+                return $products;
+
             } else {
                 return false;
             }
@@ -98,10 +110,18 @@ class Product extends Database {
             $this->stmt->execute();
             
             if ($this->stmt->rowCount()) {
+                
                 $product = [];
+
                 $product = $this->stmt->fetch(PDO::FETCH_ASSOC);
 
                 $product['additionals'] = $additional->readIngredientsById($product['product_id']);
+
+                $product['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $product['banner']) 
+                    ?
+                SERVER_HOST . '/assets/images/products/' . $product['banner']
+                    : 
+                SERVER_HOST . '/assets/images/system/placeholder.png';
 
                 return $product;
 
@@ -141,7 +161,19 @@ class Product extends Database {
             $this->stmt->execute();
             
             if ($this->stmt->rowCount()) {
-                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($products as $key => $product) {
+                    $products[$key]['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $products[$key]['banner']) 
+                        ?
+                    SERVER_HOST . '/assets/images/products/' . $products[$key]['banner']
+                        : 
+                    SERVER_HOST . '/assets/images/system/placeholder.png';
+                }
+
+                return $products;
+
             } else {
                 return false;
             }

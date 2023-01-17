@@ -474,6 +474,10 @@
 }
 
 .main-item-modal.-orders {
+    overflow: hidden;
+
+    height: 285px;
+
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -505,6 +509,11 @@
 .main-item-modal.-orders > div > div h3 {
     font-size: 18px;
     margin-bottom: 15px;
+}
+
+.main-item-modal.-orders > div > .additionals-wrapper {
+    overflow: auto;
+    height: 125px;
 }
 
 .main-item-modal.-orders > div > div .additionals-title-wrapper {

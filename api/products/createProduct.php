@@ -1,11 +1,14 @@
 <?php
 
 use Model\Product;
+use Model\ProductCategory;
 use Model\Additional;
 
 $product = new Product;
 
 $additional = new Additional;
+
+$productCategory = new ProductCategory;
 
 if (isset($_POST)) {
 
@@ -33,13 +36,25 @@ if (isset($_POST)) {
 
     if (!isset($_POST['category_id'])) {
 
-        $response = array(
-            'response' => false,
-            'message' => 'O sistema ainda não possui categorias Cadastradas. Para prosseguir com o Cadastro, crie alguma categoria!'
-        );
+        if (!$productCategory->read()) {
+            $response = array(
+                'response' => false,
+                'message' => 'O sistema ainda não possui categorias Cadastradas. Para prosseguir com o Cadastro, crie alguma categoria!'
+            );
+    
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            exit(); 
+        } else {
 
-        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-        exit(); 
+            $response = array(
+                'response' => false,
+                'message' => 'Selecione alguma Categoria para Prosseguir.'
+            );
+    
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            exit(); 
+
+        }
     }
 
     $extension = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);

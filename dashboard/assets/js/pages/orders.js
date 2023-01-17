@@ -104,7 +104,7 @@ $(document).ready(function() {
                 $('#modal-orders .main-modal-wrapper').append(`
 
                     <div class="header">
-                        <img src="${SERVER_HOST}/assets/images/products/${data.banner}" alt="">
+                        <img src="${data.banner}" alt="">
                         <i class="fa-solid fa-xmark icon-exit"></i>
                     </div>
 
@@ -113,7 +113,7 @@ $(document).ready(function() {
                             <h2>${data.name}</h2>
                             <small>${data.description}</small>
                             ${data.additionals.length ? `
-                                <div>
+                                <div class="additionals-wrapper">
                                     <div class="additionals-title-wrapper">
                                         <h3>Adicionais</h3>
 
@@ -275,7 +275,7 @@ $(document).ready(function() {
                             <div class="main-orders-item">
                                 <a href="#">
                                     <div class="products-image-wrapper">
-                                        <img src="${SERVER_HOST}/assets/images/products/${product.banner}">
+                                        <img src="${product.banner}">
                                         <button type="button" data-product-id="${product.product_id}" class="show-modal-product"><i class="fa-solid fa-plus"></i></button>
                                     </div>
 
@@ -355,6 +355,8 @@ $('body').on('click', '.orders-image-wrapper', function(event) {
         dataType: 'JSON',
         success: function(data) {
 
+            console.log(data);
+
             $('.main-modal-wrapper.-order .buttons-wrapper').show();
 
             if (data[0].status_id == 4) {
@@ -397,7 +399,7 @@ $('body').on('click', '.orders-image-wrapper', function(event) {
                 $('.main-modal-wrapper.-order .table-orders-wrapper > table > tbody').append(`
                     <tr class="visible-line">
                         <td>
-                            <img src="${SERVER_HOST}assets/images/products/${orderItem.product_banner}" alt="Imagem do Produto">
+                            <img src="${orderItem.product_banner}" alt="Imagem do Produto">
                         </td>
                         <td title="asdsa">${orderItem.category_name}</td>
                         <td>${orderItem.product_name}</td>

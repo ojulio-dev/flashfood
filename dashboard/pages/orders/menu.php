@@ -38,7 +38,7 @@ $product = new Product();
                                     <div class="main-orders-item">
                                         <a href="#">
                                             <div class="products-image-wrapper">
-                                                <img src="<?= SERVER_HOST ?>/assets/images/products/<?= $product['banner'] ?>">
+                                                <img src="<?= $product['banner'] ?>">
                                                 <button type="button" class="show-modal-product" data-product-id="<?= $product['product_id'] ?>"><i class="fa-solid fa-plus"></i></button>
                                             </div>
 
@@ -58,22 +58,6 @@ $product = new Product();
     <div class="main-modal" id="modal-orders">
         <div class="modal-exit"></div>
 
-        <div class="main-modal-wrapper -orders">
-            <div class="header">
-                <img src="${SERVER_HOST}/assets/images/products/${data.banner}" alt="">
-                <i class="fa-solid fa-xmark icon-exit"></i>
-            </div>
-
-            <div class="main-modal-wrapper -orders">
-
-                <div class="header">
-                    <img src="http://localhost/flashfood/assets/images/products/125.jpg" alt="">
-                    <i class="fa-solid fa-xmark icon-exit"></i>
-                </div>
-
-                <div class="main-item-modal -orders"></div>
-
-            </div>
-        </div>
+        <div class="main-modal-wrapper -orders"></div>
     </div>
 </section>

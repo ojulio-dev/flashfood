@@ -175,8 +175,26 @@ class ProductCategory extends Database{
 
             $this->stmt->execute();
 
-            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($this->stmt->rowCount()) {
+
+                $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($products as $key => $product) {
+                    $products[$key]['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $products[$key]['banner']) 
+                        ?
+                    SERVER_HOST . '/assets/images/products/' . $products[$key]['banner']
+                        : 
+                    SERVER_HOST . '/assets/images/system/placeholder.png';
+                }
+
+                return $products;
+
+            } else {
+                return false;
+            }
+
         } catch (PDOException $e) {
+
             return $e->getMessage();
         }
     }
@@ -211,7 +229,18 @@ class ProductCategory extends Database{
 
             $this->stmt->execute();
 
-            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+            foreach($products as $key => $product) {
+                $products[$key]['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $products[$key]['banner']) 
+                    ?
+                SERVER_HOST . '/assets/images/products/' . $products[$key]['banner']
+                    : 
+                SERVER_HOST . '/assets/images/system/placeholder.png';
+            }
+
+            return $products;
+
         } catch (PDOException $e) {
             return $e->getMessage();
         }
