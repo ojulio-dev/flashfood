@@ -68,6 +68,38 @@ class Product extends Database {
     {
         try {
 
+            $this->setSql("SELECT P.*, C.category_id, C.status as category_status, C.name as category FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 AND P.status = 1 ORDER BY P.product_id DESC");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+
+                $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($products as $key => $product) {
+                    $products[$key]['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $products[$key]['banner']) 
+                        ?
+                    SERVER_HOST . '/assets/images/products/' . $products[$key]['banner']
+                        : 
+                    SERVER_HOST . '/assets/images/system/placeholder.png';
+                }
+
+                return $products;
+
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function readAdmin()
+    {
+        try {
+
             $this->setSql("SELECT P.*, C.category_id, C.status as category_status, C.name as category FROM product P INNER JOIN product_category C ON P.category_id = C.category_id WHERE C.status = 1 ORDER BY P.product_id DESC");
 
             $this->stmt = $this->conn->prepare($this->getSql());

@@ -6,7 +6,7 @@ $productCategory = new ProductCategory;
 
 if (isset($_GET['idCategory'])) {
 
-    $response = $productCategory->readByCategory($_GET['idCategory']);
+    $response = $productCategory->readByCategoryAdmin($_GET['idCategory']);
 
     if (!$response) {
         

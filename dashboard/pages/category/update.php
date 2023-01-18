@@ -15,8 +15,6 @@ if (!$read) {
     exit();
 }
 
-$readProducts = $productCategory->readByCategory($read['category_id']);
-
 ?>
 
 <section class="main-update-category">

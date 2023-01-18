@@ -113,7 +113,7 @@ $(document).ready(function() {
                             <h2>${data.name}</h2>
                             <small>${data.description}</small>
                             ${data.additionals.length ? `
-                                <div class="additionals-wrapper">
+                                <div>
                                     <div class="additionals-title-wrapper">
                                         <h3>Adicionais</h3>
 

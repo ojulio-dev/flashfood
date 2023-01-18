@@ -31,15 +31,17 @@ CREATE TABLE IF NOT EXISTS `additional` (
   KEY `FK_additional_product` (`product_id`),
   CONSTRAINT `FK_additional_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ingredient_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_additional_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.additional: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.additional: ~7 rows (aproximadamente)
 INSERT INTO `additional` (`additional_id`, `ingredient_id`, `product_id`, `status`, `created_at`) VALUES
-	(50, 15, 13, b'1', '2023-01-10 06:18:47'),
-	(55, 28, 125, b'1', '2023-01-10 06:42:28'),
-	(56, 14, 125, b'1', '2023-01-10 06:42:28'),
-	(58, 14, 138, b'1', '2023-01-14 16:07:08'),
-	(71, 28, 151, b'1', '2023-01-15 13:07:45');
+	(1, 1, 2, b'1', '2023-01-18 09:14:54'),
+	(2, 2, 2, b'1', '2023-01-18 09:14:54'),
+	(3, 3, 2, b'1', '2023-01-18 09:14:54'),
+	(4, 4, 2, b'1', '2023-01-18 09:14:54'),
+	(5, 5, 8, b'1', '2023-01-18 09:15:20'),
+	(6, 6, 3, b'1', '2023-01-18 09:15:31'),
+	(7, 7, 3, b'1', '2023-01-18 09:15:31');
 
 -- Copiando estrutura para tabela db_flashfood.cart
 CREATE TABLE IF NOT EXISTS `cart` (
@@ -53,41 +55,14 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `FK_cart_user` (`user_id`),
   CONSTRAINT `FK_cart_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `FK_cart_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=345 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.cart: ~31 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.cart: ~4 rows (aproximadamente)
 INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`, `status`) VALUES
-	(312, 32, 46, 1, b'0'),
-	(313, 32, 127, 1, b'0'),
-	(314, 32, 125, 1, b'0'),
-	(315, 32, 138, 1, b'0'),
-	(316, 32, 54, 1, b'0'),
-	(317, 32, 125, 1, b'0'),
-	(319, 32, 13, 1, b'0'),
-	(320, 32, 125, 1, b'0'),
-	(321, 32, 13, 1, b'0'),
-	(322, 32, 125, 1, b'0'),
-	(323, 32, 125, 5, b'0'),
-	(324, 32, 44, 1, b'0'),
-	(325, 32, 138, 1, b'0'),
-	(326, 32, 13, 2, b'0'),
-	(327, 32, 52, 1, b'0'),
-	(328, 32, 12, 2, b'0'),
-	(329, 32, 125, 1, b'0'),
-	(331, 32, 44, 1, b'0'),
-	(332, 32, 151, 5, b'0'),
-	(333, 32, 151, 1, b'0'),
-	(334, 32, 44, 1, b'0'),
-	(335, 32, 44, 1, b'0'),
-	(336, 32, 138, 1, b'0'),
-	(337, 32, 44, 1, b'0'),
-	(338, 32, 125, 1, b'0'),
-	(339, 32, 125, 1, b'0'),
-	(340, 32, 125, 1, b'0'),
-	(341, 32, 138, 5, b'0'),
-	(342, 32, NULL, 5, b'0'),
-	(343, 32, 12, 1, b'0'),
-	(344, 32, NULL, 5, b'0');
+	(1, 1, 1, 2, b'0'),
+	(2, 1, 8, 2, b'0'),
+	(3, 1, 4, 2, b'0'),
+	(4, 1, 2, 2, b'0');
 
 -- Copiando estrutura para tabela db_flashfood.cart_additional
 CREATE TABLE IF NOT EXISTS `cart_additional` (
@@ -101,31 +76,13 @@ CREATE TABLE IF NOT EXISTS `cart_additional` (
   KEY `FK_cart_additional_cart` (`cart_id`),
   CONSTRAINT `FK_cart_additional_additional` FOREIGN KEY (`additional_id`) REFERENCES `additional` (`additional_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `FK_cart_additional_cart` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.cart_additional: ~21 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.cart_additional: ~3 rows (aproximadamente)
 INSERT INTO `cart_additional` (`cart_additional_id`, `cart_id`, `additional_id`, `quantity`, `status`) VALUES
-	(62, 319, 50, 9, b'0'),
-	(63, 320, 55, 9, b'0'),
-	(64, 320, 56, 9, b'0'),
-	(65, 321, 50, 9, b'0'),
-	(66, 322, 55, 3, b'0'),
-	(67, 322, 56, 3, b'0'),
-	(68, 323, 55, 2, b'0'),
-	(69, 323, 56, 1, b'0'),
-	(71, 329, 55, 1, b'0'),
-	(72, 329, 56, 2, b'0'),
-	(74, 336, 58, 9, b'0'),
-	(75, 338, 55, 1, b'0'),
-	(76, 338, 56, 1, b'0'),
-	(77, 339, 55, 1, b'0'),
-	(78, 339, 56, 1, b'0'),
-	(79, 340, 55, 1, b'0'),
-	(80, 340, 56, 1, b'0'),
-	(81, 341, 58, 9, b'0'),
-	(82, 342, NULL, 9, b'0'),
-	(83, 342, NULL, 9, b'0'),
-	(84, 344, NULL, 5, b'0');
+	(1, 2, 5, 1, b'0'),
+	(2, 4, 1, 1, b'0'),
+	(3, 4, 4, 1, b'0');
 
 -- Copiando estrutura para tabela db_flashfood.ingredient
 CREATE TABLE IF NOT EXISTS `ingredient` (
@@ -135,14 +92,17 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   `slug` varchar(255) NOT NULL,
   `status` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`ingredient_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.ingredient: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.ingredient: ~7 rows (aproximadamente)
 INSERT INTO `ingredient` (`ingredient_id`, `name`, `price`, `slug`, `status`) VALUES
-	(14, 'Cebola', 2.50, 'cebola', b'1'),
-	(15, 'Hamburguer', 5.00, 'hamburguer', b'1'),
-	(28, 'Batata-Palha', 15.00, 'batata-palha', b'1'),
-	(29, 'Filé de Frango', 12.00, 'filé-de-frango', b'1');
+	(1, 'Nutella', 3.00, 'nutella', b'1'),
+	(2, 'Morango', 1.00, 'morango', b'1'),
+	(3, 'Banana', 1.50, 'banana', b'1'),
+	(4, 'Leite em Pó', 1.00, 'leite-em-pó', b'1'),
+	(5, 'Hamburguer', 5.00, 'hamburguer', b'1'),
+	(6, 'Cereija', 1.00, 'cereija', b'1'),
+	(7, 'Calda de Chocolate', 0.50, 'calda-de-chocolate', b'1');
 
 -- Copiando estrutura para tabela db_flashfood.order
 CREATE TABLE IF NOT EXISTS `order` (
@@ -157,14 +117,11 @@ CREATE TABLE IF NOT EXISTS `order` (
   KEY `FK_order_order_status` (`status_id`),
   CONSTRAINT `FK_order_order_status` FOREIGN KEY (`status_id`) REFERENCES `order_status` (`status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.order: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.order: ~1 rows (aproximadamente)
 INSERT INTO `order` (`order_id`, `user_id`, `status_id`, `order_number`, `table_number`, `created_at`) VALUES
-	(133, 32, 1, '000003', 20, '2023-01-16 14:22:07'),
-	(134, 32, 1, '000006', 20, '2023-01-17 13:14:16'),
-	(135, 32, 1, '000009', 20, '2023-01-17 13:23:53'),
-	(136, 32, 1, '000012', 14, '2023-01-17 13:33:38');
+	(1, 1, 1, '000003', 5, '2023-01-18 11:06:40');
 
 -- Copiando estrutura para tabela db_flashfood.order_item
 CREATE TABLE IF NOT EXISTS `order_item` (
@@ -184,15 +141,14 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   KEY `FK_order_item_product` (`product_id`),
   CONSTRAINT `FK_order_item_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_item_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.order_item: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.order_item: ~4 rows (aproximadamente)
 INSERT INTO `order_item` (`order_item_id`, `order_id`, `product_id`, `category_name`, `product_name`, `product_banner`, `product_description`, `product_price`, `product_special_price`, `quantity`, `created_at`) VALUES
-	(186, 133, 125, 'Principais', 'Prato do Dia', '125.jpg', 'Melhor Prato da Cidade', 18.50, 15.99, 1, '2023-01-16 14:22:07'),
-	(187, 134, 138, 'Pratos Japoneses', 'Sushi Yoda', '138.jpg', 'Melhor Sushi do mundo', 5.00, 3.25, 5, '2023-01-17 13:14:16'),
-	(188, 135, 12, 'Bebidas', 'Coca-Cola', '12.jpg', 'Melhor Coca-Cola da Cidade', 5.99, 4.99, 1, '2023-01-17 13:23:53'),
-	(189, 135, NULL, 'Bebidas', 'Testeeeeeee', '154.png', 'asdasdasdas', 1.23, 1231.23, 5, '2023-01-17 13:23:53'),
-	(190, 136, NULL, 'Sorvetes', '123', '155.jpg', 'asd', 1.23, 1.23, 5, '2023-01-17 13:33:38');
+	(1, 1, 1, 'Bebidas', 'Coca-Cola LATA 350ML', '1.jpg', 'Com sabor inconfundível e único, a Coca-Cola Original é o refrigerante mais tradicional e consumido no mundo inteiro! Toda Coca-Cola Original é produzida especialmente para manter sempre a qualidade do melhor sabor de refrigerante! É perfeita para compart', 4.00, 3.69, 2, '2023-01-18 11:06:40'),
+	(2, 1, 8, 'Lanches', 'Hamburguer da Casa', '8.jpg', 'Hamburguer criado por nós. 1 Hamburguer, 6 fatias de Queijo Prato, 6 fatias de Queijo Cheddar, 2 tomate, 3 folhas de alface, maionese da casa e ketchup. Tudo isso envolto de um Pão de Hamburguer.', 20.00, 18.00, 2, '2023-01-18 11:06:40'),
+	(3, 1, 4, 'Sorvetes', 'Milk Shake com Oreo', '4.jpg', 'Milk Shake com Bolacha?', 17.00, 15.00, 2, '2023-01-18 11:06:40'),
+	(4, 1, 2, 'Sorvetes', 'Açaí 500ml', '2.jpg', 'Açaí Maneiro', 17.00, 15.50, 2, '2023-01-18 11:06:40');
 
 -- Copiando estrutura para tabela db_flashfood.order_item_additional
 CREATE TABLE IF NOT EXISTS `order_item_additional` (
@@ -210,11 +166,13 @@ CREATE TABLE IF NOT EXISTS `order_item_additional` (
   CONSTRAINT `FK_order_item_additional_additional` FOREIGN KEY (`additional_id`) REFERENCES `additional` (`additional_id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_item_additional_order` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_order_item_additional_order_item` FOREIGN KEY (`order_item_id`) REFERENCES `order_item` (`order_item_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.order_item_additional: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.order_item_additional: ~3 rows (aproximadamente)
 INSERT INTO `order_item_additional` (`order_item_additional_id`, `order_id`, `order_item_id`, `additional_id`, `additional_name`, `additional_price`, `quantity`) VALUES
-	(54, 136, 190, NULL, 'Filé de Frango', 12.00, 5);
+	(1, 1, 2, 5, 'Hamburguer', 5.00, 1),
+	(2, 1, 4, 1, 'Nutella', 3.00, 1),
+	(3, 1, 4, 4, 'Leite em Pó', 1.00, 1);
 
 -- Copiando estrutura para tabela db_flashfood.order_status
 CREATE TABLE IF NOT EXISTS `order_status` (
@@ -229,10 +187,10 @@ CREATE TABLE IF NOT EXISTS `order_status` (
 
 -- Copiando dados para a tabela db_flashfood.order_status: ~4 rows (aproximadamente)
 INSERT INTO `order_status` (`status_id`, `position`, `name`, `color`, `created_at`) VALUES
-	(1, 1, 'pendente', '#FFAB00', '2023-01-11 11:42:45'),
-	(2, 2, 'processando', '#3892f3', '2023-01-11 11:43:01'),
-	(3, 3, 'finalizado', '#36B37E', '2023-01-11 11:47:37'),
-	(4, 4, 'cancelado', '#ea3829', '2023-01-11 11:47:48');
+	(1, 1, 'pendente', '#FFAB00', '2023-01-17 19:27:53'),
+	(2, 2, 'processando', '#3892F3', '2023-01-17 19:28:20'),
+	(3, 3, 'finalizado', '#36B37E', '2023-01-17 19:29:00'),
+	(4, 4, 'cancelado', '#EA3829', '2023-01-17 19:29:29');
 
 -- Copiando estrutura para tabela db_flashfood.product
 CREATE TABLE IF NOT EXISTS `product` (
@@ -240,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `category_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `banner` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `price` float(8,2) NOT NULL,
   `special_price` float(8,2) DEFAULT NULL,
   `slug` varchar(255) NOT NULL,
@@ -251,23 +209,20 @@ CREATE TABLE IF NOT EXISTS `product` (
   UNIQUE KEY `slug` (`slug`),
   KEY `FK_product_product_category` (`category_id`),
   CONSTRAINT `FK_product_product_category` FOREIGN KEY (`category_id`) REFERENCES `product_category` (`category_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.product: ~13 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.product: ~10 rows (aproximadamente)
 INSERT INTO `product` (`product_id`, `category_id`, `name`, `banner`, `description`, `price`, `special_price`, `slug`, `status`, `updated_at`, `created_at`) VALUES
-	(6, 3, 'Batata Frita', '6.jpg', 'Melhor Batata Frita do Mundo', 23.00, 32.32, 'batata-frita', b'1', '2022-09-17 21:56:29', '2022-09-17 21:56:29'),
-	(12, 4, 'Coca-Cola', '12.jpg', 'Melhor Coca-Cola da Cidade', 5.99, 4.99, 'coca-cola', b'1', '2022-09-17 23:22:23', '2022-09-17 23:22:23'),
-	(13, 2, 'Hamburguer Maneiro', '13.jpg', 'Melhor Hamburguer da Cidade', 23.99, 18.99, 'hamburguer-maneiro', b'1', '2022-09-17 23:30:10', '2022-09-17 23:30:10'),
-	(44, 1, 'Milk Shake', '44.jpg', 'Melhor Milk Shake da Cidade! ', 18.99, 12.99, 'milk-shake', b'1', '2022-09-22 19:17:22', '2022-09-22 19:17:22'),
-	(45, 3, 'Coxinha', '45.jpg', 'Melhor Coxinha da Cidade', 5.00, 4.50, 'coxinha', b'1', '2022-09-22 22:40:49', '2022-09-22 22:40:49'),
-	(46, 1, 'Açaí Maneiro', '46.jpg', 'Melhor Açaí do Mundo!', 14.99, 13.99, 'acai-maneiro', b'1', '2022-09-28 23:58:22', '2022-09-28 23:58:22'),
-	(52, 3, 'Pizza 4 Quejos', '52.jpg', 'Melhor Pizza da Cidade', 32.50, 25.00, 'pizza-4-quejos', b'1', '2022-09-29 00:06:41', '2022-09-29 00:06:41'),
-	(54, 15, 'Churrasco self-service', '54.jpg', 'Melhor Churrasco da Cidade', 2.95, 19.99, 'churrasco-self-service', b'1', '2022-09-30 04:09:20', '2022-09-30 04:09:20'),
-	(113, 3, 'Salgado de Presunto e Queijo', '113.jpg', 'Melhor salgado de Presunto e Queijo do Mundo!', 5.00, 4.50, 'salgado-de-presunto-e-queijo', b'1', '2022-10-31 21:33:55', '2022-10-31 21:33:55'),
-	(125, 15, 'Prato do Dia', '125.jpg', 'Melhor Prato da Cidade', 18.50, 15.99, 'prato-do-dia', b'1', '2022-11-14 20:39:03', '2022-11-14 20:39:03'),
-	(127, 1, 'Sorvete Maneiro', '127.jpg', 'Melhor sorvete do Mundo', 15.00, 13.00, 'sorvete-maneiro', b'1', '2022-11-17 16:25:44', '2022-11-17 16:25:44'),
-	(138, 16, 'Sushi Yoda', '138.jpg', 'Melhor Sushi do mundo', 5.00, 3.25, 'sushi-yoda', b'1', '2022-12-21 07:37:03', '2022-12-21 07:37:03'),
-	(151, 4, 'Teste', '151.jpg', 'Fazendo alguns testeeeeeeeeeeeees', 9999.99, NULL, 'teste', b'1', '2023-01-15 12:19:29', '2023-01-15 12:19:29');
+	(1, 3, 'Coca-Cola LATA 350ML', '1.jpg', 'Com sabor inconfundível e único, a Coca-Cola Original é o refrigerante mais tradicional e consumido no mundo inteiro! Toda Coca-Cola Original é produzida especialmente para manter sempre a qualidade do melhor sabor de refrigerante! É perfeita para compart', 4.00, 3.69, 'coca-cola-lata-350ml', b'1', '2023-01-18 08:24:36', '2023-01-18 08:24:36'),
+	(2, 2, 'Açaí 500ml', '2.jpg', 'Açaí Maneiro', 17.00, 15.50, 'açaí-500ml', b'1', '2023-01-18 08:31:55', '2023-01-18 08:31:55'),
+	(3, 2, 'Sorvete de Baunilha', '3.jpg', 'Sorvete de Baunilha é muito bom :D', 15.00, 14.50, 'sorvete-de-baunilha', b'1', '2023-01-18 08:35:02', '2023-01-18 08:35:02'),
+	(4, 2, 'Milk Shake com Oreo', '4.jpg', 'Milk Shake com Bolacha?', 17.00, 15.00, 'milk-shake-com-oreo', b'1', '2023-01-18 08:36:48', '2023-01-18 08:36:48'),
+	(5, 1, 'Coxinha para Encomenda', '5.jpg', 'Coxinha é bom demais mano.', 25.00, 22.50, 'coxinha-para-encomenda', b'1', '2023-01-18 08:39:47', '2023-01-18 08:39:47'),
+	(6, 1, 'Pizza 4 Queijos', '6.jpg', 'A melhor pizza de todas.', 30.00, 28.50, 'pizza-4-queijos', b'1', '2023-01-18 08:41:32', '2023-01-18 08:41:32'),
+	(7, 1, 'Salgado de Presunto e Queijo', '7.jpg', 'Melhor salgado de todos.', 5.00, 4.00, 'salgado-de-presunto-e-queijo', b'1', '2023-01-18 08:42:11', '2023-01-18 08:42:11'),
+	(8, 4, 'Hamburguer da Casa', '8.jpg', 'Hamburguer criado por nós. 1 Hamburguer, 6 fatias de Queijo Prato, 6 fatias de Queijo Cheddar, 2 tomate, 3 folhas de alface, maionese da casa e ketchup. Tudo isso envolto de um Pão de Hamburguer.', 20.00, 18.00, 'hamburguer-da-casa', b'1', '2023-01-18 08:47:16', '2023-01-18 08:47:16'),
+	(9, 5, 'Prato Principal', '9.jpg', 'Prato da Casa. Arroz, Feijão, 1 Ovo, 1 Filé de Frango, Bacon, Mandioca Frita e Tutu de Feijão.', 15.00, 14.00, 'prato-principal', b'1', '2023-01-18 08:50:44', '2023-01-18 08:50:44'),
+	(10, 6, 'Churrasco Principal', '10.jpg', 'Churrasco da Casa.', 30.00, 25.00, 'churrasco-principal', b'1', '2023-01-18 08:51:46', '2023-01-18 08:51:46');
 
 -- Copiando estrutura para tabela db_flashfood.product_category
 CREATE TABLE IF NOT EXISTS `product_category` (
@@ -279,17 +234,16 @@ CREATE TABLE IF NOT EXISTS `product_category` (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.product_category: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.product_category: ~6 rows (aproximadamente)
 INSERT INTO `product_category` (`category_id`, `name`, `banner`, `slug`, `status`, `updated_at`, `created_at`) VALUES
-	(1, 'Sorvetes', '1.jpg', 'sorvetes', 1, '2022-09-17 17:02:47', '2022-09-17 17:02:47'),
-	(2, 'Lanches', '2.jpg', 'lanches', 1, '2022-09-17 17:07:24', '2022-09-17 17:07:24'),
-	(3, 'Salgados', '3.jpg', 'salgados', 1, '2022-09-17 21:42:04', '2022-09-17 21:42:04'),
-	(4, 'Bebidas', '4.jpg', 'bebidas', 1, '2022-09-17 23:17:37', '2022-09-17 23:17:37'),
-	(13, 'Sobremesas', '13.jpg', 'sobremesas', 1, '2022-09-24 20:43:23', '2022-09-24 20:43:23'),
-	(15, 'Principais', '15.jpg', 'principais', 1, '2022-09-30 04:06:47', '2022-09-30 04:06:47'),
-	(16, 'Pratos Japoneses', '16.jpg', 'pratos-japoneses', 1, '2022-12-21 07:35:42', '2022-12-21 07:35:42');
+	(1, 'Massas', '1.jpg', 'massas', 1, '2023-01-18 08:09:06', '2023-01-18 08:09:06'),
+	(2, 'Sorvetes', '2.jpg', 'sorvetes', 1, '2023-01-18 08:13:53', '2023-01-18 08:13:53'),
+	(3, 'Bebidas', '3.jpg', 'bebidas', 1, '2023-01-18 08:14:44', '2023-01-18 08:14:44'),
+	(4, 'Lanches', '4.jpg', 'lanches', 1, '2023-01-18 08:17:32', '2023-01-18 08:17:32'),
+	(5, 'Pratos Feitos', '5.jpg', 'pratos-feitos', 1, '2023-01-18 08:20:26', '2023-01-18 08:20:26'),
+	(6, 'Carnes', '6.jpg', 'carnes', 1, '2023-01-18 08:22:48', '2023-01-18 08:22:48');
 
 -- Copiando estrutura para tabela db_flashfood.role
 CREATE TABLE IF NOT EXISTS `role` (
@@ -299,9 +253,9 @@ CREATE TABLE IF NOT EXISTS `role` (
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.role: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.role: ~1 rows (aproximadamente)
 INSERT INTO `role` (`role_id`, `name`, `created_at`) VALUES
-	(1, 'admin', '2022-11-10 16:51:50');
+	(1, 'admin', '2023-01-17 19:29:44');
 
 -- Copiando estrutura para tabela db_flashfood.table
 CREATE TABLE IF NOT EXISTS `table` (
@@ -311,17 +265,15 @@ CREATE TABLE IF NOT EXISTS `table` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`table_id`),
   UNIQUE KEY `table_number` (`table_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.table: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.table: ~5 rows (aproximadamente)
 INSERT INTO `table` (`table_id`, `table_number`, `status`, `created_at`) VALUES
-	(14, 1, 1, '2023-01-14 05:36:49'),
-	(15, 2, 1, '2023-01-14 05:36:52'),
-	(16, 3, 1, '2023-01-14 05:36:54'),
-	(17, 4, 1, '2023-01-14 05:36:55'),
-	(18, 5, 1, '2023-01-14 05:36:57'),
-	(19, 6, 1, '2023-01-14 05:36:59'),
-	(20, 7, 1, '2023-01-14 05:37:03');
+	(1, 1, 1, '2023-01-18 09:16:46'),
+	(2, 2, 1, '2023-01-18 09:16:48'),
+	(3, 3, 1, '2023-01-18 09:16:49'),
+	(4, 4, 1, '2023-01-18 09:16:51'),
+	(5, 5, 1, '2023-01-18 09:16:53');
 
 -- Copiando estrutura para tabela db_flashfood.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -339,12 +291,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `email` (`email`),
   KEY `FK_user_role` (`role_id`),
   CONSTRAINT `FK_user_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.user: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.user: ~1 rows (aproximadamente)
 INSERT INTO `user` (`user_id`, `role_id`, `name`, `email`, `password`, `image`, `birthdate`, `status`, `created_at`, `updated_at`) VALUES
-	(32, 1, 'Julio Cesar', 'ojuliocesar@gmail.com', '7c96b41274561b0e627ca1eac9f31d3bdf13445f', '32.jpg', '2005-11-21', 1, '2022-11-18 17:15:17', '2022-11-18 17:15:17'),
-	(34, 1, 'Emanuel', '123@gmail.com', '9a2428f0baadc1ac8b2a4aead80df44d9106636d', NULL, '2023-01-04', 1, '2023-01-14 05:52:00', '2023-01-14 05:52:00');
+	(1, 1, 'Julio Cesar', 'ojuliocesar@gmail.com', '7c96b41274561b0e627ca1eac9f31d3bdf13445f', NULL, '2005-11-21', 1, '2023-01-18 09:16:07', '2023-01-18 09:16:07');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -7,7 +7,7 @@ $product = new Product;
 
 $productCategory = new ProductCategory;
 
-$readProduct = $product->read();
+$readProduct = $product->readAdmin();
 
 $readCategory = $productCategory->read();
 
