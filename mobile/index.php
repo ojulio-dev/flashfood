@@ -53,7 +53,27 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
             <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo">
 
-            <i id="icone-header-carrinho" class="fa-solid fa-cart-shopping"></i>
+            <div class="header-menu-wrapper">
+                <i id="header-burguer-icon" class="fa-solid fa-bars"></i>
+
+                <div id="modal-header-menu" class="items-menu">
+                    <div class="modal-wrapper">
+                        <div class="title-wrapper">
+                            <h2>Páginas</h2>
+                            <i id="close-modal-header" class="fa-solid fa-xmark"></i>
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="?page=home">Home</a>
+                            </li>
+                            <li>
+                                <a href="?page=cardapio">Cardápio</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <?php

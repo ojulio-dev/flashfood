@@ -67,10 +67,6 @@
     user-select: none;
 }
 
-
-.cart-tables-wrapper ul .table-notfound {
-    
-}
 .cart-tables-wrapper .table-checked::after {
     content: '';
     position: absolute;

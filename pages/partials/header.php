@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['user']) && $_SESSION['user']['image']) {
 
     $destinyIcon = DIR_IMG . '/user/' . $_SESSION['user']['image'];
 

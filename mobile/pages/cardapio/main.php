@@ -9,11 +9,11 @@
             <h3>Pizzas</h3>
         </div>
         <div class="opcoes">
-            <img src="<?= DIR_URL ?>/assets/images/products/46.jpg" alt="">
+            <img src="<?= DIR_URL ?>/assets/images/products/3.jpg" alt="">
             <h3>Sobremesas</h3>
         </div>
         <div class="opcoes">
-            <img src="<?= DIR_URL ?>/assets/images/products/12.jpg" alt="">
+            <img src="<?= DIR_URL ?>/assets/images/products/1.jpg" alt="">
             <h3>Bebidas</h3>
         </div>
     </div>

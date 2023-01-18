@@ -4,10 +4,6 @@
   margin: 0;
 }
 
-body{
-  background-color: #b59d90;
-}
-
 section#main-cardapio-categorias{
   padding: 25px 15px;
 }
@@ -43,7 +39,7 @@ div.menu-opcoes div.opcoes img {
 div.menu-opcoes div.opcoes h3{
   text-align: center;
   color: #FFFFFF;
-  z-index: 9999;
+  z-index: 2;
   position: absolute;
   top: 50%;
   left: 50%;
