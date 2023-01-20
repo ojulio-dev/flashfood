@@ -47,9 +47,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <body>
     <div id="container">
         <header class="header-responsivo">
-            <div class="circulo-menu">
-                <h4>Mesa 4</h4>
-            </div>
+            <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
 
             <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo">
 

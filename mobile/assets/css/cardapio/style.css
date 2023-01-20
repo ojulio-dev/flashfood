@@ -52,7 +52,6 @@ div.fundo-produto{
   /* position: absolute; */
   width: 100%;
   height: auto;
-  margin-top: 50px;
   padding: 10px;
   /* left: 14px;
   right: 14px; */
@@ -62,7 +61,7 @@ div.fundo-produto{
   border-radius: 20px;
 }
 
-.main-titulo-produto{
+.main-titulo-produto {
   position: relative;
   top: -35px;
   text-shadow: 
@@ -77,6 +76,14 @@ div.fundo-produto{
   text-align: center;
 
   color: #FFFFFF;
+
+  width: 97%;
+
+  margin: 0 auto;
+    
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 div.img-produto {
@@ -110,9 +117,11 @@ div.especificacoes-produto div.texto-produto{
   line-height: 17px;
 }
 
-div.especificacoes-produto div.texto-produto h4{
+div.especificacoes-produto div.texto-produto h4 {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
+
+  line-height: 1.5;
 }
 
 div.especificacoes-produto div.preco-produto h5{
@@ -135,4 +144,83 @@ div.especificacoes-produto div.texto-produto img.logo-especificacao{
   height: 16px;
   width: 16px;
   margin-top: 3px;
+}
+
+#main-cardapio-categorias .categories-wrapper .items-categories {
+  background-color: #fff;
+  height: 100px;
+
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#main-cardapio-categorias .categories-wrapper ul {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  overflow-x: scroll;
+
+  padding-bottom: 25px;
+}
+
+#main-cardapio-categorias .categories-wrapper ul::-webkit-scrollbar {
+  background-color: #fff;
+  border-radius: 8px;
+
+  height: 8px;
+}
+
+#main-cardapio-categorias .categories-wrapper ul::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #434343;
+}
+
+#main-cardapio-categorias .categories-wrapper ul::-webkit-scrollbar-thumb:hover {
+  background-color: #bababa
+}
+
+#main-cardapio-categorias .categories-wrapper ul li {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+}
+
+#main-cardapio-categorias .categories-wrapper ul li h2 {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  text-align: center;
+}
+
+#main-cardapio-categorias .categories-wrapper ul li img {
+  width: 125px;
+  height: 75px;
+
+  filter: brightness(0.6);
+
+  border-radius: 20px;
+
+  object-fit: cover;
+}
+
+#main-cardapio-categorias .home-products-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+
+  margin-top: 70px;
 }
