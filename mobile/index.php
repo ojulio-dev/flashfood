@@ -57,6 +57,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                 <i id="header-burguer-icon" class="fa-solid fa-bars"></i>
 
                 <div id="modal-header-menu" class="items-menu">
+
+                    <div id="header-menu-close"></div>
+                    
                     <div class="modal-wrapper">
                         <div class="title-wrapper">
                             <h2>Páginas</h2>

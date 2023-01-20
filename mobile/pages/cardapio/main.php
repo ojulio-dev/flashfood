@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div id="itens-cardapio">
+    <div class="itens-cardapio">
         <div class="fundo-produto">
             <h2 class="main-titulo-produto">Big Smigoul</h2>
             <div class="img-produto">
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div id="itens-cardapio">
+    <div class="itens-cardapio">
         <div class="fundo-produto">
             <h2 class="main-titulo-produto">Lasanha 021</h2>
             <div class="img-produto">
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div id="itens-cardapio">
+    <div class="itens-cardapio">
         <div class="fundo-produto">
             <h2 class="main-titulo-produto">Janta do Julião</h2>
             <div class="img-produto">

@@ -1,3 +1,19 @@
+$('.itens-cardapio').click(function(){
+    window.location.href = '?page=cardapio&action=produto';
+})
+
+$('#product-redirect-menu').click(function(){
+    window.location.href = '?page=cardapio';
+})
+
+$('#adicionar-carrinho').click(function(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Pedido adicionado ao carrinho',
+    })
+})
+
+
 // Mudar a quantidade de Produtos
 $('.button-product-quantity').click(function() {
     let productQuantity = $('#input-product-quantity').val();

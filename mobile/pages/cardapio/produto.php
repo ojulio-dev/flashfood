@@ -1,7 +1,7 @@
 <section class="sistema-cardapio-wrapper">
     <div class="sistema-info-wrapper">
         <div class="title-arrow-wrapper">
-            <img class="main-arrow-back" src="<?= DIR_IMG ?>/left.png" alt="">
+            <img id="product-redirect-menu" class="main-arrow-back" src="<?= DIR_IMG ?>/left.png" alt="">
             <h2 class="main-titulo-produto">Big Burguer</h2>
         </div>
 
@@ -105,13 +105,15 @@
         </div>
         
         <div class="btn-adicionar-grid">
-            <button class="btn-adicionar-carrinho">Adicionar ao carrinho  (R$ 39,90)</button>
+            <button id="adicionar-carrinho" class="btn-adicionar-carrinho">Adicionar ao carrinho  (R$ 39,90)</button>
         </div>
     </div>
 
     <!-- div modal -->
 
     <div id="main-modal-obs">
+        <div id="modal-obs-close"></div>
+
         <div class="modal-obs-wrapper">
             <div class="obs-titulo">
                 <h2>Adicionar Observação</h2>
