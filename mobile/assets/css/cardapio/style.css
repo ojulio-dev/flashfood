@@ -53,6 +53,7 @@ div.fundo-produto{
   width: 100%;
   height: auto;
   padding: 10px;
+  padding-top: 15px;
   /* left: 14px;
   right: 14px; */
 
@@ -62,8 +63,6 @@ div.fundo-produto{
 }
 
 .main-titulo-produto {
-  position: relative;
-  top: -35px;
   text-shadow: 
     -3px -3px 2px #473227, 
    -3px 3px 2px #473227,                    
@@ -71,26 +70,18 @@ div.fundo-produto{
     3px 2px 2px #473227;  
   font-family: 'Inter';
   font-weight: 1000;
-  font-size: 36px;
-  line-height: 50px;
+  font-size: 30px;
   text-align: center;
 
   color: #FFFFFF;
 
-  width: 97%;
-
-  margin: 0 auto;
-    
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  margin-bottom: 15px;
 }
 
 div.img-produto {
   border: 2px solid #000;
   border-radius: 20px;
   width: 100%;
-  margin-top: -35px;
   height: 130px;
 }
 
@@ -222,5 +213,5 @@ div.especificacoes-produto div.texto-produto img.logo-especificacao{
 
   gap: 50px;
 
-  margin-top: 70px;
+  margin-top: 60px;
 }

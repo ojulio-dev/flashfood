@@ -49,6 +49,21 @@ body {
     font-size: 28px;
 }
 
+.header-menu-wrapper .menu-burguer-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #fff;
+    
+    width: 60px;
+    height: 30px;
+
+    border-radius: 8px;
+
+    font-size: 21px;
+}
+
 .header-menu-wrapper .items-menu {
     display: none;
 
@@ -167,10 +182,6 @@ body {
     position: absolute;
     left: 10px;
     top: 6px;
-}
-
-.sistema-info-wrapper .main-titulo-produto {
-    top: -25px !important;
 }
 
 .sistema-info-wrapper .title-wrapper {
