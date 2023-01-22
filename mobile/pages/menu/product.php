@@ -10,14 +10,14 @@ $ingredient = new Ingredient();
 
 if (!isset($_GET['slug'])) {
 
-    header("Location: ?page=home");
+    header("Location: ?page=menu");
 }
 
 $readProduct = $product->readBySlug($_GET['slug']);
 
 if (!$readProduct) {
 
-    header("Location: ?page=home");
+    header("Location: ?page=menu");
 }
 
 $additionals = $additional->readByProductId($readProduct['product_id']);

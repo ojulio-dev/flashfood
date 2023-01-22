@@ -11,7 +11,7 @@ session_start();
 
 require_once(__DIR__ . '/config/environment.php');
 
-$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+$page = isset($_GET['page']) ? $_GET['page'] : 'menu';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
 ?>
@@ -47,7 +47,19 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <body>
     <div id="container">
         <header class="header-responsivo">
-            <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div class="header-search-wrapper">
+                <button class="button-search" id="button-header-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+                <div id="modal-header-search" class="search-items">
+
+                    <div class="header-search-close"></div>
+                    
+                    <div class="modal-item-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Pesquisar">
+                    </div>
+                </div>
+            </div>
 
             <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo">
 
@@ -66,10 +78,10 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
                         <ul>
                             <li>
-                                <a href="?page=home">Home</a>
+                                <a href="?page=menu">Cardápio</a>
                             </li>
                             <li>
-                                <a href="?page=cardapio">Cardápio</a>
+                                <a href="?page=cart">Carrinho</a>
                             </li>
                         </ul>
                     </div>
@@ -82,11 +94,11 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
             if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
                 require_once(__DIR__ . "/pages/$page/$action.php");
             } else {
-                header("Location: ?page=home");
+                header("Location: ?page=menu");
             }
 
             if (!isset($page)) {
-                header("Location: ?page=home");
+                header("Location: ?page=menu");
             }
 
         ?>

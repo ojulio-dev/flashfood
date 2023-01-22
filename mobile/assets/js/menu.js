@@ -1,11 +1,7 @@
 $('.itens-cardapio').click(function(){
     let productSlug = $(this).data('product-slug');
 
-    window.location.href = `?page=home&action=produto&slug=${productSlug}`;
-})
-
-$('#product-redirect-menu').click(function(){
-    window.location.href = '?page=home';
+    window.location.href = `?page=menu&action=product&slug=${productSlug}`;
 })
 
 $('#adicionar-carrinho').click(function(){
