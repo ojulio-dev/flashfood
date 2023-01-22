@@ -48,17 +48,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <div id="container">
         <header class="header-responsivo">
             <div class="header-search-wrapper">
-                <button class="button-search" id="button-header-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-
-                <div id="modal-header-search" class="search-items">
-
-                    <div class="header-search-close"></div>
-                    
-                    <div class="modal-item-wrapper">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                </div>
+                <i class="fa-solid fa-magnifying-glass header-button-search"></i>
+                <input type="text" placeholder="Pesquisar">
             </div>
 
             <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo">
