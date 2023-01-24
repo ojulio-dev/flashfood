@@ -45,7 +45,7 @@ if (!empty($_FILES['image']['name'])) {
     
     $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
-    if ($extension != 'jpg' && $$extension != 'jpeg' && $$extension != 'png') {
+    if ($extension != 'jpg' && $extension != 'jpeg' && $extension != 'png') {
 
         $response = array(
             'response' => false,
