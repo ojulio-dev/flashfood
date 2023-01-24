@@ -11,17 +11,18 @@ $products = $product->readRecents();
 
 ?>
 
-<section id="main-cardapio-categorias">
-
+<section id="main-menu-products" class="section-products">
     <div class="categories-wrapper">
         <div class="items-categories">
             <ul>
                 <?php foreach($categories as $category): ?>
-                    <li>
-                        <img src="<?= SERVER_HOST ?>/assets/images/categories/<?= $category['banner'] ?>" alt="">
+                    <a href="?page=category&slug=<?= $category['slug'] ?>">
+                        <li>
+                            <img src="<?= SERVER_HOST ?>/assets/images/categories/<?= $category['banner'] ?>" alt="">
 
-                        <h2><?= $category['name'] ?></h2>
-                    </li>
+                            <h2><?= $category['name'] ?></h2>
+                        </li>
+                    </a>
                 <?php endforeach; ?>
             </ul>
         </div>

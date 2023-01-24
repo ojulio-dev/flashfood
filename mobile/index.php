@@ -102,6 +102,12 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
             }
 
         ?>
+
+        <footer>
+            <div>
+                a*
+            </div>
+        </footer>
     </div>
 
     <!-- JQuery -->
