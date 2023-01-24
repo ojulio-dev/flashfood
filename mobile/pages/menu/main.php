@@ -52,9 +52,11 @@ $products = $product->readRecents();
     </div>
 
     <div class="products-footer">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/facebookBlack.png" alt="Facebook Icon">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/instagramBlack.png" alt="Instagram Icon">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/twitterBlack.png" alt="Twitter Icon">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/youtubeBlack.png" alt="Youtube Icon">
+        <div class="images-wrapper">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/facebook.png" alt="Facebook Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/instagram.png" alt="Instagram Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/twitter.png" alt="Twitter Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/youtube.png" alt="Youtube Icon">
+        </div>
     </div>
 </section>

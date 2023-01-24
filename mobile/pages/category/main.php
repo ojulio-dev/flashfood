@@ -60,9 +60,11 @@ $products = $productCategory->readProductsBySlug($_GET['slug']);
     </div>
 
     <div class="products-footer">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/facebookBlack.png" alt="Facebook Icon">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/instagramBlack.png" alt="Instagram Icon">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/twitterBlack.png" alt="Twitter Icon">
-        <img src="<?= SERVER_HOST ?>/assets/images/system/youtubeBlack.png" alt="Youtube Icon">
+        <div class="images-wrapper">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/facebookBlack.png" alt="Facebook Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/instagramBlack.png" alt="Instagram Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/twitterBlack.png" alt="Twitter Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/youtubeBlack.png" alt="Youtube Icon">
+        </div>
     </div>
 </section>
