@@ -1,17 +1,3 @@
-$('.itens-cardapio').click(function(){
-    let productSlug = $(this).data('product-slug');
-
-    window.location.href = `?page=menu&action=product&slug=${productSlug}`;
-})
-
-$('#adicionar-carrinho').click(function(){
-    Swal.fire({
-        icon: 'success',
-        title: 'Pedido adicionado ao carrinho',
-    })
-})
-
-
 // Mudar a quantidade de Produtos
 $('.button-product-quantity').click(function() {
     let productQuantity = $('#input-product-quantity').val();

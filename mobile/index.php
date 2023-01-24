@@ -52,7 +52,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                 <input type="text" placeholder="Pesquisar">
             </div>
 
-            <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo">
+            <a href="?page=home"><img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo"></a>
 
             <div class="header-menu-wrapper">
                 <i id="header-burguer-icon" class="fa-solid fa-bars"></i>
@@ -93,12 +93,6 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
             }
 
         ?>
-
-        <footer>
-            <div>
-                a*
-            </div>
-        </footer>
     </div>
 
     <!-- JQuery -->

@@ -50,4 +50,13 @@ $products = $product->readRecents();
             </div>
         <?php endforeach ?>
     </div>
+
+    <div class="products-footer">
+        <div class="images-wrapper">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/facebook.png" alt="Facebook Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/instagram.png" alt="Instagram Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/twitter.png" alt="Twitter Icon">
+            <img src="<?= SERVER_HOST ?>/assets/images/system/youtube.png" alt="Youtube Icon">
+        </div>
+    </div>
 </section>

@@ -15,6 +15,8 @@ $('#enviar-modal-obs').click(function(){
 // Modal Menu Hamburguer
 $('.header-menu-wrapper #header-burguer-icon').click(function() {
     $('#modal-header-menu').css('display', 'flex');
+
+    $('#modal-header-menu .modal-wrapper').addClass('header-menu-animation');
 }) 
 
 $('#modal-header-menu #close-modal-header,#header-menu-close').click(function() {
@@ -25,12 +27,29 @@ $('.header-responsivo .header-search-wrapper .header-button-search').click(funct
     let inputWidth = $('.header-responsivo .header-search-wrapper input').css('width');
 
     if (inputWidth == '65px') {
-        $('.header-responsivo > img').css('opacity', '0');
+        $('.header-responsivo .header-search-wrapper').css('width', '100%');
 
-        $('.header-responsivo .header-search-wrapper input').css('width', '111%');
+        $('.header-responsivo > a img').css('opacity', '0');
+
+        $('.header-responsivo .header-search-wrapper input').css('width', 'calc(100% - 15px)');
     } else {
-        $('.header-responsivo > img').css('opacity', '1');
+        $('.header-responsivo .header-search-wrapper').css('width', 'auto');
+
+        $('.header-responsivo > a img').css('opacity', '1');
 
         $('.header-responsivo .header-search-wrapper input').css('width', '65px');
     }
+})
+
+$('.itens-cardapio').click(function(){
+    let productSlug = $(this).data('product-slug');
+
+    window.location.href = `?page=menu&action=product&slug=${productSlug}`;
+})
+
+$('#adicionar-carrinho').click(function(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Pedido adicionado ao carrinho',
+    })
 })
