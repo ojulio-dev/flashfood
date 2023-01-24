@@ -4,8 +4,31 @@
   margin: 0;
 }
 
-section#main-cardapio-categorias{
+section.section-products {
+  position: relative;
+
   padding: 25px 15px;
+
+  flex: 1;
+}
+
+section.section-products .products-footer {
+  height: 50px;
+  width: 100%;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  background: #404040;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+section.section-products .products-footer img {
+  width: 30px;
 }
 
 div.menu-opcoes{
@@ -137,15 +160,21 @@ div.especificacoes-produto div.texto-produto img.logo-especificacao{
   margin-top: 3px;
 }
 
-#main-cardapio-categorias .categories-wrapper .items-categories {
+.section-products .categories-wrapper {
+  margin-bottom: 50px;
+}
+
+.section-products .categories-wrapper .items-categories {
   background-color: #fff;
   height: 100px;
 
   padding: 10px;
   border-radius: 10px;
+
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2)
 }
 
-#main-cardapio-categorias .categories-wrapper ul {
+.section-products .categories-wrapper ul {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -155,23 +184,23 @@ div.especificacoes-produto div.texto-produto img.logo-especificacao{
   padding-bottom: 25px;
 }
 
-#main-cardapio-categorias .categories-wrapper ul::-webkit-scrollbar {
+.section-products .categories-wrapper ul::-webkit-scrollbar {
   background-color: #fff;
   border-radius: 8px;
 
   height: 8px;
 }
 
-#main-cardapio-categorias .categories-wrapper ul::-webkit-scrollbar-thumb {
+.section-products .categories-wrapper ul::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background-color: #434343;
 }
 
-#main-cardapio-categorias .categories-wrapper ul::-webkit-scrollbar-thumb:hover {
-  background-color: #bababa
+.section-products .categories-wrapper ul::-webkit-scrollbar-thumb:hover {
+  background-color: #434343
 }
 
-#main-cardapio-categorias .categories-wrapper ul li {
+.section-products .categories-wrapper ul li {
   position: relative;
 
   display: flex;
@@ -181,7 +210,26 @@ div.especificacoes-produto div.texto-produto img.logo-especificacao{
   color: #fff;
 }
 
-#main-cardapio-categorias .categories-wrapper ul li h2 {
+.section-products .categories-wrapper ul li.active::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+
+  left: 50%;
+  top: calc(100% + 5px);
+
+  transform: translateX(-50%);
+
+  z-index: 2;
+
+  width: 15%;
+  height: 4px;
+  border-radius: 10px;
+
+  background-color: #434343;
+}
+
+.section-products .categories-wrapper ul li h2 {
   position: absolute;
 
   top: 50%;
@@ -196,7 +244,7 @@ div.especificacoes-produto div.texto-produto img.logo-especificacao{
   text-align: center;
 }
 
-#main-cardapio-categorias .categories-wrapper ul li img {
+.section-products .categories-wrapper ul li img {
   width: 125px;
   height: 75px;
 
@@ -207,11 +255,49 @@ div.especificacoes-produto div.texto-produto img.logo-especificacao{
   object-fit: cover;
 }
 
-#main-cardapio-categorias .home-products-wrapper {
+section.section-products .home-products-wrapper {
   display: flex;
   flex-direction: column;
 
-  gap: 50px;
+  gap: 40px;
 
-  margin-top: 60px;
+  padding-bottom: 50px;
+}
+
+#main-category-products .title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  background-color: #fff;
+
+  padding: 10px;
+
+  border-radius: 15px;
+
+  margin-bottom: 40px;
+}
+
+#main-category-products .title-wrapper h1 {
+
+  font-size: 23px;
+
+  color: #121212;
+
+}
+
+#main-category-products .title-wrapper a {
+  color: #000;
+}
+
+#main-category-products .title-wrapper i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: 21px;
 }

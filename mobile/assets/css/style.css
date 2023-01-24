@@ -1,6 +1,12 @@
 body {
-    background-color: #bf9b7ac4;
     background-color: #b59d90;
+}
+
+body #container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 }
 
 #container section {

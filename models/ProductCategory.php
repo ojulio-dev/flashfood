@@ -235,6 +235,42 @@ class ProductCategory extends Database{
         }
     }
 
+    public function readProductsBySlug($slug)
+    {
+        try {
+            $this->setSql("SELECT po.* FROM
+                {$this->table} pc
+            INNER JOIN product po on po.category_id = pc.category_id
+            WHERE pc.slug = '$slug' AND po.status = 1 ORDER BY status DESC");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+
+                $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($products as $key => $product) {
+                    $products[$key]['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $products[$key]['banner']) 
+                        ?
+                    SERVER_HOST . '/assets/images/products/' . $products[$key]['banner']
+                        : 
+                    SERVER_HOST . '/assets/images/system/placeholder.png';
+                }
+
+                return $products;
+
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
     public function readByCategoryStatus($id)
     {
         try {

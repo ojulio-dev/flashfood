@@ -40,3 +40,16 @@ $('.header-responsivo .header-search-wrapper .header-button-search').click(funct
         $('.header-responsivo .header-search-wrapper input').css('width', '65px');
     }
 })
+
+$('.itens-cardapio').click(function(){
+    let productSlug = $(this).data('product-slug');
+
+    window.location.href = `?page=menu&action=product&slug=${productSlug}`;
+})
+
+$('#adicionar-carrinho').click(function(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Pedido adicionado ao carrinho',
+    })
+})
