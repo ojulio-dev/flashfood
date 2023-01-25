@@ -60,12 +60,14 @@ section.section-products {
 }
 
 .main-footer .info-wrapper img {
-  width: 30px;
+  width: 28px;
 }
 
 .main-footer .info-wrapper small {
   font-size: 14px;
   color: #282828;
+
+  text-align: center;
 }
 
 div.menu-opcoes{
@@ -339,4 +341,19 @@ section .page-footer {
   transform: translateY(-50%);
 
   font-size: 21px;
+}
+
+.main-page-search .search-notfound {
+  padding: 15px;
+
+  background-color: #d9d9d9;
+  border-radius: 10px;
+
+  text-align: center;
+
+  line-height: 1.8;
+}
+
+.main-page-search .search-notfound i{
+  font-size: 20px;
 }
