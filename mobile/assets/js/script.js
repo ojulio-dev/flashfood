@@ -47,9 +47,16 @@ $('.itens-cardapio').click(function(){
     window.location.href = `?page=menu&action=product&slug=${productSlug}`;
 })
 
+// adicionar ao carrinho
+
 $('#adicionar-carrinho').click(function(){
     Swal.fire({
         icon: 'success',
         title: 'Pedido adicionado ao carrinho',
+        showConfirmButton: false,
+        timer: 1200
     })
+    setTimeout(function() {
+        window.location.href = "?page=home";
+    }, 1200);
 })
