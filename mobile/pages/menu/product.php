@@ -86,8 +86,8 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
 
     <!-- div modal -->
 
-    <div id="main-modal-obs">
-        <div id="modal-obs-close"></div>
+    <div id="main-modal-obs" class="main-modal-mobile">
+        <div id="modal-obs-close" class="modal-mobile-close"></div>
 
         <div class="modal-obs-wrapper">
             <div class="obs-titulo">

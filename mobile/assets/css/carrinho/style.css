@@ -141,7 +141,7 @@
 }
 
 .div-finalizar{
-    background-color: #69b060;
+    background-color: #827168;
     width: 100%;
     height: 91px;
     display: grid;
@@ -150,19 +150,21 @@
     justify-items: center;
     position: fixed;
     bottom: 0;
+    box-shadow: 0 1px 12px rgb(0 0 0 / 49%);
 }
 
 .div-finalizar strong{
-    color: black;
-    font-size: 25px;
+    color: white;
+    font-size: 22px;
 }
 
 .div-finalizar button {
-    width: 250px;
+    width: 180px;
     height: 52px;
-    background-color:#69b060;
+    background-color:#52A84B;
     border-radius: 20px ;
-    border: 1px solid black;
+    border: 1px white solid;
+    color: white;
     font-size: 20px;
     font-weight: bold;
 }
@@ -178,5 +180,10 @@
     width: 100%;
     height: 100%;
 }
+
+.color-quantity-background{
+    background-color: #d9d9d9 !important;
+}
+
 
 

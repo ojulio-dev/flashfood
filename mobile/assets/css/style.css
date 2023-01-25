@@ -434,7 +434,7 @@ body #container {
 
 /* css modal */
 
-#main-modal-obs{
+.main-modal-mobile{
     display: none;
     position: fixed;
     z-index: 999999;
@@ -444,7 +444,7 @@ body #container {
     height: 100%;
 }
 
-#modal-obs-close {
+.modal-mobile-close {
     position: absolute;
     
     width: 100%;
