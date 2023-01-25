@@ -11,7 +11,7 @@ $products = $product->readRecents();
 
 ?>
 
-<section id="main-menu-products" class="section-products">
+<section id="main-menu-products" class="section-products page-footer">
     <div class="categories-wrapper">
         <div class="items-categories">
             <ul>
@@ -28,7 +28,7 @@ $products = $product->readRecents();
         </div>
     </div>
 
-    <div class="home-products-wrapper">
+    <div class="home-products-wrapper page-footer">
 
         <?php foreach($products as $product): ?>
             <div class="itens-cardapio" data-product-slug="<?= $product['slug'] ?>">
@@ -51,12 +51,15 @@ $products = $product->readRecents();
         <?php endforeach ?>
     </div>
 
-    <div class="products-footer">
-        <div class="images-wrapper">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/facebook.png" alt="Facebook Icon">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/instagram.png" alt="Instagram Icon">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/twitter.png" alt="Twitter Icon">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/youtube.png" alt="Youtube Icon">
+    <div class="main-footer">
+        <div class="info-wrapper">
+            <div class="images-wrapper">
+                <img src="<?= SERVER_HOST ?>/assets/images/system/facebook.png" alt="Facebook Icon">
+                <img src="<?= SERVER_HOST ?>/assets/images/system/instagram.png" alt="Instagram Icon">
+                <img src="<?= SERVER_HOST ?>/assets/images/system/twitter.png" alt="Twitter Icon">
+            </div>
+
+            <small>© 2023 Copyright - Todos os direitos reservados</small>
         </div>
     </div>
 </section>

@@ -10,7 +10,7 @@ if (!isset($_GET['slug'])) {
 
 $category = $productCategory->readBySlug($_GET['slug']);
 
-$categories = $productCategory->readAll();
+$categories = $productCategory->read();
 
 if (!$category) {
   header("Location: ?page=menu");
@@ -37,7 +37,7 @@ $products = $productCategory->readProductsBySlug($_GET['slug']);
         </div>
     </div>
 
-    <div class="home-products-wrapper">
+    <div class="home-products-wrapper page-footer">
         <?php foreach($products as $product): ?>
             <div class="itens-cardapio" data-product-slug="<?= $product['slug'] ?>">
                 <div class="fundo-produto">
@@ -59,12 +59,15 @@ $products = $productCategory->readProductsBySlug($_GET['slug']);
         <?php endforeach ?>
     </div>
 
-    <div class="products-footer">
-        <div class="images-wrapper">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/facebookBlack.png" alt="Facebook Icon">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/instagramBlack.png" alt="Instagram Icon">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/twitterBlack.png" alt="Twitter Icon">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/youtubeBlack.png" alt="Youtube Icon">
+    <div class="main-footer">
+        <div class="info-wrapper">
+            <div class="images-wrapper">
+                <img src="<?= SERVER_HOST ?>/assets/images/system/facebook.png" alt="Facebook Icon">
+                <img src="<?= SERVER_HOST ?>/assets/images/system/instagram.png" alt="Instagram Icon">
+                <img src="<?= SERVER_HOST ?>/assets/images/system/twitter.png" alt="Twitter Icon">
+            </div>
+
+            <small>© 2023 Copyright - Todos os direitos reservados</small>
         </div>
     </div>
 </section>
