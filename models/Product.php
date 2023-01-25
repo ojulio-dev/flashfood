@@ -276,6 +276,38 @@ class Product extends Database {
         }
     }
 
+    public function readBySearch($search)
+    {
+        try {
+
+            $this->setSql("SELECT * FROM " . $this->table . " WHERE name LIKE '%$search%'");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+            
+            if ($this->stmt->rowCount()) {
+                
+                $products =  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($products as $key => $product) {
+                    $products[$key]['banner'] = file_exists(__DIR__ . '/../assets/images/products/' . $products[$key]['banner']) 
+                        ?
+                    SERVER_HOST . '/assets/images/products/' . $products[$key]['banner']
+                        : 
+                    SERVER_HOST . '/assets/images/system/placeholder.png';
+                }
+
+                return $products;
+
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function countBySlug($slug, $multiple = false)
     {
         $condition = $multiple ? 'LIKE' : '=';

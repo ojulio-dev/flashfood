@@ -49,7 +49,10 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <header class="header-responsivo">
             <div class="header-search-wrapper">
                 <i class="fa-solid fa-magnifying-glass header-button-search"></i>
-                <input type="text" placeholder="Pesquisar">
+                <form action="" method="GET">
+                    <input type="hidden" name="page" value="search">
+                    <input type="text" name="q" placeholder="Pesquisar...">
+                </form>
             </div>
 
             <a href="?page=home"><img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo"></a>
