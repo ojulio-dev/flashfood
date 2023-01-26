@@ -33,6 +33,8 @@ body #container {
 
 .header-responsivo .header-search-wrapper {
     position: relative;
+
+    transition: 350ms ease-out;
 }
 
 .header-responsivo .header-search-wrapper .header-button-search {
@@ -146,7 +148,7 @@ body #container {
 
     gap: 20px;
 
-    width: 70%;
+    width: 65%;
     height: 100%;
 
     background-color: white;

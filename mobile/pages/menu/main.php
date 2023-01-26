@@ -7,7 +7,7 @@ $productCategory = new ProductCategory;
 $product = new Product;
 
 $categories = $productCategory->read();
-$products = $product->readRecents();
+$products = $product->read();
 
 ?>
 

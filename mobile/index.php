@@ -55,7 +55,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
                 </form>
             </div>
 
-            <a href="?page=home"><img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo"></a>
+            <a href="?page=menu"><img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo"></a>
 
             <div class="header-menu-wrapper">
                 <i id="header-burguer-icon" class="fa-solid fa-bars"></i>

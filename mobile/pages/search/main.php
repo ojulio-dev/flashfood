@@ -16,6 +16,8 @@ $products = $product->readBySearch($_GET['q']);
 <section class="main-page-search section-products page-footer">
     <div class="home-products-wrapper page-footer">
         <?php if ($products): ?>
+            <span class="search-message"><i class="fa-solid fa-magnifying-glass"></i> Resultados para "<?= $_GET['q'] ?>"</span>
+
             <?php foreach($products as $product): ?>
                 <div class="itens-cardapio" data-product-slug="<?= $product['slug'] ?>">
                     <div class="fundo-produto">
@@ -36,7 +38,7 @@ $products = $product->readBySearch($_GET['q']);
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <span class="search-notfound">A sua pesquisa não retornou resultados <i class="fa-regular fa-face-frown-open"></i></span>
+            <span class="search-message"><i class="fa-regular fa-face-frown-open"></i> A sua pesquisa não retornou resultados</span>
         <?php endif; ?>
     </div>
 

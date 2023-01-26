@@ -280,7 +280,7 @@ class Product extends Database {
     {
         try {
 
-            $this->setSql("SELECT * FROM " . $this->table . " WHERE name LIKE '%$search%'");
+            $this->setSql("SELECT P.* FROM " . $this->table . " P INNER JOIN product_category as C on P.category_id = C.category_id WHERE P.name LIKE '%$search%' AND P.status = 1 AND C.status = 1");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

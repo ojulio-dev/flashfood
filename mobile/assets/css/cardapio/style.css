@@ -343,10 +343,10 @@ section .page-footer {
   font-size: 21px;
 }
 
-.main-page-search .search-notfound {
+.main-page-search .search-message {
   padding: 15px;
 
-  background-color: #d9d9d9;
+  background-color: #fff;
   border-radius: 10px;
 
   text-align: center;
@@ -354,6 +354,7 @@ section .page-footer {
   line-height: 1.8;
 }
 
-.main-page-search .search-notfound i{
-  font-size: 20px;
+.main-page-search .search-message i{
+  font-size: 18px;
+  margin-right: 10px;
 }
