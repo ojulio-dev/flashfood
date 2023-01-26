@@ -355,6 +355,10 @@ body #container {
     text-align: center; 
 }
 
+.adicionais-quantidades input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+
 .adicionais-quantidades input:focus{
     box-shadow: 0 0 0 0;
     border: 0 none;

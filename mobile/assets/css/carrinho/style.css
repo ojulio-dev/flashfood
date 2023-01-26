@@ -186,4 +186,32 @@
 }
 
 
+.modal-obs-wrapper.additional {
+    justify-content: center;
+}
 
+.modal-obs-wrapper.additional .content-additional {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+
+}
+
+.content-additional .additional-orders{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.additional-value{
+    font-weight: bold !important;
+}
+
+.content-additional{
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    
+}

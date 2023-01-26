@@ -30,7 +30,7 @@
             <strong>Total: R$ 258.49</strong>
         </div>
         <div>
-            <button>Finalizar pedido</button>
+            <button id="finalizar-pedido">Finalizar pedido</button>
         </div>
     </div>
 
@@ -62,16 +62,13 @@
     <div id="main-modal-additional" class="main-modal-mobile">
         <div id="modal-additional-close" class="modal-mobile-close"></div>
 
-        <div class="modal-obs-wrapper">
+        <div class="modal-obs-wrapper additional">
             <div class="obs-titulo">
                 <h2>Adicionais Selecionados</h2>
             </div>
 
-            
-
-            <div class="obs-button">
-                <button class="obs-modal-cancelar" id="cancelar-modal-additional">Cancelar</button>
-                <button class="obs-modal-enviar" id="salvar-modal-additional">Salvar</button>
+            <div class="content-additional">
+                <h3 class="additional-orders">(1) Hamburguer </h3><h3 class="additional-value additional-orders"> R$ 4,00</h3>
             </div>
         </div>
     </div>
