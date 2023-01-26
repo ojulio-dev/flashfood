@@ -19,12 +19,8 @@ $('#button-modal-additional').click(function(){
     $('#main-modal-additional').show()
 })
 
-$('#cancelar-modal-additional,#modal-additional-close').click(function(){
+$('#modal-additional-close').click(function(){
     $('#main-modal-additional').hide()
-})
-
-$('#salvar-modal-additional').click(function(){
-    $('#main-modal-additional').toggle()
 })
 
 
@@ -63,17 +59,15 @@ $('body').on('change', '#modal-input-product-quantity', function() {
 
 // -----------cancelar pedido-----------
 
-var nomePedidoCancelar = 'Big Burguer' 
-
-console.log(nomePedidoCancelar.bold())
+var nomePedidoCancelar = 'Big Burguer';
 
 $('#cancelar-pedido').click(function(){
     Swal.fire({
         title: 'Confirmação',
-        text: `Tem certeza que deseja remover Big Burguer do carrinho?`,
+        html: `Tem certeza que deseja remover <b>${nomePedidoCancelar}</b> do carrinho?`,
         showCancelButton: true,
         cancelButtonColor: '#d33',
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#52A84B',
         confirmButtonText: 'Confirmar',
         cancelButtonText: 'Cancelar'
       }).then((result) => {
@@ -83,4 +77,18 @@ $('#cancelar-pedido').click(function(){
           )
         }
       })
+})
+
+// ---------- finalizar pedido -----------
+
+$('#finalizar-pedido').click(function(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Seu pedido foi entregue para a cozinha!',
+        showConfirmButton: false,
+        timer: 1500
+    })
+    setTimeout(function() {
+        window.location.href = "?page=home";
+    }, 1500);
 })
