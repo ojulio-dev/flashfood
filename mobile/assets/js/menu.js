@@ -15,6 +15,18 @@ $('.button-product-quantity').click(function() {
     $('#input-product-quantity').val(value);
 
     $('#input-product-quantity').trigger('change');
+
+    // Button Price
+
+    let productPrice;
+
+    if (buttonAction == 'adicionar') {
+
+        productPrice = $('.sistema-info-wrapper').data('product-current-price');
+    } else {
+        
+        productPrice = $('.sistema-info-wrapper').data('product-price');
+    }
 })
 
 $('body').on('change', '#input-product-quantity', function() {
@@ -51,6 +63,40 @@ $('.btn-additional-product').click(function(){
     additionalInput.val(value);
 
     additionalInput.trigger('change');
+
+    // Button Price
+    let additionalPrice = $(this).closest('li').data('additional-price');
+
+    if (value < 0 || value > 9) {
+
+        additionalPrice = 0;
+
+    }
+
+    currentAdditionalPrice = $('.sistema-info-wrapper').data('additional-current-price');
+
+    if (buttonAction == 'adicionar') {
+
+        currentAdditionalPrice = currentAdditionalPrice + additionalPrice;
+
+    } else {
+
+        currentAdditionalPrice = currentAdditionalPrice - additionalPrice;
+
+    }
+
+    $('.sistema-info-wrapper').data('additional-current-price', currentAdditionalPrice);
+
+    let productPrice = $(this).closest('[data-product-price]').data('product-current-price');
+
+    const priceFormat = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    }).format(productPrice);
+
+    $('#adicionar-carrinho #cart-product-price').html(priceFormat);
+
+    $('.sistema-info-wrapper').data('product-current-price', productPrice);
 })
 
 $('body').on('change', '#input-additional-quantity', function(){
@@ -66,4 +112,5 @@ $('body').on('change', '#input-additional-quantity', function(){
 
         additionalQuantity = 9;
     }
+    
 })

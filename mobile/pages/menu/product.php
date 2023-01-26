@@ -25,7 +25,7 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
 ?>
 
 <section class="sistema-cardapio-wrapper">
-    <div class="sistema-info-wrapper">
+    <div class="sistema-info-wrapper" data-product-price="<?= $readProduct['special_price'] ?? $readProduct['price'] ?>" data-product-current-price="<?= $readProduct['special_price'] ?? $readProduct['price'] ?>" data-additional-current-price="0">
         <div class="title-wrapper">
             <h2 class="title-cart-product"><?= $readProduct['name'] ?></h2>
         </div>
@@ -49,7 +49,7 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
                 
                 <ul>
                     <?php foreach($additionals as $additional): $ingredients = $ingredient->readById($additional['ingredient_id'])?>
-                        <li>
+                        <li data-additional-price="<?= $ingredients['price'] ?>">
                             <div class="adicionais-info-wrapper">
                                 <h5><?= $ingredients['name'] ?></h5>
                                 <small>R$ <?= number_format($ingredients['price'], 2, ',', '.') ?></small>
@@ -68,7 +68,7 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
             <div class="quantidade-grid">
                 <div class="adicionais-quantidades" data-additional-id="1">
                     <button class="button-product-quantity btn-minus" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
-                    <input id="input-product-quantity" type="number" value="1" min="1" max="99">
+                    <input id="input-product-quantity" type="number" value="1" min="1" max="99" data-button-action="adicionar">
                     <button class="button-product-quantity btn-plus" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <h5>Quantidade</h5>
@@ -80,12 +80,11 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
         </div>
         
         <div class="btn-adicionar-grid">
-            <button id="adicionar-carrinho" class="btn-adicionar-carrinho">Adicionar ao carrinho  (R$ 39,90)</button>
+            <button id="adicionar-carrinho" class="btn-adicionar-carrinho">Adicionar ao carrinho  (<span id="cart-product-price">R$ <?= number_format($readProduct['special_price'] ?? $readProduct['price'], 2, ',', '.') ?></span>)</button>
         </div>
     </div>
 
     <!-- div modal -->
-
     <div id="main-modal-obs" class="main-modal-mobile">
         <div id="modal-obs-close" class="modal-mobile-close"></div>
 
