@@ -33,8 +33,6 @@ $('.header-responsivo .header-search-wrapper .header-button-search').click(funct
 
         $('.header-responsivo .header-search-wrapper input').css('width', 'calc(100% - 15px)');
     } else {
-        $('.header-responsivo .header-search-wrapper').css('width', 'auto');
-
         $('.header-responsivo > a img').css('opacity', '1');
 
         $('.header-responsivo .header-search-wrapper input').css('width', '65px');
