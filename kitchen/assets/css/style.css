@@ -1,0 +1,134 @@
+#header-kitchen{
+    background-color: black;
+    width: 100%;
+}
+
+#header-kitchen ul {
+    display: flex;
+    gap: 10px;
+
+    padding: 20px;
+}
+
+#header-kitchen li {
+    list-style: none;
+
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+
+    background-color: #3a3a3a;
+
+    padding: 5px 10px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+#header-kitchen ul a {
+    text-decoration: none;
+}
+
+/* final header */
+
+#title {
+    text-align: center;
+    padding: 10px;
+
+    font-size: 19px;
+
+    margin-top: 10px;
+}
+
+#title::after {
+    content: '';
+    display: block;
+
+    background-color: #121212;
+
+    width: 3%;
+    height: 3px;
+
+    margin:  0 auto;
+    margin-top: 9px;
+
+    border-radius: 10px;
+}
+
+.main-orders {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-top: 20px;
+}
+
+.main-orders .elements {
+    width: 100%;
+    height: 400px;
+
+    box-shadow: 1px 0 8px rgba(0, 0, 0, 0.2);
+
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.main-orders .elements .order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    padding: 10px;
+
+    margin-bottom: 200px;
+}
+
+.main-orders .elements .order-info .position-number-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 17px;
+}
+
+.main-orders .elements .order-info .position-number-wrapper span {
+    width: 40px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #121212;
+    color: #fff;
+
+    border-radius: 20px;
+
+    font-size: 17px;
+}
+
+.main-orders .elements .order-info .user-time-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-orders .elements .order-info .user-time-wrapper p {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 600;
+
+    gap: 8px;
+}
+
+.main-orders .elements .order-info .user-time-wrapper span {
+    font-size: 13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
