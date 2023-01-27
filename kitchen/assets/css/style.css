@@ -34,7 +34,6 @@
 
 #title {
     text-align: center;
-    padding: 10px;
 
     font-size: 19px;
 
@@ -62,12 +61,12 @@
 
     gap: 20px;
 
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .main-orders .elements {
     width: 100%;
-    height: 600px;
+    height: 440px;
 
     box-shadow: 1px 0 8px rgba(0, 0, 0, 0.2);
 
@@ -86,7 +85,6 @@
 
     padding: 10px;
 
-    margin-bottom: 15px;
 }
 
 .main-orders .elements .order-info .position-number-wrapper {
@@ -143,12 +141,13 @@
     width: 100%;
     background-color: #E7E7E7;
     padding: 10px 20px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     
 }
 
 .order-wrapper h5 span{
     background-color: #00A3FF;
+    color: white;
     border-radius: 20px;
     padding: 0px 13px;
     font-size: 25px;
@@ -177,16 +176,16 @@
 
 
 /* button */
-.elements .btn-comecar{
+.elements .btn-iniciar-pedido{
     position: absolute;
     margin-left:-100px;
-    left:50%;
+    left:42%;
     bottom: 0;
     margin-bottom: 5px;
     width: 80%;
 }
 
-.elements button{
+.elements .btn-iniciar-pedido button{
     padding: 20px;
     width: 100%;
     color: white;
@@ -195,4 +194,23 @@
     border-radius: 20px;
     box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
 
+}
+
+.elements .btn-finalizar-pedido{
+    position: absolute;
+    margin-left:-100px;
+    left:42%;
+    bottom: 0;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+.elements .btn-finalizar-pedido button{
+    padding: 20px;
+    width: 100%;
+    color: white;
+    background-color: #00A3FF;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
 }

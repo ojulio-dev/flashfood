@@ -59,8 +59,8 @@
                     
                 </ul>
             </div>
-            <div class="btn-comecar">
-                <button>Começar</button>
+            <div class="btn-iniciar-pedido">
+                <button>Iniciar</button>
             </div>
         </div>
 
@@ -93,8 +93,8 @@
                     
                 </ul>
             </div>
-            <div class="btn-comecar">
-                <button>Começar</button>
+            <div class="btn-iniciar-pedido">
+                <button>Iniciar</button>
             </div>
         </div>
 
@@ -130,8 +130,8 @@
                     </li>    
                 </ul>
             </div>
-            <div class="btn-comecar">
-                <button>Começar</button>
+            <div class="btn-finalizar-pedido">
+                <button>Finalizar</button>
             </div>
         </div>
     </div>
