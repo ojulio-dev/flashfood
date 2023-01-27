@@ -17,26 +17,51 @@ $('.button-product-quantity').click(function() {
     $('#input-product-quantity').trigger('change');
 
     // Button Price
+    // Preço do Produto mais os Adicionais;
+    let productAdditionalPrice = $('.sistema-info-wrapper').data('product-price') + $('.sistema-info-wrapper').data('additional-current-price');
 
-    let productPrice;
+    if (value < 1) {
 
-    if (buttonAction == 'adicionar') {
+        value = 1;
+    } else if (value > 9) {
 
-        productPrice = $('.sistema-info-wrapper').data('product-current-price');
-    } else {
-        
-        productPrice = $('.sistema-info-wrapper').data('product-price');
+        value = 9;
     }
+
+    // Preço do Produto vezes a Quantidade
+    let productPrice = parseFloat($('.sistema-info-wrapper').data('product-price')) * value;
+
+    // Preço do Produto mais os Adicionais vezes a Quantidade;
+    let buttonValue = productAdditionalPrice * value;
+
+    if (value < 1) {
+        buttonValue = productAdditionalPrice;
+    } else if (value > 9) {
+        buttonValue = productAdditionalPrice * 9;
+    }
+
+    const priceFormat = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    }).format(buttonValue);
+
+    $('#adicionar-carrinho #cart-product-price').html(priceFormat);
+
+    $('.sistema-info-wrapper').data('product-current-price', productPrice);
 })
 
 $('body').on('change', '#input-product-quantity', function() {
     
     let productQuantity = $(this).val();
 
-    if (productQuantity < 1 || productQuantity > 99) {
+    if (productQuantity < 1) {
         $(this).val(1);
 
         productQuantity = 1;
+    } else if (productQuantity > 9) {
+        $(this).val(9);
+
+        productQuantity = 9;
     }
 
     // fazer a atualização no banco...
@@ -54,9 +79,9 @@ $('.btn-additional-product').click(function(){
 
     let value;
 
-    if(buttonAction == 'adicionar'){
+    if (buttonAction == 'adicionar'){
         value = parseInt(additionalQuantity) + 1;
-    }else{
+    }else {
         value = parseInt(additionalQuantity) - 1;
     }
 
@@ -89,14 +114,14 @@ $('.btn-additional-product').click(function(){
 
     let productPrice = $(this).closest('[data-product-price]').data('product-current-price');
 
+    productPrice = productPrice + (currentAdditionalPrice * $('#input-product-quantity').val());
+
     const priceFormat = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL'
     }).format(productPrice);
 
     $('#adicionar-carrinho #cart-product-price').html(priceFormat);
-
-    $('.sistema-info-wrapper').data('product-current-price', productPrice);
 })
 
 $('body').on('change', '#input-additional-quantity', function(){

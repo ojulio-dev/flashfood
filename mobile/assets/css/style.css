@@ -205,7 +205,7 @@ body #container {
 
 .header-menu-animation {
     animation-name: menuAnimation;
-    animation-duration: 200ms;
+    animation-duration: 150ms;
 }
 
 @keyframes menuAnimation {
@@ -302,6 +302,13 @@ body #container {
     position: relative;
 }
 
+.main-adicionais-wrapper ul {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
 .titulo-adicionais {
     position: relative;
     bottom: -28px;
@@ -332,8 +339,12 @@ body #container {
 }
 
 .adicionais-info-wrapper h5{
-    font-size: small;
+    font-size: 14px;
     font-weight: 600;
+}
+
+.adicionais-info-wrapper small {
+    font-size: 14px;
 }
 
 .adicionais-quantidades{
@@ -341,14 +352,19 @@ body #container {
     border-radius: 8px;
     background-color: #CECECE;
     margin: 2px;
-    padding: 1px;
+    padding: 3px;
+
+    margin-left: 10px;
 }
 
-.adicionais-quantidades button{
+.adicionais-quantidades button {
     border: none;
     background-color: #CECECE;
-    padding: 1px;
     margin: 0px 2px;
+}
+
+.adicionais-quantidades button i {
+    font-size: 15px;
 }
 
 .adicionais-quantidades input{
