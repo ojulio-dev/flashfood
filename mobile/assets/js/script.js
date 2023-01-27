@@ -49,14 +49,23 @@ $('.itens-cardapio').click(function(){
 
 // adicionar ao carrinho
 
-$('#adicionar-carrinho').click(function(){
+$('#adicionar-carrinho').click(function() {
+    
     Swal.fire({
-        icon: 'success',
-        title: 'Pedido adicionado ao carrinho',
-        showConfirmButton: false,
-        timer: 1200
-    })
-    setTimeout(function() {
-        window.location.href = "?page=home";
-    }, 1200);
+        title: 'Tudo certo!',
+        text: 'Seu Produto foi adicionado ao Carrinho!',
+        showCancelButton: true,
+        confirmButtonColor: '#52A84B',
+        cancelButtonColor: '#7066e0',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: `Ficar aqui`,
+        icon: 'success'
+      }).then((result) => {
+        if (result.isConfirmed) {
+        
+            window.location = `?page=menu`;
+
+        }
+      })
+
 })

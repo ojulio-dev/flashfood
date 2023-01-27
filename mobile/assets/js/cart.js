@@ -48,22 +48,26 @@ $('body').on('change', '#modal-input-product-quantity', function() {
     
     let modalProductQuantity = $(this).val();
 
-    if (modalProductQuantity < 1 || modalProductQuantity > 99) {
+    if (modalProductQuantity < 1) {
         $(this).val(1);
 
         modalProductQuantity = 1;
+    } else if (modalProductQuantity > 9) {
+        $(this).val(9);
+
+        modalProductQuantity = 9;
     }
 
     // fazer a atualização no banco...
 })
 
 // -----------cancelar pedido-----------
+$('#cancelar-pedido').click(function() {
+    let nomePedidoCancelar = $(this).data('product-name');
 
-var nomePedidoCancelar = 'Big Burguer';
-
-$('#cancelar-pedido').click(function(){
     Swal.fire({
         title: 'Confirmação',
+        icon: 'warning',
         html: `Tem certeza que deseja remover <b>${nomePedidoCancelar}</b> do carrinho?`,
         showCancelButton: true,
         cancelButtonColor: '#d33',
@@ -72,9 +76,11 @@ $('#cancelar-pedido').click(function(){
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire(
-            'Seu pedido foi retirado do carrinho.',
-          )
+          Swal.fire({
+            icon: 'success',
+            title : 'Tudo Certo!',
+            text: 'Produto removido com Sucesso!'
+          })
         }
       })
 })

@@ -38,7 +38,7 @@ $products = $product->readBySearch($_GET['q']);
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <span class="search-message"><i class="fa-regular fa-face-frown-open"></i> A sua pesquisa não retornou resultados</span>
+            <span class="search-message"><i class="fa-regular fa-face-frown-open"></i> "<?= $_GET['q'] ?>" não retornou resultados</span>
         <?php endif; ?>
     </div>
 

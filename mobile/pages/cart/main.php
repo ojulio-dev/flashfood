@@ -20,7 +20,7 @@
                 
                 <div class="caixa-cancelar">
                     <strong>R$ 36,00</strong>
-                    <button id="cancelar-pedido">cancelar</button>
+                    <button id="cancelar-pedido" data-product-name="Big Burguer">cancelar</button>
                 </div>
             </div>
         </div>
