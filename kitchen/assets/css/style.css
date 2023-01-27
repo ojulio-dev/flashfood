@@ -67,7 +67,7 @@
 
 .main-orders .elements {
     width: 100%;
-    height: 400px;
+    height: 600px;
 
     box-shadow: 1px 0 8px rgba(0, 0, 0, 0.2);
 
@@ -75,6 +75,8 @@
 
     display: flex;
     flex-direction: column;
+
+    position: relative;
 }
 
 .main-orders .elements .order-info {
@@ -84,7 +86,7 @@
 
     padding: 10px;
 
-    margin-bottom: 200px;
+    margin-bottom: 15px;
 }
 
 .main-orders .elements .order-info .position-number-wrapper {
@@ -131,4 +133,66 @@
     align-items: center;
 
     gap: 8px;
+}
+
+.products-wrapper li{
+    list-style-type: none;
+}
+
+.order-wrapper{
+    width: 100%;
+    background-color: #E7E7E7;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    
+}
+
+.order-wrapper h5 span{
+    background-color: #00A3FF;
+    border-radius: 20px;
+    padding: 0px 13px;
+    font-size: 25px;
+}
+
+.order-wrapper h5{
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.order-wrapper .obs-wrapper{
+    background-color: #d9d9d9;
+}
+
+.additionals-wrapper .symbol-additional{
+    background-color: #BEBEBE;
+    padding: 1px 6px;
+    box-shadow: 4px -3px 3px rgb(0 0 0 / 50%);
+    border-radius: 20px;
+    margin: 4px 5px 5px 20px;
+}
+
+.additionals-wrapper small{
+    font-size: 15px;
+}
+
+
+/* button */
+.elements .btn-comecar{
+    position: absolute;
+    margin-left:-100px;
+    left:50%;
+    bottom: 0;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+.elements button{
+    padding: 20px;
+    width: 100%;
+    color: white;
+    background-color: #41D93E;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.3);
+
 }
