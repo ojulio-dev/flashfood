@@ -56,7 +56,7 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
                             </div>
                             <div class="adicionais-quantidades" data-additional-id="1">
                                 <button class="btn-additional-product" data-action="diminuir"><i class="fa-solid fa-minus"></i></button>
-                                <input id="input-additional-quantity" type="number" value="0" min="0" max="9">
+                                <input id="input-additional-quantity" type="number" value="0" min="0" max="9" data-additional-id="<?= $additional['additional_id'] ?>">
                                 <button class="btn-additional-product" data-action="adicionar"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </li>

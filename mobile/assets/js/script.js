@@ -54,9 +54,30 @@ $('#adicionar-carrinho').click(function() {
     let productId = $('.sistema-info-wrapper').data('product-id');
     let quantity = $('.sistema-info-wrapper #input-product-quantity').val();
 
+    let additionals = [];
+
+    let additionalsInput = $('.sistema-info-wrapper #input-additional-quantity');
+
+    if (additionalsInput.length) {
+        additionalsInput.map(function(_, additional) {
+
+            let quantity = $(additional).val();
+
+            if (quantity > 0) {
+
+                additionals = [...additionals, {
+                    id: additional.dataset.additionalId,
+                    quantity
+                }]
+            }
+        });
+    }
+
+    return;
+
     const result = fetch(SERVER_HOST + '/api/?api=cart&action=insertCart', {
         method: 'POST',
-        body: `productId=${productId}&quantity=${quantity}`,
+        body: `productId=${productId}&productQuantity=${quantity}&additionals=${additionals}`,
         headers: {
             // 'Content-Type': 'application/json'
             'Content-Type': 'application/x-www-form-urlencoded'

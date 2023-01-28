@@ -43,7 +43,7 @@ class Cart extends Database {
     {
         try {
             
-            $this->setSql("SELECT P.*, PO.name as category_name, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id INNER JOIN product_category PO on P.category_id = PO.category_id WHERE C.status = 1 AND C.user_id = $userId");
+            $this->setSql("SELECT P.*, PO.name as category_name, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id INNER JOIN product_category PO on P.category_id = PO.category_id WHERE C.status = 1 AND C.user_id = $userId ORDER BY cart_id DESC");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
