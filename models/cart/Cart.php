@@ -22,11 +22,11 @@ class Cart extends Database {
         $this->cartAdditional = new CartAdditional();
     }
 
-    public function create($userId, $productId)
+    public function create($userId, $productId, $productQuantity = 1)
     {
         try {
             
-            $this->setSql("INSERT INTO " . $this->table . " (user_id, product_Id) VALUES ({$userId}, $productId)");
+            $this->setSql("INSERT INTO " . $this->table . " (user_id, product_Id, quantity) VALUES ({$userId}, $productId, $productQuantity)");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 

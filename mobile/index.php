@@ -9,6 +9,11 @@ ob_start();
 
 session_start();
 
+if (!isset($_SESSION['user'])) {
+    header("Location: ../");
+    exit();
+}
+
 require_once(__DIR__ . '/config/environment.php');
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'menu';
@@ -96,6 +101,12 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
             }
 
         ?>
+
+        <a class="floating-button-cart" href="?page=cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            
+            <span>1</span>
+        </a>
     </div>
 
     <!-- JQuery -->
@@ -112,7 +123,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- Vanilla -->
     <script>
-        const BASE_URL = "http://localhost/flashfood/response";
+        const DIR_PATH = "<?= DIR_PATH ?>";
+        const SERVER_HOST = "<?= SERVER_HOST ?>";
     </script>
 
     <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>

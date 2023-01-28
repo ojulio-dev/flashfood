@@ -8,7 +8,13 @@ $cartAdditional = new CartAdditional;
 
 if (isset($_POST)) {
 
-    $cartId = $cart->create($_SESSION['user']['user_id'], $_POST['productId']);
+    if (isset($_POST['productQuantity'])) {
+
+        $cartId = $cart->create($_SESSION['user']['user_id'], $_POST['productId'], $_POST['quantity']);
+    } else {
+
+        $cartId = $cart->create($_SESSION['user']['user_id'], $_POST['productId']);
+    }
 
     if (isset($_POST['additionals'])) {
         $cartAdditional->create($cartId, $_POST['additionals']);

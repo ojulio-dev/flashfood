@@ -25,7 +25,7 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
 ?>
 
 <section class="sistema-cardapio-wrapper">
-    <div class="sistema-info-wrapper" data-product-price="<?= $readProduct['special_price'] ?? $readProduct['price'] ?>" data-product-current-price="<?= $readProduct['special_price'] ?? $readProduct['price'] ?>" data-additional-current-price="0">
+    <div class="sistema-info-wrapper" data-product-id="<?= $readProduct['product_id'] ?>" data-product-price="<?= $readProduct['special_price'] ?? $readProduct['price'] ?>" data-product-current-price="<?= $readProduct['special_price'] ?? $readProduct['price'] ?>" data-additional-current-price="0">
         <div class="title-wrapper">
             <h2 class="title-cart-product"><?= $readProduct['name'] ?></h2>
         </div>

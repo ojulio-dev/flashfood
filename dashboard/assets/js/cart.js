@@ -212,8 +212,8 @@ $('.button-order.cancel').click(function() {
         text: 'Tem certeza que deseja cancelar o Pedido?',
         icon: 'warning',
         showCancelButton: true,
-        cancelButtonColor: '#3085d6',
-        confirmButtonColor: '#d33',
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
         confirmButtonText: 'Sim',
         cancelButtonText: 'Não'
     }).then((result) => {

@@ -61,7 +61,7 @@ body #container {
 
     border-radius: 10px;
 
-    font-size: 15px;
+    font-size: 16px;
 
     padding-left: 65px;
 
@@ -560,4 +560,50 @@ body #container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.floating-button-cart {
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    bottom: 9px;
+    right: 11px;
+
+    background-color: white;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 45%;
+    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.5);
+
+    font-size: 20px;
+    color: #212121;
+    text-decoration: none;
+
+    display: none;
+}
+
+.floating-button-cart span {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+
+    width: 23px;
+    height: 23px;
+
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: red;
+
+    border-radius: 50%;
+
+    color: #fff;
 }

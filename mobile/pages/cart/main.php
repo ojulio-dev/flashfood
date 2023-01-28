@@ -1,3 +1,9 @@
+<style>
+    .floating-button-cart {
+        display: none;
+    }
+</style>
+
 <section>
     <div class="sistema-cardapio-wrapperr">
         <div class="caixa-img-carrinho">
@@ -72,5 +78,4 @@
             </div>
         </div>
     </div>
-
 </section>

@@ -50,22 +50,43 @@ $('.itens-cardapio').click(function(){
 // adicionar ao carrinho
 
 $('#adicionar-carrinho').click(function() {
-    
-    Swal.fire({
-        title: 'Tudo certo!',
-        text: 'Seu Produto foi adicionado ao Carrinho!',
-        showCancelButton: true,
-        confirmButtonColor: '#52A84B',
-        cancelButtonColor: '#7066e0',
-        confirmButtonText: 'Continuar',
-        cancelButtonText: `Ficar aqui`,
-        icon: 'success'
-      }).then((result) => {
-        if (result.isConfirmed) {
-        
-            window.location = `?page=menu`;
 
+    let productId = $('.sistema-info-wrapper').data('product-id');
+    let quantity = $('.sistema-info-wrapper #input-product-quantity').val();
+
+    const result = fetch(SERVER_HOST + '/api/?api=cart&action=insertCart', {
+        method: 'POST',
+        body: `productId=${productId}&quantity=${quantity}`,
+        headers: {
+            // 'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
-      })
+    })
+    .then((response) => response.json())
+    .then((result) => {
+        Swal.fire({
+            title: 'Tudo certo!',
+            text: 'Seu Produto foi adicionado ao Carrinho!',
+            showCancelButton: true,
+            confirmButtonColor: '#52A84B',
+            cancelButtonColor: '#7066e0',
+            confirmButtonText: 'Continuar',
+            cancelButtonText: `Ficar aqui`,
+            icon: 'success'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            
+                window.location = `?page=menu`;
+    
+            }
+        })
+    })
+    .catch(error => {
+        Swal.fire({
+            title: 'Oops...',
+            text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+            icon: 'error'
+        })
+    });
 
 })
