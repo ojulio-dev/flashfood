@@ -7,6 +7,10 @@ use Classes\Database;
 use PDO;
 use PDOException;
 
+function tal() {
+    echo 'oi';
+}
+
 class User extends Database {
     private $stmt, $sql, $table, $conn;
 

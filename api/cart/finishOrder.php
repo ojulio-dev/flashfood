@@ -10,11 +10,11 @@ $cartAdditional = new CartAdditional();
 
 if (isset($_POST['tableId'])) {
 
-    $orderItems = $cart->read($_SESSION['user']['user_id']);
+    $orderItems = $cart->read($_SESSION['flashfood']['user']['user_id']);
 
-    $newOrder = $order->create($orderItems, $_POST['tableId'], $_SESSION['user']['user_id']);
+    $newOrder = $order->create($orderItems, $_POST['tableId'], $_SESSION['flashfood']['user']['user_id']);
 
-    $changeStatus = $cart->changeStatus($_SESSION['user']['user_id']);
+    $changeStatus = $cart->changeStatus($_SESSION['flashfood']['user']['user_id']);
 
     if ($orderItems && $newOrder && $changeStatus) {
         echo json_encode(['response' => true, 'message' => 'Pedido finalizado com Sucesso!'], JSON_UNESCAPED_UNICODE);

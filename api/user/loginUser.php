@@ -39,7 +39,7 @@ if (isset($_POST)) {
     
     if ($dataUser) {
         
-        $_SESSION['user'] = $dataUser;
+        $_SESSION['flashfood']['user'] = $dataUser;
 
         $response = [
             'response' => true,

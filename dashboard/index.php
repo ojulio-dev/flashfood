@@ -11,7 +11,7 @@ ob_start();
 
 session_start();
 
-if (!isset($_SESSION['user']) || $_SESSION['user']['role_id'] > 1) {
+if (!isset($_SESSION['flashfood']['user']) || $_SESSION['flashfood']['user']['role_id'] > 1) {
     header("Location: ../");
     exit();
 }
@@ -28,7 +28,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <head>
     <!-- Title -->
     <link rel="shortcut icon" href="<?= SERVER_HOST ?>/assets/images/favicon/favicon.png" type="image/x-icon">
-    <title>Dashboard</title>
+    <title>FlashFood - Dashboard</title>
 
     <!-- Meta TAGs -->
     <meta charset="UTF-8">

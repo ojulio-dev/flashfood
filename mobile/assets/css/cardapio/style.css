@@ -66,6 +66,7 @@ section.section-products {
 .main-footer .info-wrapper small {
   font-size: 14px;
   color: #282828;
+  line-height: 1.5;
 
   text-align: center;
 }

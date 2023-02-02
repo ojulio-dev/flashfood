@@ -1,32 +1,62 @@
 // --------------------modal quantidade-----------------------
 
-$('#button-modal-quantity').click(function(){
-    $('#main-modal-quantity').show()
+$('body').on('click', '.button-modal-quantity', function(){
+    let productQuantity = $(this).html();
+
+    let cartId = $(this).data('cart-id');
+
+    $('#main-modal-quantity #modal-input-product-quantity').val(productQuantity);
+
+    $('#main-modal-quantity #modal-input-product-quantity').data('cart-id', cartId);
+
+    $('#main-modal-quantity').show();
 })
 
-$('#cancelar-modal-quantity,#modal-quantity-close').click(function(){
-    $('#main-modal-quantity').hide()
-    $('#modal-input-product-quantity').val("2")
+$('body').on('click', '#cancelar-modal-quantity, #modal-quantity-close', function() {
+
+    $('#main-modal-quantity').hide();
+
 })
 
-$('#salvar-modal-quantity').click(function(){
-    $('#main-modal-quantity').toggle()
+$('body').on('click', '#salvar-modal-quantity', function() {
+
+    let cartId = $('#main-modal-quantity #modal-input-product-quantity').data('cart-id');
+
+    let productQuantity = $('#main-modal-quantity #modal-input-product-quantity').val();
+
+    const result = fetch(`${SERVER_HOST}/api/?api=cart&action=changeQuantity`, {
+        body: `cartId=${cartId}&quantity=${productQuantity}`,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then((response) => response.json())
+    .then((result) => {
+
+        if (result) {
+
+            $('#main-modal-quantity').hide();
+
+            readCart();
+
+        }
+
+    })
+    .catch(error => {
+
+        $('#main-modal-quantity').hide();
+
+        Swal.fire({
+            title: 'Oops...',
+            text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+            icon: 'error'
+        })
+
+    })
 })
 
-// --------------------modal adicional-----------------
-
-$('#button-modal-additional').click(function(){
-    $('#main-modal-additional').show()
-})
-
-$('#modal-additional-close').click(function(){
-    $('#main-modal-additional').hide()
-})
-
-
-// --------------Mudar a quantidade de Produtos------------------
-
-$('.button-modal-product-quantity').click(function() {
+$('body').on('click', '.button-modal-product-quantity', function() {
     let modalProductQuantity = $('#modal-input-product-quantity').val();
 
     let buttonAction = $(this).data('action');
@@ -61,8 +91,62 @@ $('body').on('change', '#modal-input-product-quantity', function() {
     // fazer a atualização no banco...
 })
 
+// --------------------modal adicional-----------------
+
+$('body').on('click', '.button-modal-additional', function() {
+    if ($(this).html() <= 0) {
+        return false;
+    }
+
+    let cartId = $(this).data('cart-id');
+
+    const result = fetch(`${SERVER_HOST}/api/?api=cart&action=listCartAdditionals`, {
+        body: `cartId=${cartId}`,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          }
+    })
+    .then((response) => response.json())
+    .then((result) => {
+
+        $('#main-modal-additional .content-additional').html('');
+
+        result.map(additional => {
+            let additionalPrice = new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(additional.price);
+
+            $('#main-modal-additional .content-additional').append(`
+                <li>
+                    <h3 class="additional-orders">(${additional.quantity}) ${additional.name} </h3>
+                    <h3 class="additional-value additional-orders">${additionalPrice}</h3>
+                </li>
+            `);
+        })
+
+        $('#main-modal-additional').show();
+    })
+    .catch(error => {
+
+        console.log(error);
+
+        Swal.fire({
+            title: 'Oops...',
+            text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+            icon: 'error'
+        })
+
+    })
+})
+
+$('#modal-additional-close').click(function(){
+    $('#main-modal-additional').hide()
+})
+
 // -----------cancelar pedido-----------
-$('#cancelar-pedido').click(function() {
+$('body').on('click', '.carrinho-cancelar-pedido', function() {
     let nomePedidoCancelar = $(this).data('product-name');
 
     Swal.fire({
@@ -75,26 +159,168 @@ $('#cancelar-pedido').click(function() {
         confirmButtonText: 'Confirmar',
         cancelButtonText: 'Cancelar'
       }).then((result) => {
+
         if (result.isConfirmed) {
-          Swal.fire({
-            icon: 'success',
-            title : 'Tudo Certo!',
-            text: 'Produto removido com Sucesso!'
-          })
+
+            let cartId = $(this).data('cart-id');
+
+            const result = fetch(`${SERVER_HOST}/api/?api=cart&action=removeProduct`, {
+                body: `cartId=${cartId}`,
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then((response) => response.json())
+            .then((result) => {
+
+                readCart();
+
+                Swal.fire({
+                    title: 'Feito!',
+                    text: 'O Produto foi removido do Carrinho!',
+                    icon: 'success'
+                })
+
+            })
+            .catch(error => {
+
+                Swal.fire({
+                    title: 'Oops...',
+                    text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                    icon: 'error'
+                })
+
+            })
         }
+
       })
 })
 
-// ---------- finalizar pedido -----------
+const readCart = () => {
 
-$('#finalizar-pedido').click(function(){
-    Swal.fire({
-        icon: 'success',
-        title: 'Seu pedido foi entregue para a cozinha!',
-        showConfirmButton: false,
-        timer: 1500
+    const result = fetch(`${SERVER_HOST}/api/?api=cart&action=listCart`)
+    .then((response) => response.json())
+    .then((result) => {
+
+        $('.products-cart-wrapper').html('');
+
+        if (result.readCart.length) {
+
+            result.readCart.map(product => {
+
+                let productPrice = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(product.special_price ?? product.price);
+
+                let totalPrice = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(result.totalPrice);
+    
+                $('.products-cart-wrapper').append(`
+                    <div class="product-cart-wrapper">
+                        <div class="caixa-img-carrinho">
+                            <div class="caixa-image">
+                                <a href="?page=menu&action=product&slug=${product.slug}"><img src="${SERVER_HOST}/assets/images/products/${product.banner}" alt=""></a>
+                            </div>
+                            <div class="produto-carrinho">
+                                <div class="carrinho-titulo-wrapper">
+                                    <h3>${product.name}</h3>
+                                </div>
+                                <div class="quantidade-carrinho">
+                                    <h4>Quantidade:</h4>
+                                    <button class="btn-quantidade-adicionais button-modal-quantity" data-cart-id="${product.cart_id}">${product.quantity}</button>
+                                </div>
+    
+                                <div class="carrinho-adicionais-wrapper">
+                                    <h4>Adicionais:</h4>
+                                    <button class="btn-quantidade-adicionais button-modal-additional" data-cart-id="${product.cart_id}">${product.additionalsQuantity}</button>
+                                </div>
+                                
+                                <div class="caixa-cancelar">
+                                    <strong>${productPrice}</strong>
+                                    <button class="carrinho-cancelar-pedido" data-product-name="${product.name}" data-cart-id="${product.cart_id}">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                $('.div-finalizar strong').html('Total: ' + totalPrice);
+    
+            })
+        } else {
+
+            $('.products-cart-wrapper').html(`
+                <span class="notfound">Puts, seu carrinho está vazio. Dê uma olhadinha nas novidades do <a href="?page=menu">Cardápio!</a></span>
+            `);
+
+            $('.div-finalizar').addClass('notfound');
+            $('.div-finalizar #button-cancel-order, .div-finalizar #finalizar-pedido').prop('disabled', true);
+
+        }
+
     })
-    setTimeout(function() {
-        window.location.href = "?page=home";
-    }, 1500);
+
+}
+
+// ---------- finalizar pedido -----------
+$('body').on('click', '#finalizar-pedido', function() {
+
+    $('#cart-modal-tables').show();
+
+})
+
+$('#modal-tables-close').click(function() {
+    $('#cart-modal-tables').hide();
+})
+
+$('#cart-modal-tables .tables-wrapper li').click(function() {
+
+    $('#cart-modal-tables').hide();
+
+    let tableId = $(this).data('table-id');
+
+    const result = fetch(`${SERVER_HOST}/api/?api=cart&action=finishOrder`, {
+        method: 'POST',
+        body: `tableId=${tableId}`,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then((response) => response.json())
+    .then((result) => {
+
+        readCart();
+
+        if (result.response) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Prontinho',
+                html: 'O pedido número<b>#00001</b> da mesa <b>5</b> será entregue a cozinha imediatamente. O FlashFood agradece'
+            })
+
+        } else {
+
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+
+        }
+
+    })
+    .catch(error => {
+
+        Swal.fire({
+            title: 'Oops...',
+            text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+            icon: 'error'
+        })
+
+    })
 })

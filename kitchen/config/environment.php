@@ -1,5 +1,8 @@
 <?php
 
+// define('ENVIRONMENT', 'development'), feito manualmente como condição para as constantes de conexão com o banco;
+define('ENVIRONMENT', 'development');
+
 // Caso o projeto esteja dentro de uma pasta e não na raiz do www|htdocs
 define('DIR_ROOT', 'flashfood/kitchen');
 

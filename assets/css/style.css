@@ -1,5 +1,5 @@
 #container-landingpage {
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     
     font-family: 'Nunito', sans-serif;
@@ -13,34 +13,89 @@
     flex-direction: column;
     
     flex: 1;
-
-    padding: 15px;
 }
 
 .main-landingpage-header {
-    background-color: #52A84B;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 10px 15px;
+    padding: 0 20px;
+
+    height: 90px;
+    border-bottom: 5px solid var(--color-red);
+
+    box-shadow: 0 4px 10px rgb(0 0 0 / 25%);
+}
+
+.main-landingpage-header .icon-navbar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-landingpage-header img {
+    width: 150px;
 }
 
 .main-landingpage-header nav {
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .main-landingpage-header nav a {
-    color: #fff;
-    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
 }
 
-.main-landingpage-header img {
-    width: 40px;
-    cursor: pointer;
+.main-landingpage-header nav a {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border-radius: 50%;
+    color: #151515;
+    text-decoration: none;
+
+    position: relative;
+
+    transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
+}
+
+.main-landingpage-header nav a:hover {
+    transform: scale(1.07);
+}
+
+.main-landingpage-header > i {
+    font-size: 33px;
+
+    cursor: pointer;
+    transition: transform 100ms cubic-bezier(.45,.97,.68,2.48);
+}
+
+.main-landingpage-header > i:hover {
+    transform: scale(1.15);
+}
+
+.main-landingpage-header button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 15px;
+    color: #fff;
+    background-color: var(--color-red);
+
+    width: 100px;
+    height: 44px;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
 }
 
 .main-landingpage-footer {

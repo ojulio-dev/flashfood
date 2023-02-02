@@ -55,7 +55,26 @@ class CartAdditional extends Database {
 
             $this->stmt->execute();
 
-            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            return  $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+    }
+
+    public function readTotalPrice($cartId)
+    {
+
+        try {
+            
+            $this->setSql("SELECT SUM(((I.price * CA.quantity) * C.quantity)) as price FROM {$this->table} CA INNER JOIN cart as C on C.cart_id = CA.cart_id INNER JOIN additional as A ON A.additional_id = CA.additional_id INNER JOIN ingredient as I ON I.ingredient_id = A.ingredient_id WHERE CA.cart_id = $cartId");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return  $this->stmt->fetch(PDO::FETCH_ASSOC)['price'] ?? 0;
 
         } catch (PDOException $e) {
             echo $e->getMessage();

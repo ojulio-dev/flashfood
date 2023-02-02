@@ -12,10 +12,10 @@ if (isset($_POST)) {
 
     if (isset($_POST['productQuantity'])) {
 
-        $cartId = $cart->create($_SESSION['user']['user_id'], $_POST['productId'], $_POST['productQuantity']);
+        $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], $_POST['productQuantity']);
     } else {
 
-        $cartId = $cart->create($_SESSION['user']['user_id'], $_POST['productId']);
+        $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId']);
     }
 
     if (isset($_POST['additionals'])) {

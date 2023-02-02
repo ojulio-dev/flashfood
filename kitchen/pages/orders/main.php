@@ -1,139 +1,70 @@
+<?php
+
+use Model\Order\Order;
+
+$order = new Order();
+
+$orders = $order->readKitchen();
+
+?>
+
 <section>
     <div id="title">
         <h2>Pedidos</h2>
     </div>
-    <div class="main-orders">
-        <div class="elements">
-            <div class="order-info">
-                <div class="position-number-wrapper">
-                    <span>4</span>
 
-                    <h4>#00003</h4>
+    <div id="main-orders">
+        <?php foreach($orders as $data): ?>
+            <div class="elements-order" data-order-id="<?= $data['order_id'] ?>" data-status-id="<?= $data['status_id'] ?>">
+                <div class="order-info">
+                    <div class="position-number-wrapper">
+                        <span><?= $data['table_number'] ?></span>
+
+                        <h4>#<?= $data['order_number'] ?></h4>
+                    </div>
+                    <div class="user-time-wrapper">
+                        <p><i class="fa-solid fa-user"></i> <?= $data['user_name'] ?></p>
+                        <span><i class="fa-regular fa-clock"></i> <?= $data['timeSpent'] ?></span>
+                    </div>
                 </div>
-                <div class="user-time-wrapper">
-                    <p><i class="fa-solid fa-user"></i> Julio</p>
-                    <span><i class="fa-regular fa-clock"></i> 11m 2s</span>
+
+                <div class="products-wrapper">
+                    <ul>
+                        <?php foreach($data['order_items'] as $orderItem): ?>
+
+                            <li class="order-wrapper">
+                                <h5><span><?= $orderItem['quantity'] ?></span> <?= $orderItem['product_name'] ?></h5>
+
+                                <?php if (count($orderItem['additionals'])): ?>
+                                    <ul class="additionals-wrapper">
+                                        <?php foreach($orderItem['additionals'] as $additional): ?>
+                                            <li>
+                                                <i class="fa-solid fa-plus symbol-additional"></i>
+                                                <small><?= $additional['additional_name'] ?> (<?= $additional['quantity'] ?>)</small>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+
+                                    <!-- <div class="obs-wrapper">
+                                        <span>* Morango somente em cima</span>
+                                    </div> -->
+                                <?php endif; ?>
+                            </li>
+
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
+
+                <?php if ($data['status_id'] == 1): ?>
+
+                    <button class="button-action-order -pendente">Começar</button>
+
+                <?php else: ?>
+
+                    <button class="button-action-order -processando">Finalizar</button>
+
+                <?php endif; ?>
             </div>
-
-            <div class="products-wrapper">
-                <ul>
-                    <li>
-                        <div class="order-wrapper">
-                            <h5><span>2</span> Hamburguer</h5>
-
-                            <ul class="additionals-wrapper">
-                                <li>
-                                    <i class="fa-solid fa-plus symbol-additional"></i>
-                                    <small>Molho Branco</small>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-plus symbol-additional"></i>
-                                    <small>Hamburguer</small>
-                                </li>
-                            </ul>
-                            <div class="obs-wrapper">
-                                <span>*Remover Alface</span>
-                            </div>
-                        </div>
-                        <div class="order-wrapper">
-                            <h5><span>2</span> Hamburguer</h5>
-
-                            <ul class="additionals-wrapper">
-                                <li>
-                                    <i class="fa-solid fa-plus symbol-additional"></i>
-                                    <small>Molho Branco</small>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-plus symbol-additional"></i>
-                                    <small>Hamburguer</small>
-                                </li>
-                            </ul>
-                            <div class="obs-wrapper">
-                                <span>*Remover Alface</span>
-                            </div>
-                        </div>
-
-                    </li>
-
-                    
-                </ul>
-            </div>
-            <div class="btn-iniciar-pedido">
-                <button>Iniciar</button>
-            </div>
-        </div>
-
-        <div class="elements">
-            <div class="order-info">
-                <div class="position-number-wrapper">
-                    <span>22</span>
-
-                    <h4>#00004</h4>
-                </div>
-                <div class="user-time-wrapper">
-                    <p><i class="fa-solid fa-user"></i> Mart bocudo</p>
-                    <span><i class="fa-regular fa-clock"></i> 13m 24s</span>
-                </div>
-            </div>
-                
-            <div class="products-wrapper">
-                <ul>
-                    <li>
-                        <div class="order-wrapper">
-                            <h5><span>2</span> Lasanha</h5>
-
-                            <div class="obs-wrapper">
-                                <span>*Remover lasanha</span>
-                            </div>
-                        </div>
-
-                    </li>
-
-                    
-                </ul>
-            </div>
-            <div class="btn-iniciar-pedido">
-                <button>Iniciar</button>
-            </div>
-        </div>
-
-        <div class="elements">
-            <div class="order-info">
-                <div class="position-number-wrapper">
-                    <span>17</span>
-
-                    <h4>#00005</h4>
-                </div>
-                <div class="user-time-wrapper">
-                    <p><i class="fa-solid fa-user"></i> Smigolzin</p>
-                    <span><i class="fa-regular fa-clock"></i> 16m 32s</span>
-                </div>
-            </div>
-
-            <div class="products-wrapper">
-                <ul>
-                    <li>
-                        <div class="order-wrapper">
-                            <h5><span>1</span> Big Smougol</h5>
-
-                            <ul class="additionals-wrapper">
-                                <li>
-                                    <i class="fa-solid fa-plus symbol-additional"></i>
-                                    <small>cheddar</small>
-                                </li>
-                                
-                            </ul>
-                            
-                        </div>
-
-                    </li>    
-                </ul>
-            </div>
-            <div class="btn-finalizar-pedido">
-                <button>Finalizar</button>
-            </div>
-        </div>
+        <?php endforeach ?>
     </div>
-
 </section>

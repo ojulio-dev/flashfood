@@ -1,0 +1,107 @@
+.main-landingpage-header {
+    display: none;
+}
+
+.main-landingpage-footer {
+    display: none;
+}
+
+#container-landingpage main {
+    padding: 0;
+}
+
+.main-scan-table {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-scan-table > h2 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+
+    top: 0;
+    left: 0;
+
+    padding: 15px;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.main-scan-table > h2 a {
+    color: #fff;
+}
+
+.main-scan-table > h2::after {
+    content: '';
+    display: block;
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-red);
+    border-radius: 0 0 20% 20%;
+}
+
+.main-scan-table .about-login {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.main-scan-table .about-login h2 {
+    font-size: 25px;
+}
+
+.main-scan-table .about-login p {
+    text-align: left;
+
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.main-scan-table .about-login button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    
+    width: 48%;
+
+    padding: 9px 0;
+    border: none;
+    border-radius: 5px;
+
+    background: var(--color-red);
+    
+    font-size: 17px;
+}
+
+.main-scan-table .about-login button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-scan-table .about-login small {
+    color: #121212;
+    font-size: 15px;
+}
+
+.main-scan-table .about-login small a {
+    color: rgba(0, 0, 255, 0.689);
+    text-decoration: underline;
+}

@@ -6,7 +6,7 @@ use Model\Table;
 $cart = new Cart;
 $table = new Table;
 
-$cartItems = $cart->read($_SESSION['user']['user_id']);
+$cartItems = $cart->read($_SESSION['flashfood']['user']['user_id']);
 $tables = $table->read();
 
 ?>

@@ -28,6 +28,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- CSS -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
 
@@ -35,10 +38,16 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- Components -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/components/formLogin.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/components/formMobile.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/components/mainTitle.css">
+
+    <?php if (file_exists(__DIR__ . '/assets/css/' . $page . '/' . $action . '.css')): ?>
+        <link rel="stylesheet" href="<?= DIR_CSS . '/' . $page . '/' . $action . '.css' ?>">
+    <?php endif; ?>
 
     <?php if (file_exists(__DIR__ . '/assets/css/' . $page . '/style.css')): ?>
         <link rel="stylesheet" href="<?= DIR_CSS . '/' . $page . '/style.css' ?>">
-    <?php endif ?>
+    <?php endif; ?>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/style.css">
@@ -51,20 +60,18 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <main>
             <?php
 
-            if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
-                require_once(__DIR__ . "/pages/$page/$action.php");
-            } else {
-                header("Location: ?page=home");
-            }
+                if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
+                    require_once(__DIR__ . "/pages/$page/$action.php");
+                } else {
+                    header("Location: ?page=home");
+                }
 
-            if (!isset($page)) {
-                header("Location: ?page=home");
-            }
+                if (!isset($page)) {
+                    header("Location: ?page=home");
+                }
 
             ?>
         </main>
-
-        <?php require_once (__DIR__. '/pages/partials/footer.php') ?>
     </div>
 
     <!-- JQuery -->

@@ -42,8 +42,8 @@ const readCart = () => {
 
             $('.main-item-modal.-cart').html('');
 
-            if (data.length) {
-                data.map(function(product) {
+            if (data.readCart.length) {
+                data.readCart.map(function(product) {
                     let productPrice = new Intl.NumberFormat('pt-BR', {
                         style: 'currency',
                         currency: 'BRL'

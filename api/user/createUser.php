@@ -51,6 +51,18 @@ if (isset($_POST)) {
         exit();
     }
 
+    $arrayBirthdate = explode('-', $_POST['birthdate']);
+
+    if ($arrayBirthdate[0] > date('Y')) {
+        $response = array(
+            'response' => false,
+            'message' => 'Data de Nascimento Inválida'
+        );
+    
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+
     $create = $user->create($name, $email, $password, $role, $birthdate);
 
     if ($create) {

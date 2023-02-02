@@ -42,6 +42,8 @@ class Cart extends Database {
     public function read($userId)
     {
         try {
+
+            $cart = new Cart();
             
             $this->setSql("SELECT P.*, PO.name as category_name, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id INNER JOIN product_category PO on P.category_id = PO.category_id WHERE C.status = 1 AND C.user_id = $userId ORDER BY cart_id DESC");
 
@@ -53,9 +55,28 @@ class Cart extends Database {
 
             for ($i = 0; $i < count($products); $i++) {
                 $products[$i]['additionals'] = $this->cartAdditional->readByCartId($products[$i]['cart_id']);
+
+                $products[$i]['additionalsQuantity'] = $cart->readAdditionalsQuantity($_SESSION['flashfood']['user']['user_id'], $products[$i]['cart_id']);
             }
 
             return $products;
+
+        } catch (PDOException $e) {
+            throw $e->getMessage();
+        }
+    }
+
+    public function readAdditionalsQuantity($userId, $cartId)
+    {
+        try {
+            
+            $this->setSql("SELECT SUM(CA.quantity) AS quantity FROM {$this->table} C INNER JOIN cart_additional as CA on CA.cart_id = C.cart_id WHERE C.status = 1 AND C.user_id = 1 AND C.cart_id = $cartId");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            return $this->stmt->fetch(PDO::FETCH_ASSOC)['quantity'] ?? 0;
 
         } catch (PDOException $e) {
             throw $e->getMessage();
@@ -77,6 +98,35 @@ class Cart extends Database {
             } else {
                 return false;
             }
+
+        } catch (PDOException $e) {
+            throw $e->getMessage();
+        }
+    }
+
+    public function readTotalPrice($userId)
+    {
+        try {
+
+            $totalPrice = 0;
+            
+            $this->setSql("SELECT P.price, P.special_price, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id WHERE C.status = 1 AND C.user_id = $userId");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            $productsCart = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($productsCart as $productCart) {
+
+                $totalPrice += ($productCart['special_price'] ?? $productCart['price']) * $productCart['quantity'];
+
+                $totalPrice += $this->cartAdditional->readTotalPrice($productCart['cart_id']);
+
+            }
+
+            return $totalPrice;
 
         } catch (PDOException $e) {
             throw $e->getMessage();

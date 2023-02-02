@@ -355,8 +355,6 @@ $('body').on('click', '.orders-image-wrapper', function(event) {
         dataType: 'JSON',
         success: function(data) {
 
-            console.log(data);
-
             $('.main-modal-wrapper.-order .buttons-wrapper').show();
 
             if (data[0].status_id == 4) {

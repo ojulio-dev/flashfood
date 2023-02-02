@@ -139,3 +139,75 @@ $('body').on('change', '#input-additional-quantity', function(){
     }
     
 })
+
+// adicionar ao carrinho
+
+$('#adicionar-carrinho').click(function() {
+
+    let productId = $('.sistema-info-wrapper').data('product-id');
+
+    let productQuantity = $('.sistema-info-wrapper #input-product-quantity').val();
+
+    let additionals = [];
+
+    let additionalsInput = $('.sistema-info-wrapper #input-additional-quantity');
+
+    if (additionalsInput.length) {
+        additionalsInput.map(function(_, additional) {
+
+            let quantity = $(additional).val();
+
+            if (quantity > 0) {
+
+                additionals = [...additionals, {
+                    id: additional.dataset.additionalId,
+                    quantity
+                }]
+            }
+        });
+    }
+
+    $.ajax({
+        url: SERVER_HOST + '/api/?api=cart&action=insertCart',
+        type: 'POST',
+        data: {
+            productId,
+            productQuantity,
+            additionals
+        },
+        dataType: 'json',
+        success: function() {
+
+            Swal.fire({
+                title: 'Tudo certo!',
+                text: 'Seu Produto foi adicionado ao Carrinho!',
+                showCancelButton: true,
+                confirmButtonColor: '#52A84B',
+                cancelButtonColor: '#7066e0',
+                confirmButtonText: 'Continuar',
+                cancelButtonText: `Ficar aqui`,
+                icon: 'success'
+              }).then((result) => {
+
+                if (result.isConfirmed) {
+                
+                    window.location = `?page=menu`;
+        
+                } else {
+                    
+                    readCartIcon();
+                }
+            })
+
+        },
+        error: function() {
+
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                icon: 'error'
+            })
+
+        }
+    })
+})

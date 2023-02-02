@@ -4,12 +4,34 @@
     margin: 0;
 }
 
-.sistema-cardapio-wrapperr{
+.products-cart-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 14px;
+
+    padding-bottom: 145px;
+}
+
+.products-cart-wrapper .notfound {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 0.1px;
+}
+
+.products-cart-wrapper .notfound a {
+    color: rgba(0, 0, 255, 0.689);
+    text-decoration: none;
+}
+
+.product-cart-wrapper{
     background-color: #D9D9D9;
     padding: 14px;
     border-radius: 20px;
-    margin: 14px;
-
 }
 
 .caixa-img-carrinho {
@@ -32,6 +54,7 @@
 .quantidade-carrinho{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
     color: white;
     margin-top: 10px;
 }
@@ -72,6 +95,8 @@
     object-fit: cover;
     border-radius: 30px;
     padding: 10px;
+
+    filter: brightness(0.9);
 }
 
 .produto-carrinho{
@@ -131,46 +156,85 @@
     right: 0;
 }
 
+.caixa-cancelar strong {
+    color: #262626;
+}
+
 .caixa-cancelar button{
-    border-radius: 15px;
+    border-radius: 7px;
     border: none;
-    background-color: red;
+    background-color: #e72639;
     color: white;
     padding: 5px;
     margin-right: 4px;
     font-weight: bold;
 }
 
-.div-finalizar{
-    background-color: #827168;
+.div-finalizar {
+    background-color: #8d7466;
     width: 100%;
-    height: 91px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-items: center;
+    justify-content: space-between;
+    gap: 13px;
+
     position: fixed;
     bottom: 0;
 
     border-top: 2px solid #fff;
 
-    box-sizing: content-box;
+    padding: 13px;
 }
 
-.div-finalizar strong{
-    color: white;
-    font-size: 22px;
+.div-finalizar .buttons-wrapper {
+    width: 	100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.div-finalizar strong {
+    width: 100%;
+    background-color: #949494;
+    color: #fff;
+    font-size: 19px;
+
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    text-align: center;
+
+    border: 2px solid #fff;
 }
 
 .div-finalizar button {
-    width: 180px;
+    width: 45%;
     height: 52px;
     background-color:#52A84B;
     border-radius: 20px ;
-    border: 1px white solid;
+    border: 2px white solid;
     color: white;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: bold;
+}
+
+.div-finalizar button#button-cancel-order {
+    background-color: #e72639;
+}
+
+.div-finalizar.notfound {
+    justify-content: center;
+}
+
+.div-finalizar.notfound strong {
+    display: none;
+}
+
+.div-finalizar.notfound button:disabled {
+    opacity: 0.8;
+    pointer-events: none;
 }
 
 /* Modal quantidade */
@@ -195,11 +259,23 @@
 }
 
 .modal-obs-wrapper.additional .content-additional {
+    height: 100%;
+
     flex: 1;
+
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 17px;
+
     padding: 0px 10px;
 
+    overflow-y: scroll;
+}
+
+.modal-obs-wrapper.additional .content-additional > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .content-additional .additional-orders{
@@ -218,4 +294,71 @@
     margin-bottom: 15px;
     position: relative;
     
+}
+
+#cart-modal-tables .tables-wrapper {
+    width: 95%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 20px;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background-color: #fff;
+
+    padding: 15px;
+    border-radius: 10px;
+
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+
+    animation: modalAnimation 0.2s ease-in-out;
+}
+
+#cart-modal-tables .tables-wrapper h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+
+    text-align: center;
+}
+
+#cart-modal-tables .tables-wrapper ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+
+    gap: 15px;
+}
+
+#cart-modal-tables .tables-wrapper li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 70px;
+    height: 40px;
+
+    border-radius: 7px;
+
+    background-color: #b59d90;
+    color: #fff;
+
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#cart-modal-tables .tables-wrapper button {
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    padding: 10px;
+
+    border-radius: 15px;
 }

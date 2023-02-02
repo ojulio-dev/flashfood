@@ -20,8 +20,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <html lang="pt-BR">
 <head>
     <!-- Title -->
-    <link rel="shortcut icon" href="assets/images/favicon/favicon.png" type="image/x-icon">
-    <title>FlashFood</title>
+    <link rel="shortcut icon" href="<?= SERVER_HOST ?>/assets/images/favicon/favicon.png" type="image/x-icon">
+    <title>FlashFood - Cozinha</title>
 
     <!-- Meta TAGs -->
     <meta charset="UTF-8">
@@ -43,9 +43,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <body>
     <div id="container">
         <header id="header-kitchen">
-            <ul>
-                <a href="?page=orders"><li>Pedidos</li></a>
-            </ul>
+            <img src="<?= SERVER_HOST ?>/assets/images/system/flashfood_icon.png" alt="">
         </header>
 
         <?php
@@ -64,8 +62,16 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     </div>
 
     <script>
-        const BASE_URL = "http://localhost/flashfood/kitchen";
+        const DIR_PATH = '<?= DIR_PATH ?>'
+
+        const SERVER_HOST = '<?= SERVER_HOST ?>'
     </script>
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>
     

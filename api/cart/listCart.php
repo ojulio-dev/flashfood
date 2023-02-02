@@ -4,6 +4,10 @@ use Model\Cart\Cart;
 
 $cart = new Cart;
 
-echo json_encode($cart->read($_SESSION['user']['user_id']), JSON_UNESCAPED_UNICODE);
+$response['readCart'] = $cart->read($_SESSION['flashfood']['user']['user_id']);
+
+$response['totalPrice'] = $cart->readTotalPrice($_SESSION['flashfood']['user']['user_id']);
+
+echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
 ?>

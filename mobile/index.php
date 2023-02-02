@@ -9,8 +9,8 @@ ob_start();
 
 session_start();
 
-if (!isset($_SESSION['user'])) {
-    header("Location: ../");
+if (!isset($_SESSION['flashfood']['user'])) {
+    header("Location: ../?page=scanTable");
     exit();
 }
 
@@ -19,6 +19,12 @@ require_once(__DIR__ . '/config/environment.php');
 $page = isset($_GET['page']) ? $_GET['page'] : 'menu';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
+use Model\Cart\Cart;
+
+$cart = new Cart();
+
+$readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +32,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <head>
     <!-- Title -->
     <link rel="shortcut icon" href="assets/images/favicon/favicon.png" type="image/x-icon">
-    <title>FlashFood</title>
+    <title>FlashFood - Mobile</title>
 
     <!-- Meta TAGs -->
     <meta charset="UTF-8">
@@ -42,8 +48,18 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <link rel="stylesheet" href="<?= DIR_CSS ?>/carrinho/style.css">
 
-    <!-- Não importar a baixo dessas duas! Importe acima -->
+    <!-- Não importar abaixo dessas duas! Importe acima -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
+
+    <?php if (count($readCart)): ?>
+        <style>
+            
+            .floating-button-cart {
+                display: flex;
+            }
+
+        </style>
+    <?php endif; ?>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/style.css">
@@ -105,7 +121,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <a class="floating-button-cart" href="?page=cart">
             <i class="fa-solid fa-cart-shopping"></i>
             
-            <span>1</span>
+            <span><?= count($readCart) <= 9 ? count($readCart) : '9+' ?></span>
         </a>
     </div>
 

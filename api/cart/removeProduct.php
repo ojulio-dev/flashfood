@@ -4,7 +4,7 @@ use Model\Cart\Cart;
 
 $cart = new Cart;
 
-if ($cart->deleteByCartId($_SESSION['user']['user_id'], $_POST['cartId'])) {
+if ($cart->deleteByCartId($_SESSION['flashfood']['user']['user_id'], $_POST['cartId'])) {
     $response = [
         'response' => true,
         'message' => 'Produto removido do Carrinho!'

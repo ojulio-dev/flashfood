@@ -1,0 +1,21 @@
+.main-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 60px;
+    font-size: 29px;
+    font-weight: 600;
+
+    color: #202020;
+
+    gap: 20px;
+}
+
+.main-title.-white {
+    color: #fff;
+}
+
+.main-title i {
+    font-size: 25px;
+}

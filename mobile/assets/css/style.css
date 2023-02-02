@@ -61,7 +61,7 @@ body #container {
 
     border-radius: 10px;
 
-    font-size: 16px;
+    font-size: 15px;
 
     padding-left: 65px;
 
@@ -472,6 +472,8 @@ body #container {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
+
+    animation: modalBackground 0.1s ease-out;
 }
 
 .modal-obs-wrapper{
@@ -487,10 +489,12 @@ body #container {
     background-color: #fff;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    width: 70%;
-    height: 160px;
+    width: 80%;
+    min-height: 160px;
+    max-height: 200px;
 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation: modalAnimation 0.2s ease-out;
 }
 
 .obs-titulo{
@@ -500,13 +504,13 @@ body #container {
     justify-content: center;
     background-color: #52A84B;
     border-radius: 10px 10px 0px 0px;
-    height: 30px;
+    padding: 9px 0;
 }
 
 .obs-titulo h2{
     color: white;
     font-weight: 600;
-    font-size: small;
+    font-size: 17px;
 }
 
 .input-modal-obs{
@@ -514,7 +518,7 @@ body #container {
     align-items: center;
 
     padding: 15px;
-    width: 210px;
+    width: 80%;
     height: 35px;
     background: #D7D7D7;
     border: 1px solid #D2D2D2;
@@ -522,9 +526,13 @@ body #container {
 }
 
 .obs-button{
-    margin-bottom: 10px;
+    width: 80%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 55px;
+
+    margin-bottom: 10px;
 }
 
 .obs-button .obs-modal-cancelar{
@@ -570,17 +578,17 @@ body #container {
     justify-content: center;
 
     bottom: 9px;
-    right: 11px;
+    right: 8px;
 
     background-color: white;
 
     width: 55px;
     height: 55px;
 
-    border-radius: 45%;
-    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 48%;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);
 
-    font-size: 20px;
+    font-size: 18px;
     color: #212121;
     text-decoration: none;
 
@@ -592,10 +600,10 @@ body #container {
     top: -3px;
     right: -3px;
 
-    width: 23px;
-    height: 23px;
+    width: 25px;
+    height: 20px;
 
-    font-size: 15px;
+    font-size: 12px;
 
     display: flex;
     align-items: center;
@@ -603,7 +611,27 @@ body #container {
 
     background-color: red;
 
-    border-radius: 50%;
+    border-radius: 40%;
 
     color: #fff;
+}
+
+@keyframes modalAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes modalBackground {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

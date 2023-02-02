@@ -50,7 +50,7 @@ $products = $product->readBySearch($_GET['q']);
                 <img src="<?= SERVER_HOST ?>/assets/images/system/twitter.png" alt="Twitter Icon">
             </div>
 
-            <small>© 2023 Copyright - Todos os direitos reservados</small>
+            <small>@ 2023 FlashFood - Todos os diretos reservados</small>
         </div>
     </div>
 </section>
