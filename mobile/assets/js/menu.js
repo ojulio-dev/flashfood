@@ -148,6 +148,8 @@ $('#adicionar-carrinho').click(function() {
 
     let productQuantity = $('.sistema-info-wrapper #input-product-quantity').val();
 
+    let note = $('.input-modal-obs').val()
+
     let additionals = [];
 
     let additionalsInput = $('.sistema-info-wrapper #input-additional-quantity');
@@ -173,7 +175,8 @@ $('#adicionar-carrinho').click(function() {
         data: {
             productId,
             productQuantity,
-            additionals
+            additionals,
+            note
         },
         dataType: 'json',
         success: function() {

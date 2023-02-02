@@ -33,8 +33,8 @@ class OrderItem extends Database {
 
             foreach($orderItems as $item) {
 
-                $this->setSql("INSERT INTO " . $this->table . " (order_id, product_id, category_name, product_name, product_banner, product_description, product_price, product_special_price, quantity)
-                VALUES ($orderId, :product_id, :category_name, :product_name, :product_banner, :product_description, :product_price, :product_special_price, :quantity)");
+                $this->setSql("INSERT INTO " . $this->table . " (order_id, product_id, category_name, product_name, product_banner, product_description, product_price, product_special_price, quantity, note)
+                VALUES ($orderId, :product_id, :category_name, :product_name, :product_banner, :product_description, :product_price, :product_special_price, :quantity, :note)");
 
                 $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -46,6 +46,7 @@ class OrderItem extends Database {
                 $this->stmt->bindValue(':product_price', $item['price']);
                 $this->stmt->bindValue(':product_special_price', $item['special_price']);
                 $this->stmt->bindValue(':quantity', $item['quantity']);
+                $this->stmt->bindValue(':note', $item['note']);
 
                 $this->stmt->execute();
 

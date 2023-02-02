@@ -6,6 +6,7 @@ $order = new Order();
 
 $orders = $order->readKitchen();
 
+
 ?>
 
 <section>
@@ -29,6 +30,7 @@ $orders = $order->readKitchen();
                 </div>
 
                 <div class="products-wrapper">
+
                     <ul>
                         <?php foreach($data['order_items'] as $orderItem): ?>
 
@@ -44,15 +46,23 @@ $orders = $order->readKitchen();
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
-
-                                    <!-- <div class="obs-wrapper">
-                                        <span>* Morango somente em cima</span>
-                                    </div> -->
+                                        
                                 <?php endif; ?>
+
+                                    <?php if($orderItem['note']){  ?>
+
+                                    <div class="obs-wrapper">
+                                        <span>* <?php echo $orderItem['note']?></span>
+                                    </div>
+
+                                    <?php }?>
+
+                                
                             </li>
 
                         <?php endforeach; ?>
                     </ul>
+
                 </div>
 
                 <?php if ($data['status_id'] == 1): ?>

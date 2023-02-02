@@ -12,10 +12,27 @@ if (isset($_POST)) {
 
     if (isset($_POST['productQuantity'])) {
 
-        $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], $_POST['productQuantity']);
+        if ($_POST['note']){
+
+            $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], $_POST['productQuantity'], $_POST['note']);
+    
+        }else{
+    
+            $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], $_POST['productQuantity']);
+            
+        }
+
     } else {
 
-        $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId']);
+        if ($_POST['note']){
+
+            $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], 1, $_POST['note']);
+    
+        }else{
+    
+            $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId']); 
+            
+        }
     }
 
     if (isset($_POST['additionals'])) {

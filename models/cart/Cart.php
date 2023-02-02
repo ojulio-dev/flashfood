@@ -22,11 +22,11 @@ class Cart extends Database {
         $this->cartAdditional = new CartAdditional();
     }
 
-    public function create($userId, $productId, $productQuantity = 1)
+    public function create($userId, $productId, $productQuantity = 1, $note = "NULL")
     {
         try {
             
-            $this->setSql("INSERT INTO " . $this->table . " (user_id, product_Id, quantity) VALUES ({$userId}, $productId, $productQuantity)");
+            $this->setSql("INSERT INTO " . $this->table . " (user_id, product_Id, quantity, note) VALUES ({$userId}, $productId, $productQuantity, '$note')");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
@@ -45,7 +45,7 @@ class Cart extends Database {
 
             $cart = new Cart();
             
-            $this->setSql("SELECT P.*, PO.name as category_name, C.quantity, C.cart_id FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id INNER JOIN product_category PO on P.category_id = PO.category_id WHERE C.status = 1 AND C.user_id = $userId ORDER BY cart_id DESC");
+            $this->setSql("SELECT P.*, PO.name as category_name, C.quantity, C.cart_id, C.note FROM " . $this->table . " as C INNER JOIN product P on C.product_id = P.product_id INNER JOIN product_category PO on P.category_id = PO.category_id WHERE C.status = 1 AND C.user_id = $userId ORDER BY cart_id DESC");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
