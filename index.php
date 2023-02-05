@@ -88,7 +88,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- Vanilla -->
     <script>
-        const BASE_URL = "http://localhost/flashfood/";
+        const BASE_URL = "<?= SERVER_HOST ?>/";
     </script>
 
     <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>

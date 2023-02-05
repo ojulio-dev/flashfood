@@ -109,7 +109,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
         const DIR_PATH = "<?= DIR_PATH ?>";
         
-        const SERVER_HOST = "http://localhost/flashfood/";
+        const SERVER_HOST = "<?= SERVER_HOST ?>/";
 
     </script>
 
