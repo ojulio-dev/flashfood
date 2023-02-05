@@ -22,7 +22,7 @@ class Cart extends Database {
         $this->cartAdditional = new CartAdditional();
     }
 
-    public function create($userId, $productId, $productQuantity = 1, $note = "NULL")
+    public function create($userId, $productId, $productQuantity = 1, $note = null)
     {
         try {
             

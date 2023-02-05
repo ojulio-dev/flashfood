@@ -11,7 +11,7 @@ ob_start();
 
 session_start();
 
-if (!isset($_SESSION['flashfood']['user']) || $_SESSION['flashfood']['user']['role_id'] > 1) {
+if (!isset($_SESSION['flashfood']['user']) || $_SESSION['flashfood']['user']['role_id'] != 1) {
     header("Location: ../");
     exit();
 }

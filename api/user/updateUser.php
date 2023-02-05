@@ -89,12 +89,20 @@ if ($readByEmail) {
 $update = $user->update($data, $_POST['userId']);
 
 if ($update) {
-    
-    $response = [
-        'response' => true,
-        'message' => 'Usuário atualizado com Sucesso!'
-    ];
 
-    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-    exit();
+    $dataUser = $user->loginUser($data['email'], $data['password']);
+    
+    if ($dataUser) {
+        
+        $_SESSION['flashfood']['user'] = $dataUser;
+
+        $response = [
+            'response' => true,
+            'message' => 'Usuário atualizado com Sucesso!'
+        ];
+    
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        exit();
+
+    }
 }

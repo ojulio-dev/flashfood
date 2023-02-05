@@ -73,6 +73,12 @@ const readOrders = () => {
                                 <ul class="additionals-wrapper">${additionals}</ul>
                             
                             ` : ''}
+
+                            ${item.note ? `
+                                <div class="obs-wrapper">
+                                    <span>* ${item.note}</span>
+                                </div>
+                            ` : ''}
                         </li>`
                 }).join('')
 

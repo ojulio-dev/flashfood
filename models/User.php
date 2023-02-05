@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Model;
 
 use Classes\Database;
@@ -7,9 +8,6 @@ use Classes\Database;
 use PDO;
 use PDOException;
 
-function tal() {
-    echo 'oi';
-}
 
 class User extends Database {
     private $stmt, $sql, $table, $conn;
@@ -121,7 +119,7 @@ class User extends Database {
         }
     }
 
-    public function checkUser($email, $password)
+    public function loginUser($email, $password)
     {
         try {
             
@@ -132,8 +130,60 @@ class User extends Database {
             $this->stmt->execute();
 
             if ($this->stmt->rowCount()) {
-                return $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                $dataUser = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($dataUser['image']) {
+
+                    $destinyIcon = DIR_IMG . '/user/' . $dataUser['image'];
+
+                    $dataUser['image'] = !file_exists($destinyIcon) ? $destinyIcon : DIR_IMG . '/header/user_default.png';
+                    
+                } else {
+
+                    $dataUser['image'] = DIR_IMG . '/header/user_default.png';
+                }
+
+                return $dataUser;
+
             } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function readForLogin($userId) {
+        try {
+            
+            $this->setSql("SELECT user_id, name, email, role_id, image, birthdate FROM " . $this->getTable() . " WHERE user_id = $userId AND status = 1");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            if ($this->stmt->rowCount()) {
+
+                $dataUser = $this->stmt->fetch(PDO::FETCH_ASSOC);
+
+                $dataUser['userImage'] = $dataUser['image'];
+
+                if ($dataUser['image']) {
+
+                    $destinyIcon = DIR_IMG . '/user/' . $dataUser['image'];
+
+                    $dataUser['image'] = !file_exists($destinyIcon) ? $destinyIcon : DIR_IMG . '/header/user_default.png';
+                    
+                } else {
+
+                    $dataUser['image'] = DIR_IMG . '/header/user_default.png';
+                }
+
+                return $dataUser;
+            } else {
+                
                 return false;
             }
 
@@ -169,6 +219,36 @@ class User extends Database {
         } catch (PDOException $e) {
             throw $e->getMessage();
         }
+    }
+
+    public function updateHomePage($data, $userId) {
+
+        try {
+            
+            $this->setSql("UPDATE " . $this->table . " SET name = '" . $data['name'] . "', email = '" . $data['email'] . "' WHERE user_id = $userId");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            if ($this->stmt->execute()) {
+
+                if (!empty($data['image']['tmp_name'])) {
+    
+                    $destiny = $this->createFile($data['image'], $data['image']['extension'], $userId);
+    
+                    $this->updateByField($destiny, 'image', $userId);
+    
+                }
+
+                return true;
+                
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            throw $e->getMessage();
+        }
+
     }
 
     public function updateByField($data, string $field, $userId): bool

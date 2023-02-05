@@ -51,7 +51,7 @@ $tables = $table->read();
 </div>
 
 <header class="main-dashboard-header">
-    <img src="<?= SERVER_HOST ?>/assets/images/system/flashfood_icon.png" alt="">
+    <a href="<?= SERVER_HOST ?>"><img src="<?= SERVER_HOST ?>/assets/images/system/flashfood_icon.png" alt=""></a>
 
     <div class="header-customer-wrapper">
         <div class="header-cart-wrapper">

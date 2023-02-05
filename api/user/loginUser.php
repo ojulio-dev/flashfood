@@ -35,7 +35,7 @@ if (isset($_POST)) {
         exit();
     }
 
-    $dataUser = $user->checkUser($email, $password);
+    $dataUser = $user->loginUser($email, $password);
     
     if ($dataUser) {
         

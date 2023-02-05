@@ -38,8 +38,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
     <!-- Components -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/components/formLogin.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/components/formMobile.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/components/buttonLogin.css">
     <link rel="stylesheet" href="<?= DIR_CSS ?>/components/mainTitle.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/components/mainModal.css">
 
     <?php if (file_exists(__DIR__ . '/assets/css/' . $page . '/' . $action . '.css')): ?>
         <link rel="stylesheet" href="<?= DIR_CSS . '/' . $page . '/' . $action . '.css' ?>">
@@ -49,29 +50,28 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
         <link rel="stylesheet" href="<?= DIR_CSS . '/' . $page . '/style.css' ?>">
     <?php endif; ?>
 
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/login/responsive.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/home/responsive.css">
+
     <!-- Fonts -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/style.css">
 
 </head>
 <body>
     <div id="container-landingpage">
-        <?php require_once (__DIR__. '/pages/partials/header.php') ?>
+        <?php
 
-        <main>
-            <?php
+            if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
+                require_once(__DIR__ . "/pages/$page/$action.php");
+            } else {
+                header("Location: ?page=home");
+            }
 
-                if (file_exists(__DIR__ . "/pages/$page/$action.php")) {
-                    require_once(__DIR__ . "/pages/$page/$action.php");
-                } else {
-                    header("Location: ?page=home");
-                }
+            if (!isset($page)) {
+                header("Location: ?page=home");
+            }
 
-                if (!isset($page)) {
-                    header("Location: ?page=home");
-                }
-
-            ?>
-        </main>
+        ?>
     </div>
 
     <!-- JQuery -->
@@ -97,6 +97,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     
     <?php endif ?>
     
+    <script src="<?= DIR_JS ?>/menu-burguer.js"></script>
+
     <script src="<?= DIR_JS ?>/script.js"></script>
 </body>
 </html>

@@ -11,6 +11,11 @@ session_start();
 
 require_once(__DIR__ . '/config/environment.php');
 
+if (!isset($_SESSION['flashfood']['user']) || $_SESSION['flashfood']['user']['role_id'] > 2) {
+    header("Location: ../");
+    exit();
+}
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'orders';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 
@@ -43,7 +48,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
 <body>
     <div id="container">
         <header id="header-kitchen">
-            <img src="<?= SERVER_HOST ?>/assets/images/system/flashfood_icon.png" alt="">
+            <a href="<?= SERVER_HOST ?>"><img src="<?= SERVER_HOST ?>/assets/images/system/flashfood_icon.png" alt=""></a>
         </header>
 
         <?php

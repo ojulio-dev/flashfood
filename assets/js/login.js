@@ -1,49 +1,136 @@
-$('#button-login-user').click(() => {
-    let formData = new FormData($('#form-login-user')[0]);
+$(document).ready(function() {
+
+    $('.date').inputmask({"mask": "99/99/9999", "placeholder": "_"});
+
+})
+
+$("#form-create-mobile").submit(function(event) {
+    event.preventDefault();
+    
+    let formData = new FormData($(this)[0]);
+
+    var values = $(this).serializeArray();
+
+    var isValid = Inputmask.isValid(values[2].value, { alias: "datetime", inputFormat: "dd/mm/yyyy"});
+
+    if (!isValid) {
+       
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Data Inválida'
+        })
+
+        return;
+    }
+    
+    let birthdate = Inputmask.unmask(values[2].value, { alias: "datetime", inputFormat: "dd/mm/yyyy", outputFormat: "yyyy-mm-dd"});
+
+    formData.append('birthdate', birthdate);
+
+    formData.append('role_id', 4);
 
     $.ajax({
-
-        url: BASE_URL + 'api/?api=user&action=loginUser',
+        url : `${BASE_URL}/api/?api=user&action=createUser`,
         type: 'POST',
+        data: formData,
+        dataType: 'json',
         processData: false,
         contentType: false,
-        dataType: 'json',
-        data: formData,
-        success: (data, status, xhr) => {
+        success: function(data) {
 
             if (data.response) {
+
                 Swal.fire({
-                    title: 'Sucesso!',
-                    text: data.message,
                     icon: 'success',
-                    showCancelButton: true,
-                    confirmButtonColor: '#17a2b8',
-                    cancelButtonColor: '#17a2b8',
-                    confirmButtonText: 'Gerenciar',
-                    cancelButtonText: 'Ir para a Home'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.replace(BASE_URL + '?page=portal'); 
-                    } else {
-                        window.location.replace(BASE_URL + '?page=home'); 
-                    }
+                    title: 'Tudo certo!',
+                    text: 'Sua conta foi cadastrada com Sucesso! Obrigado por utilizar o nosso sistema <3',
+                    confirmButtonText: 'Continuar'
+                })
+                .then(result => {
+                    window.location = '?page=login&action=login'
                 })
 
             } else {
+
                 Swal.fire({
+                    icon: 'error',
                     title: 'Oops...',
-                    text: data.message,
-                    icon: 'error'
+                    text: data.message
                 })
+
             }
+
         },
-        error: (jqXhr, textStatus, errorMessage) => {
+        error: function() {
+
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!'
             })
-        }
 
-    });
+        }
+    })
 });
+
+$('#form-login-mobile').submit(function(event) {
+    event.preventDefault();
+
+    let formData = new FormData($(this)[0]);
+
+    $.ajax({
+        url : `${BASE_URL}/api/?api=user&action=loginUser`,
+        type: 'POST',
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        success: function(data) {
+
+            if (data.response) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Tudo certo!',
+                    text: 'Encontramos a sua conta! Obrigado por utilizar o FlashFood <3',
+                    showCancelButton: true,
+                    cancelButtonColor: '#17a2b8',
+                    confirmButtonColor: '#17a2b8',
+                    confirmButtonText: 'Ir para o Cardápio',
+                    cancelButtonText: 'Página Inicial'
+                })
+                .then(result => {
+
+                    if (result.isConfirmed) {
+
+                        window.location.replace(BASE_URL + '/mobile'); 
+                    } else {
+
+                        window.location.replace(BASE_URL + '?page=home'); 
+                    }
+
+                })
+
+            } else {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data.message
+                })
+
+            }
+
+        },
+        error: function() {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!'
+            })
+
+        }
+    })
+})

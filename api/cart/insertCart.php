@@ -16,7 +16,7 @@ if (isset($_POST)) {
 
             $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], $_POST['productQuantity'], $_POST['note']);
     
-        }else{
+        } else {
     
             $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], $_POST['productQuantity']);
             
@@ -28,7 +28,7 @@ if (isset($_POST)) {
 
             $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], 1, $_POST['note']);
     
-        }else{
+        } else {
     
             $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId']); 
             

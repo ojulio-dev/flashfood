@@ -68,24 +68,24 @@
     transform: scale(1.07);
 }
 
-.main-landingpage-header > i {
+.main-landingpage-header #modal-menu-hamburguer > i {
     font-size: 33px;
 
     cursor: pointer;
     transition: transform 100ms cubic-bezier(.45,.97,.68,2.48);
 }
 
-.main-landingpage-header > i:hover {
+.main-landingpage-header #modal-menu-hamburguer > i:hover {
     transform: scale(1.15);
 }
 
-.main-landingpage-header button {
+.main-landingpage-header .main-button {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
 
-    font-size: 15px;
+    font-size: 16px;
     color: #fff;
     background-color: var(--color-red);
 
@@ -96,6 +96,11 @@
     border-radius: 5px;
 
     cursor: pointer;
+    transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
+}
+
+.main-landingpage-header > a button:hover {
+    transform: scale(1.07);
 }
 
 .main-landingpage-footer {
@@ -103,20 +108,282 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 10px 15px;
+    padding: 30px 20px;
 }
 
-.main-landingpage-footer small{
-    font-size: 14px;
-}
+.main-landingpage-footer h2 {
+    font-size: 25px;
+    font-weight: 600;
 
-.main-landingpage-footer img {
-    width: 25px;
-
-    cursor: pointer;
+    font-style: italic;
 }
 
 .main-landingpage-footer .images-wrapper {
     display: flex;
     gap: 20px;
+}
+
+.main-landingpage-footer img {
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
+}
+
+.main-landingpage-footer img:hover {
+    transform: scale(1.08);
+}
+
+.main-landingpage-footer small {
+    width: 100%;
+    text-align: center;
+    
+    font-size: 17px;
+    font-weight: 300;
+}
+
+#modal-menu-hamburguer .main-modal .main-modal-close {
+    background-color: transparent;
+}
+
+#modal-menu-hamburguer .main-modal-item {
+    right: 0;
+    top: 0;
+    width: 20%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.95);
+
+    border-radius: 5px 0 0 5px;
+}
+
+#modal-menu-hamburguer .main-modal-item {
+    padding: 15px;
+    padding-top: 20px;
+}
+
+#modal-menu-hamburguer .main-modal-item.-navigation ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+#modal-menu-hamburguer .main-modal-item.-navigation ul li {
+    width: 100%;
+    padding: 10px;
+
+    cursor: pointer;
+
+    font-size: 19px;
+    border-radius: 5px;
+    color: #fff;
+    user-select: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-navigation ul li:hover {
+    background-color: #2d2d2d;
+}
+
+#modal-menu-hamburguer .main-modal-item.-navigation ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    color: #fff;
+    user-select: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    display: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .return-image-wrapper {
+    position: relative;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .return-image-wrapper i {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .return-image-wrapper i:hover {
+    filter: brightness(0.8);
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper label {
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+    cursor: pointer;
+    
+    position: relative;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper label img:hover {
+    opacity: 0.4;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper label:hover::after {
+    content: '';
+    display: flex;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 35px;
+    height: 35px;
+
+    background-image: url('../images/system/editUser.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper input {
+    display: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-wrapper {
+    display: flex;
+    gap: 15px;
+    color: #fff;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-wrapper label {
+    cursor: pointer;
+    font-size: 22px;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-wrapper label:hover {
+    filter: brightness(0.8);
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-wrapper input {
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 17.5px;
+    font-weight: 500;
+
+    border-radius: 5px;
+
+    padding: 5px 10px;
+   
+    outline-color: rgba(250, 250, 250, 0.2);
+}
+
+
+#modal-menu-hamburguer .main-modal-item.-profile form .input-wrapper input.disabled {
+    pointer-events: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    display: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .buttons-wrapper .button-action {
+    width: 45%;
+    height: 45px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 5px;
+
+    color: #fff;
+    background-color: #2f2e2d;
+
+    cursor: pointer;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile form .buttons-wrapper .button-action:hover {
+    filter: brightness(0.9);
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile > i {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #fff;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile .button-wrapper {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile .button-wrapper button {
+    width: 100%;
+
+    filter: opacity(0.9);
+    font-weight: 600;
+}
+
+#modal-menu-hamburguer .main-modal-item.-profile .button-wrapper button:hover {
+    filter: opacity(0.85);
 }

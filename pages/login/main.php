@@ -1,21 +1,23 @@
 <?php
 
 if (isset($_SESSION['flashfood']['user'])) {
-    header("Location: ?page=portal");
+    header("Location: ?page=home");
 }
 
 ?>
 
-<section id="main-login-system">
-    <form id="form-login-user">
-        <div class="login-title-wrapper">
-            <img src="<?= DIR_IMG ?>/system/flashfood_icon_black.png" alt="">
-            <h3>Login</h3>
-        </div>
+<section class="main-login">
+    <header>
+        <a href="?page=home">FlashFood</a>
+    </header>
 
-        <input type="email" placeholder="E-mail" name="email" id="email">
-        <input type="password" placeholder="Senha" name="password" id="password">
+    <div class="about-login">
+        <h2>Bem-Vindo!</h2>
 
-        <button type="button" id="button-login-user">Entrar</button>
-    </form>
+        <p>Para ter acesso ao nosso sistema, é necessário criar uma conta (totalmente gratuita), por que você não cria uma?</p>
+
+        <button class="main-button-login"><a href="?page=login&action=create">Criar Conta</a></button>
+
+        <small>Já possui uma conta? <a href="?page=login&action=login">Faça Login</a></small>
+    </div>
 </section>

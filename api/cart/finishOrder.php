@@ -17,7 +17,7 @@ if (isset($_POST['tableId'])) {
     $changeStatus = $cart->changeStatus($_SESSION['flashfood']['user']['user_id']);
 
     if ($orderItems && $newOrder && $changeStatus) {
-        echo json_encode(['response' => true, 'message' => 'Pedido finalizado com Sucesso!'], JSON_UNESCAPED_UNICODE);
+        echo json_encode(['response' => true, 'message' => 'Pedido finalizado com Sucesso!', 'orderNumber' => $newOrder, 'tableNumber' => $_POST['tableId']], JSON_UNESCAPED_UNICODE);
     }
 
 }

@@ -1,16 +1,8 @@
-.main-landingpage-header {
-    display: none;
-}
-
-.main-landingpage-footer {
-    display: none;
-}
-
 #container-landingpage main {
     padding: 0;
 }
 
-.main-scan-table {
+.main-login {
     width: 100vw;
     height: 100vh;
 
@@ -19,13 +11,14 @@
     justify-content: center;
 }
 
-.main-scan-table > h2 {
+.main-login > header {
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 10%;
+    max-height: 130px;
 
     top: 0;
     left: 0;
@@ -36,11 +29,11 @@
     font-weight: 700;
 }
 
-.main-scan-table > h2 a {
+.main-login > header a {
     color: #fff;
 }
 
-.main-scan-table > h2::after {
+.main-login > header::after {
     content: '';
     display: block;
     position: absolute;
@@ -54,7 +47,7 @@
     border-radius: 0 0 20% 20%;
 }
 
-.main-scan-table .about-login {
+.main-login .about-login {
     width: 80%;
 
     display: flex;
@@ -65,43 +58,25 @@
     gap: 15px;
 }
 
-.main-scan-table .about-login h2 {
-    font-size: 25px;
+.main-login .about-login h2 {
+    font-size: 26px;
 }
 
-.main-scan-table .about-login p {
-    text-align: left;
+.main-login .about-login p {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
 
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 400;
 }
 
-.main-scan-table .about-login button {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    
-    width: 48%;
-
-    padding: 9px 0;
-    border: none;
-    border-radius: 5px;
-
-    background: var(--color-red);
-    
-    font-size: 17px;
-}
-
-.main-scan-table .about-login button a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.main-scan-table .about-login small {
+.main-login .about-login small {
     color: #121212;
-    font-size: 15px;
+    font-size: 16px;
 }
 
-.main-scan-table .about-login small a {
+.main-login .about-login small a {
     color: rgba(0, 0, 255, 0.689);
     text-decoration: underline;
 }

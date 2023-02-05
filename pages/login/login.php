@@ -6,11 +6,15 @@ if (isset($_SESSION['flashfood']['user'])) {
 
 ?>
 
-<section class="main-scan-table">
-    <h2><a href="?page=scanTable">FlashFood</a></h2>
+<section class="main-login">
+    <?php require(__DIR__ . '/../partials/headerLogin.php') ?>
 
     <form class="main-form-user" id="form-login-mobile">
-        <h2>Login</h2>
+        <h2>
+            <a href="?page=login"><i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-arrow-right"></i> 
+            Login
+        </h2>
 
         <div class="inputs-wrapper">
             <div class="input-element">
@@ -24,6 +28,6 @@ if (isset($_SESSION['flashfood']['user'])) {
             </div>
         </div>
 
-        <button>Entrar</button>
+        <button class="main-button-login -form">Entrar</button>
     </form>
 </section>

@@ -1,0 +1,100 @@
+@media screen and (max-width: 1300px) {
+
+    #modal-menu-hamburguer .main-modal-item {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper label {
+        width: 95px;
+        height: 95px;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .main-home-landingpage .section-developers ul {
+        flex-wrap: wrap;
+    }
+
+    .main-home-landingpage .section-infos .element-wrapper {
+        flex-direction: column;
+        height: auto;
+
+        gap: 25px;
+        padding-bottom: 20px;
+    }
+
+    .main-home-landingpage .section-infos .element-wrapper img {
+        max-width: 100px;
+    }
+
+    .main-home-landingpage .section-infos .element-wrapper .about-wrapper {
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    #modal-menu-hamburguer .main-modal-item {
+        width: 40%;
+    }
+
+    .main-home-landingpage .section-developers ul {
+        gap: 40px;
+    }
+
+    .main-home-landingpage .section-developers li {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .main-landingpage-footer small {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .main-title i {
+        display: none;
+    }
+
+    .main-title {
+        font-size: 28px;
+    }
+
+    #modal-menu-hamburguer .main-modal-item.-profile form .input-image-wrapper label {
+        width: 80px;
+        height: 80px;
+    }
+
+    #modal-menu-hamburguer .main-modal-item.-profile form .return-image-wrapper i {
+        width: 40px;
+        height: 40px;
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #modal-menu-hamburguer .main-modal-item {
+        min-width: 60%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .main-home-landingpage .section-infos .element-wrapper {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-home-landingpage .section-infos .element-wrapper img {
+        min-width: 100%;
+    }
+
+    .main-home-landingpage .section-infos .element-wrapper {
+        width: 95%;
+    }
+}

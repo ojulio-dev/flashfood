@@ -1,3 +1,5 @@
+<?php require_once (__DIR__. '/../partials/header.php') ?>
+
 <section class="main-home-landingpage">
     <section class="title-wrapper">
         <h2>FlashFood</h2>
@@ -6,7 +8,9 @@
     </section>
 
     <section class="section-infos">
-        <h3 class="main-title"><i class="fa-solid fa-bolt"></i> Um pouco sobre o nosso Sistema <i class="fa-solid fa-bolt"></i></h3>
+        <div class="main-title-wrapper">
+            <h3 class="main-title"><i class="fa-solid fa-bolt"></i> Um pouco sobre o nosso Sistema <i class="fa-solid fa-bolt"></i></h3>
+        </div>
 
         <div class="elements-wrapper">
             <div class="element-wrapper">
@@ -23,7 +27,7 @@
                 <img src="<?= DIR_IMG ?>/landingpage/info-2.jpg" alt="">
 
                 <div class="about-wrapper">
-                    <h4>Clientes independentes</h4>
+                    <h4>Clientes Independentes</h4>
 
                     <p>Com o sistema do celular, os clientes poderão fazer seus <b>próprios pedidos</b> chegarem a cozinha!</b></p>
                 </div>
@@ -43,33 +47,76 @@
 
     <section class="section-developers">
         <div class="main-title-wrapper">
-            <h3 class="main-title -white"><i class="fa-solid fa-bolt"></i> Desenvolvedores <i class="fa-solid fa-bolt"></i></h3>
+            <h3 class="main-title -white -border">Desenvolvedores</h3>
 
-            <h4 class="main-subtitle -white">O FlashFood</h4>
+            <h4 class="main-subtitle -white">Em um evento do Senac - SP, 5 pessoas se juntaram para desenvolver o FlashFood.</h4>
         </div>
 
         <div class="developers-wrapper">
             <ul>
                 <li>
-                    <img src="<?= SERVER_HOST ?>/sanji.jpg" alt="Developer Icon">
+                    <img src="<?= DIR_IMG ?>/landingpage/developers/mart.jpeg" alt="Developer Icon">
+
+                    <div class="info-wrapper">
+                        <h5>Mart</h5>
+
+                        <div class="networks-wrapper">
+                            <a href="https://www.instagram.com/mateus_martii/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </li>
 
                 <li>
-                    <img src="<?= SERVER_HOST ?>/sanji.jpg" alt="Developer Icon">
+                    <img src="<?= DIR_IMG ?>/landingpage/developers/gustavo.jpg" alt="Developer Icon">
+
+                    <div class="info-wrapper">
+                        <h5>Gustavo</h5>
+
+                        <div class="networks-wrapper">
+                            <a href="https://www.instagram.com/gustavo.cavaretto/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </li>
 
                 <li>
-                    <img src="<?= SERVER_HOST ?>/sanji.jpg" alt="Developer Icon">
+                    <img src="<?= DIR_IMG ?>/landingpage/developers/julio.jpg" alt="Developer Icon">
+
+                    <div class="info-wrapper">
+                        <h5>Julio</h5>
+
+                        <div class="networks-wrapper">
+                            <a href="https://www.linkedin.com/in/julio-cesar-589b6b243/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/ojuliocesaaar/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </li>
 
                 <li>
-                    <img src="<?= SERVER_HOST ?>/sanji.jpg" alt="Developer Icon">
+                    <img src="<?= DIR_IMG ?>/landingpage/developers/paulo.jpg" alt="Developer Icon">
+
+                    <div class="info-wrapper">
+                        <h5>Paulo</h5>
+
+                        <div class="networks-wrapper">
+                            <a href="https://www.instagram.com/paulo.gmoreira/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </li>
 
                 <li>
-                    <img src="<?= SERVER_HOST ?>/sanji.jpg" alt="Developer Icon">
+                    <img src="<?= DIR_IMG ?>/landingpage/developers/jose.jpg" alt="Developer Icon">
+
+                    <div class="info-wrapper">
+                        <h5>José</h5>
+
+                        <div class="networks-wrapper">
+                            <a href="https://www.instagram.com/jose___0dz9/"><i class="fa-brands fa-instagram target="_blank""></i></a>
+                        </div>
+                    </div>
                 </li>
             </ul>  
         </div>
     </section>
 </section>
+
+<?php require_once (__DIR__. '/../partials/footer.php') ?>

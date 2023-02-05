@@ -10,7 +10,7 @@ ob_start();
 session_start();
 
 if (!isset($_SESSION['flashfood']['user'])) {
-    header("Location: ../?page=scanTable");
+    header("Location: ../?page=login");
     exit();
 }
 

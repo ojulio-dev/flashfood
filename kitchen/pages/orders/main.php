@@ -49,15 +49,13 @@ $orders = $order->readKitchen();
                                         
                                 <?php endif; ?>
 
-                                    <?php if($orderItem['note']){  ?>
+                                <?php if($orderItem['note']) { ?>
 
                                     <div class="obs-wrapper">
                                         <span>* <?php echo $orderItem['note']?></span>
                                     </div>
 
-                                    <?php }?>
-
-                                
+                                <?php } ?>
                             </li>
 
                         <?php endforeach; ?>

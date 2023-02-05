@@ -1,91 +1,53 @@
-#main-login-system {
-    width: 100%;
-    flex: 1;
+.main-form-user {
+    width: 80%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
 
+    gap: 18px;
+}
+
+.main-form-user h2 {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 20px;
 
-    background-color: #fff;
+    font-size: 23px;
+
+    color: #202020;
 }
 
-#main-login-system form {
-    padding: 44px;
-    box-shadow: 0 2px 6px rgb(0 0 0 / 50%);
+.main-form-user h2 a {
+    color: #202020;
+}
 
+.main-form-user h2 i {
+    font-size: 21px;
+}
+
+.main-form-user .inputs-wrapper {
     display: flex;
     flex-direction: column;
 
-    gap: 16px;
+    gap: 15px;
 }
 
-#main-login-system .login-title-wrapper {
+.main-form-user .input-element {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
-#main-login-system .login-title-wrapper img {
-    width: 200px;
+.main-form-user .input-element label {
+    font-weight: 300;
+    font-size: 17px;
 }
 
-#main-login-system .login-title-wrapper h3 {
-    font-weight: 500;
-    font-size: 20px;
-    color: #1b1b1b;
-}
-
-#main-login-system input {
-    outline: none;
-
-    border: none;
-    border-bottom: 1px solid #21212167;
-
-    width: 400px;
-    height: 35px;
-    padding: 6px 10px 6px 0;
-
-    font-size: 15.5px;
-    color: #0d0d0dc9;
-    background-color: #fff;
-
-    font-weight: 500;
-}
-
-#main-login-system small {
-    margin: 10px 0 5px 0;
-
-    font-size: 14.5px;
-    font-weight: lighter;
-
-    color: #000000e3;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-}
-
-#main-login-system small a {
-    color: #0068b8;
-    text-decoration: none;
-}
-
-#main-login-system button {
-    color: #fff;
-    border: none;
-    background-color: #0067b8;
-    font-size: 15px;
-
-    padding: 9px 0;
-    margin-top: 10px;
-    width: 125px;
-
-    align-self: end;
-
+.main-form-user .input-element input {
+    border: 1px solid #b0b0b0;
     border-radius: 5px;
-    cursor: pointer;
 
-    transition: transform 150ms cubic-bezier(.45,.97,.68,2.48);
-}
+    padding: 7px;
 
-#main-login-system button:hover {
-    transform: scale(1.04);
+    font-size: 16px;
+    outline-color: var(--color-red);
 }

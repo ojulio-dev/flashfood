@@ -24,3 +24,4 @@ define('DIR_CSS', DIR_PATH . '/assets/css');
 define('DIR_JS', DIR_PATH . '/assets/js');
 define('DIR_IMG', DIR_PATH . '/assets/images');
 define('DIR_FNT', DIR_PATH . '/assets/fonts');
+define('DIR_PAGES', DIR_PATH . '/pages');

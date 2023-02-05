@@ -60,7 +60,7 @@ class Order extends Database {
 
         $orderItemId = $this->orderItem->create($orderId, $orderItems);
 
-        return $this->stmt->rowCount();
+        return $orderNumber;
 
     }
 

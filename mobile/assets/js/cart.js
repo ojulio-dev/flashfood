@@ -300,7 +300,7 @@ $('#cart-modal-tables .tables-wrapper li').click(function() {
             Swal.fire({
                 icon: 'success',
                 title: 'Prontinho',
-                html: 'O pedido número<b>#00001</b> da mesa <b>5</b> será entregue a cozinha imediatamente. O FlashFood agradece'
+                html: `O pedido número <b>#${result.orderNumber}</b> da mesa <b>${result.tableNumber}</b> será entregue a cozinha imediatamente. O FlashFood agradece`
             })
 
         } else {
@@ -321,6 +321,50 @@ $('#cart-modal-tables .tables-wrapper li').click(function() {
             text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
             icon: 'error'
         })
+
+    })
+})
+
+$('#button-cancel-order').click(function() {
+    Swal.fire({
+        title: 'Atenção!',
+        text: 'Tem certeza que deseja cancelar o Pedido?',
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            $.ajax({
+                url: SERVER_HOST + '/api/?api=cart&action=removeCart',
+                dataType: 'json',
+                success: function(data) {
+
+                    readCart();
+                    
+                    if (data.response) {
+
+                        Swal.fire({
+                            title: 'Tudo Certo!',
+                            text: 'Pedido cancelado com Sucesso',
+                            icon: 'success'
+                        })
+
+                    }
+
+                },
+                error: function() {
+                    Swal.fire({
+                        title: 'Erro!',
+                        text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',
+                        icon: 'error'
+                    })
+                }
+            })
+        }
 
     })
 })

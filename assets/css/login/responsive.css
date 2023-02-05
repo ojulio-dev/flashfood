@@ -1,0 +1,48 @@
+@media screen and (max-width: 970px) {
+    .main-button-login {
+        width: 20%;
+    }
+
+    .main-login .about-login p {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .main-button-login {
+        width: 35%;
+        margin-top: 20px;
+
+        font-size: 16px;
+    }
+
+    .main-login .about-login p {
+    
+        font-size: 17px;
+    }
+
+    .main-login .about-login h2 {
+        font-size: 25px;
+    }
+
+    .main-login .about-login small {
+        font-size: 15px;
+    }
+
+    .main-form-user h2 {
+    
+        font-size: 22px;
+    }
+
+    .main-form-user h2 i {
+        font-size: 20px;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .main-button-login {
+        width: 48%;
+        margin-top: 20px;
+    }
+}
