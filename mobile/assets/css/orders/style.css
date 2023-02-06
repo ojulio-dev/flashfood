@@ -1,0 +1,97 @@
+.main-section-orders {
+    padding: 20px 15px;
+}
+
+.main-section-orders .main-title {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.main-section-orders .main-title h2 {
+    font-size: 19px;
+    font-weight: 500;
+    color: #202020;
+}
+
+.main-section-orders .orders-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    border-radius: 10px;
+
+    gap: 15px;
+}
+
+.main-section-orders .orders-wrapper li {
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5px;
+    position: relative;
+
+}
+
+.main-section-orders .orders-wrapper li > span {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 15px;
+    
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    
+    background-color: #EA3829;
+    color: #fff;
+    font-size: 15px;
+}
+
+.main-section-orders .orders-wrapper li strong {
+    width: 100%;
+    
+    border-radius: 5px 5px 0 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    
+    padding: 20px;
+    font-size: 21px;
+    
+    background-color: #fff;
+}
+
+.main-section-orders .orders-wrapper li .order-status {
+    width: 100%;
+    color: #fff;
+    background-color: #b0b0b0;
+
+    border-radius: 0 0 5px 5px;
+    padding: 7px;
+    text-align: center;
+    font-size: 17px;
+    word-break: break-all;
+}
+
+.main-section-orders .notfound {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+
+.main-section-orders .notfound i {
+    font-size: 5em;
+}

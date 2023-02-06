@@ -21,6 +21,7 @@
                         <?php endif; ?>
                            
                         <li><a href="<?= SERVER_HOST ?>/mobile/">Mobile</a></li>
+                        
                         <li class="profile-anchor">Meu Perfil</li>
                     </ul>
                 </div>

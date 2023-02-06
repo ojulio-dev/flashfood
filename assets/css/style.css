@@ -175,7 +175,6 @@
 
 #modal-menu-hamburguer .main-modal-item.-navigation ul li {
     width: 100%;
-    padding: 10px;
 
     cursor: pointer;
 
@@ -196,6 +195,10 @@
 
     color: #fff;
     user-select: none;
+}
+
+#modal-menu-hamburguer .main-modal-item.-navigation ul li a, #modal-menu-hamburguer .main-modal-item.-navigation ul .profile-anchor {
+    padding: 10px;
 }
 
 #modal-menu-hamburguer .main-modal-item.-profile {

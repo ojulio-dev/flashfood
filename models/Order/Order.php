@@ -309,6 +309,61 @@ class Order extends Database {
 
     }
 
+    public function readByUserId($userId)
+    {
+
+        try {
+            
+            $this->setSql("SELECT O.*, S.name as status_name, S.color as status_color, S.position as status_position, U.name as user_name FROM `" . $this->table . "` O INNER JOIN order_status as S on S.status_id = O.status_id INNER JOIN user as U on O.user_id = U.user_id WHERE O.user_id = $userId ORDER BY order_number DESC");
+
+            $this->stmt = $this->conn->prepare($this->getSql());
+
+            $this->stmt->execute();
+
+            $orders = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $dateTime = new DateTime('now');
+
+            for ($i = 0; $i < count($orders); $i++) {
+
+                $dataDifference = $dateTime->diff(new DateTime($orders[$i]['created_at']));
+
+                $timeSpent = str_pad($dataDifference->s, 2, 0, STR_PAD_LEFT);    
+
+                $timeTitle = ' segundos';
+
+                if ($dataDifference->i) {
+                    $timeSpent = str_pad($dataDifference->i, 2, 0, STR_PAD_LEFT) . ':' . str_pad($dataDifference->s, 2, 0, STR_PAD_LEFT);
+                    $timeTitle = ' minutos';
+                }
+
+                if ($dataDifference->h) {
+                    $timeSpent = str_pad($dataDifference->h, 2, 0, STR_PAD_LEFT) . ':' . str_pad($dataDifference->i, 2, 0, STR_PAD_LEFT);
+                    $timeTitle = ' horas';
+                }
+
+                if ($dataDifference->d) {
+                    $timeSpent = str_pad($dataDifference->d, 2, 0, STR_PAD_LEFT);
+                    $timeTitle = $dataDifference->d > 1 ? ' dias' : ' dia';
+                }
+
+                $orders[$i]['timeSpent'] = $timeSpent . $timeTitle;
+
+                $orders[$i]['quantity'] = 0;
+
+                $orders[$i]['quantity'] = $this->orderItem->readProductsQuantity($orders[$i]['order_id']);
+
+                $orders[$i]['order_items'] = $this->readByOrderId($orders[$i]['order_id']);
+            }
+
+            return $orders;
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+    }
+
     public function finishOrder($orderNumber)
     {
         try {

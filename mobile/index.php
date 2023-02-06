@@ -45,8 +45,8 @@ $readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="<?= DIR_CSS ?>/cardapio/style.css">   
-
     <link rel="stylesheet" href="<?= DIR_CSS ?>/carrinho/style.css">
+    <link rel="stylesheet" href="<?= DIR_CSS ?>/orders/style.css">
 
     <!-- Não importar abaixo dessas duas! Importe acima -->
     <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
@@ -97,6 +97,9 @@ $readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
                             </li>
                             <li>
                                 <a href="?page=cart">Carrinho</a>
+                            </li>
+                            <li>
+                                <a href="?page=orders">Pedidos</a>
                             </li>
                         </ul>
                     </div>

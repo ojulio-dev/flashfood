@@ -114,7 +114,7 @@ const readUser = () => {
                         <i class="fa-solid fa-arrow-left"></i>
 
                         <div class="input-image-wrapper">
-                            <label for="user-image"><img alt="User Icon"></label>
+                            <label for="user-image"><img src="${data.image}" alt="User Icon"></label>
                             <input type="file" accept="image/png, image/gif, image/jpeg, image/jpg, image/webp" name="image" id="user-image">
                         </div>
                     </div>
