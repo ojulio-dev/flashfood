@@ -101,6 +101,9 @@ $readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
                             <li>
                                 <a href="?page=orders">Pedidos</a>
                             </li>
+                            <li>
+                                <a href="../">Voltar</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
