@@ -31,6 +31,8 @@ if (isset($_SESSION['flashfood']['user'])) {
                 <label for="mobile-create-date">Data de Nascimento</label>
                 <input id="mobile-create-date" name="birthdate" type="text" class="date">
             </div>
+
+            <p>A sua Data de Nascimento será sua senha inicial.</p>
         </div>
 
         <button class="main-button-login -form">Cadastrar</button>

@@ -6,6 +6,14 @@ $(document).ready(function() {
 
 $("#form-create-mobile").submit(function(event) {
     event.preventDefault();
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Tudo certo!',
+        html: 'Obrigado por utilizar o nosso sistema <3 <br> <b>Não se esqueça que sua senha inicial é sua Data de Nascimento!</b>',
+        confirmButtonText: 'Continuar'
+    })
+    return;
     
     let formData = new FormData($(this)[0]);
 
@@ -44,7 +52,7 @@ $("#form-create-mobile").submit(function(event) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Tudo certo!',
-                    text: 'Sua conta foi cadastrada com Sucesso! Obrigado por utilizar o nosso sistema <3',
+                    html: 'Sua conta foi cadastrada com Sucesso! <b>Não se esqueça que a senha inicial é sua Data de Nascimento!</b> Obrigado por utilizar o nosso sistema <3',
                     confirmButtonText: 'Continuar'
                 })
                 .then(result => {

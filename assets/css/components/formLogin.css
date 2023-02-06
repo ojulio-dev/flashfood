@@ -32,6 +32,10 @@
     gap: 15px;
 }
 
+.main-form-user .inputs-wrapper > p {
+    font-size: 14px;
+}
+
 .main-form-user .input-element {
     display: flex;
     flex-direction: column;

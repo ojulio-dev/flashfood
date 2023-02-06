@@ -26,6 +26,8 @@ if (isset($_SESSION['flashfood']['user'])) {
                 <label for="mobile-login-password">Senha</label>
                 <input id="mobile-login-password" name="password" type="password">
             </div>
+
+            <p>Se é sua primeira vez aqui, sua senha é sua <b>Data de Nascimento</b> sem espaço ou /</p>
         </div>
 
         <button class="main-button-login -form">Entrar</button>
