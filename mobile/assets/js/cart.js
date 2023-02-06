@@ -298,7 +298,21 @@ $('#cart-modal-tables .tables-wrapper li').click(function() {
             Swal.fire({
                 icon: 'success',
                 title: 'Prontinho',
-                html: `O pedido número <b>#${result.orderNumber}</b> da mesa <b>${result.tableNumber}</b> será entregue a cozinha imediatamente. O FlashFood agradece`
+                html: `O pedido número <b>#${parseInt(result.orderNumber)}</b> da mesa <b>${result.tableNumber}</b> será entregue a cozinha imediatamente. O FlashFood agradece`,
+                showCancelButton: true,
+                cancelButtonText: 'Home',
+                confirmButtonText: 'Meus Pedidos',
+                cancelButtonColor: '#17a2b8',
+                    confirmButtonColor: '#17a2b8'
+            })
+            .then(result => {
+                if (result.isConfirmed) {
+
+                    window.location.replace('?page=orders'); 
+                } else {
+
+                    window.location.replace('?page=home'); 
+                }
             })
 
         } else {
