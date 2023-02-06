@@ -12,7 +12,7 @@
 
                 <div class="main-modal-item -navigation">
                     <ul>
-                        <?php if ($_SESSION['flashfood']['user']['role_id'] === 1): ?>
+                        <?php if ($_SESSION['flashfood']['user']['role_id'] == 1): ?>
                             <li><a href="<?= SERVER_HOST ?>/dashboard">Dashboard</a></li>
                         <?php endif; ?>    
                         

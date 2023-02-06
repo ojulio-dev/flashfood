@@ -126,7 +126,7 @@ $('.btn-additional-product').click(function(){
 
 $('body').on('change', '#input-additional-quantity', function(){
 
-    let additionalQuantity = $(this).val();
+    let additionalQuantity = parseInt($(this).val());
 
     if(additionalQuantity < 0){
         $(this).val(0);

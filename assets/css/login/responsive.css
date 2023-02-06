@@ -37,6 +37,10 @@
     .main-form-user h2 i {
         font-size: 20px;
     }
+
+    .main-form-user .inputs-wrapper > p {
+        font-size: 12px;
+    }
     
 }
 
