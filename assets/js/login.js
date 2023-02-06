@@ -6,14 +6,6 @@ $(document).ready(function() {
 
 $("#form-create-mobile").submit(function(event) {
     event.preventDefault();
-
-    Swal.fire({
-        icon: 'success',
-        title: 'Tudo certo!',
-        html: 'Obrigado por utilizar o nosso sistema <3 <br> <b>Não se esqueça que sua senha inicial é sua Data de Nascimento!</b>',
-        confirmButtonText: 'Continuar'
-    })
-    return;
     
     let formData = new FormData($(this)[0]);
 
@@ -28,7 +20,7 @@ $("#form-create-mobile").submit(function(event) {
             title: 'Oops...',
             text: 'Data Inválida'
         })
-
+        
         return;
     }
     
