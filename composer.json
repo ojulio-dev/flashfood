@@ -2,7 +2,7 @@
     "name": "api/class",
     "autoload": {
         "psr-4": {
-            "Model\\": "./models",
+            "Model\\": "./Models",
             "Classes\\": "./classes"
         }
     },
