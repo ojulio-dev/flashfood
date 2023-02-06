@@ -52,7 +52,7 @@ $readStatus = $orderStatus->read();
                 
                 <li id="order-<?= $order['order_number'] ?>">
                     <div class="orders-image-wrapper">
-                        <img src="<?= DIR_IMG ?>/system/delivery-box.png" alt="Imagem do Pedido">
+                        <img src="<?= DIR_DASHBOARD ?>/assets/images/system/delivery-box.png" alt="Imagem do Pedido">
 
                         <strong>#<?= $order['order_number'] ?></strong>
                         <div class="number-status-wrapper">

@@ -47,7 +47,7 @@ $products = $productCategory->readProductsBySlug($_GET['slug']);
                     </div>
                     <div class="especificacoes-produto">
                         <div class="texto-produto">
-                            <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="" class="logo-especificacao">
+                            <img src="<?= DIR_MOBILE ?>/assets/images/header/logo-responsivo.png" alt="" class="logo-especificacao">
                             <h4><?= $product['description'] ?></h4>
                         </div>
                         <div class="preco-produto">

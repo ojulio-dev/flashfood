@@ -14,14 +14,15 @@ define('DIR_DOCUMENT', $_SERVER['DOCUMENT_ROOT']);
 define('DIR_PROTOCOL', ($_SERVER['SERVER_PORT'] != '80') ? 'https' : 'http');
 
 // Monta a url -- http://localhost/flashfood
-define('DIR_PATH', DIR_PROTOCOL . '://' . DIR_SERVER . '/' . DIR_ROOT);
-
-// Monta a url -- http://localhost/flashfood
 define('SERVER_HOST', DIR_PROTOCOL . '://' . DIR_SERVER . '/' . DIR_ROOT);
 
+define('DIR_DASHBOARD', SERVER_HOST . '/dashboard');
+define('DIR_MOBILE', SERVER_HOST . '/mobile');
+define('DIR_KITCHEN', SERVER_HOST . '/kitchen');
+
 // Define caminhos
-define('DIR_CSS', DIR_PATH . '/assets/css');
-define('DIR_JS', DIR_PATH . '/assets/js');
-define('DIR_IMG', DIR_PATH . '/assets/images');
-define('DIR_FNT', DIR_PATH . '/assets/fonts');
-define('DIR_PAGES', DIR_PATH . '/pages');
+define('DIR_CSS', SERVER_HOST . '/assets/css');
+define('DIR_JS', SERVER_HOST . '/assets/js');
+define('DIR_IMG', SERVER_HOST . '/assets/images');
+define('DIR_FNT', SERVER_HOST . '/assets/fonts');
+define('DIR_PAGES', SERVER_HOST . '/pages');

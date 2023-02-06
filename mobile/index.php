@@ -14,7 +14,7 @@ if (!isset($_SESSION['flashfood']['user'])) {
     exit();
 }
 
-require_once(__DIR__ . '/config/environment.php');
+require_once(__DIR__ . '/../config/environment.php');
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'menu';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
@@ -40,16 +40,16 @@ $readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
+    <link rel="stylesheet" href="<?= DIR_MOBILE ?>/assets/css/reset.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/cardapio/style.css">   
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/carrinho/style.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/orders/style.css">
+    <link rel="stylesheet" href="<?= DIR_MOBILE ?>/assets/css/cardapio/style.css">   
+    <link rel="stylesheet" href="<?= DIR_MOBILE ?>/assets/css/carrinho/style.css">
+    <link rel="stylesheet" href="<?= DIR_MOBILE ?>/assets/css/orders/style.css">
 
     <!-- Não importar abaixo dessas duas! Importe acima -->
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
+    <link rel="stylesheet" href="<?= DIR_MOBILE ?>/assets/css/style.css">
 
     <?php if (count($readCart)): ?>
         <style>
@@ -62,7 +62,7 @@ $readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
     <?php endif; ?>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/style.css">
+    <link rel="stylesheet" href="<?= DIR_MOBILE ?>/assets/css/fonts/style.css">
 
 </head>
 <body>
@@ -76,7 +76,7 @@ $readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
                 </form>
             </div>
 
-            <a href="?page=menu"><img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="Logo do Sistema Responsivo"></a>
+            <a href="?page=menu"><img src="<?= DIR_MOBILE ?>/assets/images/header/logo-responsivo.png" alt="Logo do Sistema Responsivo"></a>
 
             <div class="header-menu-wrapper">
                 <i id="header-burguer-icon" class="fa-solid fa-bars"></i>
@@ -142,16 +142,16 @@ $readCart = $cart->read($_SESSION['flashfood']['user']['user_id']);
 
     <!-- Vanilla -->
     <script>
-        const DIR_PATH = "<?= DIR_PATH ?>";
+        const DIR_PATH = "<?= DIR_MOBILE ?>";
         const SERVER_HOST = "<?= SERVER_HOST ?>";
     </script>
 
     <?php if (file_exists(__DIR__ . "/assets/js/$page.js")): ?>
     
-        <script src="<?= DIR_JS ?>/<?= $page ?>.js"></script>
+        <script src="<?= DIR_MOBILE ?>/assets/js/<?= $page ?>.js"></script>
     
     <?php endif ?>
     
-    <script src="<?= DIR_JS ?>/script.js"></script>
+    <script src="<?= DIR_MOBILE ?>/assets/js/script.js"></script>
 </body>
 </html>

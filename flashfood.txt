@@ -29,3 +29,8 @@ Dashboard
 Detalhes: Filtrar os produtos por categoria
 
 FAZER AS VERIFICAÇÕES SE EXISTE O POST NAS API
+
+COISA ANTES DA APRESENTACAO
+arrumar o NaN no botão do mobile
+arrumar as rotas do Javascript (verificar todas as rotas)
+timezone do PHP

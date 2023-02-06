@@ -16,7 +16,7 @@ if (!isset($_SESSION['flashfood']['user']) || $_SESSION['flashfood']['user']['ro
     exit();
 }
 
-require_once(__DIR__ . '/config/environment.php');
+require_once(__DIR__ . '/../config/environment.php');
  
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 $action = isset($_GET['action']) ? $_GET['action'] : 'main';
@@ -41,25 +41,25 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/reset.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/fonts/fonts.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/reset.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/fonts/fonts.css">
 
     <!-- Pages -->
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/products/read.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/products/style.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/products/read.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/products/style.css">
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/category/style.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/category/update.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/category/style.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/category/update.css">
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/orders/style.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/orders/orders.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/orders/style.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/orders/orders.css">
 
     <!-- Carousel -->
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/owlcarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/owlcarousel/owl.theme.default.min.css">
 
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/style.css">
-    <link rel="stylesheet" href="<?= DIR_CSS ?>/responsive.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= DIR_DASHBOARD ?>/assets/css/responsive.css">
 </head>
 <body>
     <div id="container">
@@ -103,24 +103,24 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'main';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- OwlCarousel -->
-    <script src="<?= DIR_JS ?>/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?= DIR_DASHBOARD ?>/assets/js/owlcarousel/owl.carousel.min.js"></script>
 
     <script>
 
-        const DIR_PATH = "<?= DIR_PATH ?>";
+        const DIR_PATH = "<?= DIR_DASHBOARD ?>";
         
         const SERVER_HOST = "<?= SERVER_HOST ?>/";
 
     </script>
 
-    <script src="<?= DIR_JS ?>/cart.js"></script>
+    <script src="<?= DIR_DASHBOARD ?>/assets/js/cart.js"></script>
 
     <?php if (file_exists(__DIR__ . "/assets/js/pages/" . $page . ".js")): ?>
     
-        <script src="<?= DIR_JS ?>/pages/<?= $page ?>.js"></script>
+        <script src="<?= DIR_DASHBOARD ?>/assets/js/pages/<?= $page ?>.js"></script>
     
     <?php endif ?>
     
-    <script src="<?= DIR_JS ?>/script.js"></script>
+    <script src="<?= DIR_DASHBOARD ?>/assets/js/script.js"></script>
 </body>
 </html>

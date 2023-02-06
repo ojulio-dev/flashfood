@@ -49,7 +49,7 @@ $readCategory = $productCategory->read();
                         <td>
                             <div class="read-icons-wrapper">
                                 <a class="read-icons-action" href="?page=products&action=update&slug=<?= $product['slug'] ?>">
-                                    <img src="<?= DIR_IMG ?>/system/editar.png">
+                                    <img src="<?= DIR_DASHBOARD ?>/assets/images/system/editar.png">
                                 </a>
                             </div>
                         </td>

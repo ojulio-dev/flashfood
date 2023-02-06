@@ -35,7 +35,7 @@ $additionals = $additional->readByProductId($readProduct['product_id']);
         </div>
         <div class="especificacoes-produto">
             <div class="texto-produto">
-                <img src="<?= DIR_IMG ?>/header/logo-responsivo.png" alt="" class="logo-especificacao">
+                <img src="<?= DIR_MOBILE ?>/assets/images/header/logo-responsivo.png" alt="" class="logo-especificacao">
                 <h4><?= $readProduct['description'] ?></h4>
             </div>
             <div class="preco-produto">
