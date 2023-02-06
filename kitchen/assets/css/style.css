@@ -177,9 +177,9 @@
     flex: 1;
     overflow-x: auto;
 
-    padding: 4px 0;
+    padding: 4px;
     
-    background-color: #E7E7E7;
+    background-color: #efefef;
     border-radius: 5px;
 }
 

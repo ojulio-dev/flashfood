@@ -70,7 +70,7 @@ class Cart extends Database {
     {
         try {
             
-            $this->setSql("SELECT SUM(CA.quantity) AS quantity FROM {$this->table} C INNER JOIN cart_additional as CA on CA.cart_id = C.cart_id WHERE C.status = 1 AND C.user_id = 1 AND C.cart_id = $cartId");
+            $this->setSql("SELECT SUM(CA.quantity) AS quantity FROM {$this->table} C INNER JOIN cart_additional as CA on CA.cart_id = C.cart_id WHERE C.status = 1 AND C.user_id = $userId AND C.cart_id = $cartId");
 
             $this->stmt = $this->conn->prepare($this->getSql());
 
