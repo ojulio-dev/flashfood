@@ -38,8 +38,6 @@ $(document).ready(function() {
 
         const valueStatusId = event.target.value;
 
-        console.log(valueStatusId);
-
         var rows = $('#main-orders-wrapper li');
 
         rows.each(function(index, li) {

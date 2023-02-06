@@ -84,7 +84,7 @@ $('.btn-additional-product').click(function(){
 
     } else {
         value = parseInt(additionalQuantity) - 1;
-        
+
     }
 
     additionalInput.val(value);
@@ -117,9 +117,6 @@ $('.btn-additional-product').click(function(){
     let productPrice = parseFloat($(this).closest('[data-product-price]').data('product-current-price'));
 
     productPrice = productPrice + (currentAdditionalPrice * parseFloat($('#input-product-quantity').val()));
-    
-    console.log(productPrice);
-    
 
     const priceFormat = new Intl.NumberFormat('pt-BR', {
         style: 'currency',

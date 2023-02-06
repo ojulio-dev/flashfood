@@ -130,8 +130,6 @@ $('body').on('click', '.button-modal-additional', function() {
     })
     .catch(error => {
 
-        console.log(error);
-
         Swal.fire({
             title: 'Oops...',
             text: 'Um problema inesperado aconteceu. Avise os administradores o mais rápido possível!',

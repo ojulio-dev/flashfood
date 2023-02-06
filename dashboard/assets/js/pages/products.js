@@ -154,8 +154,6 @@ $(document).ready(function() {
                     return false;
                 }
 
-                console.log(data);
-
                 var list = data.map(function(product) {
 
                     let productPrice = new Intl.NumberFormat('pt-BR', {

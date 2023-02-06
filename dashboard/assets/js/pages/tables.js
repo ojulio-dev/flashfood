@@ -9,7 +9,6 @@ $('#button-create-tables').click(function() {
     })
     .then((data) => data.json())
     .then((data) => {
-        console.log(data);
         if (data.response) {
 
             Swal.fire({
