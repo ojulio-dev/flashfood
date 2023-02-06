@@ -1,6 +1,6 @@
 // Mudar a quantidade de Produtos
 $('.button-product-quantity').click(function() {
-    let productQuantity = $('#input-product-quantity').val();
+    let productQuantity = parseFloat($('#input-product-quantity').val());
 
     let buttonAction = $(this).data('action');
 
@@ -18,7 +18,7 @@ $('.button-product-quantity').click(function() {
 
     // Button Price
     // Preço do Produto mais os Adicionais;
-    let productAdditionalPrice = $('.sistema-info-wrapper').data('product-price') + $('.sistema-info-wrapper').data('additional-current-price');
+    let productAdditionalPrice = parseFloat($('.sistema-info-wrapper').data('product-price')) + parseFloat($('.sistema-info-wrapper').data('additional-current-price'));
 
     if (value < 1) {
 
@@ -81,8 +81,10 @@ $('.btn-additional-product').click(function(){
 
     if (buttonAction == 'adicionar'){
         value = parseInt(additionalQuantity) + 1;
-    }else {
+
+    } else {
         value = parseInt(additionalQuantity) - 1;
+        
     }
 
     additionalInput.val(value);
@@ -90,7 +92,7 @@ $('.btn-additional-product').click(function(){
     additionalInput.trigger('change');
 
     // Button Price
-    let additionalPrice = $(this).closest('li').data('additional-price');
+    let additionalPrice = parseFloat($(this).closest('li').data('additional-price'));
 
     if (value < 0 || value > 9) {
 
@@ -98,8 +100,8 @@ $('.btn-additional-product').click(function(){
 
     }
 
-    currentAdditionalPrice = $('.sistema-info-wrapper').data('additional-current-price');
-
+    let currentAdditionalPrice = parseFloat($('.sistema-info-wrapper').data('additional-current-price'));
+    
     if (buttonAction == 'adicionar') {
 
         currentAdditionalPrice = currentAdditionalPrice + additionalPrice;
@@ -112,9 +114,12 @@ $('.btn-additional-product').click(function(){
 
     $('.sistema-info-wrapper').data('additional-current-price', currentAdditionalPrice);
 
-    let productPrice = $(this).closest('[data-product-price]').data('product-current-price');
+    let productPrice = parseFloat($(this).closest('[data-product-price]').data('product-current-price'));
 
-    productPrice = productPrice + (currentAdditionalPrice * $('#input-product-quantity').val());
+    productPrice = productPrice + (currentAdditionalPrice * parseFloat($('#input-product-quantity').val()));
+    
+    console.log(productPrice);
+    
 
     const priceFormat = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
@@ -126,7 +131,7 @@ $('.btn-additional-product').click(function(){
 
 $('body').on('change', '#input-additional-quantity', function(){
 
-    let additionalQuantity = parseInt($(this).val());
+    let additionalQuantity = $(this).val();
 
     if(additionalQuantity < 0){
         $(this).val(0);
