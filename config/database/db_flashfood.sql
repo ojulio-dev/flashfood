@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `status_id` int(11) NOT NULL DEFAULT 1,
   `order_number` varchar(6) NOT NULL,
   `table_number` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`order_id`) USING BTREE,
   KEY `FK_order_user` (`user_id`),
   KEY `FK_order_order_status` (`status_id`),
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   CONSTRAINT `FK_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE SET NULL ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.order: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.order: ~1 rows (aproximadamente)
 INSERT INTO `order` (`order_id`, `user_id`, `status_id`, `order_number`, `table_number`, `created_at`) VALUES
 	(1, 1, 1, '000003', 5, '2023-01-18 11:06:40');
 
@@ -298,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `FK_user_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.user: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.user: ~0 rows (aproximadamente)
 INSERT INTO `user` (`user_id`, `role_id`, `name`, `email`, `password`, `image`, `birthdate`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'Julio Cesar', 'ojuliocesar@gmail.com', '7c96b41274561b0e627ca1eac9f31d3bdf13445f', NULL, '2005-11-21', 1, '2023-01-18 09:16:07', '2023-01-18 09:16:07');
 

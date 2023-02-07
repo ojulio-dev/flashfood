@@ -42,6 +42,8 @@ class Order extends Database {
     */
     public function create($orderItems, $tableId, $userId)
     {
+        $dateTime = new DateTime('now');
+
         $this->setSql("SELECT MAX(order_number) as order_number FROM `order`");
 
         $this->stmt = $this->conn->prepare($this->getSql());
@@ -52,7 +54,9 @@ class Order extends Database {
 
         $orderNumber = str_pad(((int) $orderNumber + 3), 6, '0', STR_PAD_LEFT);
 
-        $this->setSql("INSERT INTO `" . $this->table . "` (order_number, `table_number`, user_id) VALUES ('$orderNumber', $tableId, $userId)");
+        $now = $dateTime->format('Y-m-d H:i:s');
+
+        $this->setSql("INSERT INTO `" . $this->table . "` (order_number, `table_number`, user_id, created_at) VALUES ('$orderNumber', $tableId, $userId, '$now')");
 
         $this->stmt = $this->conn->query($this->getSql());
 
