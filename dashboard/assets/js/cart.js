@@ -20,7 +20,8 @@ const readIconCart = () => {
         url: SERVER_HOST + '/api/?api=cart&action=listCart',
         dataType: 'json',
         success: function (data) {
-            $('#icon-count-cart-items').html(data.length > 9 ? '9+' : data.length);
+
+            $('#icon-count-cart-items').html(data.readCart.length > 9 ? '9+' : data.readCart.length);
         },
         error: function (jqXhr, textStatus, errorMessage) {
             Swal.fire({
