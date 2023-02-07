@@ -44,8 +44,8 @@ body #container {
 
     position: absolute;
 
-    width: 65px;
-    height: 40px;
+    width: 70px;
+    height: 45px;
 
     background-color: #fff;
     border-radius: 10px;
@@ -56,8 +56,8 @@ body #container {
 
     background-color: #fff;
 
-    width: 65px;
-    height: 40px;
+    width: 70px;
+    height: 45px;
 
     border-radius: 10px;
 
@@ -95,7 +95,7 @@ body #container {
     display: flex;
     justify-content: right;
 
-    font-size: 28px;
+    font-size: 33px;
 }
 
 .header-menu-wrapper .menu-burguer-background {
@@ -191,7 +191,7 @@ body #container {
 
 .header-menu-wrapper .items-menu .modal-wrapper a {
     display: block;
-    background-color: #d9d9d9;
+    background-color: #e0e0e0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     text-align: center;
     
@@ -231,7 +231,7 @@ body #container {
     width: 100%;
     padding: 20px;
     padding-top: 0;
-    background-color: #d9d9d9;
+    background-color: #e0e0e0;
 
     border-radius: 20px;
 
@@ -295,7 +295,7 @@ body #container {
 }
 
 .main-adicionais-wrapper {
-    background: rgba(163, 158, 158, 65%);
+    background: rgba(163, 158, 158, 45%);
     padding: 15px;
     border-radius: 20px;
     margin-top: 13px;
@@ -578,17 +578,17 @@ body #container {
     justify-content: center;
 
     bottom: 9px;
-    right: 8px;
+    right: 10px;
 
     background-color: white;
 
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
 
     border-radius: 48%;
     box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);
 
-    font-size: 18px;
+    font-size: 20px;
     color: #212121;
     text-decoration: none;
 

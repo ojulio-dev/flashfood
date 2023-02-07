@@ -28,9 +28,9 @@ Cadastro do Cliente (LEAD, integração com o Ifood).
 Dashboard
 Detalhes: Filtrar os produtos por categoria
 
-FAZER AS VERIFICAÇÕES SE EXISTE O POST NAS API
-
-COISA ANTES DA APRESENTACAO
-arrumar o NaN no botão do mobile
-arrumar as rotas do Javascript (verificar todas as rotas)
-timezone do PHP
+Coisas a serem feitas em 15 dias:
+Filtragem dos pedidos na Cozinha;
+Finalizar dia no Dashboard;
+Regra de Negócio da entrega dos Pedidos;
+Adicionais com limites;
+Atualização no Banco (talvez);

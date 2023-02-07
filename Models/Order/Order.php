@@ -6,6 +6,8 @@ use Classes\Database;
 use Model\Order\OrderItem;
 use Model\Order\OrderItemAdditional;
 
+use Model\Cart\Cart;
+
 use PDO;
 use PDOException;
 use DateTime;
@@ -17,9 +19,12 @@ ob_start();
 class Order extends Database {
 
     private $stmt, $sql, $conn, $table;
+
     private $orderItem;
     private $orderItemAdditional;
     private $orderStatus;
+
+    private $cart;
 
     public function __construct()
     {
@@ -32,6 +37,8 @@ class Order extends Database {
         $this->orderItemAdditional = new OrderItemAdditional();
 
         $this->orderStatus = new OrderStatus();
+
+        $this->cart = new Cart();
     }
 
     /**
@@ -56,7 +63,9 @@ class Order extends Database {
 
         $now = $dateTime->format('Y-m-d H:i:s');
 
-        $this->setSql("INSERT INTO `" . $this->table . "` (order_number, `table_number`, user_id, created_at) VALUES ('$orderNumber', $tableId, $userId, '$now')");
+        $totalPrice = $this->cart->readTotalPrice($_SESSION['flashfood']['user']['user_id']);
+
+        $this->setSql("INSERT INTO `" . $this->table . "` (order_number, `table_number`, user_id, total_price, created_at) VALUES ('$orderNumber', $tableId, $userId, $totalPrice, '$now')");
 
         $this->stmt = $this->conn->query($this->getSql());
 
