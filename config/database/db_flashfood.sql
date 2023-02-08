@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `additional` (
   CONSTRAINT `FK_additional_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.additional: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.additional: ~8 rows (aproximadamente)
 INSERT INTO `additional` (`additional_id`, `ingredient_id`, `product_id`, `status`, `created_at`) VALUES
 	(1, 1, 2, b'1', '2023-01-18 09:14:54'),
 	(2, 2, 2, b'1', '2023-01-18 09:14:54'),
@@ -112,6 +112,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `status_id` int(11) NOT NULL DEFAULT 1,
   `order_number` varchar(6) NOT NULL,
   `table_number` int(11) NOT NULL,
+  `total_price` float(8,2) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`order_id`) USING BTREE,
   KEY `FK_order_user` (`user_id`),
@@ -121,8 +122,8 @@ CREATE TABLE IF NOT EXISTS `order` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela db_flashfood.order: ~1 rows (aproximadamente)
-INSERT INTO `order` (`order_id`, `user_id`, `status_id`, `order_number`, `table_number`, `created_at`) VALUES
-	(1, 1, 1, '000003', 5, '2023-01-18 11:06:40');
+INSERT INTO `order` (`order_id`, `user_id`, `status_id`, `order_number`, `table_number`, `total_price`, `created_at`) VALUES
+	(1, 1, 1, '000003', 5, 83.38, '2023-01-18 11:06:40');
 
 -- Copiando estrutura para tabela db_flashfood.order_item
 CREATE TABLE IF NOT EXISTS `order_item` (
@@ -298,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `FK_user_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela db_flashfood.user: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela db_flashfood.user: ~1 rows (aproximadamente)
 INSERT INTO `user` (`user_id`, `role_id`, `name`, `email`, `password`, `image`, `birthdate`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'Julio Cesar', 'ojuliocesar@gmail.com', '7c96b41274561b0e627ca1eac9f31d3bdf13445f', NULL, '2005-11-21', 1, '2023-01-18 09:16:07', '2023-01-18 09:16:07');
 

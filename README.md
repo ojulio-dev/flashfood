@@ -9,7 +9,7 @@
   	</a>
 </p>
 
-*Um sistema perfeito para o seu comércio*
+*Sistema criado para um evento do Senac - SP*
 
 ## Requisitos
 
@@ -23,7 +23,7 @@ git clone https://github.com/ojuliocesar/FlashFood.git flashfood && cd flashfood
 composer install
 ```
 
-3. Renomear os arquivos .examples para .php em config/;
+3. Renomear os arquivos .examples para .php em config/
 
 4. Fazer a instalação da database(MySQL) em config/database;
 

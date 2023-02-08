@@ -2,6 +2,57 @@ body {
     background-color: #b59d90;
 }
 
+.browser-screen-message {
+    display: none;
+}
+
+@media screen and (min-width: 900px) {
+    body #container {
+        display: none !important;
+    }
+
+    .browser-screen-message {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 25px;
+
+        background-color: #fff;
+        
+        cursor: pointer;
+    }
+
+    .browser-screen-message span {
+        font-size: 19px;
+        line-height: 2;
+        letter-spacing: .2px;
+        background-color: rgba(0, 0, 0, 0.15);
+
+        padding: 10px 30px;
+        border-radius: 10px;
+    }
+
+    .browser-screen-message a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        
+        width: 10%;
+        height: 45px;
+        background-color: #52A84B;
+        border: 1px solid #52A84B;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+}
+
 body #container {
     min-height: 100vh;
 

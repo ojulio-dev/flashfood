@@ -24,7 +24,7 @@ if (isset($_POST)) {
 
     } else {
 
-        if ($_POST['note']){
+        if (isset($_POST['note'])) {
 
             $cartId = $cart->create($_SESSION['flashfood']['user']['user_id'], $_POST['productId'], 1, $_POST['note']);
     
