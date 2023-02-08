@@ -2,6 +2,10 @@
 
 ![Preview-Screens](https://cdn.discordapp.com/attachments/627316898476064768/1072837643538268181/flashfood.png)
 
+<p align="center">
+  	<img alt="Repository size" src="https://img.shields.io/github/repo-size/emanuelcorrea/gatpic">
+</p>
+
 *Sistema criado para um evento do Senac - SP*
 
 ## Requisitos
