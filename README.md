@@ -5,7 +5,7 @@
 <p align="center">
   	<img alt="Repository size" src="https://img.shields.io/github/repo-size/emanuelcorrea/gatpic">
   	<a href="https://github.com/ojuliocesar/FlashFood/commits/main">
-    	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/emanuelcorrea/gatpic">
+    	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ojuliocesar/flashfood">
   	</a>
 </p>
 
