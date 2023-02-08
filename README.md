@@ -2,13 +2,6 @@
 
 ![Preview-Screens](https://cdn.discordapp.com/attachments/627316898476064768/1072837643538268181/flashfood.png)
 
-<p align="center">
-  	<img alt="Repository size" src="https://img.shields.io/github/repo-size/emanuelcorrea/gatpic">
-  	<a href="https://github.com/ojuliocesar/FlashFood/commits/main">
-    	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ojuliocesar/flashfood">
-  	</a>
-</p>
-
 *Sistema criado para um evento do Senac - SP*
 
 ## Requisitos
