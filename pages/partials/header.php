@@ -20,7 +20,7 @@
                             <li><a href="<?= SERVER_HOST ?>/kitchen/">Cozinha</a></li>
                         <?php endif; ?>
                            
-                        <li><a href="<?= SERVER_HOST ?>/mobile/">Mobile</a></li>
+                        <li><a href="<?= SERVER_HOST ?>/mobile/">Cardápio</a></li>
                         
                         <li class="profile-anchor">Meu Perfil</li>
                     </ul>

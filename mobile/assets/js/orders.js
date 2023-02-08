@@ -2,7 +2,7 @@ $(document).ready(function() {
     setInterval(readOrders, 10000);
 })
 
-$('.main-section-orders .orders-wrapper li').click(function() {
+$('body').on('click', '.main-section-orders .orders-wrapper li', function() {
     let orderId = $(this).data('order-id');
 
     let orderNumber = $(this).data('order-number');;
@@ -30,6 +30,8 @@ $('.main-section-orders .orders-wrapper li').click(function() {
         data: {orderId},
         dataType: 'json',
         success: function(data) {
+            
+            $('#orders-modal-items').css('display', 'flex');
 
             data.map(product => {
 
@@ -49,8 +51,6 @@ $('.main-section-orders .orders-wrapper li').click(function() {
     
                 `);
             }).join('');
-
-            $('#orders-modal-items').css('display', 'flex');
 
         },
         error: function() {
@@ -82,7 +82,7 @@ const readOrders = () => {
             result.map(order => {
     
                 $('.main-section-orders .infos-wrapper .orders-wrapper').append(`
-                    <li>
+                    <li data-order-id="${order.order_id}" data-order-number="${order.order_number}" data-total-price="${order.total_price}">
                         <span>${order.quantity}</span>
 
                         <strong>#${parseInt(order.order_number)}</strong>
@@ -93,7 +93,7 @@ const readOrders = () => {
             })
         } else {
 
-            $('.main-section-orders .infos-wrapper').html('<p class="notfound">Nenhum pedido foi encontrado :/</p>');
+            $('.main-section-orders .infos-wrapper').html('<p class="notfound">Nenhum pedido foi encontrado</p>');
 
         }
     })

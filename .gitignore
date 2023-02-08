@@ -1,2 +1,4 @@
 config/config.php
 config/environment.php
+composer.lock
+vendor/

@@ -87,9 +87,13 @@
 }
 
 .main-section-orders .notfound {
+    color: #202020;
+    background-color: #fff;
+    font-size: 16px;
+
+    padding: 10px;
+    border-radius: 10px;
     text-align: center;
-    color: #fff;
-    font-size: 18px;
 }
 
 .main-section-orders .notfound i {

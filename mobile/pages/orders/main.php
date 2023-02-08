@@ -29,7 +29,7 @@ $orders = $order->readByUserId($_SESSION['flashfood']['user']['user_id']);
                 <?php endforeach; ?>
             </ul>
         <?php else: ?>
-            <p class="notfound">Nenhum pedido foi encontrado :/</p>
+            <p class="notfound">Nenhum pedido foi encontrado</p>
         <?php endif; ?>
     </div>
 

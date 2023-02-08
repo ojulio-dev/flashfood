@@ -28,7 +28,7 @@ Cadastro do Cliente (LEAD, integração com o Ifood).
 Dashboard
 Detalhes: Filtrar os produtos por categoria
 
-Coisas a serem feitas em 15 dias:
+Coisas a serem feitas:
 Filtragem dos pedidos na Cozinha;
 Finalizar dia no Dashboard;
 Regra de Negócio da entrega dos Pedidos;
