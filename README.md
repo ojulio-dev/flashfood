@@ -24,13 +24,7 @@ composer install
 
 4. Fazer a instalação da database(MySQL) em config/database;
 
-5. Iniciar WebServer;
-```
-php -S localhost:5000
-```
-
-6. Abra o navegador e acesse http://localhost:5000
-
+5. Inicie o serviço e faça um teste feliz ;)
 
 ### License
 ----

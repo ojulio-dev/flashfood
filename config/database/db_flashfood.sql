@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `banner` varchar(255) NOT NULL,
+  `banner` varchar(255) DEFAULT NULL,
   `description` text NOT NULL,
   `price` float(8,2) NOT NULL,
   `special_price` float(8,2) DEFAULT NULL,
@@ -231,7 +231,7 @@ INSERT INTO `product` (`product_id`, `category_id`, `name`, `banner`, `descripti
 CREATE TABLE IF NOT EXISTS `product_category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `banner` varchar(255) NOT NULL,
+  `banner` varchar(255) DEFAULT NULL,
   `slug` varchar(50) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
